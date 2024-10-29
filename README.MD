@@ -1,7 +1,14 @@
 ## Search Simulator 💻 🔍
 
-Este repositorio contempla el desarrollo de un simulador de busqueda de archivos, utilizando estructura de datos.
+Este repositorio contempla el desarrollo de un simulador de busqueda de archivos, utilizando **estructura de datos**.
 
-### Intregrantes
+### Desarrollado por:
 
-- (Miguel Loaiza)[https://github.com/EhMigueh]
+- Estudiante de Ingeniería Informatica
+- [Miguel Loaiza](https://github.com/EhMigueh)
+
+- Estudiante de Ingeniería Informática
+- [Diego Sanhueza](https://github.com/Diego0119)
+
+
+## Funcionalidades  
