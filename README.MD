@@ -2,17 +2,23 @@
 
 Este repositorio contiene el desarrollo de un **simulador de búsqueda de archivos** utilizando **estructuras de datos avanzadas** para la recuperación de información.
 
-### Desarrollado por:
+## 👨‍💻 Desarrollado por:
 
-- Estudiante de Ingeniería Informática
-  - [Miguel Loaiza](https://github.com/EhMigueh)
-- Estudiante de Ingeniería Informática
-  - [Diego Sanhueza](https://github.com/Diego0119)
-- Estudiante de Ingeniería Informática
-  - [Felipe Carcamo]()
-- Estudiante de Ingeniería Informática
-  - [Miguel]()
+### 1. Diego Sanhueza 🙋‍♂️
+- Estudiante de Ingeniería Infomatica
+- [Diego Sanhueza](https://github.com/Diego0119)
 
+### 2. Miguel Loaiza 👨‍💻
+- Estudiante de Ingeniería Informatica
+- [Miguel Loaiza](https://github.com/EhMigueh)
+
+### 3. Felipe Carcamo 🙋
+- Estudiante de Ingeniería Informatica
+- [Felipe Carcamo](https://github.com/FeLipe-133)
+
+### 4. Miguel 🤔
+- Estudiante de Ingeniería Informatica
+- [Miguel](https://github.com/MiguelDevvv)
 ---
 
 ## Objetivo
