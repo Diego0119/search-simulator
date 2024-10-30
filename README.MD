@@ -18,7 +18,7 @@ Este repositorio contiene el desarrollo de un **simulador de búsqueda de archiv
 
 ### 4. Miguel 🤔
 - Estudiante de Ingeniería Informatica
-- [Miguel](https://github.com/MiguelDevvv)
+- [Miguel Malipillan](https://github.com/mihel1)
 ---
 
 ## Objetivo
