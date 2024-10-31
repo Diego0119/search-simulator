@@ -16,9 +16,9 @@ Este repositorio contiene el desarrollo de un **simulador de búsqueda de archiv
 - Estudiante de Ingeniería Informatica
 - [Felipe Carcamo](https://github.com/FeLipe-133)
 
-### 4. Miguel 🤔
+### 4. Miguel Maripillan 🤔
 - Estudiante de Ingeniería Informatica
-- [Miguel Malipillan](https://github.com/mihel1)
+- [Miguel Maripillan](https://github.com/mihel1)
 ---
 
 ## Objetivo
