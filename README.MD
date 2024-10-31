@@ -7,18 +7,22 @@ Este repositorio contiene el desarrollo de un **simulador de búsqueda de archiv
 ### 1. Diego Sanhueza 🙋‍♂️
 - Estudiante de Ingeniería Infomatica
 - [Diego Sanhueza](https://github.com/Diego0119)
+- Se encargará de realizar la estructura de los **grafos** que se usarán.
 
 ### 2. Miguel Loaiza 👨‍💻
 - Estudiante de Ingeniería Informatica
 - [Miguel Loaiza](https://github.com/EhMigueh)
+- Se encargará de implementar el algoritmo **PageRank**.
 
 ### 3. Felipe Carcamo 🙋
 - Estudiante de Ingeniería Informatica
 - [Felipe Carcamo](https://github.com/FeLipe-133)
+- Se encargará de implementar el **Indice Invertido**.
 
 ### 4. Miguel Maripillan 🤔
 - Estudiante de Ingeniería Informatica
 - [Miguel Maripillan](https://github.com/mihel1)
+- Se encargará de implementar los **grafos** que se utilizarán.
 ---
 
 ## Objetivo
