@@ -16,3 +16,7 @@ typedef struct Grafo
     Nodo *lista_nodos[MAX_DOCS]; // arreglo con la lista
 
 } Grafo;
+
+void inicializar_grafo(Grafo *grafo);
+
+void agregar_documento(Grafo *grafo, int id_doc);
