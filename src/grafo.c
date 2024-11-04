@@ -19,7 +19,7 @@ void inicializar_grafo(Grafo *grafo)
 void agregar_arista(Grafo *grafo, int origen, int destino){
     Nodo *nuevoNodoSalida = (Nodo *)malloc(sizeof(Nodo));    /* Agregar a la lista de enlaces salientes del origen*/
     
-    if (nuevoNodoSalida == NULL {
+    if (nuevoNodoSalida == NULL) {
         printf("Error al asignar memoria para enlace saliente\n");
         exit(EXIT_FAILURE);
     }
