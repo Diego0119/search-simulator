@@ -18,5 +18,6 @@ typedef struct Grafo
 } Grafo;
 
 void inicializar_grafo(Grafo *grafo);
-
 void agregar_documento(Grafo *grafo, int id_doc);
+void agregar_enlace(Grafo *grafo, int id_doc_origen, int id_doc_destino);
+void mostrar_grafo(Grafo *grafo);
