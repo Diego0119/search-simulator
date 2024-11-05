@@ -6,6 +6,7 @@
 #include <ctype.h>
 
 #define MAX_DOCS 100
+#define MAX_TAMANO_PALABRA 50
 
 typedef struct Nodo
 {
@@ -15,9 +16,17 @@ typedef struct Nodo
 
 typedef struct Grafo
 { /* Enlaces del grafo dirigido, entrada y salida para pagerank e indice invertido*/
+
     Nodo *lista_adyacencia_salida[MAX_DOCS];
     Nodo *lista_adyacencia_entrada[MAX_DOCS];
 } Grafo;
+
+typedef struct IndiceInvertido
+{
+    char palabra[MAX_TAMANO_PALABRA];
+    Nodo *lista_docs;
+    struct IndiceInvertido *siguiente;
+} IndiceInvertido;
 
 void agregar_documento(Grafo *grafo, int id_doc);
 void agregar_enlace(Grafo *grafo, int id_doc_origen, int id_doc_destino);
