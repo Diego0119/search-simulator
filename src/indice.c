@@ -1,4 +1,4 @@
-#include "incs/header.h"
+#include "header.h"
 
 IndiceInvertido *crear_nuevo_nodo(char *palabra)
 {

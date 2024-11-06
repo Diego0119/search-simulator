@@ -1,7 +1,12 @@
-#include "../incs/header.h"
+#include "header.h"
 
 int main()
 {
+    srand(time(NULL));
+
+    int num_webs = 2;
+    generate_text_files(num_webs);
+
     Grafo grafo;
     inicializar_grafo(&grafo);
 
