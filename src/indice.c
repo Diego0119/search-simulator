@@ -1,6 +1,6 @@
 #include "../incs/header.h"
 
-InvertedIndex *crear_nuevo_nodo(char *word)
+InvertedIndex *create_new_node(char *word)
 {
     InvertedIndex *new_node = (InvertedIndex *)malloc(sizeof(InvertedIndex));
     if (new_node == NULL)
@@ -14,7 +14,7 @@ InvertedIndex *crear_nuevo_nodo(char *word)
     return new_node;
 }
 
-void agregar_documento(InvertedIndex **index, int doc_id, char *word)
+void add_document(InvertedIndex **index, int doc_id, char *word)
 {
     InvertedIndex *current = *index;
 
@@ -35,7 +35,7 @@ void agregar_documento(InvertedIndex **index, int doc_id, char *word)
     }
 
     // si la word no se encuentra en el index, se agrega al index para reconocerla
-    InvertedIndex *new_node = crear_nuevo_nodo(word);
+    InvertedIndex *new_node = create_new_node(word);
     Node *new_doc = (Node *)malloc(sizeof(Node));
     new_doc->doc_id = doc_id;
     new_doc->next = NULL;
@@ -43,4 +43,39 @@ void agregar_documento(InvertedIndex **index, int doc_id, char *word)
     new_node->docs_list = new_doc;
     new_node->next = *index;
     *index = new_node;
+}
+
+// aca debo tokenizar el input
+void tokenize_text(char *text, int doc_id, InvertedIndex **index)
+{
+    char *token;
+
+    // se convierte el texto en minuscula
+    for (int i = 0; text[i]; i++)
+    {
+        text[i] = tolower(text[i]);
+    }
+
+    // se eliminan algunos caracteres especiales
+    // la funcion contempla lo siguiente como caracteres especiales:
+    //! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+    for (int i = 0; text[i]; i++)
+    {
+        if (ispunct(text[i]))
+        {
+            text[i] = ' '; // Reemplaza la puntuación por espacios
+        }
+    }
+
+    // se tokenizan, strtok acepta un string y un delimitador como segundo argumento, en este caso
+    // el espacio " ", nos indica que se acaba una palabra y podemos tokenizarla
+    token = strtok(text, " ");
+    while (token != NULL)
+    {
+        // agregar las palabras de la entrada al indice
+        add_document(index, doc_id, token);
+
+        // se realiza esto para pasar a la siguiente palabra
+        token = strtok(NULL, " ");
+    }
 }

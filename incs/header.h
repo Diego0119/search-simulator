@@ -25,12 +25,12 @@ typedef struct Graph
 
 typedef struct InvertedIndex
 {
-    char word[MAX_TAMANO_PALABRA];
-    Node *docs_list;
-    struct InvertedIndex *next;
+    char word[MAX_TAMANO_PALABRA]; // almacena la palabra
+    Node *docs_list;               // lista de documentos en los que aparece la palabra (es como la cabeza de la lista)
+    struct InvertedIndex *next;    // siguiente nodo de la lista enlazada del indice (otra palabra)
 } InvertedIndex;
 
-void add_document(Graph *graph, int id_doc);
+void add_document(InvertedIndex **index, int doc_id, char *word);
 void add_link(Graph *graph, int source_doc_id, int destination_doc_id);
 void show_graph(Graph *graph);
 /* Variables globales*/
@@ -38,6 +38,8 @@ void show_graph(Graph *graph);
 extern MapeoDocumento mapeo_docs[MAX_DOCS];
 extern int total_docs;
 
+void tokenize_text(char *text, int doc_id, InvertedIndex **index);
+InvertedIndex *create_new_node(char *word);
 void initialize_graph(Graph *graph);
 void add_edge(Graph *graph, int source, int destination);
 void build_graph(Graph *graph);
