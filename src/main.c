@@ -7,18 +7,18 @@ int main()
     int num_webs = 2;
     generate_text_files(num_webs);
 
-    Grafo grafo;
-    inicializar_grafo(&grafo);
+    Graph graph;
+    initialize_graph(&graph);
 
-    agregar_documento(&grafo, 1);
-    agregar_documento(&grafo, 2);
-    agregar_documento(&grafo, 3);
+    add_document(&graph, 1);
+    add_document(&graph, 2);
+    add_document(&graph, 3);
 
-    agregar_enlace(&grafo, 0, 1); // documento 0 enlaza a Documento 1
-    agregar_enlace(&grafo, 1, 2); // documento 1 enlaza a Documento 2
-    agregar_enlace(&grafo, 0, 2); // documento 0 enlaza a Documento 2
+    add_link(&graph, 0, 1); // documento 0 enlaza a Documento 1
+    add_link(&graph, 1, 2); // documento 1 enlaza a Documento 2
+    add_link(&graph, 0, 2); // documento 0 enlaza a Documento 2
 
-    mostrar_grafo(&grafo);
+    show_graph(&graph);
 
     return 0;
 }

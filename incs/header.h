@@ -7,46 +7,46 @@
 
 #define MAX_DOCS 100
 #define MAX_TAMANO_PALABRA 50
-#define MAX_NOMBRE_WEB 20
-#define MAX_CARACTERES_WEB 50
+#define MAX_NAME_WEB 20
+#define MAX_CHARACTERS_WEB 50
 
-typedef struct Nodo
+typedef struct Node
 {
-    int id_doc;        // indice del documento
-    struct Nodo *next; // siguiente nodo
-} Nodo;
+    int doc_id;        // indice del documento
+    struct Node *next; // siguiente nodo
+} Node;
 
-typedef struct Grafo
+typedef struct Graph
 { /* Enlaces del grafo dirigido, entrada y salida para pagerank e indice invertido*/
 
-    Nodo *lista_adyacencia_salida[MAX_DOCS];
-    Nodo *lista_adyacencia_entrada[MAX_DOCS];
-} Grafo;
+    Node *output_adyacent_list[MAX_DOCS];
+    Node *input_adyacent_list[MAX_DOCS];
+} Graph;
 
-typedef struct IndiceInvertido
+typedef struct InvertedIndex
 {
-    char palabra[MAX_TAMANO_PALABRA];
-    Nodo *lista_docs;
-    struct IndiceInvertido *siguiente;
-} IndiceInvertido;
+    char word[MAX_TAMANO_PALABRA];
+    Node *docs_list;
+    struct InvertedIndex *next;
+} InvertedIndex;
 
-void agregar_documento(Grafo *grafo, int id_doc);
-void agregar_enlace(Grafo *grafo, int id_doc_origen, int id_doc_destino);
-void mostrar_grafo(Grafo *grafo);
+void add_document(Graph *graph, int id_doc);
+void add_link(Graph *graph, int source_doc_id, int destination_doc_id);
+void show_graph(Graph *graph);
 /* Variables globales*/
 
 extern MapeoDocumento mapeo_docs[MAX_DOCS];
 extern int total_docs;
 
-void inicializar_grafo(Grafo *grafo);
-void agregar_arista(Grafo *grafo, int origen, int destino);
-void construir_grafo(Grafo *grafo);
-void liberar_grafo(Grafo *grafo);
-int contar_enlaces_salida(Grafo *grafo, int id_doc);
-int contar_enlaces_entrada(Grafo *grafo, int id_doc);
-int obtener_id_doc(char *nombre_archivo);
-bool es_nombre_documento(char *nombre_archivo);
+void initialize_graph(Graph *graph);
+void add_edge(Graph *graph, int source, int destination);
+void build_graph(Graph *graph);
+void release_graph(Graph *graph);
+int count_output_links(Graph *graph, int id_doc);
+int count_input_links(Graph *graph, int id_doc);
+int get_doc_id(char *file_name);
+bool is_doc_name(char *file_name);
 
 /* Generar archivos txt */
-void generar_archivos_de_texto(int *);           // GENERA archivos txt (webs) y les coloca nombre.
+void generate_text_files(int *);                 // GENERA archivos txt (webs) y les coloca nombre.
 void generar_texto_random(FILE *, const char *); // GENERA texto aleatorio en los archivos txt.

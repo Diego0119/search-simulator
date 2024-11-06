@@ -1,46 +1,46 @@
-#include "header.h"
+#include "../incs/header.h"
 
-IndiceInvertido *crear_nuevo_nodo(char *palabra)
+InvertedIndex *crear_nuevo_nodo(char *word)
 {
-    IndiceInvertido *nuevo_nodo = (IndiceInvertido *)malloc(sizeof(IndiceInvertido));
-    if (nuevo_nodo == NULL)
+    InvertedIndex *new_node = (InvertedIndex *)malloc(sizeof(InvertedIndex));
+    if (new_node == NULL)
     {
         printf("Error al asignar memoria\n");
         exit(EXIT_FAILURE);
     }
-    strcpy(nuevo_nodo->palabra, palabra);
-    nuevo_nodo->lista_docs = NULL; // se inicializa en NULL porque al crearlo aun no hay docs con esas palabras
-    nuevo_nodo->siguiente = NULL;
-    return nuevo_nodo;
+    strcpy(new_node->word, word);
+    new_node->docs_list = NULL; // se inicializa en NULL porque al crearlo aun no hay docs con esas words
+    new_node->next = NULL;
+    return new_node;
 }
 
-void agregar_documento(IndiceInvertido **indice, int doc_id, char *palabra)
+void agregar_documento(InvertedIndex **index, int doc_id, char *word)
 {
-    IndiceInvertido *actual = *indice;
+    InvertedIndex *current = *index;
 
-    // aca se busca la palabra en el indice
-    while (actual != NULL)
+    // aca se busca la word en el index
+    while (current != NULL)
     {
-        // si la comparacion se cumple, la palabra ya esta en el indice
-        if (strcmp(actual->palabra, palabra) == 0)
+        // si la comparacion se cumple, la word ya esta en el index
+        if (strcmp(current->word, word) == 0)
         {
-            // si la palabra ya existe, se crea un nuevo nodo para el documento
-            Nodo *nuevo_doc = (Nodo *)malloc(sizeof(Nodo));
-            nuevo_doc->id_doc = doc_id;
-            nuevo_doc->next = actual->lista_docs;
-            actual->lista_docs = nuevo_doc;
+            // si la word ya existe, se crea un nuevo nodo para el documento
+            Node *new_doc = (Node *)malloc(sizeof(Node));
+            new_doc->doc_id = doc_id;
+            new_doc->next = current->docs_list;
+            current->docs_list = new_doc;
             return;
         }
-        actual = actual->siguiente;
+        current = current->next;
     }
 
-    // si la palabra no se encuentra en el indice, se agrega al indice para reconocerla
-    IndiceInvertido *nuevo_nodo = crear_nuevo_nodo(palabra);
-    Nodo *nuevo_doc = (Nodo *)malloc(sizeof(Nodo));
-    nuevo_doc->id_doc = doc_id;
-    nuevo_doc->next = NULL;
+    // si la word no se encuentra en el index, se agrega al index para reconocerla
+    InvertedIndex *new_node = crear_nuevo_nodo(word);
+    Node *new_doc = (Node *)malloc(sizeof(Node));
+    new_doc->doc_id = doc_id;
+    new_doc->next = NULL;
 
-    nuevo_nodo->lista_docs = nuevo_doc;
-    nuevo_nodo->siguiente = *indice;
-    *indice = nuevo_nodo;
+    new_node->docs_list = new_doc;
+    new_node->next = *index;
+    *index = new_node;
 }
