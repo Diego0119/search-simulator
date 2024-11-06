@@ -7,8 +7,8 @@
 
 #define MAX_DOCS 100
 #define MAX_TAMANO_PALABRA 50
-#define MAX_NAME_WEB 20
-#define MAX_CHARACTERS_WEB 50
+#define MAX_NOMBRE_WEB 20
+#define MAX_CARACTERES_WEB 50
 
 typedef struct Nodo
 {
@@ -48,5 +48,5 @@ int obtener_id_doc(char *nombre_archivo);
 bool es_nombre_documento(char *nombre_archivo);
 
 /* Generar archivos txt */
-void generate_text_files(int *);                 // GENERA archivos txt (webs) y les coloca nombre.
-void generate_random_text(FILE *, const char *); // GENERA texto aleatorio en los archivos txt.
+void generar_archivos_de_texto(int *);           // GENERA archivos txt (webs) y les coloca nombre.
+void generar_texto_random(FILE *, const char *); // GENERA texto aleatorio en los archivos txt.
