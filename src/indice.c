@@ -14,9 +14,10 @@ InvertedIndex *create_new_node(char *word)
     return new_node;
 }
 
-void add_document(InvertedIndex **index, int doc_id, char *word)
+void add_document(InvertedIndex **hash_table, int doc_id, char *word)
 {
-    InvertedIndex *current = *index;
+    unsigned int index = hash_function(word); // dara el hash de la palabra
+    InvertedIndex *current = hash_table[index];
 
     // aca se busca la word en el index
     while (current != NULL)
@@ -36,13 +37,13 @@ void add_document(InvertedIndex **index, int doc_id, char *word)
 
     // si la word no se encuentra en el index, se agrega al index para reconocerla
     InvertedIndex *new_node = create_new_node(word);
+    new_node->next = hash_table[index]; // posicion index es el hash de la palabra
+    hash_table[index] = new_node;       // se crea el indice
+
     Node *new_doc = (Node *)malloc(sizeof(Node));
     new_doc->doc_id = doc_id;
     new_doc->next = NULL;
-
     new_node->docs_list = new_doc;
-    new_node->next = *index;
-    *index = new_node;
 }
 
 // aca debo tokenizar el input
@@ -98,4 +99,16 @@ void print_inverted_index(InvertedIndex *index)
 
         current = current->next;
     }
+}
+
+// con esta funcion de hash va a ser mucho mas rapido buscar en el indice la palabra, y ver los
+// documentos que estan conectados
+unsigned int hash_function(char *word)
+{
+    unsigned int hash = 0;                // valor del hash inicial
+    for (int i = 0; word[i] != '\0'; i++) // recorre todos los caracteres de la palabra
+    {
+        hash = (hash * 31) + word[i]; // convierte cada letra en su valor ASCII
+    }
+    return hash % MAX_WORD_SIZE;
 }

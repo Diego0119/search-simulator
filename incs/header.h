@@ -6,7 +6,7 @@
 #include <ctype.h>
 
 #define MAX_DOCS 100
-#define MAX_TAMANO_PALABRA 50
+#define MAX_WORD_SIZE 50
 #define MAX_NAME_WEB 20
 #define MAX_CHARACTERS_WEB 50
 
@@ -38,6 +38,7 @@ void show_graph(Graph *graph);
 extern MapeoDocumento mapeo_docs[MAX_DOCS];
 extern int total_docs;
 
+unsigned int hash_function(char *word);
 void print_inverted_index(InvertedIndex *index);
 void tokenize_text(char *text, int doc_id, InvertedIndex **index);
 InvertedIndex *create_new_node(char *word);
