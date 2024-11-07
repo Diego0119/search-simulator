@@ -38,6 +38,7 @@ void show_graph(Graph *graph);
 extern MapeoDocumento mapeo_docs[MAX_DOCS];
 extern int total_docs;
 
+void print_inverted_index(InvertedIndex *index);
 void tokenize_text(char *text, int doc_id, InvertedIndex **index);
 InvertedIndex *create_new_node(char *word);
 void initialize_graph(Graph *graph);

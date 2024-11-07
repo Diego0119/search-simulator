@@ -79,3 +79,23 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
         token = strtok(NULL, " ");
     }
 }
+
+void print_inverted_index(InvertedIndex *index)
+{
+    InvertedIndex *current = index;
+    while (current != NULL)
+    {
+        printf("Palabra: %s\n", current->word);
+        printf("Documentos: ");
+
+        Node *doc = current->docs_list;
+        while (doc != NULL)
+        {
+            printf("%d ", doc->doc_id);
+            doc = doc->next;
+        }
+        printf("\n");
+
+        current = current->next;
+    }
+}
