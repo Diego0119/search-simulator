@@ -112,3 +112,21 @@ unsigned int hash_function(char *word)
     }
     return hash % MAX_WORD_SIZE;
 }
+
+Node *search_word(InvertedIndex **hash_table, char *word)
+{
+    unsigned int index = hash_function(word); // se realiza el hash para encontrar la posicion
+    InvertedIndex *current = hash_table[index];
+
+    while (current != NULL)
+    {
+        // se realiza una busqueda lineal
+        if (strcmp(current->word, word) == 0)
+        {
+            return current->docs_list;
+        }
+        current = current->next;
+    }
+
+    return NULL;
+}

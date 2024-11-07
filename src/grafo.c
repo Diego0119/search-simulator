@@ -112,7 +112,7 @@ void build_graph(Graph *graph)
                     int destination_id = obtener_id_doc(destination_name);
 
                     // Agregar arista al graph
-                    agregar_arista(graph, doc_id, destination_id);
+                    add_edge(graph, doc_id, destination_id);
                 }
             }
 
