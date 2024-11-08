@@ -5,11 +5,15 @@
 #include <dirent.h>
 #include <ctype.h>
 #include <time.h>
+#include <math.h>
 
 #define MAX_DOCS 100
 #define MAX_WORD_SIZE 50
 #define MAX_NAME_WEB 20
 #define MAX_CHARACTERS_WEB 50
+#define DAMPING_FACTOR 0.85          // Factor de amortiguación
+#define MAX_ITERATIONS 100           // Máximo de iteraciones para la convergencia
+#define CONVERGENCE_THRESHOLD 0.0001 // Umbral de convergencia
 
 typedef struct Node
 {
@@ -47,6 +51,7 @@ unsigned int hash_function(char *word);
 void print_inverted_index(InvertedIndex *index);
 void tokenize_text(char *text, int doc_id, InvertedIndex **index);
 InvertedIndex *create_new_node(char *word);
+void release_inverted_index(InvertedIndex **hash_table); // Idea... para liberar el indide invertido...
 void initialize_graph(Graph *graph);
 void add_edge(Graph *graph, int source, int destination);
 void build_graph(Graph *graph);
@@ -57,5 +62,10 @@ int get_doc_id(Graph *graph, char *file_name);
 bool is_doc_name(char *file_name);
 
 /* Generar archivos txt */
-void generate_text_files(int num_webs);                 // GENERA archivos txt (webs) y les coloca nombre.
+void generate_text_files(int num_webs);                                                    // GENERA archivos txt (webs) y les coloca nombre.
 void generate_random_text(FILE *web, const char *web_name, int num_docs, int current_doc); // GENERA texto aleatorio en los archivos txt.
+
+/* PageRank */
+void initialize_pagerank(double pagerank[], int total_docs);
+void calculate_pagerank(Graph *graph, double pagerank[]);
+void display_pagerank(Graph *graph, double pagerank[]);

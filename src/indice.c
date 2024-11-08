@@ -41,6 +41,12 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
     hash_table[index] = new_node;       // se crea el indice
 
     Node *new_doc = (Node *)malloc(sizeof(Node));
+    if (new_doc == NULL)
+    {
+        printf("Error al asignar memoria para nuevo documento\n");
+        exit(EXIT_FAILURE);
+    }
+
     new_doc->doc_id = doc_id;
     new_doc->next = NULL;
     new_node->docs_list = new_doc;
@@ -71,6 +77,14 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
     // se tokenizan, strtok acepta un string y un delimitador como segundo argumento, en este caso
     // el espacio " ", nos indica que se acaba una palabra y podemos tokenizarla
     token = strtok(text, " ");
+
+    // En caso de que la palabra sobrepase el buffer...
+    if (strlen(token) < MAX_WORD_SIZE)
+    {
+        fprintf(stderr, "La palabra es muy larga\n");
+        exit(EXIT_FAILURE);
+    }
+
     while (token != NULL)
     {
         // agregar las palabras de la entrada al indice
@@ -129,4 +143,28 @@ Node *search_word(InvertedIndex **hash_table, char *word)
     }
 
     return NULL;
+}
+
+// Libera la memoria del indice invertido (Esto es una idea....)
+void release_inverted_index(InvertedIndex **hash_table)
+{
+    // se recorre todo el indice
+    for (int i = 0; i < MAX_WORD_SIZE; i++)
+    {
+        InvertedIndex *current = hash_table[i];
+        // se libera la memoria de cada palabra
+        while (current != NULL)
+        {
+            Node *doc_node = current->docs_list;
+            while (doc_node != NULL)
+            {
+                Node *temp_doc_node = doc_node;
+                doc_node = doc_node->next;
+                free(temp_doc_node);
+            }
+            InvertedIndex *temp = current;
+            current = current->next;
+            free(temp);
+        }
+    }
 }

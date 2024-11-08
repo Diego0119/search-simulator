@@ -25,8 +25,12 @@ clean:
 	rm -f $(OBJ_FILES)
 	rm -f build/$(EXEC)
 	rm -f doc*.txt
+
 folders:
 	mkdir -p src obj incs build docs
 
 send:
 	tar czf $(GRUPO)-$(NTAR).tgz --transform 's,^,$(GRUPO)-$(NTAR)/,' Makefile src incs docs
+
+run:
+	./build/$(EXEC)

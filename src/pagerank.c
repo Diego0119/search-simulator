@@ -1,53 +1,71 @@
-#include "../incs/header.h"
+#include "header.h"
 
-void generate_text_files(int num_webs)
+void initialize_pagerank(double pagerank[], int total_docs)
 {
-    if (num_webs <= 0)
+    for (int i = 0; i < total_docs; i++)
     {
-        fprintf(stderr, "El número de archivos web a generar debe ser MAYOR a 0.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    for (int i = 1; i <= num_webs; i++)
-    {
-        char web_name[MAX_NAME_WEB];
-        snprintf(web_name, sizeof(web_name), "doc%d.txt", i);
-
-        FILE *web = fopen(web_name, "w");
-        if (web == NULL)
-        {
-            fprintf(stderr, "Error al abrir el archivo web.\n");
-            exit(EXIT_FAILURE);
-        }
-
-        generate_random_text(web, web_name, num_webs, i);
+        pagerank[i] = 1.0 / total_docs; // Inicializar PageRank uniformemente.
     }
 }
 
-void generate_random_text(FILE *web, const char *web_name, int num_docs, int current_doc)
+void calculate_pagerank(Graph *graph, double pagerank[])
 {
-    // Generar texto aleatorio dentro de cada archivo web.
-    for (int i = 0; i < MAX_CHARACTERS_WEB; i++)
+    double new_pagerank[MAX_DOCS];
+    initialize_pagerank(pagerank, graph->total_docs);
+
+    for (int iter = 0; iter < MAX_ITERATIONS; iter++)
     {
-        char letter = 'A' + rand() % 26;
-        fprintf(web, "%c", letter);
-        if (i < MAX_CHARACTERS_WEB - 1)
+        bool converged = true;
+
+        // Calcular el nuevo PageRank para cada documento.
+        for (int i = 0; i < graph->total_docs; i++)
         {
-            fprintf(web, " ");
+            double inbound_rank_sum = 0.0;
+
+            // Recorrer los documentos que tienen un enlace hacia el documento `i`.
+            Node *inbound = graph->input_adjacent_list[i];
+            while (inbound != NULL)
+            {
+                int inbound_doc_id = inbound->doc_id;
+                int out_links = count_output_links(graph, inbound_doc_id);
+
+                if (out_links > 0)
+                {
+                    inbound_rank_sum += pagerank[inbound_doc_id] / out_links;
+                }
+
+                inbound = inbound->next;
+            }
+
+            // Calcular el nuevo valor de PageRank.
+            new_pagerank[i] = (1 - DAMPING_FACTOR) / graph->total_docs + DAMPING_FACTOR * inbound_rank_sum;
+
+            // Verificar la convergencia.
+            if (fabs(new_pagerank[i] - pagerank[i]) > CONVERGENCE_THRESHOLD)
+            {
+                converged = false;
+            }
+        }
+
+        // Actualizar el valor de PageRank y verificar.
+        for (int i = 0; i < graph->total_docs; i++)
+        {
+            pagerank[i] = new_pagerank[i];
+        }
+
+        if (converged)
+        {
+            printf("PageRank convergido en %d iteraciones.\n", iter + 1);
+            break;
         }
     }
+}
 
-    /* Incluir aleatoriamente enlaces a otros documentos*/
-    int num_links = rand() % 3; /* Hasta 2 enlaces*/
-    for (int i = 0; i < num_links; i++)
+void display_pagerank(Graph *graph, double pagerank[])
+{
+    printf("\nResultados de PageRank:\n");
+    for (int i = 0; i < graph->total_docs; i++)
     {
-        int link_doc = rand() % num_docs + 1; /* Documento aleatorio de 1 a num_docs*/
-        if (link_doc != current_doc) /* No enlazar a sí mismo */
-        {
-            fprintf(web, "\nlink: doc%d", link_doc);
-        }
+        printf("Documento %d - PageRank: %.6f\n", i, pagerank[i]);
     }
-
-    fclose(web);
-    fprintf(stdout, "ARCHIVO '%s' generado con ÉXITO con %d letras.\n", web_name, MAX_CHARACTERS_WEB);
 }
