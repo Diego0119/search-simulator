@@ -52,6 +52,20 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
     new_node->docs_list = new_doc;
 }
 
+bool is_stopword(char *token)
+{
+    static const char *stopwords[] = {"a", "e", "i", "o", "u"}; //como no tenemos palabras en los archivos dejo las vocales como stopwords
+    static const int num_stopwords = sizeof(stopwords) / sizeof(stopwords[0]);
+    for (int i = 0; i < num_stopwords; i++) 
+    {
+        if (strcmp(token, stopwords[i]) == 0) 
+        {
+            return true; // Es una stopword
+        }
+    }
+    return false; // No es una stopword
+}
+
 // aca debo tokenizar el input
 void tokenize_text(char *text, int doc_id, InvertedIndex **index)
 {
@@ -83,9 +97,11 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
 
     while (token != NULL)
     {
-        // agregar las palabras de la entrada al indice
-        add_document(index, doc_id, token);
-
+        if(!is_stopword(token))
+        {
+            // agregar las palabras de la entrada al indice
+            add_document(index, doc_id, token);
+        }
         // se realiza esto para pasar a la siguiente palabra
         token = strtok(NULL, " ");
     }
@@ -140,6 +156,11 @@ Node *search_word(InvertedIndex **hash_table, char *word)
 // Libera la memoria del indice invertido (Esto es una idea....)
 void release_inverted_index(InvertedIndex **hash_table)
 {
+    if (hash_table == NULL) 
+    {
+        return; // Verifica si la tabla hash es nula
+    }
+    
     // se recorre todo el indice
     for (int i = 0; i < MAX_WORD_SIZE; i++)
     {
