@@ -24,7 +24,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	rm -f $(OBJ_FILES)
 	rm -f build/$(EXEC)
-	rm -f doc*-txt
+	rm -f doc*.txt
 folders:
 	mkdir -p src obj incs build docs
 
