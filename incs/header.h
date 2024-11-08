@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <dirent.h>
 #include <ctype.h>
+#include <time.h>
 
 #define MAX_DOCS 100
 #define MAX_WORD_SIZE 50
@@ -16,11 +17,18 @@ typedef struct Node
     struct Node *next; // siguiente nodo
 } Node;
 
+typedef struct DocumentMapping
+{
+    char name[MAX_NAME_WEB];
+    int doc_id;
+} DocumentMapping;
+
 typedef struct Graph
 { /* Enlaces del grafo dirigido, entrada y salida para pagerank e indice invertido*/
-
-    Node *output_adyacent_list[MAX_DOCS];
-    Node *input_adyacent_list[MAX_DOCS];
+    Node *output_adjacent_list[MAX_DOCS];
+    Node *input_adjacent_list[MAX_DOCS];
+    DocumentMapping mapping_docs[MAX_DOCS];
+    int total_docs;
 } Graph;
 
 typedef struct InvertedIndex
@@ -33,10 +41,6 @@ typedef struct InvertedIndex
 void add_document(InvertedIndex **index, int doc_id, char *word);
 void add_link(Graph *graph, int source_doc_id, int destination_doc_id);
 void show_graph(Graph *graph);
-/* Variables globales*/
-
-extern MapeoDocumento mapeo_docs[MAX_DOCS];
-extern int total_docs;
 
 Node *search_word(InvertedIndex **hash_table, char *word);
 unsigned int hash_function(char *word);
@@ -49,7 +53,7 @@ void build_graph(Graph *graph);
 void release_graph(Graph *graph);
 int count_output_links(Graph *graph, int id_doc);
 int count_input_links(Graph *graph, int id_doc);
-int get_doc_id(char *file_name);
+int get_doc_id(Graph *graph, char *file_name);
 bool is_doc_name(char *file_name);
 
 /* Generar archivos txt */
