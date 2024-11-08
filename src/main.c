@@ -1,6 +1,6 @@
 #include "header.h"
 
-int main()
+int main(void)
 {
     srand(time(NULL));
 
@@ -9,16 +9,10 @@ int main()
 
     Graph graph;
     initialize_graph(&graph);
-
-    add_document(&graph, 1);
-    add_document(&graph, 2);
-    add_document(&graph, 3);
-
-    add_link(&graph, 0, 1); // documento 0 enlaza a Documento 1
-    add_link(&graph, 1, 2); // documento 1 enlaza a Documento 2
-    add_link(&graph, 0, 2); // documento 0 enlaza a Documento 2
-
+    build_graph(&graph);
     show_graph(&graph);
+    release_graph(&graph);
 
     return 0;
 }
+
