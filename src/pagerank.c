@@ -3,9 +3,7 @@
 void initialize_pagerank(double pagerank[], int total_docs)
 {
     for (int i = 0; i < total_docs; i++)
-    {
         pagerank[i] = 1.0 / total_docs; // Inicializar PageRank uniformemente.
-    }
 }
 
 void calculate_pagerank(Graph *graph, double pagerank[])
@@ -30,9 +28,7 @@ void calculate_pagerank(Graph *graph, double pagerank[])
                 int out_links = count_output_links(graph, inbound_doc_id);
 
                 if (out_links > 0)
-                {
                     inbound_rank_sum += pagerank[inbound_doc_id] / out_links;
-                }
 
                 inbound = inbound->next;
             }
@@ -42,16 +38,12 @@ void calculate_pagerank(Graph *graph, double pagerank[])
 
             // Verificar la convergencia.
             if (fabs(new_pagerank[i] - pagerank[i]) > CONVERGENCE_THRESHOLD)
-            {
                 converged = false;
-            }
         }
 
         // Actualizar el valor de PageRank y verificar.
         for (int i = 0; i < graph->total_docs; i++)
-        {
             pagerank[i] = new_pagerank[i];
-        }
 
         if (converged)
         {
@@ -65,7 +57,5 @@ void display_pagerank(Graph *graph, double pagerank[])
 {
     printf("\nResultados de PageRank:\n");
     for (int i = 0; i < graph->total_docs; i++)
-    {
         printf("Documento %d - PageRank: %.6f\n", i, pagerank[i]);
-    }
 }

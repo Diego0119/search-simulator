@@ -40,7 +40,7 @@ void add_edge(Graph *graph, int source, int destination)
 }
 
 void build_graph(Graph *graph)
-{ /* Construye el grafo leyendo los documentos del directorio actual */
+{             /* Construye el grafo leyendo los documentos del directorio actual */
     DIR *dir; /* Abrir el directorio actual */
     struct dirent *ent;
 
@@ -185,9 +185,7 @@ int get_doc_id(Graph *graph, char *file_name)
     for (int i = 0; i < graph->total_docs; i++)
     {
         if (strcmp(graph->mapping_docs[i].name, file_name) == 0)
-        {
             return graph->mapping_docs[i].doc_id;
-        }
     }
 
     if (graph->total_docs >= MAX_DOCS)

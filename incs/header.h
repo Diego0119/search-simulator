@@ -1,19 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
+#include <string.h>
 #include <dirent.h>
+#include <stdlib.h>
 #include <ctype.h>
-#include <time.h>
+#include <stdio.h>
 #include <math.h>
+#include <time.h>
 
-#define MAX_DOCS 100
+#define CONVERGENCE_THRESHOLD 0.0001 // Umbral de convergencia
+#define MAX_CHARACTERS_WEB 50
+#define DAMPING_FACTOR 0.85 // Factor de amortiguación
+#define MAX_ITERATIONS 100  // Máximo de iteraciones para la convergencia
 #define MAX_WORD_SIZE 50
 #define MAX_NAME_WEB 20
-#define MAX_CHARACTERS_WEB 50
-#define DAMPING_FACTOR 0.85          // Factor de amortiguación
-#define MAX_ITERATIONS 100           // Máximo de iteraciones para la convergencia
-#define CONVERGENCE_THRESHOLD 0.0001 // Umbral de convergencia
+#define MAX_DOCS 100
 
 typedef struct Node
 {
@@ -42,16 +42,10 @@ typedef struct InvertedIndex
     struct InvertedIndex *next; // siguiente nodo de la lista enlazada del indice (otra palabra)
 } InvertedIndex;
 
-void add_document(InvertedIndex **index, int doc_id, char *word);
+/* NO APLICADA */
 void add_link(Graph *graph, int source_doc_id, int destination_doc_id);
-void show_graph(Graph *graph);
 
-Node *search_word(InvertedIndex **hash_table, char *word);
-unsigned int hash_function(char *word);
-void print_inverted_index(InvertedIndex *index);
-void tokenize_text(char *text, int doc_id, InvertedIndex **index);
-InvertedIndex *create_new_node(char *word);
-void release_inverted_index(InvertedIndex **hash_table); // Idea... para liberar el indide invertido...
+/* Grafos */
 void initialize_graph(Graph *graph);
 void add_edge(Graph *graph, int source, int destination);
 void build_graph(Graph *graph);
@@ -60,8 +54,18 @@ int count_output_links(Graph *graph, int id_doc);
 int count_input_links(Graph *graph, int id_doc);
 int get_doc_id(Graph *graph, char *file_name);
 bool is_doc_name(char *file_name);
+void show_graph(Graph *graph);
 
-/* Generar archivos txt */
+/* Indice invertido */
+InvertedIndex *create_new_node(char *word);
+void add_document(InvertedIndex **index, int doc_id, char *word);
+void tokenize_text(char *text, int doc_id, InvertedIndex **index);
+void print_inverted_index(InvertedIndex *index);
+unsigned int hash_function(char *word);
+Node *search_word(InvertedIndex **hash_table, char *word);
+void release_inverted_index(InvertedIndex **hash_table); // Idea... para liberar el indide invertido...
+
+/* Archivos txt */
 void generate_text_files(int num_webs);                                                    // GENERA archivos txt (webs) y les coloca nombre.
 void generate_random_text(FILE *web, const char *web_name, int num_docs, int current_doc); // GENERA texto aleatorio en los archivos txt.
 

@@ -59,9 +59,7 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
 
     // se convierte el texto en minuscula
     for (int i = 0; text[i]; i++)
-    {
         text[i] = tolower(text[i]);
-    }
 
     // se eliminan algunos caracteres especiales
     // la funcion contempla lo siguiente como caracteres especiales:
@@ -69,9 +67,7 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
     for (int i = 0; text[i]; i++)
     {
         if (ispunct(text[i]))
-        {
             text[i] = ' '; // Reemplaza la puntuacion por espacios
-        }
     }
 
     // se tokenizan, strtok acepta un string y un delimitador como segundo argumento, en este caso
@@ -121,9 +117,7 @@ unsigned int hash_function(char *word)
 {
     unsigned int hash = 0;                // valor del hash inicial
     for (int i = 0; word[i] != '\0'; i++) // recorre todos los caracteres de la palabra
-    {
-        hash = (hash * 31) + word[i]; // convierte cada letra en su valor ASCII
-    }
+        hash = (hash * 31) + word[i];     // convierte cada letra en su valor ASCII
     return hash % MAX_WORD_SIZE;
 }
 
@@ -136,9 +130,7 @@ Node *search_word(InvertedIndex **hash_table, char *word)
     {
         // se realiza una busqueda lineal
         if (strcmp(current->word, word) == 0)
-        {
             return current->docs_list;
-        }
         current = current->next;
     }
 

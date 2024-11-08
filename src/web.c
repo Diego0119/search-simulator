@@ -33,9 +33,7 @@ void generate_random_text(FILE *web, const char *web_name, int num_docs, int cur
         char letter = 'A' + rand() % 26;
         fprintf(web, "%c", letter);
         if (i < MAX_CHARACTERS_WEB - 1)
-        {
             fprintf(web, " ");
-        }
     }
 
     /* Incluir aleatoriamente enlaces a otros documentos*/
@@ -44,9 +42,7 @@ void generate_random_text(FILE *web, const char *web_name, int num_docs, int cur
     {
         int link_doc = rand() % num_docs + 1; /* Documento aleatorio de 1 a num_docs*/
         if (link_doc != current_doc)          /* No enlazar a sí mismo */
-        {
             fprintf(web, "\nlink: doc%d", link_doc);
-        }
     }
     fprintf(stdout, "ARCHIVO '%s' generado con ÉXITO con %d letras.\n", web_name, MAX_CHARACTERS_WEB);
 }
