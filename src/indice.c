@@ -1,4 +1,4 @@
-#include "../incs/header.h"
+#include "header.h"
 
 InvertedIndex *create_new_node(char *word)
 {
@@ -9,7 +9,7 @@ InvertedIndex *create_new_node(char *word)
         exit(EXIT_FAILURE);
     }
     strcpy(new_node->word, word);
-    new_node->docs_list = NULL; // se inicializa en NULL porque al crearlo aun no hay docs con esas words
+    new_node->docs_list = NULL; // se inicializa en NULL porque al crearlo aun no hay docs con esas palabras
     new_node->next = NULL;
     return new_node;
 }
@@ -19,13 +19,13 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
     unsigned int index = hash_function(word); // dara el hash de la palabra
     InvertedIndex *current = hash_table[index];
 
-    // aca se busca la word en el index
+    // aca se busca la palabra en el indice
     while (current != NULL)
     {
-        // si la comparacion se cumple, la word ya esta en el index
+        // si la comparacion se cumple, la palabra ya esta en el indice
         if (strcmp(current->word, word) == 0)
         {
-            // si la word ya existe, se crea un nuevo nodo para el documento
+            // si la palabra ya existe, se crea un nuevo nodo para el documento
             Node *new_doc = (Node *)malloc(sizeof(Node));
             new_doc->doc_id = doc_id;
             new_doc->next = current->docs_list;
@@ -35,7 +35,7 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
         current = current->next;
     }
 
-    // si la word no se encuentra en el index, se agrega al index para reconocerla
+    // si la palabra no se encuentra en el indice, se agrega al indice para reconocerla
     InvertedIndex *new_node = create_new_node(word);
     new_node->next = hash_table[index]; // posicion index es el hash de la palabra
     hash_table[index] = new_node;       // se crea el indice
@@ -59,12 +59,12 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
 
     // se eliminan algunos caracteres especiales
     // la funcion contempla lo siguiente como caracteres especiales:
-    //! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+    //! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _  { | } ~
     for (int i = 0; text[i]; i++)
     {
         if (ispunct(text[i]))
         {
-            text[i] = ' '; // Reemplaza la puntuación por espacios
+            text[i] = ' '; // Reemplaza la puntuacion por espacios
         }
     }
 
