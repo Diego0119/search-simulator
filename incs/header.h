@@ -58,4 +58,4 @@ bool is_doc_name(char *file_name);
 
 /* Generar archivos txt */
 void generate_text_files(int num_webs);                 // GENERA archivos txt (webs) y les coloca nombre.
-void generar_texto_random(FILE *web, const char *web_name, int num_docs, int current_doc); // GENERA texto aleatorio en los archivos txt.
+void generate_random_text(FILE *web, const char *web_name, int num_docs, int current_doc); // GENERA texto aleatorio en los archivos txt.
