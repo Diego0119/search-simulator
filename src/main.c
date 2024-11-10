@@ -4,8 +4,8 @@ int main(void)
 {
     srand(time(NULL));
 
-    int num_webs = 2;
-    double pagerank[MAX_DOCS];
+    int num_webs = 2;          // Número de webs a generar.
+    double pagerank[MAX_DOCS]; // Array para almacenar los valores de PageRank.
     Graph graph;
 
     generate_text_files(num_webs);
@@ -16,5 +16,5 @@ int main(void)
     display_pagerank(&graph, pagerank);
     release_graph(&graph);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

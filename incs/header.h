@@ -1,3 +1,4 @@
+/* Librerías */
 #include <stdbool.h>
 #include <string.h>
 #include <dirent.h>
@@ -7,69 +8,74 @@
 #include <math.h>
 #include <time.h>
 
-#define CONVERGENCE_THRESHOLD 0.0001 // Umbral de convergencia
-#define MAX_CHARACTERS_WEB 50
-#define DAMPING_FACTOR 0.85 // Factor de amortiguación
-#define MAX_ITERATIONS 100  // Máximo de iteraciones para la convergencia
-#define MAX_WORD_SIZE 50
-#define MAX_NAME_WEB 20
-#define MAX_DOCS 100
+/* Macros */
+#define CONVERGENCE_THRESHOLD 0.0001 // Umbral de convergencia del PageRank.
+#define MAX_CHARACTERS_WEB 50        // Máximo de caracteres por página.
+#define DAMPING_FACTOR 0.85          // Factor de amortiguación del PageRank.
+#define MAX_ITERATIONS 100           // Máximo de iteraciones del algoritmo.
+#define MAX_WORD_SIZE 50             // Máximo de longitud de palabras.
+#define MAX_NAME_WEB 20              // Máximo de longitud de nombres de archivos.
+#define MAX_DOCS 100                 // Máximo de documentos soportados.
 
+// Estructura Node para la lista enlazada de enlaces en el grafo.
 typedef struct Node
 {
-    int doc_id;        // indice del documento
-    struct Node *next; // siguiente nodo
+    int doc_id;        // Identificador del documento enlazado.
+    struct Node *next; // Puntero al siguiente nodo.
 } Node;
 
+// Estructura para mapear el nombre de documentos a sus identificadores únicos.
 typedef struct DocumentMapping
 {
-    char name[MAX_NAME_WEB];
-    int doc_id;
+    char name[MAX_NAME_WEB]; // Nombre del documento.
+    int doc_id;              // Identificador único del documento.
 } DocumentMapping;
 
+// Estructura Graph que representa el grafo de documentos con enlaces entrantes y salientes.
 typedef struct Graph
-{ /* Enlaces del grafo dirigido, entrada y salida para pagerank e indice invertido*/
-    Node *output_adjacent_list[MAX_DOCS];
-    Node *input_adjacent_list[MAX_DOCS];
-    DocumentMapping mapping_docs[MAX_DOCS];
-    int total_docs;
+{
+    Node *output_adjacent_list[MAX_DOCS];   // Lista de enlaces salientes.
+    Node *input_adjacent_list[MAX_DOCS];    // Lista de enlaces entrantes.
+    DocumentMapping mapping_docs[MAX_DOCS]; // Mapeo de documentos.
+    int total_docs;                         // Total de documentos en el grafo.
 } Graph;
 
+// Estructura InvertedIndex para el índice invertido, almacenando palabras y los documentos donde aparecen.
 typedef struct InvertedIndex
 {
-    char word[MAX_WORD_SIZE];   // almacena la palabra
-    Node *docs_list;            // lista de documentos en los que aparece la palabra (es como la cabeza de la lista)
-    struct InvertedIndex *next; // siguiente nodo de la lista enlazada del indice (otra palabra)
+    char word[MAX_WORD_SIZE];   // Palabra almacenada.
+    Node *docs_list;            // Lista de documentos donde aparece la palabra.
+    struct InvertedIndex *next; // Siguiente nodo en la lista enlazada del índice.
 } InvertedIndex;
 
 /* NO APLICADA */
 void add_link(Graph *graph, int source_doc_id, int destination_doc_id);
 
-/* Grafos */
-void initialize_graph(Graph *graph);
-void add_edge(Graph *graph, int source, int destination);
-void build_graph(Graph *graph);
-void release_graph(Graph *graph);
-int count_output_links(Graph *graph, int id_doc);
-int count_input_links(Graph *graph, int id_doc);
-int get_doc_id(Graph *graph, char *file_name);
-bool is_doc_name(char *file_name);
-void show_graph(Graph *graph);
+/* Funciones Grafos */
+void initialize_graph(Graph *);
+void add_edge(Graph *, int, int);
+void build_graph(Graph *);
+void release_graph(Graph *);
+int count_output_links(Graph *, int);
+int count_input_links(Graph *, int);
+int get_doc_id(Graph *, char *);
+bool is_doc_name(char *);
+void show_graph(Graph *);
 
-/* Indice invertido */
-InvertedIndex *create_new_node(char *word);
-void add_document(InvertedIndex **index, int doc_id, char *word);
-void tokenize_text(char *text, int doc_id, InvertedIndex **index);
-void print_inverted_index(InvertedIndex *index);
-unsigned int hash_function(char *word);
-Node *search_word(InvertedIndex **hash_table, char *word);
-void release_inverted_index(InvertedIndex **hash_table); // Idea... para liberar el indide invertido...
+/* Funciones Indice invertido */
+InvertedIndex *create_new_node(char *);
+void add_document(InvertedIndex **, int, char *);
+void tokenize_text(char *, int, InvertedIndex **);
+void print_inverted_index(InvertedIndex *);
+unsigned int hash_function(char *);
+Node *search_word(InvertedIndex **, char *);
+void release_inverted_index(InvertedIndex **);
 
-/* Archivos txt */
-void generate_text_files(int num_webs);                                                    // GENERA archivos txt (webs) y les coloca nombre.
-void generate_random_text(FILE *web, const char *web_name, int num_docs, int current_doc); // GENERA texto aleatorio en los archivos txt.
+/* Funciones Archivos TXT */
+void generate_text_files(int);
+void generate_random_text(FILE *, const char *, int, int);
 
-/* PageRank */
-void initialize_pagerank(double pagerank[], int total_docs);
-void calculate_pagerank(Graph *graph, double pagerank[]);
-void display_pagerank(Graph *graph, double pagerank[]);
+/* Funciones PageRank */
+void initialize_pagerank(double *, int);
+void calculate_pagerank(Graph *, double *);
+void display_pagerank(Graph *, double *);

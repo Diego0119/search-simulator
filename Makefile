@@ -34,3 +34,7 @@ send:
 
 run:
 	./build/$(EXEC)
+
+#doxygen:
+#	doxygen config
+#	./docs/latex/Make
