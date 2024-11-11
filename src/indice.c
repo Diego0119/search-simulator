@@ -60,11 +60,14 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
 // Verifica si un token es una palabra irrelevante (stopword) que debe ignorarse en el índice.
 bool is_stopword(char *token)
 {
-    static const char *stopwords[] = {"a", "e", "i", "o", "u"};
+    static const char *stopwords[] = {"a", "e", "i", "o", "u", "link"};
     static const int num_stopwords = sizeof(stopwords) / sizeof(stopwords[0]);
     for (int i = 0; i < num_stopwords; i++)
         if (strcmp(token, stopwords[i]) == 0)
-            return true; // El token es una stopword.
+            return true; // El token es una stopword.    
+    // Verificación del patron "docN".
+    if (strncmp(token, "doc", 3) == 0) // Comprueba si el token comienza con "doc".
+        return true;
     return false;        // El token no es una stopword.
 }
 
@@ -85,16 +88,16 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
     // Separa el texto en palabras utilizando el espacio como delimitador.
     token = strtok(text, " ");
 
-    // Verifica si el token es muy largo.
-    if (strlen(token) < MAX_WORD_SIZE)
-    {
-        fprintf(stderr, "La palabra es muy larga\n");
-        exit(EXIT_FAILURE);
-    }
-
     // Procesa cada token.
     while (token != NULL)
     {
+        // Verifica si el token es muy largo.
+        if (strlen(token) >= MAX_WORD_SIZE)
+        {
+            fprintf(stderr, "La palabra es muy larga\n");
+            exit(EXIT_FAILURE);
+        }
+
         // Agrega las palabras válidas al índice invertido.
         if (!is_stopword(token))
             add_document(index, doc_id, token);
@@ -103,21 +106,27 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
 }
 
 // Imprime el índice invertido mostrando cada palabra y los documentos asociados.
-void print_inverted_index(InvertedIndex *index)
+void print_inverted_index(InvertedIndex **index)
 {
-    InvertedIndex *current = index;
-    while (current != NULL)
+    printf("\nIndice invertido:\n");
+    for (int i = 0; i < HASH_TABLE_SIZE; i++)
     {
-        printf("Palabra: %s\n", current->word);
-        printf("Documentos: ");
-        Node *doc = current->docs_list;
-        while (doc != NULL)
+        if (index[i] != NULL) // Solo muestra las palabras que existen en este índice.
         {
-            printf("%d ", doc->doc_id);
-            doc = doc->next;
+            InvertedIndex *current = index[i];
+            while (current != NULL)
+            {
+                printf("Palabra: %s - Documentos: ", current->word);
+                Node *doc_node = current->docs_list;
+                while (doc_node != NULL)
+                {
+                    printf("%d ", doc_node->doc_id); // Imprime el ID de documentos asociados.
+                    doc_node = doc_node->next;
+                }
+                printf("\n");
+                current = current->next;
+            }
         }
-        printf("\n");
-        current = current->next;
     }
 }
 
@@ -146,6 +155,29 @@ Node *search_word(InvertedIndex **hash_table, char *word)
     }
 
     return NULL; // Retorna NULL si la palabra no se encuentra.
+}
+
+// Lee los archivos que se encuentran guardados en el grafo y crea el indice
+void build_index(Graph *graph, InvertedIndex **index)
+{
+    // Iterar sobre los documentos ya identificados en el grafo.
+    for (int i = 0; i < graph->total_docs; i++)
+    {
+        FILE *file = fopen(graph->mapping_docs[i].name, "r");
+        if (file == NULL)
+        {
+            printf("No se pudo abrir el archivo %s\n", graph->mapping_docs[i].name);
+            continue;
+        }
+
+        char buffer[1024];
+        while (fgets(buffer, sizeof(buffer), file))
+        {
+            // Procesa cada línea de texto y la pasa al índice.
+            tokenize_text(buffer, graph->mapping_docs[i].doc_id, index);
+        }
+        fclose(file);
+    }
 }
 
 // Libera la memoria del índice invertido y los nodos de documentos asociados.

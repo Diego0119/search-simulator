@@ -17,6 +17,7 @@
 #define MAX_WORD_SIZE 50             // Máximo de longitud de palabras.
 #define MAX_NAME_DOC 20              // Máximo de longitud de nombres de archivos.
 #define MAX_DOCS 100                 // Máximo de documentos soportados.
+#define HASH_TABLE_SIZE 30            // Tamaño de la tabla hash
 
 // Estructura Node para la lista enlazada de enlaces en el grafo.
 typedef struct Node
@@ -67,9 +68,10 @@ void show_graph(Graph *);
 InvertedIndex *create_new_node(char *);
 void add_document(InvertedIndex **, int, char *);
 void tokenize_text(char *, int, InvertedIndex **);
-void print_inverted_index(InvertedIndex *);
+void print_inverted_index(InvertedIndex **);
 unsigned int hash_function(char *);
 Node *search_word(InvertedIndex **, char *);
+void build_index(Graph *, InvertedIndex **);
 void release_inverted_index(InvertedIndex **);
 
 /* Funciones Archivos TXT */
