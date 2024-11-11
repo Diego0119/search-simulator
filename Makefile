@@ -32,8 +32,8 @@ folders:
 send:
 	tar czf $(GRUPO)-$(NTAR).tgz --transform 's,^,$(GRUPO)-$(NTAR)/,' Makefile src incs docs
 
-run:
-	./build/$(EXEC)
+run: build/$(EXEC)
+	./build/$(EXEC) -d 4
 
 #doxygen:
 #	doxygen config
