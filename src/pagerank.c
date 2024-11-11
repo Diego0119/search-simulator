@@ -1,67 +1,58 @@
 #include "header.h"
 
 // Inicializa el vector de PageRank con valores uniformes para cada documento.
-void initialize_pagerank(double pagerank[], int total_docs)
+void initialize_pagerank(double *pagerank, int num_docs)
 {
-    for (int i = 0; i < total_docs; i++)
-        pagerank[i] = 1.0 / total_docs; // Inicializa cada documento con el mismo valor de PageRank.
+    for (int i = 0; i < num_docs; i++)
+        pagerank[i] = 1.0 / num_docs; // Inicializa cada documento con el mismo valor de PageRank.
 }
 
-// Calcula el PageRank para cada documento en el grafo.
-void calculate_pagerank(Graph *graph, double pagerank[])
+// Calcula el PageRank de cada documento en el grafo.
+void calculate_pagerank(Graph *graph, double *pagerank)
 {
-    double new_pagerank[MAX_DOCS];                    // Vector temporal para almacenar los nuevos valores de PageRank en cada iteración.
-    initialize_pagerank(pagerank, graph->total_docs); // Inicializa el PageRank.
+    int num_docs = graph->total_docs;
+    initialize_pagerank(pagerank, num_docs);
+    double temp_rank[MAX_DOCS];
 
-    // Itera para calcular el PageRank hasta que converja o se alcance el máximo de iteraciones.
-    for (int iter = 0; iter < MAX_ITERATIONS; iter++)
+    for (int iteration = 0; iteration < MAX_ITERATIONS; iteration++)
     {
-        bool converged = true;
+        for (int i = 0; i < num_docs; i++)
+            temp_rank[i] = (1 - DAMPING_FACTOR) / num_docs;
 
-        // Calcula el nuevo PageRank para cada documento.
-        for (int i = 0; i < graph->total_docs; i++)
+        for (int i = 0; i < num_docs; i++)
         {
-            double inbound_rank_sum = 0.0;
+            int num_links = count_output_links(graph, i);
 
-            // Recorre los documentos que enlazan al documento `i`.
-            Node *inbound = graph->input_adjacent_list[i];
-            while (inbound != NULL)
+            if (num_links == 0)
+                continue;
+
+            double rank_contribution = pagerank[i] * DAMPING_FACTOR / num_links;
+            Node *current = graph->output_adjacent_list[i];
+
+            while (current != NULL)
             {
-                int inbound_doc_id = inbound->doc_id;                      // ID del documento de entrada.
-                int out_links = count_output_links(graph, inbound_doc_id); // Número de enlaces salientes desde el documento.
-
-                // Si el documento tiene enlaces salientes, acumula el PageRank proporcional.
-                if (out_links > 0)
-                    inbound_rank_sum += pagerank[inbound_doc_id] / out_links;
-
-                inbound = inbound->next;
+                temp_rank[current->doc_id] += rank_contribution;
+                current = current->next;
             }
-
-            // Calcula el nuevo valor de PageRank utilizando el factor de amortiguación.
-            new_pagerank[i] = (1 - DAMPING_FACTOR) / graph->total_docs + DAMPING_FACTOR * inbound_rank_sum;
-
-            // Verifica si el cambio entre el nuevo y el viejo PageRank supera el umbral de convergencia.
-            if (fabs(new_pagerank[i] - pagerank[i]) > CONVERGENCE_THRESHOLD)
-                converged = false;
         }
 
-        // Actualiza el vector de PageRank con los nuevos valores calculados.
-        for (int i = 0; i < graph->total_docs; i++)
-            pagerank[i] = new_pagerank[i];
+        double error = 0;
 
-        // Si todos los valores de PageRank han convergido, finaliza el cálculo.
-        if (converged)
+        for (int i = 0; i < num_docs; i++)
         {
-            printf("PageRank convergido en %d iteraciones.\n", iter + 1);
-            break;
+            error += fabs(pagerank[i] - temp_rank[i]);
+            pagerank[i] = temp_rank[i];
         }
+
+        if (error < CONVERGENCE_THRESHOLD)
+            break;
     }
 }
 
-// Muestra los resultados del PageRank para cada documento en la consola.
-void display_pagerank(Graph *graph, double pagerank[])
+// Muestra el valor de PageRank de cada documento.
+void display_pagerank(Graph *graph, double *pagerank)
 {
-    printf("\nResultados de PageRank:\n");
+    fprintf(stdout, "Valores de PageRank:\n");
     for (int i = 0; i < graph->total_docs; i++)
-        printf("Documento %d - PageRank: %.6f\n", i, pagerank[i]); // Imprime el ID del documento y su valor de PageRank.
+        printf("Documento %d (%s): PageRank = %.6f\n", i, graph->mapping_docs[i].name, pagerank[i]);
 }

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <math.h>
@@ -10,11 +11,11 @@
 
 /* Macros */
 #define CONVERGENCE_THRESHOLD 0.0001 // Umbral de convergencia del PageRank.
-#define MAX_CHARACTERS_WEB 50        // Máximo de caracteres por página.
+#define MAX_CHARACTERS_DOC 50        // Máximo de caracteres por página.
 #define DAMPING_FACTOR 0.85          // Factor de amortiguación del PageRank.
 #define MAX_ITERATIONS 100           // Máximo de iteraciones del algoritmo.
 #define MAX_WORD_SIZE 50             // Máximo de longitud de palabras.
-#define MAX_NAME_WEB 20              // Máximo de longitud de nombres de archivos.
+#define MAX_NAME_DOC 20              // Máximo de longitud de nombres de archivos.
 #define MAX_DOCS 100                 // Máximo de documentos soportados.
 
 // Estructura Node para la lista enlazada de enlaces en el grafo.
@@ -27,7 +28,7 @@ typedef struct Node
 // Estructura para mapear el nombre de documentos a sus identificadores únicos.
 typedef struct DocumentMapping
 {
-    char name[MAX_NAME_WEB]; // Nombre del documento.
+    char name[MAX_NAME_DOC]; // Nombre del documento.
     int doc_id;              // Identificador único del documento.
 } DocumentMapping;
 
@@ -73,7 +74,7 @@ void release_inverted_index(InvertedIndex **);
 
 /* Funciones Archivos TXT */
 void generate_text_files(int);
-void generate_random_text(FILE *, const char *, int, int);
+void generate_random_text(FILE *, const char *, int, int, int *);
 
 /* Funciones PageRank */
 void initialize_pagerank(double *, int);
