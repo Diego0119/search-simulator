@@ -2,7 +2,33 @@
 
 Este proyecto implementa un **simulador de un sistema de recuperación de información**, utilizando estructuras de datos como grafos, listas enlazadas y tablas hash. El sistema combina dos técnicas principales: **índice invertido** y **PageRank**, para gestionar datos de manera eficiente.
 
- 
+## Resumen
+
+El simulador permite:  
+- Construir un grafo dirigido que representa la conexión entre documentos.
+- Crear un índice invertido que facilita búsquedas rápidas por términos en los documentos.
+- Calcular la relevancia de los documentos mediante el algoritmo de PageRank.
+- Realizar búsquedas de términos con resultados ordenados por relevancia.
+
+Este trabajo fue programado en **C**.
+
+## Características
+
+- **Generación automática de documentos simulados.**  
+  Se crean archivos de texto con contenido generado dinámicamente.
+
+- **Construcción de un grafo dirigido.**  
+  Cada documento es un nodo, y los enlaces entre ellos representan las conexiones.  
+
+- **Índice invertido para búsquedas eficientes.**  
+  Permite localizar documentos que contienen un término específico.
+
+- **Algoritmo PageRank.**  
+  Calcula la importancia relativa de los documentos basándose en las conexiones entre ellos.
+
+- **Visualización de resultados.**  
+  Los resultados de PageRank y las búsquedas se imprimen en consola.  
+
 ## Uso del Programa
 
 Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las siguientes instrucciones en la línea de comandos:  
