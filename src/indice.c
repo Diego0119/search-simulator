@@ -31,14 +31,11 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
         if (current->word != NULL && strcmp(current->word, word) == 0) 
         {
             // si la comparacion se cumple, la palabra ya esta en el indice
-            if (strcmp(current->word, word) == 0)
-            {
                 Node *new_doc = (Node *)malloc(sizeof(Node));
                 new_doc->doc_id = doc_id;
                 new_doc->next = current->docs_list;
                 current->docs_list = new_doc;
                 return;
-            }
         }
         current = current->next;
     }
@@ -108,7 +105,7 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
     }
 }
 
-// Imprime el índice invertido mostrando cada palabra y los documentos asociados.
+// Imprime el índice invertido mostrando cada palabra y los documentos asociados este es solo para ver el funcionamiento.
 void print_inverted_index(InvertedIndex **index)
 {
     printf("\nIndice invertido:\n");

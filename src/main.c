@@ -29,15 +29,17 @@ int main(int argc, char *argv[])
     Graph graph;
     InvertedIndex *index[HASH_TABLE_SIZE];
 
+    for (int i = 0; i < HASH_TABLE_SIZE; i++) 
+        index[i] = NULL;
+
     initialize_graph(&graph);
     build_graph(&graph);
-    //build_index(&graph, index);
-    //print_inverted_index(index);
-    //print_search_word(index, word_to_search);
     // release_inverted_index(index);
-    show_graph(&graph);
     calculate_pagerank(&graph, pagerank);
     display_pagerank(&graph, pagerank);
+    show_graph(&graph);
+    build_index(&graph, index);
+    print_search_word(index, word_to_search);
     release_graph(&graph);
 
     return EXIT_SUCCESS;
