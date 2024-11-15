@@ -42,3 +42,11 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
     Ahora, una vez hecho el `make`, debe ejecutar `make run`, que tiene definido
     parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales
     nos permiten colocar la cantidad `-d` y una ayuda del programa `-h`.
+
+## 3. Salida del programa
+
+Al ejecutar `make run`, el programa generará una salida en consola que incluye:
+
+- El **índice invertido** construido, mostrando en qué documentos se encuentra cada palabra.
+- El **grafo de enlaces**, indicando cómo están conectados los documentos entre sí.
+- Los valores de **PageRank** calculados para cada documento, reflejando su relevancia.
