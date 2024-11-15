@@ -28,14 +28,17 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
     // Busca la palabra en el índice.
     while (current != NULL)
     {
-        // si la comparacion se cumple, la palabra ya esta en el indice
-        if (strcmp(current->word, word) == 0)
+        if (current->word != NULL && strcmp(current->word, word) == 0) 
         {
-            Node *new_doc = (Node *)malloc(sizeof(Node));
-            new_doc->doc_id = doc_id;
-            new_doc->next = current->docs_list;
-            current->docs_list = new_doc;
-            return;
+            // si la comparacion se cumple, la palabra ya esta en el indice
+            if (strcmp(current->word, word) == 0)
+            {
+                Node *new_doc = (Node *)malloc(sizeof(Node));
+                new_doc->doc_id = doc_id;
+                new_doc->next = current->docs_list;
+                current->docs_list = new_doc;
+                return;
+            }
         }
         current = current->next;
     }
@@ -157,6 +160,34 @@ Node *search_word(InvertedIndex **hash_table, char *word)
     return NULL; // Retorna NULL si la palabra no se encuentra.
 }
 
+void print_search_word(InvertedIndex **index, char *word_to_search)
+{
+    Node *results = search_word(index, word_to_search);
+    if (!results) 
+    {
+        printf("Palabra '%s' no encontrada.\n", word_to_search);
+        return;
+    }
+
+    // Contador para la cantidad de veces que aparece la palabra en cada documento
+    printf("Palabra '%s':\n", word_to_search);
+    // contador por documento
+    int doc_count[MAX_DOCS] = {0};
+    Node *current = results;
+    while (current != NULL) 
+    {
+        doc_count[current->doc_id]++;
+        current = current->next;
+    }
+
+    for (int i = 0; i < MAX_DOCS; i++) 
+    {
+        if (doc_count[i] > 0) 
+        {
+            printf("Doc%d: %d veces\n", i, doc_count[i]);
+        }
+    }
+}
 // Lee los archivos que se encuentran guardados en el grafo y crea el indice
 void build_index(Graph *graph, InvertedIndex **index)
 {

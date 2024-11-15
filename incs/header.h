@@ -71,6 +71,7 @@ void tokenize_text(char *, int, InvertedIndex **);
 void print_inverted_index(InvertedIndex **);
 unsigned int hash_function(char *);
 Node *search_word(InvertedIndex **, char *);
+void print_search_word(InvertedIndex **, char *);
 void build_index(Graph *, InvertedIndex **);
 void release_inverted_index(InvertedIndex **);
 
