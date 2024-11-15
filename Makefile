@@ -9,7 +9,6 @@ SRC_FILES=$(wildcard $(SRC_DIR)/*.c)
 OBJ_FILES=$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
 INCLUDE=-I./incs/
 LIBS=
-#LIBS= -lm
 
 CFLAGS=-Wall -Wextra -Wpedantic -O3
 LDFLAGS= -Wall -lm 
@@ -33,7 +32,7 @@ send:
 	tar czf $(GRUPO)-$(NTAR).tgz --transform 's,^,$(GRUPO)-$(NTAR)/,' Makefile src incs docs
 
 run: build/$(EXEC)
-	./build/$(EXEC) -d 4
+	./build/$(EXEC) -d 10
 
 #doxygen:
 #	doxygen config

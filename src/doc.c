@@ -3,9 +3,9 @@
 // Genera archivos de texto simulando documentos web con contenido aleatorio.
 void generate_text_files(int num_docs)
 {
-    if (num_docs <= 0) // Verifica que se proporcione al menos un documento.
+    if (num_docs <= 0 || num_docs >= 100) // Verifica que se proporcione al menos un documento.
     {
-        fprintf(stderr, "El número de archivos web a generar debe ser MAYOR a 0.\n");
+        fprintf(stderr, "El número de archivos web a generar debe ser MAYOR a 0 y MENOR a 100.\n\n");
         exit(EXIT_FAILURE);
     }
 
@@ -52,7 +52,7 @@ void generate_random_text(FILE *doc, const char *doc_name, int num_docs, int cur
     fprintf(doc, "\nlink: doc%d", links[current_doc - 1]); // Asegura al menos un enlace único.
 
     // Incluye aleatoriamente enlaces a otros documentos.
-    int extra_links = rand() % 3; // Genera hasta 2 enlaces aleatorios.
+    int extra_links = rand() % num_docs; // Genera hasta 2 enlaces aleatorios.
     for (int i = 0; i < extra_links; i++)
     {
         int link_doc = rand() % num_docs + 1;                              // Elige un documento aleatorio de 1 a num_docs.

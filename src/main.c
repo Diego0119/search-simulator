@@ -4,6 +4,7 @@ int main(int argc, char *argv[])
 {
     int opt;
     int num_docs = 0;
+
     while ((opt = getopt(argc, argv, "hd:")) != -1)
     {
         switch (opt)
@@ -24,12 +25,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (num_docs <= 0)
-    {
-        fprintf(stderr, "Error: el número de archivos debe ser mayor que 0. Use la opción -p para especificar.\n");
-        exit(EXIT_FAILURE);
-    }
-
     srand(time(NULL));
 
     double pagerank[MAX_DOCS]; // Array para almacenar los valores de PageRank.
@@ -41,7 +36,7 @@ int main(int argc, char *argv[])
     build_graph(&graph);
     build_index(&graph, index);
     print_inverted_index(index);
-    //release_inverted_index(index);
+    // release_inverted_index(index);
     show_graph(&graph);
     calculate_pagerank(&graph, pagerank);
     display_pagerank(&graph, pagerank);
