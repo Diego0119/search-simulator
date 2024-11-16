@@ -34,12 +34,12 @@ int main(int argc, char *argv[])
 
     initialize_graph(&graph);
     build_graph(&graph);
-    // release_inverted_index(index);
     calculate_pagerank(&graph, pagerank);
     display_pagerank(&graph, pagerank);
     show_graph(&graph);
     build_index(&graph, index);
     print_search_word(index, word_to_search);
+    release_inverted_index(index);
     release_graph(&graph);
 
     return EXIT_SUCCESS;
