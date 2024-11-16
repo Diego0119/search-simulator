@@ -90,8 +90,8 @@ void build_graph(Graph *graph)
                     }
 
                     // Construye el nombre del documento destino.
-                    char destination_name[256];
-                    sprintf(destination_name, "doc%d.txt", doc_number);
+                    char destination_name[MAX_NAME_DOC];
+                    snprintf(destination_name, sizeof(destination_name), "doc%d.txt", doc_number);
 
                     FILE *destination_file = fopen(destination_name, "r"); // Verifica si el destino existe.
                     if (destination_file == NULL)
