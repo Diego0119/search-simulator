@@ -167,7 +167,7 @@ void print_search_word(InvertedIndex **index, char *word_to_search)
     }
 
     // Contador para la cantidad de veces que aparece la palabra en cada documento
-    printf("Palabra '%s':\n", word_to_search);
+    printf("La palabra '%s' se encuentra en los siguientes documentos:\n", word_to_search);
     // contador por documento
     int doc_count[MAX_DOCS] = {0};
     Node *current = results;

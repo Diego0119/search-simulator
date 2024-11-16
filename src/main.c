@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     Graph graph;
     InvertedIndex *index[HASH_TABLE_SIZE];
 
-    for (int i = 0; i < HASH_TABLE_SIZE; i++) 
+    for (int i = 0; i < HASH_TABLE_SIZE; i++) //esto lo hice para probar si arreglaba el segmentation fault, nose si es necesario
         index[i] = NULL;
 
     initialize_graph(&graph);
