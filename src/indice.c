@@ -137,8 +137,8 @@ unsigned int hash_function(char *word)
     for (int i = 0; word[i] != '\0'; i++) // Recorre cada carácter en la palabra.
         hash = (hash * 31) + word[i];     // Calcula el hash utilizando la codificación ASCII de cada letra.
 
-    return hash % MAX_WORD_SIZE; // Retorna el hash limitado por el tamaño máximo de palabras.
-}
+    return hash % HASH_TABLE_SIZE; // Retorna el hash limitado por el tamaño máximo de palabras. 
+}                 /*Edit por segfault, podria causar error por usar MAX_WORD_SIZE en vez de HASH_TABLE_SIZE*/
 
 // Busca una palabra en el índice invertido y retorna la lista de documentos asociados.
 Node *search_word(InvertedIndex **hash_table, char *word)
@@ -215,7 +215,7 @@ void release_inverted_index(InvertedIndex **hash_table)
         return; // Verifica si la tabla hash es nula.
 
     // Recorre cada índice en la tabla hash.
-    for (int i = 0; i < MAX_WORD_SIZE; i++)
+    for (int i = 0; i < HASH_TABLE_SIZE; i++)
     {
         InvertedIndex *current = hash_table[i];
 
@@ -233,5 +233,6 @@ void release_inverted_index(InvertedIndex **hash_table)
             current = current->next;
             free(temp); // Libera el nodo de la palabra.
         }
+        hash_table[i] = NULL;
     }
 }
