@@ -28,7 +28,7 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
     // Busca la palabra en el índice.
     while (current != NULL)
     {
-        if (current->word != NULL && strcmp(current->word, word) == 0) 
+        if (strcmp(current->word, word) == 0)
         {
             // si la comparacion se cumple, la palabra ya esta en el indice
                 Node *new_doc = (Node *)malloc(sizeof(Node));
