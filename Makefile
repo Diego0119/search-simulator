@@ -44,7 +44,7 @@ send:
 run: build/$(EXEC)
 	./build/$(EXEC) -s f
 
-run2: build/$(EXEC2)
+docs: build/$(EXEC2)
 	./build/$(EXEC2) -d 3
 
 #doxygen:
