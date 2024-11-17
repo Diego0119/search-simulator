@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     Graph graph;
     InvertedIndex *index[HASH_TABLE_SIZE];
 
-    for (int i = 0; i < HASH_TABLE_SIZE; i++) //esto lo hice para probar si arreglaba el segmentation fault, nose si es necesario
+    for (int i = 0; i < HASH_TABLE_SIZE; i++) // esto lo hice para probar si arreglaba el segmentation fault, nose si es necesario
         index[i] = NULL;
 
     initialize_graph(&graph);
@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
     print_search_word(index, word_to_search);
     release_inverted_index(index);
     release_graph(&graph);
+    generate_eps_with_graphs(&graph, pagerank, "graph.eps");
 
     return EXIT_SUCCESS;
 }

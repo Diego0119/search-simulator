@@ -17,7 +17,7 @@
 #define MAX_WORD_SIZE 50             // Máximo de longitud de palabras.
 #define MAX_NAME_DOC 20              // Máximo de longitud de nombres de archivos.
 #define MAX_DOCS 100                 // Máximo de documentos soportados.
-#define HASH_TABLE_SIZE 30            // Tamaño de la tabla hash
+#define HASH_TABLE_SIZE 30           // Tamaño de la tabla hash
 
 // Estructura Node para la lista enlazada de enlaces en el grafo.
 typedef struct Node
@@ -83,3 +83,6 @@ void generate_random_text(FILE *, const char *, int, int, int *);
 void initialize_pagerank(double *, int);
 void calculate_pagerank(Graph *, double *);
 void display_pagerank(Graph *, double *);
+
+/* Imprimir Grafo */
+void generate_eps_with_graphs(const Graph *, const double *, const char *);

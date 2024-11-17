@@ -18,7 +18,7 @@ CFLAGS=-Wall -Wextra -Wpedantic -O3
 LDFLAGS=-Wall -lm
 
 all: $(OBJ2_FILES) $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o build/$(EXEC) $(OBJ_FILES) $(INCLUDE) $(LIBS)
+	$(CC) $(CFLAGS) -o build/$(EXEC) $(OBJ_FILES) $(INCLUDE) $(LIBS) $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $^ $(INCLUDE)
@@ -27,7 +27,7 @@ $(OBJ_DIR)/%_src2.o: $(SRC2_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $^ $(INCLUDE)
 
 build/$(EXEC2): $(OBJ2_FILES)
-	$(CC) $(CFLAGS) -o build/$(EXEC2) $(OBJ2_FILES) $(INCLUDE) $(LIBS)
+	$(CC) $(CFLAGS) -o build/$(EXEC2) $(OBJ2_FILES) $(INCLUDE) $(LIBS) $(LDFLAGS)
 
 .PHONY: clean folders send
 clean:
