@@ -76,8 +76,8 @@ void build_index(Graph *, InvertedIndex **);
 void release_inverted_index(InvertedIndex **);
 
 /* Funciones Archivos TXT */
-void generate_text_files(int);
-void generate_random_text(FILE *, const char *, int, int, int *);
+void generate_text_files(int, int);
+void generate_random_text(FILE *, const char *, int, int, int, int *);
 
 /* Funciones PageRank */
 void initialize_pagerank(double *, int);

@@ -1,7 +1,7 @@
 #include "header.h"
 
 // Genera archivos de texto simulando documentos web con contenido aleatorio.
-void generate_text_files(int num_docs)
+void generate_text_files(int num_docs, int num_characters)
 {
     if (num_docs <= 0 || num_docs >= 100) // Verifica que se proporcione al menos un documento.
     {
@@ -31,21 +31,21 @@ void generate_text_files(int num_docs)
         }
 
         // Genera contenido aleatorio y enlaces dentro del archivo.
-        generate_random_text(doc, doc_name, num_docs, i, links);
+        generate_random_text(doc, doc_name, num_docs, num_characters, i, links);
 
         fclose(doc);
     }
 }
 
 // Genera texto aleatorio y enlaces en un archivo web específico.
-void generate_random_text(FILE *doc, const char *doc_name, int num_docs, int current_doc, int *links)
+void generate_random_text(FILE *doc, const char *doc_name, int num_docs, int num_characters, int current_doc, int *links)
 {
     // Genera texto aleatorio dentro de cada archivo web.
-    for (int i = 0; i < MAX_CHARACTERS_DOC; i++)
+    for (int i = 0; i < num_characters; i++)
     {
         char letter = 'A' + rand() % 26; // Genera una letra aleatoria entre 'A' y 'Z'.
         fprintf(doc, "%c", letter);      // Escribe la letra en el archivo.
-        if (i < MAX_CHARACTERS_DOC - 1)
+        if (i < num_characters - 1)
             fprintf(doc, " "); // Agrega un espacio entre las letras.
     }
 
@@ -60,5 +60,5 @@ void generate_random_text(FILE *doc, const char *doc_name, int num_docs, int cur
             fprintf(doc, "\nlink: doc%d", link_doc);                       // Agrega un enlace al archivo.
     }
 
-    fprintf(stdout, "ARCHIVO '%s' generado con ÉXITO con %d letras y enlaces.\n", doc_name, MAX_CHARACTERS_DOC);
+    fprintf(stdout, "ARCHIVO '%s' generado con ÉXITO con %d letras y enlaces.\n", doc_name, num_characters);
 }
