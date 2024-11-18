@@ -1,8 +1,8 @@
-# Simulador de Sistema de Recuperación de Información
+# Simulador de Sistema de Recuperación de Información 💻
 
 Este proyecto implementa un **simulador de un sistema de recuperación de información**, utilizando estructuras de datos como grafos, listas enlazadas y tablas hash. El sistema combina dos técnicas principales: **índice invertido** y **PageRank**, para gestionar datos de manera eficiente.
 
-## Resumen
+## Resumen 📖
 
 El simulador permite:  
 - Construir un grafo dirigido que representa la conexión entre documentos.
@@ -12,7 +12,7 @@ El simulador permite:
 
 Este trabajo fue programado en **C**.
 
-## Características
+## Características 🧐
 
 - **Generación automática de documentos simulados.**  
   Se crean archivos de texto con contenido generado dinámicamente.
@@ -29,9 +29,11 @@ Este trabajo fue programado en **C**.
 - **Visualización de resultados.**  
   Los resultados de PageRank y las búsquedas se imprimen en consola.  
 
-## Uso del Programa
+## Uso del Programa 💿
 
 Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las siguientes instrucciones en la línea de comandos:  
+
+## Compilación del proyecto 🖥️
 
 1. **Compilación del programa**:  
    Ejecute el comando `make` en el directorio raíz del proyecto. Esto utilizará el `Makefile`.
@@ -43,7 +45,25 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
     parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales
     nos permiten colocar la cantidad `-d` y una ayuda del programa `-h`.
 
-## 3. Salida del programa
+### Generación de documentación con Doxygen** 📝
+
+1. **Generar la documentación**
+
+    Ejecute el comando `make dxygn` en el directorio raíz del proyecto para generar la documentación automática en formato HTML y LaTeX.
+
+2. **Compilar en formato PDF**
+
+    Una vez generados los archivos con Doxygen, puede convertir la documentación en un archivo PDF utilizando LaTeX. Para hacerlo, ejecute  `make ltx`.
+
+3.  **Ubicación del archivo PDF**
+
+    El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el `Makefile`.
+
+4. **Visualización de la documentación HTML**
+
+    Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador.
+
+## 3. Salida del programa 📤
 
 Al ejecutar `make run`, el programa generará una salida en consola que incluye:
 

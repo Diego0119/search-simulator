@@ -25,11 +25,11 @@ Este repositorio contiene el desarrollo de un **simulador de búsqueda de archiv
 - Se encargará de implementar los **grafos** que se utilizarán.
 ---
 
-## Objetivo
+## Objetivo 🎯
 
 El objetivo de este proyecto es implementar un sistema avanzado de recuperación de información, integrando dos técnicas clave en el manejo de datos estructurados: **el índice invertido** y **el algoritmo PageRank**. Con este proyecto, buscamos comprender en profundidad los mecanismos de los motores de búsqueda modernos.
 
-## Descripción del Proyecto
+## Descripción del Proyecto 🤔
 
 Este simulador de búsqueda simplificado indexará un conjunto de documentos web que contienen enlaces entre ellos, simulando hipervínculos. El proyecto se divide en dos componentes principales:
 
@@ -38,27 +38,27 @@ Este simulador de búsqueda simplificado indexará un conjunto de documentos web
 
 ---
 
-## Funcionalidades
+## Funcionalidades ⚙️
 
-### 1. Carga de Documentos
+### 1. Carga de Documentos 📑
    - Los documentos estarán en archivos de texto plano y contendrán enlaces a otros documentos, representados como `link: docN`.
    - El sistema procesará estos documentos para extraer palabras clave y construir el grafo de enlaces.
 
-### 2. Construcción del Índice Invertido
+### 2. Construcción del Índice Invertido 📝
    - Cada palabra relevante en el documento (excluyendo "stopwords" comunes) se añadirá al índice invertido con su ID de documento.
    - Al realizar una consulta, el sistema devolverá los documentos que contienen la palabra clave.
 
-### 3. Construcción del Grafo y Cálculo de PageRank
+### 3. Construcción del Grafo y Cálculo de PageRank 🕸️
    - El sistema construirá un grafo dirigido donde cada documento es un nodo, y cada enlace entre documentos es una arista.
    - Implementación del algoritmo de **PageRank** para calcular la importancia de cada documento, considerando enlaces entrantes y salientes.
 
-### 4. Búsqueda y Ordenación de Resultados
+### 4. Búsqueda y Ordenación de Resultados 🔍
    - Al realizar una búsqueda, los documentos que contienen la palabra clave serán recuperados del índice invertido.
    - Los resultados estarán ordenados de acuerdo con el puntaje de PageRank, mostrando primero los documentos más relevantes.
 
 ---
 
-## Requisitos del Proyecto
+## Requisitos del Proyecto 📝
 
 - **Estructuras de Datos:**
   - Implementación del índice invertido usando **listas enlazadas** o **tablas hash**.
@@ -68,3 +68,8 @@ Este simulador de búsqueda simplificado indexará un conjunto de documentos web
   - Algoritmos de búsqueda eficientes en el índice invertido.
 - **Resultados:**
   - El sistema mostrará una lista de documentos ordenados por relevancia para una palabra o frase dada.
+
+## Documentación 📚
+
+Si deseas más información sobre la ejecución del proyecto o los detalles técnicos, revisa el archivo:  
+[docs/readme.md](docs/readme.md)
