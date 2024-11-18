@@ -1,7 +1,7 @@
 #include "header.h"
 
 // Función para generar un archivo EPS con los grafos.
-void generate_eps_with_graphs(const Graph *graph, const double *pagerank, const char *filename)
+void generate_eps(const Graph *graph, const double *pagerank, const char *filename)
 {
     // Crear archivo EPS, en caso de no poder abrir el archivo, tira error.
     FILE *file = fopen(filename, "w");
@@ -61,9 +61,7 @@ void generate_eps_with_graphs(const Graph *graph, const double *pagerank, const 
         {
             int destination = current->doc_id;
             fprintf(file, "newpath\n");
-            fprintf(file, "%.2f %.2f moveto %.2f %.2f lineto stroke\n",
-                    positions[i][0], positions[i][1],
-                    positions[destination][0], positions[destination][1]);
+            fprintf(file, "%.2f %.2f moveto %.2f %.2f lineto stroke\n", positions[i][0], positions[i][1], positions[destination][0], positions[destination][1]);
             current = current->next;
         }
     }
@@ -71,5 +69,5 @@ void generate_eps_with_graphs(const Graph *graph, const double *pagerank, const 
     fprintf(file, "showpage\n");
     fclose(file);
 
-    printf("Archivo EPS generado: %s\n", filename);
+    fprintf(stdout, "Archivo EPS generado: %s\n", filename);
 }

@@ -85,4 +85,4 @@ void calculate_pagerank(Graph *, double *);
 void display_pagerank(Graph *, double *);
 
 /* Imprimir Grafo */
-void generate_eps_with_graphs(const Graph *, const double *, const char *);
+void generate_eps(const Graph *, const double *, const char *);

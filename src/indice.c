@@ -7,7 +7,7 @@ InvertedIndex *create_new_node(char *word)
     InvertedIndex *new_node = (InvertedIndex *)malloc(sizeof(InvertedIndex));
     if (new_node == NULL)
     {
-        printf("Error al asignar memoria\n");
+        fprintf(stderr, "Error al asignar memoria\n");
         exit(EXIT_FAILURE);
     }
 
@@ -31,11 +31,11 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
         if (strcmp(current->word, word) == 0)
         {
             // si la comparacion se cumple, la palabra ya esta en el indice
-                Node *new_doc = (Node *)malloc(sizeof(Node));
-                new_doc->doc_id = doc_id;
-                new_doc->next = current->docs_list;
-                current->docs_list = new_doc;
-                return;
+            Node *new_doc = (Node *)malloc(sizeof(Node));
+            new_doc->doc_id = doc_id;
+            new_doc->next = current->docs_list;
+            current->docs_list = new_doc;
+            return;
         }
         current = current->next;
     }
@@ -49,7 +49,7 @@ void add_document(InvertedIndex **hash_table, int doc_id, char *word)
     Node *new_doc = (Node *)malloc(sizeof(Node));
     if (new_doc == NULL)
     {
-        printf("Error al asignar memoria para nuevo documento\n");
+        fprintf(stderr, "Error al asignar memoria para nuevo documento\n");
         exit(EXIT_FAILURE);
     }
     new_doc->doc_id = doc_id;
@@ -64,11 +64,11 @@ bool is_stopword(char *token)
     static const int num_stopwords = sizeof(stopwords) / sizeof(stopwords[0]);
     for (int i = 0; i < num_stopwords; i++)
         if (strcmp(token, stopwords[i]) == 0)
-            return true; // El token es una stopword.    
+            return true; // El token es una stopword.
     // Verificación del patron "docN".
     if (strncmp(token, "doc", 3) == 0) // Comprueba si el token comienza con "doc".
         return true;
-    return false;        // El token no es una stopword.
+    return false; // El token no es una stopword.
 }
 
 // Tokeniza el texto de entrada, eliminando puntuación y stopwords, e indexa cada palabra.
@@ -108,7 +108,7 @@ void tokenize_text(char *text, int doc_id, InvertedIndex **index)
 // Imprime el índice invertido mostrando cada palabra y los documentos asociados este es solo para ver el funcionamiento.
 void print_inverted_index(InvertedIndex **index)
 {
-    printf("\nIndice invertido:\n");
+    fprintf(stdout, "\nIndice invertido:\n");
     for (int i = 0; i < HASH_TABLE_SIZE; i++)
     {
         if (index[i] != NULL) // Solo muestra las palabras que existen en este índice.
@@ -116,14 +116,14 @@ void print_inverted_index(InvertedIndex **index)
             InvertedIndex *current = index[i];
             while (current != NULL)
             {
-                printf("Palabra: %s - Documentos: ", current->word);
+                fprintf(stdout, "Palabra: %s - Documentos: ", current->word);
                 Node *doc_node = current->docs_list;
                 while (doc_node != NULL)
                 {
-                    printf("%d ", doc_node->doc_id); // Imprime el ID de documentos asociados.
+                    fprintf(stdout, "%d ", doc_node->doc_id); // Imprime el ID de documentos asociados.
                     doc_node = doc_node->next;
                 }
-                printf("\n");
+                fprintf(stdout, "\n");
                 current = current->next;
             }
         }
@@ -137,8 +137,8 @@ unsigned int hash_function(char *word)
     for (int i = 0; word[i] != '\0'; i++) // Recorre cada carácter en la palabra.
         hash = (hash * 31) + word[i];     // Calcula el hash utilizando la codificación ASCII de cada letra.
 
-    return hash % HASH_TABLE_SIZE; // Retorna el hash limitado por el tamaño máximo de palabras. 
-}                 /*Edit por segfault, podria causar error por usar MAX_WORD_SIZE en vez de HASH_TABLE_SIZE*/
+    return hash % HASH_TABLE_SIZE; // Retorna el hash limitado por el tamaño máximo de palabras.
+} /*Edit por segfault, podria causar error por usar MAX_WORD_SIZE en vez de HASH_TABLE_SIZE*/
 
 // Busca una palabra en el índice invertido y retorna la lista de documentos asociados.
 Node *search_word(InvertedIndex **hash_table, char *word)
@@ -160,7 +160,7 @@ Node *search_word(InvertedIndex **hash_table, char *word)
 void print_search_word(InvertedIndex **index, char *word_to_search)
 {
     Node *results = search_word(index, word_to_search);
-    if (!results) 
+    if (!results)
     {
         printf("Palabra '%s' no encontrada.\n", word_to_search);
         return;
@@ -171,15 +171,15 @@ void print_search_word(InvertedIndex **index, char *word_to_search)
     // contador por documento
     int doc_count[MAX_DOCS] = {0};
     Node *current = results;
-    while (current != NULL) 
+    while (current != NULL)
     {
         doc_count[current->doc_id]++;
         current = current->next;
     }
 
-    for (int i = 0; i < MAX_DOCS; i++) 
+    for (int i = 0; i < MAX_DOCS; i++)
     {
-        if (doc_count[i] > 0) 
+        if (doc_count[i] > 0)
         {
             printf("Doc%d: %d veces\n", i, doc_count[i]);
         }

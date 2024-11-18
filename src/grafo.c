@@ -19,7 +19,7 @@ void add_edge(Graph *graph, int source, int destination)
     Node *newOutputNode = (Node *)malloc(sizeof(Node));
     if (newOutputNode == NULL) // Verifica la asignación de memoria.
     {
-        printf("Error al asignar memoria para enlace saliente\n");
+        fprintf(stderr, "Error al asignar memoria para enlace saliente\n");
         exit(EXIT_FAILURE);
     }
     newOutputNode->doc_id = destination;                       // Asigna el ID de destino al nodo.
@@ -30,7 +30,7 @@ void add_edge(Graph *graph, int source, int destination)
     Node *newInputNode = (Node *)malloc(sizeof(Node));
     if (newInputNode == NULL) // Verifica la asignación de memoria.
     {
-        printf("Error al asignar memoria para enlace entrante\n");
+        fprintf(stderr, "Error al asignar memoria para enlace entrante\n");
         exit(EXIT_FAILURE);
     }
     newInputNode->doc_id = source;                                // Asigna el ID del origen al nodo.
@@ -46,7 +46,7 @@ void build_graph(Graph *graph)
 
     if ((dir = opendir(".")) == NULL) // Abre el directorio actual
     {
-        perror("No se pudo abrir el directorio");
+        fprintf(stderr, "No se pudo abrir el directorio");
         exit(EXIT_FAILURE);
     }
 
@@ -62,7 +62,7 @@ void build_graph(Graph *graph)
             FILE *file = fopen(file_name, "r"); // Abre el archivo para leer enlaces.
             if (file == NULL)
             {
-                printf("No se pudo abrir el archivo %s\n", file_name);
+                fprintf(stderr, "No se pudo abrir el archivo %s\n", file_name);
                 continue;
             }
 
@@ -79,13 +79,13 @@ void build_graph(Graph *graph)
 
                     if (sscanf(ptr, "%d", &doc_number) != 1) // Extrae el número del documento enlazado.
                     {
-                        printf("Formato de enlace inválido en %s\n", file_name);
+                        fprintf(stderr, "Formato de enlace inválido en %s\n", file_name);
                         continue;
                     }
 
                     if (doc_number <= 0 || doc_number > MAX_DOCS) // Verifica si el número de documento es válido
                     {
-                        printf("Número de documento inválido en enlace: %d\n", doc_number);
+                        fprintf(stderr, "Número de documento inválido en enlace: %d\n", doc_number);
                         continue;
                     }
 
@@ -96,7 +96,7 @@ void build_graph(Graph *graph)
                     FILE *destination_file = fopen(destination_name, "r"); // Verifica si el destino existe.
                     if (destination_file == NULL)
                     {
-                        printf("El documento %s enlazado desde %s no existe\n", destination_name, file_name);
+                        fprintf(stderr, "El documento %s enlazado desde %s no existe\n", destination_name, file_name);
                         continue;
                     }
                     fclose(destination_file);
@@ -185,7 +185,7 @@ int get_doc_id(Graph *graph, char *file_name)
     // Verifica si se ha alcanzado el límite de documentos permitidos.
     if (graph->total_docs >= MAX_DOCS)
     {
-        printf("Se ha alcanzado el número máximo de documentos\n");
+        fprintf(stderr, "Se ha alcanzado el número máximo de documentos\n");
         exit(EXIT_FAILURE);
     }
 
@@ -194,7 +194,7 @@ int get_doc_id(Graph *graph, char *file_name)
     // Extrae el número del documento del nombre del archivo.
     if (sscanf(file_name, "doc%d.txt", &num_doc) != 1)
     {
-        printf("Nombre de archivo inválido: %s\n", file_name);
+        fprintf(stderr, "Nombre de archivo inválido: %s\n", file_name);
         exit(EXIT_FAILURE);
     }
 
@@ -222,7 +222,6 @@ bool is_doc_name(char *file_name)
     // Verifica que el número entre "doc" y ".txt" sea válido.
     for (int i = 3; i < len - 4; i++)
     {
-
         if (!isdigit(file_name[i]))
             return false;
         if (file_name[i] == '0' && i == 3) // No permite doc0.txt.
@@ -235,19 +234,19 @@ bool is_doc_name(char *file_name)
 // Muestra el grafo de enlaces, imprimiendo los documentos y sus enlaces salientes.
 void show_graph(Graph *graph)
 {
-    printf("Grafo de enlaces:\n");
+    fprintf(stdout, "Grafo de enlaces:\n");
     for (int i = 0; i < MAX_DOCS; i++)
     {
         if (graph->output_adjacent_list[i] != NULL) // Solo muestra documentos con enlaces.
         {
-            printf("Documento %d enlaza a: ", i);
+            fprintf(stdout, "Documento %d enlaza a: ", i);
             Node *current = graph->output_adjacent_list[i];
             while (current != NULL)
             {
-                printf("%d ", current->doc_id); // Imprime el ID de documentos enlazados.
+                fprintf(stdout, "%d ", current->doc_id); // Imprime el ID de documentos enlazados.
                 current = current->next;
             }
-            printf("\n");
+            fprintf(stdout, "\n");
         }
     }
 }

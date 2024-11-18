@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     print_search_word(index, word_to_search);
     release_inverted_index(index);
     release_graph(&graph);
-    generate_eps_with_graphs(&graph, pagerank, "graph.eps");
+    generate_eps(&graph, pagerank, "graph.eps");
 
     return EXIT_SUCCESS;
 }

@@ -54,5 +54,5 @@ void display_pagerank(Graph *graph, double *pagerank)
 {
     fprintf(stdout, "Valores de PageRank:\n");
     for (int i = 0; i < graph->total_docs; i++)
-        printf("Documento %d (%s): PageRank = %.6f\n", i, graph->mapping_docs[i].name, pagerank[i]);
+        fprintf(stdout, "Documento %d (%s): PageRank = %.6f\n", i, graph->mapping_docs[i].name, pagerank[i]);
 }
