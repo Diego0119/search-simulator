@@ -63,12 +63,28 @@ bool is_stopword(char *token)
 {
     static const char *stopwords[] = {"a", "e", "i", "o", "u", "link"};
     static const int num_stopwords = sizeof(stopwords) / sizeof(stopwords[0]);
+
+    // Convertir el token a minúsculas para que no haya problemas de mayúsculas/minúsculas.
+    for (int i = 0; token[i]; i++)
+    {
+        token[i] = tolower((unsigned char)token[i]);
+    }
+
+    // Compara el token con las stopwords.
     for (int i = 0; i < num_stopwords; i++)
+    {
         if (strcmp(token, stopwords[i]) == 0)
+        {
             return true; // El token es una stopword.
-    // Verificación del patron "docN".
-    if (strncmp(token, "doc", 3) == 0) // Comprueba si el token comienza con "doc".
-        return true;
+        }
+    }
+
+    // Verificación del patrón "docN" donde N es cualquier número.
+    if (strncmp(token, "doc", 3) == 0 && isdigit(token[3]))
+    {
+        return true; // El token comienza con "doc" seguido de un número.
+    }
+
     return false; // El token no es una stopword.
 }
 

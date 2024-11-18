@@ -1,5 +1,5 @@
 #include "graph.h"
-#include "generator.h"
+#include "doc.h"
 
 int main(int argc, char *argv[])
 {

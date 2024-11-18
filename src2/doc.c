@@ -1,5 +1,5 @@
 #include "graph.h"
-#include "generator.h"
+#include "doc.h"
 
 // Genera archivos de texto simulando documentos web con contenido aleatorio.
 void generate_text_files(int num_docs, int num_characters)
