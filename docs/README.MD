@@ -45,7 +45,7 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
     parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales
     nos permiten colocar la cantidad `-d` y una ayuda del programa `-h`.
 
-### Generación de documentación con Doxygen** 📝
+### Generación de documentación con Doxygen 📝
 
 1. **Generar la documentación**
 
