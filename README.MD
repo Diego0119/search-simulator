@@ -71,5 +71,4 @@ Este simulador de búsqueda simplificado indexará un conjunto de documentos web
 
 ## Documentación 📚
 
-Si deseas más información sobre la ejecución del proyecto o los detalles técnicos, revisa el archivo:  
-[docs/readme.md](docs/readme.md)
+Si deseas más información sobre la ejecución del proyecto o los detalles técnicos, revisa el archivo README.MD que esta en docs/README.MD.
