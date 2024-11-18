@@ -1,12 +1,11 @@
+#ifndef PAGERANK_H
+#define PAGERANK_H
 
+#include "graph.h"
 
-// #ifndef PAGE_RANK
-// #define PAGE_RANK
-// #include "graph.h"
+/* Funciones de PageRank */
+void initialize_pagerank(double *, int);
+void calculate_pagerank(Graph *, double *);
+void display_pagerank(Graph *, double *);
 
-// /* Funciones PageRank */
-// void initialize_pagerank(double *, int);
-// void calculate_pagerank(Graph *, double *);
-// void display_pagerank(Graph *, double *);
-
-// #endif
+#endif // PAGERANK_H

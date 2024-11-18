@@ -1,4 +1,5 @@
-#include "header.h"
+#include "graph.h"
+#include "generator.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,4 +1,5 @@
-#include "header.h"
+#include "graph.h"
+#include "inverted_index.h"
 
 // Crea un nuevo nodo en el índice invertido para una palabra específica.
 InvertedIndex *create_new_node(char *word)

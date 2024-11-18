@@ -1,4 +1,4 @@
-#include "header.h"
+#include "graph.h"
 
 // Inicializa el vector de PageRank con valores uniformes para cada documento.
 void initialize_pagerank(double *pagerank, int num_docs)

@@ -1,4 +1,4 @@
-#include "header.h"
+#include "graph.h"
 
 // Función para generar un archivo EPS con los grafos.
 void generate_eps(const Graph *graph, const double *pagerank, const char *filename)

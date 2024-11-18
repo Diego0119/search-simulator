@@ -1,4 +1,7 @@
-#include "header.h"
+#include "graph.h"
+#include "inverted_index.h"
+#include "pagerank.h"
+#include "generator.h"
 
 int main(int argc, char *argv[])
 {

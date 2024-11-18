@@ -1,10 +1,10 @@
+#ifndef GENERATOR_H
+#define GENERATOR_H
 
-// #ifndef GENERATOR_H
-// #define GENERATOR_H
-// #include "graph.h"
+#include <stdio.h>
 
-// /* Funciones Archivos TXT */
-// void generate_text_files(int);
-// void generate_random_text(FILE *, const char *, int, int, int *);
+/* Funciones para generación de archivos */
+void generate_text_files(int);
+void generate_random_text(FILE *, const char *, int, int, int *);
 
-// #endif
+#endif // GENERATOR_H

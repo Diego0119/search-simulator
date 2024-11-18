@@ -1,4 +1,4 @@
-#include "header.h"
+#include "graph.h"
 
 // Inicializa el grafo estableciendo listas de adyacencia y total de documentos en cero.
 void initialize_graph(Graph *graph)
