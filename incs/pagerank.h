@@ -1,12 +1,11 @@
 /**
  * @file pagerank.h
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Prototipos de funciones para la creación del PageRank.
  *
  * Contiene los prototipos de las funciones dedicadas a la creación del PageRank.
  */
-
 #ifndef PAGERANK_H
 #define PAGERANK_H
 
