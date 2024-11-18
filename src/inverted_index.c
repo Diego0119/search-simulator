@@ -160,6 +160,8 @@ unsigned int hash_function(char *word)
 // Busca una palabra en el índice invertido y retorna la lista de documentos asociados.
 Node *search_word(InvertedIndex **hash_table, char *word)
 {
+    for (int i = 0; word[i]; i++)
+        word[i] = tolower(word[i]);
     unsigned int index = hash_function(word); // Obtiene el índice de la palabra en la tabla hash.
     InvertedIndex *current = hash_table[index];
 
