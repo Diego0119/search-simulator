@@ -21,5 +21,6 @@ Node *search_word(InvertedIndex **, char *);
 void print_search_word(InvertedIndex **, char *);
 void build_index(Graph *, InvertedIndex **);
 void release_inverted_index(InvertedIndex **);
+bool is_stopword(char *token)
 
 #endif // INVERTED_INDEX_H

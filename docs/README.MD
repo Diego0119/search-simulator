@@ -45,7 +45,7 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
     parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales
     nos permiten colocar la cantidad `-d` y una ayuda del programa `-h`.
 
-### Generación de documentación con Doxygen 📝
+## Generación de documentación con Doxygen 📝
 
 1. **Generar la documentación**
 
@@ -63,7 +63,25 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
     Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador.
 
-## 3. Salida del programa 📤
+## Opción de vista adicional 👁️
+
+1. **Generar la documentación**
+
+    Ejecute el comando `make dxygn` en el directorio raíz del proyecto para generar la documentación automática en formato HTML y LaTeX.
+
+2. **Compilar en formato PDF**
+
+    Una vez generados los archivos con Doxygen, puede convertir la documentación en un archivo PDF utilizando LaTeX. Para hacerlo, ejecute  `make ltx`.
+
+3.  **Ubicación del archivo PDF**
+
+    El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el `Makefile`.
+
+4. **Visualización de la documentación HTML**
+
+    Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador.
+
+## Salida del programa 📤
 
 Al ejecutar `make run`, el programa generará una salida en consola que incluye:
 
