@@ -1,0 +1,80 @@
+\doxysection{src/graphic.c File Reference}
+\hypertarget{graphic_8c}{}\label{graphic_8c}\index{src/graphic.c@{src/graphic.c}}
+
+
+Archivo que contiene las funciones de generación de dibujos eps.  
+
+
+{\ttfamily \#include "{}graph.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{graphic_8c_a98b514a5f0c65a1a63359a2db242b456}{generate\+\_\+eps}} (const \mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, const double \texorpdfstring{$\ast$}{*}pagerank, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Archivo que contiene las funciones de generación de dibujos eps. 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+\end{DoxyAuthor}
+Contiene la implementación de las funciones que generan un archivo EPS con los grafos. 
+
+Definition in file \mbox{\hyperlink{graphic_8c_source}{graphic.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graphic_8c_a98b514a5f0c65a1a63359a2db242b456}\index{graphic.c@{graphic.c}!generate\_eps@{generate\_eps}}
+\index{generate\_eps@{generate\_eps}!graphic.c@{graphic.c}}
+\doxysubsubsection{\texorpdfstring{generate\_eps()}{generate\_eps()}}
+{\footnotesize\ttfamily \label{graphic_8c_a98b514a5f0c65a1a63359a2db242b456} 
+void generate\+\_\+eps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{pagerank}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. 
+
+Generar archivo EPS con el grafo. 
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo \\
+\hline
+{\em pagerank} & Arreglo de Page\+Rank \\
+\hline
+{\em filename} & Nombre del archivo EPS \\
+\hline
+\end{DoxyParams}
+Crear archivo EPS, en caso de no poder abrir el archivo, tira error. Inicia parámetros para ajustar el tamaño y la posición de los nodos. Dibuja los nodos con el Page\+Rank e Identificador. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{FILE\ *file\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!file)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ crear\ el\ archivo\ EPS\ para\ el\ grafo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width\ =\ 800;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height\ =\ 800;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ radius\ =\ 30;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ margin\ =\ 100;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ centerX\ =\ width\ /\ 2;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ centerY\ =\ height\ /\ 2;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scale\ =\ 2\ *\ M\_PI\ /\ graph-\/>total\_docs;}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}\%\%!PS-\/Adobe-\/3.0\ EPSF-\/3.0\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}\%\%\%\%BoundingBox:\ 0\ 0\ \%d\ \%d\(\backslash\)n"{}},\ width,\ height);}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}/Courier\ findfont\ 10\ scalefont\ setfont\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}1\ setlinecap\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}0.5\ setlinewidth\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}newpath\(\backslash\)n"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ positions[MAX\_DOCS][2];}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ \ *Dibuja\ el\ Nodo*}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graphic_8c_source_l00017}{17}} of file \mbox{\hyperlink{graphic_8c_source}{graphic.\+c}}.
+

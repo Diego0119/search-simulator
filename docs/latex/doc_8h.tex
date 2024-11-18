@@ -1,0 +1,162 @@
+\doxysection{incs/doc.h File Reference}
+\hypertarget{doc_8h}{}\label{doc_8h}\index{incs/doc.h@{incs/doc.h}}
+
+
+Prototipos de funciones para la creación de texto y archivos.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{doc_8h_a1289e453a791633a62ae6ce12c679d75}{generate\+\_\+text\+\_\+files}} (int, int)
+\begin{DoxyCompactList}\small\item\em Genera archivos txt simulando páginas web. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{doc_8h_a6eba1e4061a0604919199570c1fa9fd2}{generate\+\_\+random\+\_\+text}} (FILE \texorpdfstring{$\ast$}{*}, const char \texorpdfstring{$\ast$}{*}, int, int, int, int \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Genera texto aleatorio dentro de cada archivo web. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipos de funciones para la creación de texto y archivos. 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+\end{DoxyAuthor}
+Contiene los prototipos de las funciones dedicadas a la creación de texto (aleatorio) y archivos (webs). 
+
+Definition in file \mbox{\hyperlink{doc_8h_source}{doc.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{doc_8h_a6eba1e4061a0604919199570c1fa9fd2}\index{doc.h@{doc.h}!generate\_random\_text@{generate\_random\_text}}
+\index{generate\_random\_text@{generate\_random\_text}!doc.h@{doc.h}}
+\doxysubsubsection{\texorpdfstring{generate\_random\_text()}{generate\_random\_text()}}
+{\footnotesize\ttfamily \label{doc_8h_a6eba1e4061a0604919199570c1fa9fd2} 
+void generate\+\_\+random\+\_\+text (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{doc\+\_\+name}{, }\item[{int}]{num\+\_\+docs}{, }\item[{int}]{num\+\_\+characters}{, }\item[{int}]{current\+\_\+doc}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{links}{}\end{DoxyParamCaption})}
+
+
+
+Genera texto aleatorio dentro de cada archivo web. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em doc} & Archivo a escribir. \\
+\hline
+{\em doc\+\_\+name} & Nombre del archivo. \\
+\hline
+{\em num\+\_\+docs} & Número de documentos. \\
+\hline
+{\em num\+\_\+characters} & Número de caracteres. \\
+\hline
+{\em current\+\_\+doc} & Documento actual. \\
+\hline
+{\em links} & Conexiones entre documentos.\\
+\hline
+\end{DoxyParams}
+Genera texto aleatorio dentro de cada archivo web.
+
+
+\begin{DoxyParams}{Parameters}
+{\em doc} & Archivo a escribir \\
+\hline
+{\em doc\+\_\+name} & Nombre del archivo \\
+\hline
+{\em num\+\_\+docs} & Número de documentos \\
+\hline
+{\em num\+\_\+characters} & Número de caracteres \\
+\hline
+{\em current\+\_\+doc} & Documento actual \\
+\hline
+{\em links} & Conexiones entre documentos \\
+\hline
+\end{DoxyParams}
+Genera texto aleatorio dentro de cada archivo web (letras entre A y Z). 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_characters;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{char}\ letter\ =\ \textcolor{charliteral}{'A'}\ +\ rand()\ \%\ 26;}
+\DoxyCodeLine{\ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\%c"{}},\ letter);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ num\_characters\ -\/\ 1)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Asegura al menos un enlace único en cada archivo web. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fprintf(doc,\ \textcolor{stringliteral}{"{}\(\backslash\)nlink:\ doc\%d"{}},\ links[current\_doc\ -\/\ 1]);}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ extra\_links\ =\ rand()\ \%\ num\_docs;}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ extra\_links;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{int}\ link\_doc\ =\ rand()\ \%\ num\_docs\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (link\_doc\ !=\ current\_doc\ \&\&\ link\_doc\ !=\ links[current\_doc\ -\/\ 1])}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\(\backslash\)nlink:\ doc\%d"{}},\ link\_doc);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{doc_8c_source_l00086}{86}} of file \mbox{\hyperlink{doc_8c_source}{doc.\+c}}.
+
+\Hypertarget{doc_8h_a1289e453a791633a62ae6ce12c679d75}\index{doc.h@{doc.h}!generate\_text\_files@{generate\_text\_files}}
+\index{generate\_text\_files@{generate\_text\_files}!doc.h@{doc.h}}
+\doxysubsubsection{\texorpdfstring{generate\_text\_files()}{generate\_text\_files()}}
+{\footnotesize\ttfamily \label{doc_8h_a1289e453a791633a62ae6ce12c679d75} 
+void generate\+\_\+text\+\_\+files (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+docs}{, }\item[{int}]{num\+\_\+characters}{}\end{DoxyParamCaption})}
+
+
+
+Genera archivos txt simulando páginas web. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+docs} & Número de documentos. \\
+\hline
+{\em num\+\_\+characters} & Número de caracteres dentro del archivo.\\
+\hline
+\end{DoxyParams}
+Genera archivos txt simulando páginas web.
+
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo.
+
+Generar archivos txt 
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+docs} & Cantidad de archivos a generar \\
+\hline
+{\em num\+\_\+characters} & Cantidad de caracteres por archivo \\
+\hline
+\end{DoxyParams}
+Verifica que el número de archivos a generar sea válido. Crea un array de enlaces para asegurar que cada documento tenga al menos un enlace. Llama a la función generate\+\_\+random\+\_\+text para generar el contenido de cada archivo. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (num\_docs\ <=\ 0\ ||\ num\_docs\ >=\ 100)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ archivos\ web\ a\ generar\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 100.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ *links\ =\ malloc(num\_docs\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ links[i]\ =\ (i\ +\ 1)\ \%\ num\_docs\ +\ 1;}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ num\_docs;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{char}\ doc\_name[MAX\_NAME\_DOC];}
+\DoxyCodeLine{\ \ \ snprintf(doc\_name,\ \textcolor{keyword}{sizeof}(doc\_name),\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ i);}
+\DoxyCodeLine{\ \ \ FILE\ *doc\ =\ fopen(doc\_name,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{if}\ (doc\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ web.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ free(links);}
+\DoxyCodeLine{\ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(doc,\ doc\_name,\ num\_docs,\ num\_characters,\ i,\ links);}
+\DoxyCodeLine{\ \ \ fclose(doc);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{doc_8c_source_l00018}{18}} of file \mbox{\hyperlink{doc_8c_source}{doc.\+c}}.
+

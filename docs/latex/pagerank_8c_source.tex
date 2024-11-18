@@ -1,0 +1,62 @@
+\doxysection{pagerank.\+c}
+\hypertarget{pagerank_8c_source}{}\label{pagerank_8c_source}\index{src/pagerank.c@{src/pagerank.c}}
+\mbox{\hyperlink{pagerank_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00016}\mbox{\hyperlink{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49}{00016}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49}{initialize\_pagerank}}(\textcolor{keywordtype}{double}\ *pagerank,\ \textcolor{keywordtype}{int}\ num\_docs)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00026}00026\ \ \ \ \ \ \ \ \ pagerank[i]\ =\ 1.0\ /\ num\_docs;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00034}\mbox{\hyperlink{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6}{00034}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6}{calculate\_pagerank}}(\mbox{\hyperlink{structGraph}{Graph}}\ *graph,\ \textcolor{keywordtype}{double}\ *pagerank)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_docs\ =\ graph-\/>total\_docs;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49}{initialize\_pagerank}}(pagerank,\ num\_docs);}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{double}\ temp\_rank[MAX\_DOCS];}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ iteration\ =\ 0;\ iteration\ <\ MAX\_ITERATIONS;\ iteration++)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ temp\_rank[i]\ =\ (1\ -\/\ DAMPING\_FACTOR)\ /\ num\_docs;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_links\ =\ count\_output\_links(graph,\ i);}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_links\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ rank\_contribution\ =\ pagerank[i]\ *\ DAMPING\_FACTOR\ /\ num\_links;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *current\ =\ graph-\/>output\_adjacent\_list[i];}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\_rank[current-\/>doc\_id]\ +=\ rank\_contribution;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ error\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ error\ +=\ fabs(pagerank[i]\ -\/\ temp\_rank[i]);}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ pagerank[i]\ =\ temp\_rank[i];}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\ <\ CONVERGENCE\_THRESHOLD)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00126}\mbox{\hyperlink{pagerank_8c_af774e2c127d30c57b1033c2874f056c3}{00126}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{pagerank_8c_af774e2c127d30c57b1033c2874f056c3}{display\_pagerank}}(\mbox{\hyperlink{structGraph}{Graph}}\ *graph,\ \textcolor{keywordtype}{double}\ *pagerank)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00136}00136\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nValores\ de\ PageRank:\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00137}00137\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00138}00138\ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Documento\ (\%s):\ PageRank\ =\ \%.6f\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name,\ pagerank[i]);}
+\DoxyCodeLine{\Hypertarget{pagerank_8c_source_l00139}00139\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,58 @@
+\doxysection{main.\+c}
+\hypertarget{src_2main_8c_source}{}\label{src_2main_8c_source}\index{src/main.c@{src/main.c}}
+\mbox{\hyperlink{src_2main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}inverted\_index.h"{}}\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pagerank_8h}{pagerank.h}}"{}}\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{doc_8h}{doc.h}}"{}}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00020}\mbox{\hyperlink{src_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{00020}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{src_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{int}\ opt;}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{char}\ *word\_to\_search\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{while}\ ((opt\ =\ getopt(argc,\ argv,\ \textcolor{stringliteral}{"{}hs:"{}}))\ !=\ -\/1)}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opt)}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nPara\ ingresar\ la\ palabra\ a\ buscar,\ por\ favor\ coloque\ el\ parámetro\ <-\/s>\ <numero\_de\_archivos>\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'s'}:}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ word\_to\_search\ =\ optarg;}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'?'}:}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Opción\ no\ reconocida:\ -\/\%c\(\backslash\)n"{}},\ optopt);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Uso:\ \%s\ [-\/h]\ [-\/s\ palabra\_a\_buscar]\(\backslash\)n"{}},\ argv[0]);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00080}00080\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordtype}{double}\ pagerank[MAX\_DOCS];\ \textcolor{comment}{//\ Array\ para\ almacenar\ los\ valores\ de\ PageRank.}}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{structGraph}{Graph}}\ graph;}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *index[HASH\_TABLE\_SIZE];}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)\ \textcolor{comment}{//\ esto\ lo\ hice\ para\ probar\ si\ arreglaba\ el\ segmentation\ fault,\ nose\ si\ es\ necesario}}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ index[i]\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00089}00089\ \ \ \ \ initialize\_graph(\&graph);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00090}00090\ \ \ \ \ build\_graph(\&graph);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6}{calculate\_pagerank}}(\&graph,\ pagerank);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{pagerank_8c_af774e2c127d30c57b1033c2874f056c3}{display\_pagerank}}(\&graph,\ pagerank);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00093}00093\ \ \ \ \ show\_graph(\&graph);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00094}00094\ \ \ \ \ build\_index(\&graph,\ index);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00095}00095\ \ \ \ \ print\_search\_word(index,\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00096}00096\ \ \ \ \ release\_inverted\_index(index);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00097}00097\ \ \ \ \ release\_graph(\&graph);}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{graphic_8c_a98b514a5f0c65a1a63359a2db242b456}{generate\_eps}}(\&graph,\ pagerank,\ \textcolor{stringliteral}{"{}graph.eps"{}});}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+\DoxyCodeLine{\Hypertarget{src_2main_8c_source_l00101}00101\ \}}
+
+\end{DoxyCode}

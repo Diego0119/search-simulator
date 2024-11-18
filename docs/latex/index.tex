@@ -1,0 +1,51 @@
+\chapter{Simulador de Sistema de Recuperación de Información}
+\hypertarget{index}{}\label{index}\index{Simulador de Sistema de Recuperación de Información@{Simulador de Sistema de Recuperación de Información}}
+\label{index_md_docs_2README}%
+\Hypertarget{index_md_docs_2README}%
+
+
+Este proyecto implementa un {\bfseries{simulador de un sistema de recuperación de información}}, utilizando estructuras de datos como grafos, listas enlazadas y tablas hash. El sistema combina dos técnicas principales\+: {\bfseries{índice invertido}} y {\bfseries{Page\+Rank}}, para gestionar datos de manera eficiente.\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Resumen}{Resumen}}\label{index_autotoc_md1}
+El simulador permite\+: ~\newline
+
+\begin{DoxyItemize}
+\item Construir un grafo dirigido que representa la conexión entre documentos.
+\item Crear un índice invertido que facilita búsquedas rápidas por términos en los documentos.
+\item Calcular la relevancia de los documentos mediante el algoritmo de Page\+Rank.
+\item Realizar búsquedas de términos con resultados ordenados por relevancia.
+\end{DoxyItemize}
+
+Este trabajo fue programado en {\bfseries{C}}.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Características}{Características}}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item {\bfseries{Generación automática de documentos simulados.}} ~\newline
+ Se crean archivos de texto con contenido generado dinámicamente.
+\item {\bfseries{Construcción de un grafo dirigido.}} ~\newline
+ Cada documento es un nodo, y los enlaces entre ellos representan las conexiones. ~\newline
+
+\item {\bfseries{Índice invertido para búsquedas eficientes.}} ~\newline
+ Permite localizar documentos que contienen un término específico.
+\item {\bfseries{Algoritmo Page\+Rank.}} ~\newline
+ Calcula la importancia relativa de los documentos basándose en las conexiones entre ellos.
+\item {\bfseries{Visualización de resultados.}} ~\newline
+ Los resultados de Page\+Rank y las búsquedas se imprimen en consola. ~\newline
+
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Uso del Programa}{Uso del Programa}}\label{index_autotoc_md3}
+Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las siguientes instrucciones en la línea de comandos\+: ~\newline
+
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Compilación del programa}}\+: ~\newline
+ Ejecute el comando {\ttfamily make} en el directorio raíz del proyecto. Esto utilizará el {\ttfamily Makefile}.
+
+{\ttfamily make}
+\item {\bfseries{Ejecución del programa}} Ahora, una vez hecho el {\ttfamily make}, debe ejecutar {\ttfamily make run}, que tiene definido parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales nos permiten colocar la cantidad {\ttfamily -\/d} y una ayuda del programa {\ttfamily -\/h}.
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{3. Salida del programa}{3. Salida del programa}}\label{index_autotoc_md4}
+Al ejecutar {\ttfamily make run}, el programa generará una salida en consola que incluye\+:
+
+
+\begin{DoxyItemize}
+\item El {\bfseries{índice invertido}} construido, mostrando en qué documentos se encuentra cada palabra.
+\item El {\bfseries{grafo de enlaces}}, indicando cómo están conectados los documentos entre sí.
+\item Los valores de {\bfseries{Page\+Rank}} calculados para cada documento, reflejando su relevancia. 
+\end{DoxyItemize}

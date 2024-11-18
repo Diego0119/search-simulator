@@ -1,0 +1,57 @@
+\doxysection{main.\+c}
+\hypertarget{src2_2main_8c_source}{}\label{src2_2main_8c_source}\index{src2/main.c@{src2/main.c}}
+\mbox{\hyperlink{src2_2main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{doc_8h}{doc.h}}"{}}\ \ \ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00018}\mbox{\hyperlink{src2_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{00018}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{src_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{int}\ opt;}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_docs\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_characters\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{while}\ ((opt\ =\ getopt(argc,\ argv,\ \textcolor{stringliteral}{"{}hd:c:"{}}))\ !=\ -\/1)}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opt)}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nUso\ del\ programa:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\ \ -\/d\ <numero\_de\_archivos>\ :\ Número\ de\ archivos\ a\ crear.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\ \ -\/c\ <numero\_de\_caracteres>\ :\ Número\ de\ caracteres\ por\ archivo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\ \ -\/h\ :\ Muestra\ esta\ ayuda.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_SUCCESS);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'d'}:}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ num\_docs\ =\ atoi(optarg);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'c'}:}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ num\_characters\ =\ atoi(optarg);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'?'}:}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Opción\ no\ reconocida:\ -\/\%c\(\backslash\)n"{}},\ optopt);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Uso:\ \%s\ [-\/h]\ [-\/d\ numero\_de\_archivos]\ [-\/c\ numero\_de\_caracteres]\(\backslash\)n"{}},\ argv[0]);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_docs\ <=\ 0\ ||\ num\_characters\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error:\ Debes\ especificar\ valores\ positivos\ para\ -\/d\ y\ -\/c.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Uso:\ \%s\ [-\/h]\ [-\/d\ numero\_de\_archivos]\ [-\/c\ numero\_de\_caracteres]\(\backslash\)n"{}},\ argv[0]);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00087}00087\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00089}00089\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nCREANDO\ \%d\ archivos\ de\ texto\ con\ \%d\ caracteres\ cada\ uno...\(\backslash\)n\(\backslash\)n"{}},\ num\_docs,\ num\_characters);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{doc_8c_a145464661c096419f55d33a30b8486ab}{generate\_text\_files}}(num\_docs,\ num\_characters);}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00091}00091\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nArchivos\ de\ texto\ creados\ con\ ÉXITO.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+\DoxyCodeLine{\Hypertarget{src2_2main_8c_source_l00094}00094\ \}}
+
+\end{DoxyCode}

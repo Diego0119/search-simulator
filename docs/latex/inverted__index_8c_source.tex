@@ -1,0 +1,261 @@
+\doxysection{inverted\+\_\+index.\+c}
+\hypertarget{inverted__index_8c_source}{}\label{inverted__index_8c_source}\index{src/inverted\_index.c@{src/inverted\_index.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}inverted\_index.h"{}}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00004}00004\ \textcolor{comment}{//\ Crea\ un\ nuevo\ nodo\ en\ el\ índice\ invertido\ para\ una\ palabra\ específica.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00005}00005\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *create\_new\_node(\textcolor{keywordtype}{char}\ *word)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Asigna\ memoria\ para\ el\ nuevo\ nodo\ del\ índice\ invertido.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *new\_node\ =\ (\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}));}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_node\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00011}00011\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00012}00012\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ Copia\ la\ palabra\ en\ el\ nodo\ y\ establece\ la\ lista\ de\ documentos\ y\ el\ puntero\ siguiente\ a\ NULL.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00016}00016\ \ \ \ \ strcpy(new\_node-\/>word,\ word);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00017}00017\ \ \ \ \ new\_node-\/>docs\_list\ =\ NULL;\ \textcolor{comment}{//\ Inicializa\ en\ NULL\ porque\ aún\ no\ hay\ documentos\ con\ esta\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00018}00018\ \ \ \ \ new\_node-\/>next\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{return}\ new\_node;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00022}00022\ \textcolor{comment}{//\ Agrega\ un\ documento\ al\ índice\ invertido,\ asociándolo\ con\ una\ palabra\ específica.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00023}00023\ \textcolor{keywordtype}{void}\ add\_document(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **hash\_table,\ \textcolor{keywordtype}{int}\ doc\_id,\ \textcolor{keywordtype}{char}\ *word)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Calcula\ el\ índice\ en\ la\ tabla\ hash\ para\ la\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ hash\_function(word);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[index];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Busca\ la\ palabra\ en\ el\ índice.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(current-\/>word,\ word)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ si\ la\ comparacion\ se\ cumple,\ la\ palabra\ ya\ esta\ en\ el\ indice}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *new\_doc\ =\ (\mbox{\hyperlink{structNode}{Node}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structNode}{Node}}));}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ new\_doc-\/>doc\_id\ =\ doc\_id;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ new\_doc-\/>next\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ current-\/>docs\_list\ =\ new\_doc;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Si\ la\ palabra\ no\ se\ encuentra\ en\ el\ índice,\ crea\ un\ nuevo\ nodo\ en\ el\ índice.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *new\_node\ =\ create\_new\_node(word);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00046}00046\ \ \ \ \ new\_node-\/>next\ =\ hash\_table[index];\ \textcolor{comment}{//\ Posiciona\ el\ nuevo\ nodo\ en\ el\ índice\ calculado.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00047}00047\ \ \ \ \ hash\_table[index]\ =\ new\_node;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Crea\ y\ asigna\ el\ nodo\ de\ documento.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *new\_doc\ =\ (\mbox{\hyperlink{structNode}{Node}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structNode}{Node}}));}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_doc\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ nuevo\ documento\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00056}00056\ \ \ \ \ new\_doc-\/>doc\_id\ =\ doc\_id;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00057}00057\ \ \ \ \ new\_doc-\/>next\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00058}00058\ \ \ \ \ new\_node-\/>docs\_list\ =\ new\_doc;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00061}00061\ \textcolor{comment}{//\ Verifica\ si\ un\ token\ es\ una\ palabra\ irrelevante\ (stopword)\ que\ debe\ ignorarse\ en\ el\ índice.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00062}00062\ \textcolor{keywordtype}{bool}\ is\_stopword(\textcolor{keywordtype}{char}\ *token)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *stopwords[]\ =\ \{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}e"{}},\ \textcolor{stringliteral}{"{}i"{}},\ \textcolor{stringliteral}{"{}o"{}},\ \textcolor{stringliteral}{"{}u"{}},\ \textcolor{stringliteral}{"{}link"{}}\};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_stopwords\ =\ \textcolor{keyword}{sizeof}(stopwords)\ /\ \textcolor{keyword}{sizeof}(stopwords[0]);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Convertir\ el\ token\ a\ minúsculas\ para\ que\ no\ haya\ problemas\ de\ mayúsculas/minúsculas.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ token[i];\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ token[i]\ =\ tolower((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})token[i]);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Compara\ el\ token\ con\ las\ stopwords.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_stopwords;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(token,\ stopwords[i])\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ El\ token\ es\ una\ stopword.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Verificación\ del\ patrón\ "{}docN"{}\ donde\ N\ es\ cualquier\ número.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (strncmp(token,\ \textcolor{stringliteral}{"{}doc"{}},\ 3)\ ==\ 0\ \&\&\ isdigit(token[3]))}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ El\ token\ comienza\ con\ "{}doc"{}\ seguido\ de\ un\ número.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ El\ token\ no\ es\ una\ stopword.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00091}00091\ \textcolor{comment}{//\ Tokeniza\ el\ texto\ de\ entrada,\ eliminando\ puntuación\ y\ stopwords,\ e\ indexa\ cada\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00092}00092\ \textcolor{keywordtype}{void}\ tokenize\_text(\textcolor{keywordtype}{char}\ *text,\ \textcolor{keywordtype}{int}\ doc\_id,\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00093}00093\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{char}\ *token;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Convierte\ todo\ el\ texto\ a\ minúsculas.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ text[i];\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ text[i]\ =\ tolower(text[i]);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ Reemplaza\ caracteres\ de\ puntuación\ por\ espacios.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ text[i];\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ispunct(text[i]))}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ text[i]\ =\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Separa\ el\ texto\ en\ palabras\ utilizando\ el\ espacio\ como\ delimitador.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00106}00106\ \ \ \ \ token\ =\ strtok(text,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Procesa\ cada\ token.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{while}\ (token\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00110}00110\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verifica\ si\ el\ token\ es\ muy\ largo.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strlen(token)\ >=\ MAX\_WORD\_SIZE)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}La\ palabra\ es\ muy\ larga\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Agrega\ las\ palabras\ válidas\ al\ índice\ invertido.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_stopword(token))}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ add\_document(index,\ doc\_id,\ token);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ token\ =\ strtok(NULL,\ \textcolor{stringliteral}{"{}\ "{}});\ \textcolor{comment}{//\ Avanza\ al\ siguiente\ token.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00125}00125\ \textcolor{comment}{//\ Imprime\ el\ índice\ invertido\ mostrando\ cada\ palabra\ y\ los\ documentos\ asociados\ este\ es\ solo\ para\ ver\ el\ funcionamiento.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00126}00126\ \textcolor{keywordtype}{void}\ print\_inverted\_index(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00128}00128\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nIndice\ invertido:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00130}00130\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index[i]\ !=\ NULL)\ \textcolor{comment}{//\ Solo\ muestra\ las\ palabras\ que\ existen\ en\ este\ índice.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ index[i];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Palabra:\ \%s\ -\/\ Documentos:\ "{}},\ current-\/>word);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (doc\_node\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\%d\ "{}},\ doc\_node-\/>doc\_id);\ \textcolor{comment}{//\ Imprime\ el\ ID\ de\ documentos\ asociados.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doc\_node\ =\ doc\_node-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00150}00150\ \textcolor{comment}{//\ Función\ hash\ para\ obtener\ un\ índice\ basado\ en\ el\ valor\ ASCII\ de\ los\ caracteres\ de\ una\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00151}00151\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hash\_function(\textcolor{keywordtype}{char}\ *word)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00152}00152\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00153}00153\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hash\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ word[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'};\ i++)\ \textcolor{comment}{//\ Recorre\ cada\ carácter\ en\ la\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00155}00155\ \ \ \ \ \ \ \ \ hash\ =\ (hash\ *\ 31)\ +\ word[i];\ \ \ \ \ \textcolor{comment}{//\ Calcula\ el\ hash\ utilizando\ la\ codificación\ ASCII\ de\ cada\ letra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{return}\ hash\ \%\ HASH\_TABLE\_SIZE;\ \textcolor{comment}{//\ Retorna\ el\ hash\ limitado\ por\ el\ tamaño\ máximo\ de\ palabras.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00158}00158\ \}\ \textcolor{comment}{/*Edit\ por\ segfault,\ podria\ causar\ error\ por\ usar\ MAX\_WORD\_SIZE\ en\ vez\ de\ HASH\_TABLE\_SIZE*/}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00160}00160\ \textcolor{comment}{//\ Busca\ una\ palabra\ en\ el\ índice\ invertido\ y\ retorna\ la\ lista\ de\ documentos\ asociados.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00161}00161\ \mbox{\hyperlink{structNode}{Node}}\ *search\_word(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **hash\_table,\ \textcolor{keywordtype}{char}\ *word)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00162}00162\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00163}00163\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ hash\_function(word);\ \textcolor{comment}{//\ Obtiene\ el\ índice\ de\ la\ palabra\ en\ la\ tabla\ hash.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00164}00164\ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[index];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ Busca\ la\ palabra\ en\ el\ índice\ y\ retorna\ la\ lista\ de\ documentos\ si\ se\ encuentra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00168}00168\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(current-\/>word,\ word)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ current-\/>docs\_list;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00172}00172\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \textcolor{comment}{//\ Retorna\ NULL\ si\ la\ palabra\ no\ se\ encuentra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00177}00177\ \textcolor{keywordtype}{void}\ print\_search\_word(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index,\ \textcolor{keywordtype}{char}\ *word\_to\_search)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00178}00178\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00179}00179\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *results\ =\ search\_word(index,\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00180}00180\ \ \ \ \ \textcolor{keywordflow}{if}\ (!results)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00181}00181\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Palabra\ '\%s'\ no\ encontrada.\(\backslash\)n"{}},\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ Contador\ para\ la\ cantidad\ de\ veces\ que\ aparece\ la\ palabra\ en\ cada\ documento}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00187}00187\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nLa\ palabra\ '\%s'\ se\ encuentra\ en\ los\ siguientes\ documentos:\(\backslash\)n\(\backslash\)n"{}},\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//\ contador\ por\ documento}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_count[MAX\_DOCS]\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00190}00190\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *current\ =\ results;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00192}00192\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ doc\_count[current-\/>doc\_id]++;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00197}00197\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_DOCS;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00198}00198\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\_count[i]\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00200}00200\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Doc\%d:\ \%d\ veces\(\backslash\)n"{}},\ i,\ doc\_count[i]);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00203}00203\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00204}00204\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00205}00205\ \textcolor{comment}{//\ Lee\ los\ archivos\ que\ se\ encuentran\ guardados\ en\ el\ grafo\ y\ crea\ el\ indice}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00206}00206\ \textcolor{keywordtype}{void}\ build\_index(\mbox{\hyperlink{structGraph}{Graph}}\ *graph,\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00207}00207\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00208}00208\ \ \ \ \ \textcolor{comment}{//\ Iterar\ sobre\ los\ documentos\ ya\ identificados\ en\ el\ grafo.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00209}00209\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00210}00210\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ FILE\ *file\ =\ fopen(graph-\/>mapping\_docs[i].name,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00213}00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ \%s\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ file))}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Procesa\ cada\ línea\ de\ texto\ y\ la\ pasa\ al\ índice.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ tokenize\_text(buffer,\ graph-\/>mapping\_docs[i].doc\_id,\ index);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00224}00224\ \ \ \ \ \ \ \ \ fclose(file);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00225}00225\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00226}00226\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00228}00228\ \textcolor{comment}{//\ Libera\ la\ memoria\ del\ índice\ invertido\ y\ los\ nodos\ de\ documentos\ asociados.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00229}00229\ \textcolor{keywordtype}{void}\ release\_inverted\_index(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **hash\_table)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00230}00230\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00231}00231\ \ \ \ \ \textcolor{keywordflow}{if}\ (hash\_table\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Verifica\ si\ la\ tabla\ hash\ es\ nula.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00234}00234\ \ \ \ \ \textcolor{comment}{//\ Recorre\ cada\ índice\ en\ la\ tabla\ hash.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00235}00235\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00236}00236\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00237}00237\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[i];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Libera\ la\ memoria\ de\ cada\ palabra\ y\ su\ lista\ de\ documentos.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00241}00241\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (doc\_node\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *temp\_doc\_node\ =\ doc\_node;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doc\_node\ =\ doc\_node-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(temp\_doc\_node);\ \textcolor{comment}{//\ Libera\ cada\ nodo\ de\ documento.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *temp\ =\ current;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ free(temp);\ \textcolor{comment}{//\ Libera\ el\ nodo\ de\ la\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00253}00253\ \ \ \ \ \ \ \ \ hash\_table[i]\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00254}00254\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00255}00255\ \}}
+
+\end{DoxyCode}

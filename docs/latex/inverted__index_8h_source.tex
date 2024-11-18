@@ -1,0 +1,31 @@
+\doxysection{inverted\+\_\+index.\+h}
+\hypertarget{inverted__index_8h_source}{}\label{inverted__index_8h_source}\index{incs/inverted\_index.h@{incs/inverted\_index.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INVERTED\_INDEX\_H}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INVERTED\_INDEX\_H}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00006}00006\ \textcolor{comment}{/*\ Estructura\ InvertedIndex\ */}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00007}\mbox{\hyperlink{structInvertedIndex}{00007}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00009}00009\ \ \ \ \ \textcolor{keywordtype}{char}\ word[MAX\_WORD\_SIZE];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *docs\_list;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00012}00012\ \}\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00014}00014\ \textcolor{comment}{/*\ Funciones\ del\ índice\ invertido\ */}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00015}00015\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *create\_new\_node(\textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00016}00016\ \textcolor{keywordtype}{void}\ add\_document(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00017}00017\ \textcolor{keywordtype}{void}\ tokenize\_text(\textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{int},\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00018}00018\ \textcolor{keywordtype}{void}\ print\_inverted\_index(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00019}00019\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hash\_function(\textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00020}00020\ \mbox{\hyperlink{structNode}{Node}}\ *search\_word(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **,\ \textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00021}00021\ \textcolor{keywordtype}{void}\ print\_search\_word(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **,\ \textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00022}00022\ \textcolor{keywordtype}{void}\ build\_index(\mbox{\hyperlink{structGraph}{Graph}}\ *,\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00023}00023\ \textcolor{keywordtype}{void}\ release\_inverted\_index(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8h_source_l00025}00025\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INVERTED\_INDEX\_H}}
+
+\end{DoxyCode}

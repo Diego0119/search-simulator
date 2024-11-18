@@ -1,0 +1,119 @@
+\begin{theindex}
+
+  \item {calculate\_pagerank}
+    \subitem {pagerank.c}, \hyperpage{30}
+    \subitem {pagerank.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {display\_pagerank}
+    \subitem {pagerank.c}, \hyperpage{30}
+    \subitem {pagerank.h}, \hyperpage{16}
+  \item {doc.c}
+    \subitem {generate\_random\_text}, \hyperpage{33}
+    \subitem {generate\_text\_files}, \hyperpage{33}
+  \item {doc.h}
+    \subitem {generate\_random\_text}, \hyperpage{11}
+    \subitem {generate\_text\_files}, \hyperpage{12}
+  \item {doc\_id}
+    \subitem {DocumentMapping}, \hyperpage{7}
+    \subitem {Node}, \hyperpage{10}
+  \item {docs\_list}
+    \subitem {InvertedIndex}, \hyperpage{9}
+  \item {DocumentMapping}, \hyperpage{7}
+    \subitem {doc\_id}, \hyperpage{7}
+    \subitem {name}, \hyperpage{7}
+
+  \indexspace
+
+  \item {generate\_eps}
+    \subitem {graphic.c}, \hyperpage{20}
+  \item {generate\_random\_text}
+    \subitem {doc.c}, \hyperpage{33}
+    \subitem {doc.h}, \hyperpage{11}
+  \item {generate\_text\_files}
+    \subitem {doc.c}, \hyperpage{33}
+    \subitem {doc.h}, \hyperpage{12}
+  \item {Graph}, \hyperpage{8}
+    \subitem {input\_adjacent\_list}, \hyperpage{8}
+    \subitem {mapping\_docs}, \hyperpage{8}
+    \subitem {output\_adjacent\_list}, \hyperpage{8}
+    \subitem {total\_docs}, \hyperpage{8}
+  \item {graphic.c}
+    \subitem {generate\_eps}, \hyperpage{20}
+
+  \indexspace
+
+  \item {incs/doc.h}, \hyperpage{11}, \hyperpage{13}
+  \item {incs/graph.h}, \hyperpage{13}
+  \item {incs/inverted\_index.h}, \hyperpage{14}
+  \item {incs/pagerank.h}, \hyperpage{14}, \hyperpage{17}
+  \item {initialize\_pagerank}
+    \subitem {pagerank.c}, \hyperpage{31}
+    \subitem {pagerank.h}, \hyperpage{16}
+  \item {input\_adjacent\_list}
+    \subitem {Graph}, \hyperpage{8}
+  \item {InvertedIndex}, \hyperpage{9}
+    \subitem {docs\_list}, \hyperpage{9}
+    \subitem {next}, \hyperpage{9}
+    \subitem {word}, \hyperpage{9}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.c}, \hyperpage{26}, \hyperpage{28}
+  \item {main.c}
+    \subitem {main}, \hyperpage{26}, \hyperpage{28}
+  \item {mapping\_docs}
+    \subitem {Graph}, \hyperpage{8}
+
+  \indexspace
+
+  \item {name}
+    \subitem {DocumentMapping}, \hyperpage{7}
+  \item {next}
+    \subitem {InvertedIndex}, \hyperpage{9}
+    \subitem {Node}, \hyperpage{10}
+  \item {Node}, \hyperpage{9}
+    \subitem {doc\_id}, \hyperpage{10}
+    \subitem {next}, \hyperpage{10}
+
+  \indexspace
+
+  \item {output\_adjacent\_list}
+    \subitem {Graph}, \hyperpage{8}
+
+  \indexspace
+
+  \item {pagerank.c}
+    \subitem {calculate\_pagerank}, \hyperpage{30}
+    \subitem {display\_pagerank}, \hyperpage{30}
+    \subitem {initialize\_pagerank}, \hyperpage{31}
+  \item {pagerank.h}
+    \subitem {calculate\_pagerank}, \hyperpage{15}
+    \subitem {display\_pagerank}, \hyperpage{16}
+    \subitem {initialize\_pagerank}, \hyperpage{16}
+
+  \indexspace
+
+  \item {Simulador de Sistema de Recuperación de Información}, 
+		\hyperpage{1}
+  \item {src/graph.c}, \hyperpage{17}
+  \item {src/graphic.c}, \hyperpage{20, 21}
+  \item {src/inverted\_index.c}, \hyperpage{22}
+  \item {src/main.c}, \hyperpage{25}, \hyperpage{27}
+  \item {src/pagerank.c}, \hyperpage{29}, \hyperpage{31}
+  \item {src2/doc.c}, \hyperpage{32}, \hyperpage{34}
+  \item {src2/main.c}, \hyperpage{27}, \hyperpage{29}
+
+  \indexspace
+
+  \item {total\_docs}
+    \subitem {Graph}, \hyperpage{8}
+
+  \indexspace
+
+  \item {word}
+    \subitem {InvertedIndex}, \hyperpage{9}
+
+\end{theindex}

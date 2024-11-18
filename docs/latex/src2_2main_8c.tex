@@ -1,0 +1,88 @@
+\doxysection{src2/main.c File Reference}
+\hypertarget{src2_2main_8c}{}\label{src2_2main_8c}\index{src2/main.c@{src2/main.c}}
+
+
+Función principal de creación de archivos.  
+
+
+{\ttfamily \#include "{}graph.\+h"{}}\newline
+{\ttfamily \#include "{}doc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{src2_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Librería que contiene las funciones para generar archivos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Función principal de creación de archivos. 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+\end{DoxyAuthor}
+Contiene la función principal del programa que crea los archivos de texto. 
+
+Definition in file \mbox{\hyperlink{src2_2main_8c_source}{main.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{src2_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{src2_2main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\texorpdfstring{$<$}{<} Librería que contiene las funciones para generar archivos. 
+
+\texorpdfstring{$<$}{<} Librería que contiene las funciones del grafo.
+
+Función principal del programa. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Cantidad de argumentos. \\
+\hline
+{\em argv} & Argumentos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS si el programa termina correctamente. 
+\end{DoxyReturn}
+Se LEEN los ARGUMENTOS de la TERMINAL y se guardan en las variables num\+\_\+docs y num\+\_\+characters. Mientras se LEEN los ARGUMENTOS, se VALIDAN y se IMPRIMEN MENSAJES de AYUDA o ERROR. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ opt;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ num\_docs\ =\ 0;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ num\_characters\ =\ 0;}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ ((opt\ =\ getopt(argc,\ argv,\ \textcolor{stringliteral}{"{}hd:c:"{}}))\ !=\ -\/1)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{switch}\ (opt)}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'h'}\ que\ es\ la\ ayuda*}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'d'}\ que\ es\ el\ numero\ de\ archivos*}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'c'}\ que\ es\ el\ numero\ de\ caracteres*}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'?'}\ que\ es\ un\ error*}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Se VALIDAN los ARGUMENTOS de la TERMINAL. Se verifica que se hayan proporcionado valores válidos para -\/d y -\/c. Se llama a la función para crear archivo de texto. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (num\_docs\ <=\ 0\ ||\ num\_characters\ <=\ 0)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error:\ Debes\ especificar\ valores\ positivos\ para\ -\/d\ y\ -\/c.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Uso:\ \%s\ [-\/h]\ [-\/d\ numero\_de\_archivos]\ [-\/c\ numero\_de\_caracteres]\(\backslash\)n"{}},\ argv[0]);}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{srand(time(NULL));}
+\DoxyCodeLine{\mbox{\hyperlink{doc_8c_a145464661c096419f55d33a30b8486ab}{generate\_text\_files}}(num\_docs,\ num\_characters);}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{src2_2main_8c_source_l00018}{18}} of file \mbox{\hyperlink{src2_2main_8c_source}{main.\+c}}.
+

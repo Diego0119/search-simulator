@@ -1,0 +1,155 @@
+\doxysection{src/pagerank.c File Reference}
+\hypertarget{pagerank_8c}{}\label{pagerank_8c}\index{src/pagerank.c@{src/pagerank.c}}
+
+
+Archivo que contiene las funciones de Page\+Rank.  
+
+
+{\ttfamily \#include "{}graph.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49}{initialize\+\_\+pagerank}} (double \texorpdfstring{$\ast$}{*}pagerank, int num\+\_\+docs)
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6}{calculate\+\_\+pagerank}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, double \texorpdfstring{$\ast$}{*}pagerank)
+\begin{DoxyCompactList}\small\item\em Calcular Page\+Rank. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pagerank_8c_af774e2c127d30c57b1033c2874f056c3}{display\+\_\+pagerank}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, double \texorpdfstring{$\ast$}{*}pagerank)
+\begin{DoxyCompactList}\small\item\em Mostrar Page\+Rank. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Archivo que contiene las funciones de Page\+Rank. 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+\end{DoxyAuthor}
+Contiene la implementación de las funciones que calculan el Page\+Rank de cada documento en el grafo. 
+
+Definition in file \mbox{\hyperlink{pagerank_8c_source}{pagerank.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6}\index{pagerank.c@{pagerank.c}!calculate\_pagerank@{calculate\_pagerank}}
+\index{calculate\_pagerank@{calculate\_pagerank}!pagerank.c@{pagerank.c}}
+\doxysubsubsection{\texorpdfstring{calculate\_pagerank()}{calculate\_pagerank()}}
+{\footnotesize\ttfamily \label{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6} 
+void calculate\+\_\+pagerank (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{pagerank}{}\end{DoxyParamCaption})}
+
+
+
+Calcular Page\+Rank. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo \\
+\hline
+{\em pagerank} & Arreglo de Page\+Rank \\
+\hline
+\end{DoxyParams}
+Inicializa variables y Page\+Rank. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ num\_docs\ =\ graph-\/>total\_docs;}
+\DoxyCodeLine{\mbox{\hyperlink{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49}{initialize\_pagerank}}(pagerank,\ num\_docs);}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ temp\_rank[MAX\_DOCS];}
+
+\end{DoxyCode}
+
+
+Itera hasta que se cumple el criterio de convergencia. Calcula la contribución de cada nodo a los que apunta. Distribuye la contribución de Page\+Rank a cada nodo de la lista de adyacencia. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ iteration\ =\ 0;\ iteration\ <\ MAX\_ITERATIONS;\ iteration++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ temp\_rank[i]\ =\ (1\ -\/\ DAMPING\_FACTOR)\ /\ num\_docs;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_links\ =\ count\_output\_links(graph,\ i);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_links\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ rank\_contribution\ =\ pagerank[i]\ *\ DAMPING\_FACTOR\ /\ num\_links;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *current\ =\ graph-\/>output\_adjacent\_list[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ temp\_rank[current-\/>doc\_id]\ +=\ rank\_contribution;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Calcula el error y actualiza los valores de Page\+Rank. Si el error es menor al umbral de convergencia, se detiene el algoritmo. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ error\ =\ 0;}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ error\ +=\ fabs(pagerank[i]\ -\/\ temp\_rank[i]);}
+\DoxyCodeLine{\ \ \ \ \ pagerank[i]\ =\ temp\_rank[i];}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (error\ <\ CONVERGENCE\_THRESHOLD)}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{break};}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{pagerank_8c_source_l00034}{34}} of file \mbox{\hyperlink{pagerank_8c_source}{pagerank.\+c}}.
+
+\Hypertarget{pagerank_8c_af774e2c127d30c57b1033c2874f056c3}\index{pagerank.c@{pagerank.c}!display\_pagerank@{display\_pagerank}}
+\index{display\_pagerank@{display\_pagerank}!pagerank.c@{pagerank.c}}
+\doxysubsubsection{\texorpdfstring{display\_pagerank()}{display\_pagerank()}}
+{\footnotesize\ttfamily \label{pagerank_8c_af774e2c127d30c57b1033c2874f056c3} 
+void display\+\_\+pagerank (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{pagerank}{}\end{DoxyParamCaption})}
+
+
+
+Mostrar Page\+Rank. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo \\
+\hline
+{\em pagerank} & Arreglo de Page\+Rank \\
+\hline
+\end{DoxyParams}
+Muestra los valores de Page\+Rank de cada documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nValores\ de\ PageRank:\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Documento\ (\%s):\ PageRank\ =\ \%.6f\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name,\ pagerank[i]);}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{pagerank_8c_source_l00126}{126}} of file \mbox{\hyperlink{pagerank_8c_source}{pagerank.\+c}}.
+
+\Hypertarget{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49}\index{pagerank.c@{pagerank.c}!initialize\_pagerank@{initialize\_pagerank}}
+\index{initialize\_pagerank@{initialize\_pagerank}!pagerank.c@{pagerank.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_pagerank()}{initialize\_pagerank()}}
+{\footnotesize\ttfamily \label{pagerank_8c_a35ac521ad54b3a1c7ad419c660032e49} 
+void initialize\+\_\+pagerank (\begin{DoxyParamCaption}\item[{double \texorpdfstring{$\ast$}{*}}]{pagerank}{, }\item[{int}]{num\+\_\+docs}{}\end{DoxyParamCaption})}
+
+
+
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. 
+
+Inicializar Page\+Rank 
+\begin{DoxyParams}{Parameters}
+{\em pagerank} & Arreglo de Page\+Rank \\
+\hline
+{\em num\+\_\+docs} & Número de documentos \\
+\hline
+\end{DoxyParams}
+Inicializa cada documento con el mismo valor de Page\+Rank. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ pagerank[i]\ =\ 1.0\ /\ num\_docs;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{pagerank_8c_source_l00016}{16}} of file \mbox{\hyperlink{pagerank_8c_source}{pagerank.\+c}}.
+

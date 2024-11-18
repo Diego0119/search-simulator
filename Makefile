@@ -47,6 +47,8 @@ run: build/$(EXEC)
 docs: build/$(EXEC2)
 	./build/$(EXEC2) -d 3 -c 50
 
-#doxygen:
-#	doxygen config
-#	./docs/latex/Make
+dxygn:
+	doxygen config
+	
+ltx:
+	cd docs/latex && make

@@ -1,0 +1,96 @@
+\doxysection{src/main.c File Reference}
+\hypertarget{src_2main_8c}{}\label{src_2main_8c}\index{src/main.c@{src/main.c}}
+
+
+Función principal de menejo de funciones (grafos, pagerank e indice invertido).  
+
+
+{\ttfamily \#include "{}graph.\+h"{}}\newline
+{\ttfamily \#include "{}inverted\+\_\+index.\+h"{}}\newline
+{\ttfamily \#include "{}pagerank.\+h"{}}\newline
+{\ttfamily \#include "{}doc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{src_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Librería que contiene las funciones para generar archivos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Función principal de menejo de funciones (grafos, pagerank e indice invertido). 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+\end{DoxyAuthor}
+Contiene la función principal del programa que manipula los grafos y genera el Page\+Rank y el Índice Invertido. 
+
+Definition in file \mbox{\hyperlink{src_2main_8c_source}{main.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{src_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{src_2main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\texorpdfstring{$<$}{<} Librería que contiene las funciones para generar archivos. 
+
+\texorpdfstring{$<$}{<} Librería que contiene las funciones del grafo. \texorpdfstring{$<$}{<} Librería que contiene las funciones del índice invertido. \texorpdfstring{$<$}{<} Librería que contiene las funciones del Page\+Rank.
+
+Función principal del programa. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Cantidad de argumentos. \\
+\hline
+{\em argv} & Argumentos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS si el programa termina correctamente. 
+\end{DoxyReturn}
+Se LEEN los ARGUMENTOS de la TERMINAL y se guardan en la variable word\+\_\+to\+\_\+search. Mientras se LEEN los ARGUMENTOS, se VALIDAN y se IMPRIMEN MENSAJES de AYUDA o ERROR. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ opt;}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ *word\_to\_search\ =\ NULL;}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ ((opt\ =\ getopt(argc,\ argv,\ \textcolor{stringliteral}{"{}hs:"{}}))\ !=\ -\/1)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{switch}\ (opt)}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'h'}\ que\ es\ la\ ayuda*}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'s'}\ que\ es\ la\ palabra\ buscada*}
+\DoxyCodeLine{\ \ \ \ \ *Casos\ como\ \textcolor{charliteral}{'?'}\ que\ es\ un\ error*}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Se inicializan las variables necesarias para el cálculo del Page\+Rank, la construcción del índice invertido y la creación del grafo. Se llaman a las funciones primordiales. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{srand(time(NULL));}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ pagerank[MAX\_DOCS];}
+\DoxyCodeLine{\mbox{\hyperlink{structGraph}{Graph}}\ graph;}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *index[HASH\_TABLE\_SIZE];}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
+\DoxyCodeLine{\ \ \ \ index[i]\ =\ NULL;}
+\DoxyCodeLine{initialize\_graph(\&graph);}
+\DoxyCodeLine{build\_graph(\&graph);}
+\DoxyCodeLine{\mbox{\hyperlink{pagerank_8c_a69638ecc6b203a7ac9d58df0632173f6}{calculate\_pagerank}}(\&graph,\ pagerank);}
+\DoxyCodeLine{\mbox{\hyperlink{pagerank_8c_af774e2c127d30c57b1033c2874f056c3}{display\_pagerank}}(\&graph,\ pagerank);}
+\DoxyCodeLine{show\_graph(\&graph);}
+\DoxyCodeLine{build\_index(\&graph,\ index);}
+\DoxyCodeLine{print\_search\_word(index,\ word\_to\_search);}
+\DoxyCodeLine{release\_inverted\_index(index);}
+\DoxyCodeLine{release\_graph(\&graph);}
+\DoxyCodeLine{\mbox{\hyperlink{graphic_8c_a98b514a5f0c65a1a63359a2db242b456}{generate\_eps}}(\&graph,\ pagerank,\ \textcolor{stringliteral}{"{}graph.eps"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{src_2main_8c_source_l00020}{20}} of file \mbox{\hyperlink{src_2main_8c_source}{main.\+c}}.
+
