@@ -52,7 +52,7 @@ void calculate_pagerank(Graph *graph, double *pagerank)
 // Muestra el valor de PageRank de cada documento.
 void display_pagerank(Graph *graph, double *pagerank)
 {
-    fprintf(stdout, "Valores de PageRank:\n");
+    fprintf(stdout, "\nValores de PageRank:\n\n");
     for (int i = 0; i < graph->total_docs; i++)
-        fprintf(stdout, "Documento %d (%s): PageRank = %.6f\n", i, graph->mapping_docs[i].name, pagerank[i]);
+        fprintf(stdout, "Documento (%s): PageRank = %.6f\n", graph->mapping_docs[i].name, pagerank[i]);
 }

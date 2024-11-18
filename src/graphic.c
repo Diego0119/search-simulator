@@ -69,5 +69,5 @@ void generate_eps(const Graph *graph, const double *pagerank, const char *filena
     fprintf(file, "showpage\n");
     fclose(file);
 
-    fprintf(stdout, "Archivo EPS generado: %s\n", filename);
+    fprintf(stdout, "\nArchivo EPS generado: %s\n\n", filename);
 }

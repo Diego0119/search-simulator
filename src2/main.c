@@ -90,7 +90,9 @@ int main(int argc, char *argv[])
 
     srand(time(NULL));
 
+    fprintf(stdout, "\nCREANDO %d archivos de texto con %d caracteres cada uno...\n\n", num_docs, num_characters);
     generate_text_files(num_docs, num_characters);
+    fprintf(stdout, "\nArchivos de texto creados con ÉXITO.\n\n");
 
     return EXIT_SUCCESS;
 }

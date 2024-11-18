@@ -234,7 +234,7 @@ bool is_doc_name(char *file_name)
 // Muestra el grafo de enlaces, imprimiendo los documentos y sus enlaces salientes.
 void show_graph(Graph *graph)
 {
-    fprintf(stdout, "Grafo de enlaces:\n");
+    fprintf(stdout, "\nGrafo de enlaces:\n\n");
     for (int i = 0; i < MAX_DOCS; i++)
     {
         if (graph->output_adjacent_list[i] != NULL) // Solo muestra documentos con enlaces.

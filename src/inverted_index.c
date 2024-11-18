@@ -179,12 +179,12 @@ void print_search_word(InvertedIndex **index, char *word_to_search)
     Node *results = search_word(index, word_to_search);
     if (!results)
     {
-        printf("Palabra '%s' no encontrada.\n", word_to_search);
+        fprintf(stderr, "Palabra '%s' no encontrada.\n", word_to_search);
         return;
     }
 
     // Contador para la cantidad de veces que aparece la palabra en cada documento
-    printf("La palabra '%s' se encuentra en los siguientes documentos:\n", word_to_search);
+    fprintf(stdout, "\nLa palabra '%s' se encuentra en los siguientes documentos:\n\n", word_to_search);
     // contador por documento
     int doc_count[MAX_DOCS] = {0};
     Node *current = results;
@@ -198,7 +198,7 @@ void print_search_word(InvertedIndex **index, char *word_to_search)
     {
         if (doc_count[i] > 0)
         {
-            printf("Doc%d: %d veces\n", i, doc_count[i]);
+            fprintf(stdout, "Doc%d: %d veces\n", i, doc_count[i]);
         }
     }
 }
@@ -211,7 +211,7 @@ void build_index(Graph *graph, InvertedIndex **index)
         FILE *file = fopen(graph->mapping_docs[i].name, "r");
         if (file == NULL)
         {
-            printf("No se pudo abrir el archivo %s\n", graph->mapping_docs[i].name);
+            fprintf(stderr, "No se pudo abrir el archivo %s\n", graph->mapping_docs[i].name);
             continue;
         }
 
