@@ -1,9 +1,51 @@
-#include "graph.h"
+/**
+ * @file graphic.c
+ * @date 18-11-2024
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @brief Archivo que contiene las funciones de generación de dibujos eps.
+ *
+ * Contiene la implementación de las funciones que generan un archivo EPS con los grafos.
+ */
+#include "graph.h" ///< Incluye la definición de las estructuras y funciones del grafo.
 
-// Función para generar un archivo EPS con los grafos.
+/**
+ * @brief Generar archivo EPS con el grafo.
+ * @param graph Grafo
+ * @param pagerank Arreglo de PageRank
+ * @param filename Nombre del archivo EPS
+ */
 void generate_eps(const Graph *graph, const double *pagerank, const char *filename)
 {
-    // Crear archivo EPS, en caso de no poder abrir el archivo, tira error.
+    /**
+     * Crear archivo EPS, en caso de no poder abrir el archivo, tira error.
+     * Inicia parámetros para ajustar el tamaño y la posición de los nodos.
+     * Dibuja los nodos con el PageRank e Identificador.
+     * @code
+     * FILE *file = fopen(filename, "w");
+     * if (!file)
+     * {
+     *    fprintf(stderr, "No se pudo crear el archivo EPS para el grafo.\n");
+     *   exit(EXIT_FAILURE);
+     * }
+     * const int width = 800;
+     * const int height = 800;
+     * const int radius = 30;
+     * const int margin = 100;
+     * const int centerX = width / 2;
+     * const int centerY = height / 2;
+     * const double scale = 2 * M_PI / graph->total_docs;
+     * fprintf(file, "%%!PS-Adobe-3.0 EPSF-3.0\n");
+     * fprintf(file, "%%%%BoundingBox: 0 0 %d %d\n", width, height);
+     * fprintf(file, "/Courier findfont 10 scalefont setfont\n");
+     * fprintf(file, "1 setlinecap\n");
+     * fprintf(file, "0.5 setlinewidth\n");
+     * fprintf(file, "newpath\n");
+     * double positions[MAX_DOCS][2];
+     * for (int i = 0; i < graph->total_docs; i++)
+     *      *Dibuja el Nodo*
+     * @endcode
+     *
+     */
     FILE *file = fopen(filename, "w");
     if (!file)
     {
@@ -11,14 +53,13 @@ void generate_eps(const Graph *graph, const double *pagerank, const char *filena
         exit(EXIT_FAILURE);
     }
 
-    // Parámetros para ajustar el tamaño y la posición de los nodos.
-    const int width = 800;  // Ancho del canvas.
-    const int height = 800; // Alto del canvas.
-    const int radius = 30;  // Radio de los nodos.
-    const int margin = 100; // Margen en el canvas.
+    const int width = 800;
+    const int height = 800;
+    const int radius = 30;
+    const int margin = 100;
     const int centerX = width / 2;
     const int centerY = height / 2;
-    const double scale = 2 * M_PI / graph->total_docs; // Espaciado entre los nodos.
+    const double scale = 2 * M_PI / graph->total_docs;
 
     fprintf(file, "%%!PS-Adobe-3.0 EPSF-3.0\n");
     fprintf(file, "%%%%BoundingBox: 0 0 %d %d\n", width, height);

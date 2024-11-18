@@ -6,7 +6,6 @@
  *
  * Contiene la función principal del programa que crea los archivos de texto.
  */
-
 #include "graph.h" ///< Librería que contiene las funciones del grafo.
 #include "doc.h"   ///< Librería que contiene las funciones para generar archivos.
 
@@ -16,7 +15,6 @@
  * @param argv Argumentos.
  * @return EXIT_SUCCESS si el programa termina correctamente.
  */
-
 int main(int argc, char *argv[])
 {
     /**
@@ -35,7 +33,6 @@ int main(int argc, char *argv[])
      * }
      * @endcode
      */
-
     int opt;
     int num_docs = 0;
     int num_characters = 0;
@@ -80,7 +77,6 @@ int main(int argc, char *argv[])
      * return EXIT_SUCCESS;
      * @endcode
      */
-
     if (num_docs <= 0 || num_characters <= 0)
     {
         fprintf(stderr, "Error: Debes especificar valores positivos para -d y -c.\n");

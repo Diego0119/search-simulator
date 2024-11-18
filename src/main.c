@@ -6,7 +6,6 @@
  *
  * Contiene la función principal del programa que manipula los grafos y genera el PageRank y el Índice Invertido.
  */
-
 #include "graph.h"          ///< Librería que contiene las funciones del grafo.
 #include "inverted_index.h" ///< Librería que contiene las funciones del índice invertido.
 #include "pagerank.h"       ///< Librería que contiene las funciones del PageRank.
@@ -34,7 +33,6 @@ int main(int argc, char *argv[])
      * }
      * @endcode
      */
-
     int opt;
     char *word_to_search = NULL;
 
@@ -79,7 +77,6 @@ int main(int argc, char *argv[])
      * return EXIT_SUCCESS;
      * @endcode
      */
-
     srand(time(NULL));
 
     double pagerank[MAX_DOCS]; // Array para almacenar los valores de PageRank.
