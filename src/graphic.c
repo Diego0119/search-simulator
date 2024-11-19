@@ -1,7 +1,7 @@
 /**
  * @file graphic.c
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Archivo que contiene las funciones de generación de dibujos eps.
  *
  * Contiene la implementación de las funciones que generan un archivo EPS con los grafos.

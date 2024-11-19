@@ -1,7 +1,7 @@
 /**
  * @file pagerank.c
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Archivo que contiene las funciones de PageRank.
  *
  * Contiene la implementación de las funciones que calculan el PageRank de cada documento en el grafo.
