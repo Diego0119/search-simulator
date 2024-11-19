@@ -80,7 +80,6 @@ typedef struct Node
  * {
  *      char name[MAX_NAME_DOC];
  *      int doc_id;
- *      int doc_number;
  * } DocumentMapping;
  * @endcode
  */
@@ -88,7 +87,6 @@ typedef struct DocumentMapping
 {
     char name[MAX_NAME_DOC];
     int doc_id;
-    int doc_number;
 } DocumentMapping;
 
 /**
@@ -182,11 +180,5 @@ void show_graph(Graph *);
  * @param file_name Nombre del archivo.
  */
 void generate_eps(const Graph *, const double *, const char *);
-
-/**
-    Crea un nuevo grafo
-    Puntero al grafo creado
-*/
-Graph* create_graph(void);
 
 #endif

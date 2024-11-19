@@ -23,7 +23,7 @@ void initialize_pagerank(double *, int);
  * @param graph Grafo
  * @param pagerank Arreglo de PageRank
  */
-void calculate_pagerank(Graph *graph, double *pagerank);
+void calculate_pagerank(Graph *, double *);
 
 /**
  * @brief Mostrar PageRank
