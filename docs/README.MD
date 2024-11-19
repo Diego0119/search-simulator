@@ -67,6 +67,10 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
 1. Dentro del programa, hay una vista adicional que permite   visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función `print_inverted_index(index);`. Idealmente, esta función puede añadirse antes o después de la función print_search_word.
 
+## Stopwords
+
+1. En el programa se utilizan palabras comunes que no aportan significado relevante para la búsqueda y el cálculo de PageRank. Estas palabras son conocidas como stopwords y son excluidas en el proceso. Las stopwords son las siguientes: "a", "e", "i", "o", "u", "link".
+
 ## Salida del programa
 
 Al ejecutar `make run`, el programa generará una salida en consola que incluye:
