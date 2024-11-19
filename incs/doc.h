@@ -1,12 +1,11 @@
 /**
  * @file doc.h
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Prototipos de funciones para la creación de texto y archivos.
  *
  * Contiene los prototipos de las funciones dedicadas a la creación de texto (aleatorio) y archivos (webs).
  */
-
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
