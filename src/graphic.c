@@ -68,27 +68,22 @@ void generate_eps(const Graph *graph, const double *pagerank, const char *filena
     fprintf(file, "0.5 setlinewidth\n");
     fprintf(file, "newpath\n");
 
-    // Coordenadas de los nodos.
     double positions[MAX_DOCS][2];
 
-    // Dibujar nodos con PageRank e Identificador.
     for (int i = 0; i < graph->total_docs; i++)
     {
         double angle = i * scale;
         positions[i][0] = centerX + (centerX - margin) * cos(angle);
         positions[i][1] = centerY + (centerY - margin) * sin(angle);
 
-        // Asignar colores al nodo.
         double red = (rand() % 256) / 255.0;
         double green = (rand() % 256) / 255.0;
         double blue = (rand() % 256) / 255.0;
         fprintf(file, "%f %f %f setrgbcolor\n", red, green, blue);
 
-        // Dibujar nodo.
         fprintf(file, "newpath\n");
         fprintf(file, "%.2f %.2f %d 0 360 arc fill\n", positions[i][0], positions[i][1], radius);
 
-        // Texto Identificador del Nodo y PageRank.
         fprintf(file, "0 setgray\n");
         fprintf(file, "%.2f %.2f moveto (%d: %.3f) show\n", positions[i][0] - radius, positions[i][1] - 2 * radius, i, pagerank[i]);
     }
