@@ -95,7 +95,7 @@
     \subitem {get\_doc\_id}, \hyperpage{20}
     \subitem {HASH\_TABLE\_SIZE}, \hyperpage{15}
     \subitem {initialize\_graph}, \hyperpage{21}
-    \subitem {is\_doc\_name}, \hyperpage{22}
+    \subitem {is\_doc\_name}, \hyperpage{21}
     \subitem {MAX\_CHARACTERS\_DOC}, \hyperpage{15}
     \subitem {MAX\_DOCS}, \hyperpage{16}
     \subitem {MAX\_ITERATIONS}, \hyperpage{16}
@@ -156,7 +156,7 @@
     \subitem {word}, \hyperpage{10}
   \item {is\_doc\_name}
     \subitem {graph.c}, \hyperpage{42}
-    \subitem {graph.h}, \hyperpage{22}
+    \subitem {graph.h}, \hyperpage{21}
   \item {is\_stopword}
     \subitem {inverted\_index.c}, \hyperpage{52}
     \subitem {inverted\_index.h}, \hyperpage{28}

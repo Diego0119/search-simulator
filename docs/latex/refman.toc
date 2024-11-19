@@ -59,10 +59,10 @@
 \contentsline {subsubsection}{\numberline {5.3.3.3}count\_input\_links()}{18}{subsubsection.5.3.3.3}%
 \contentsline {subsubsection}{\numberline {5.3.3.4}count\_output\_links()}{19}{subsubsection.5.3.3.4}%
 \contentsline {subsubsection}{\numberline {5.3.3.5}generate\_eps()}{20}{subsubsection.5.3.3.5}%
-\contentsline {subsubsection}{\numberline {5.3.3.6}get\_doc\_id()}{21}{subsubsection.5.3.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.3.6}get\_doc\_id()}{20}{subsubsection.5.3.3.6}%
 \contentsline {subsubsection}{\numberline {5.3.3.7}initialize\_graph()}{21}{subsubsection.5.3.3.7}%
 \contentsline {subsubsection}{\numberline {5.3.3.8}is\_doc\_name()}{22}{subsubsection.5.3.3.8}%
-\contentsline {subsubsection}{\numberline {5.3.3.9}release\_graph()}{23}{subsubsection.5.3.3.9}%
+\contentsline {subsubsection}{\numberline {5.3.3.9}release\_graph()}{22}{subsubsection.5.3.3.9}%
 \contentsline {subsubsection}{\numberline {5.3.3.10}show\_graph()}{23}{subsubsection.5.3.3.10}%
 \contentsline {section}{\numberline {5.4}graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{24}{section.5.4}%
 \contentsline {section}{\numberline {5.5}incs/inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.h File Reference}{24}{section.5.5}%
@@ -105,10 +105,10 @@
 \contentsline {subsubsection}{\numberline {5.11.2.1}generate\_eps()}{47}{subsubsection.5.11.2.1}%
 \contentsline {section}{\numberline {5.12}graphic.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{48}{section.5.12}%
 \contentsline {section}{\numberline {5.13}src/inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.c File Reference}{49}{section.5.13}%
-\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{50}{subsection.5.13.1}%
+\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{49}{subsection.5.13.1}%
 \contentsline {subsection}{\numberline {5.13.2}Function Documentation}{50}{subsection.5.13.2}%
 \contentsline {subsubsection}{\numberline {5.13.2.1}add\_document()}{50}{subsubsection.5.13.2.1}%
-\contentsline {subsubsection}{\numberline {5.13.2.2}build\_index()}{51}{subsubsection.5.13.2.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.2}build\_index()}{50}{subsubsection.5.13.2.2}%
 \contentsline {subsubsection}{\numberline {5.13.2.3}create\_new\_node()}{51}{subsubsection.5.13.2.3}%
 \contentsline {subsubsection}{\numberline {5.13.2.4}hash\_function()}{52}{subsubsection.5.13.2.4}%
 \contentsline {subsubsection}{\numberline {5.13.2.5}is\_stopword()}{52}{subsubsection.5.13.2.5}%

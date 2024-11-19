@@ -644,29 +644,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Crear archivo EPS, en caso de no poder abrir el archivo, tira error. Inicia parámetros para ajustar el tamaño y la posición de los nodos. Dibuja los nodos con el PageRank e Identificador. </p><div class="fragment"><div class="line">FILE *file = fopen(filename, <span class="stringliteral">&quot;w&quot;</span>);</div>
-<div class="line"><span class="keywordflow">if</span> (!file)</div>
-<div class="line">{</div>
-<div class="line">   fprintf(stderr, <span class="stringliteral">&quot;No se pudo crear el archivo EPS para el grafo.\n&quot;</span>);</div>
-<div class="line">  exit(EXIT_FAILURE);</div>
-<div class="line">}</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> width = 800;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> height = 800;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> radius = 30;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> margin = 100;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> centerX = width / 2;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> centerY = height / 2;</div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> scale = 2 * M_PI / graph-&gt;total_docs;</div>
-<div class="line">fprintf(file, <span class="stringliteral">&quot;%%!PS-Adobe-3.0 EPSF-3.0\n&quot;</span>);</div>
-<div class="line">fprintf(file, <span class="stringliteral">&quot;%%%%BoundingBox: 0 0 %d %d\n&quot;</span>, width, height);</div>
-<div class="line">fprintf(file, <span class="stringliteral">&quot;/Courier findfont 10 scalefont setfont\n&quot;</span>);</div>
-<div class="line">fprintf(file, <span class="stringliteral">&quot;1 setlinecap\n&quot;</span>);</div>
-<div class="line">fprintf(file, <span class="stringliteral">&quot;0.5 setlinewidth\n&quot;</span>);</div>
-<div class="line">fprintf(file, <span class="stringliteral">&quot;newpath\n&quot;</span>);</div>
-<div class="line"><span class="keywordtype">double</span> positions[MAX_DOCS][2];</div>
-<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; graph-&gt;total_docs; i++)</div>
-<div class="line">     *Dibuja el Nodo*</div>
-</div><!-- fragment -->
+
 <p class="definition">Definition at line <a class="el" href="graphic_8c_source.html#l00017">17</a> of file <a class="el" href="graphic_8c_source.html">graphic.c</a>.</p>
 
 </div>

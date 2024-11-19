@@ -50,32 +50,6 @@ Generar archivo EPS con el grafo.
 {\em filename} & Nombre del archivo EPS \\
 \hline
 \end{DoxyParams}
-Crear archivo EPS, en caso de no poder abrir el archivo, tira error. Inicia parámetros para ajustar el tamaño y la posición de los nodos. Dibuja los nodos con el Page\+Rank e Identificador. 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{FILE\ *file\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});}
-\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!file)}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ crear\ el\ archivo\ EPS\ para\ el\ grafo.\(\backslash\)n"{}});}
-\DoxyCodeLine{\ \ exit(EXIT\_FAILURE);}
-\DoxyCodeLine{\}}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width\ =\ 800;}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height\ =\ 800;}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ radius\ =\ 30;}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ margin\ =\ 100;}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ centerX\ =\ width\ /\ 2;}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ centerY\ =\ height\ /\ 2;}
-\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scale\ =\ 2\ *\ M\_PI\ /\ graph-\/>total\_docs;}
-\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}\%\%!PS-\/Adobe-\/3.0\ EPSF-\/3.0\(\backslash\)n"{}});}
-\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}\%\%\%\%BoundingBox:\ 0\ 0\ \%d\ \%d\(\backslash\)n"{}},\ width,\ height);}
-\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}/Courier\ findfont\ 10\ scalefont\ setfont\(\backslash\)n"{}});}
-\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}1\ setlinecap\(\backslash\)n"{}});}
-\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}0.5\ setlinewidth\(\backslash\)n"{}});}
-\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}newpath\(\backslash\)n"{}});}
-\DoxyCodeLine{\textcolor{keywordtype}{double}\ positions[MAX\_DOCS][2];}
-\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
-\DoxyCodeLine{\ \ \ \ \ *Dibuja\ el\ Nodo*}
-
-\end{DoxyCode}
 
 
 Definition at line \mbox{\hyperlink{graphic_8c_source_l00017}{17}} of file \mbox{\hyperlink{graphic_8c_source}{graphic.\+c}}.

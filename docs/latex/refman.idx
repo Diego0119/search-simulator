@@ -62,8 +62,8 @@
 \indexentry{get\_doc\_id@{get\_doc\_id}!graph.h@{graph.h}|hyperpage}{20}
 \indexentry{graph.h@{graph.h}!initialize\_graph@{initialize\_graph}|hyperpage}{21}
 \indexentry{initialize\_graph@{initialize\_graph}!graph.h@{graph.h}|hyperpage}{21}
-\indexentry{graph.h@{graph.h}!is\_doc\_name@{is\_doc\_name}|hyperpage}{22}
-\indexentry{is\_doc\_name@{is\_doc\_name}!graph.h@{graph.h}|hyperpage}{22}
+\indexentry{graph.h@{graph.h}!is\_doc\_name@{is\_doc\_name}|hyperpage}{21}
+\indexentry{is\_doc\_name@{is\_doc\_name}!graph.h@{graph.h}|hyperpage}{21}
 \indexentry{graph.h@{graph.h}!release\_graph@{release\_graph}|hyperpage}{22}
 \indexentry{release\_graph@{release\_graph}!graph.h@{graph.h}|hyperpage}{22}
 \indexentry{graph.h@{graph.h}!show\_graph@{show\_graph}|hyperpage}{23}

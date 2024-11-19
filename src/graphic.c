@@ -16,36 +16,6 @@
  */
 void generate_eps(const Graph *graph, const double *pagerank, const char *filename)
 {
-    /**
-     * Crear archivo EPS, en caso de no poder abrir el archivo, tira error.
-     * Inicia parámetros para ajustar el tamaño y la posición de los nodos.
-     * Dibuja los nodos con el PageRank e Identificador.
-     * @code
-     * FILE *file = fopen(filename, "w");
-     * if (!file)
-     * {
-     *    fprintf(stderr, "No se pudo crear el archivo EPS para el grafo.\n");
-     *   exit(EXIT_FAILURE);
-     * }
-     * const int width = 800;
-     * const int height = 800;
-     * const int radius = 30;
-     * const int margin = 100;
-     * const int centerX = width / 2;
-     * const int centerY = height / 2;
-     * const double scale = 2 * M_PI / graph->total_docs;
-     * fprintf(file, "%%!PS-Adobe-3.0 EPSF-3.0\n");
-     * fprintf(file, "%%%%BoundingBox: 0 0 %d %d\n", width, height);
-     * fprintf(file, "/Courier findfont 10 scalefont setfont\n");
-     * fprintf(file, "1 setlinecap\n");
-     * fprintf(file, "0.5 setlinewidth\n");
-     * fprintf(file, "newpath\n");
-     * double positions[MAX_DOCS][2];
-     * for (int i = 0; i < graph->total_docs; i++)
-     *      *Dibuja el Nodo*
-     * @endcode
-     *
-     */
     FILE *file = fopen(filename, "w");
     if (!file)
     {
@@ -88,7 +58,6 @@ void generate_eps(const Graph *graph, const double *pagerank, const char *filena
         fprintf(file, "%.2f %.2f moveto (%d: %.3f) show\n", positions[i][0] - radius, positions[i][1] - 2 * radius, i, pagerank[i]);
     }
 
-    // Dibujar enlaces entre nodos. ESTO NO SE PUEDE VISUALIZAR, *ARREGLAR*
     fprintf(file, "0 0 0 setrgbcolor\n"); // Color negro para las líneas.
     for (int i = 0; i < graph->total_docs; i++)
     {
@@ -106,4 +75,14 @@ void generate_eps(const Graph *graph, const double *pagerank, const char *filena
     fclose(file);
 
     fprintf(stdout, "\nArchivo EPS generado: %s\n\n", filename);
+
+    char comando[256];
+    snprintf(comando, sizeof(comando), "gs -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -sDEVICE=png16m -r300 -sOutputFile=%s.png %s", filename, filename);
+    int resultado = system(comando);
+    if (resultado != 0)
+    {
+        fprintf(stderr, "ERROR al convertir el archivo EPS a PNG, saliendo...\n");
+        exit(EXIT_FAILURE);
+    }
+    fprintf(stdout, "\nArchivo EPS convertido a PNG en el archivo %s.png\n\n", filename);
 }
