@@ -98,5 +98,6 @@ void build_index(Graph *, InvertedIndex **);
  * @param hash_table Tabla hash.
  */
 void release_inverted_index(InvertedIndex **);
+bool is_stopword(char *token)
 
 #endif

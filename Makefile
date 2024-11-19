@@ -45,7 +45,7 @@ run: build/$(EXEC)
 	./build/$(EXEC) -s f
 
 docs: build/$(EXEC2)
-	./build/$(EXEC2) -d 3 -c 50
+	./build/$(EXEC2) -d 5 -c 50
 
 dxygn:
 	doxygen config
