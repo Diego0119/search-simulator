@@ -24,7 +24,7 @@ Archivo que contiene las funciones de Page\+Rank.
 18-\/11-\/2024 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Authors}
-Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo 
 \end{DoxyAuthor}
 Contiene la implementación de las funciones que calculan el Page\+Rank de cada documento en el grafo. 
 
@@ -67,7 +67,7 @@ Itera hasta que se cumple el criterio de convergencia. Calcula la contribución 
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ temp\_rank[i]\ =\ (1\ -\/\ DAMPING\_FACTOR)\ /\ num\_docs;}
 \DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
 \DoxyCodeLine{\ \ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_links\ =\ count\_output\_links(graph,\ i);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_links\ =\ \mbox{\hyperlink{graph_8c_a2b8fa4f52b842a9942d8916e73b4a073}{count\_output\_links}}(graph,\ i);}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_links\ ==\ 0)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ rank\_contribution\ =\ pagerank[i]\ *\ DAMPING\_FACTOR\ /\ num\_links;}
@@ -90,7 +90,7 @@ Calcula el error y actualiza los valores de Page\+Rank. Si el error es menor al 
 \DoxyCodeLine{\ \ \ \ \ error\ +=\ fabs(pagerank[i]\ -\/\ temp\_rank[i]);}
 \DoxyCodeLine{\ \ \ \ \ pagerank[i]\ =\ temp\_rank[i];}
 \DoxyCodeLine{\}}
-\DoxyCodeLine{\textcolor{keywordflow}{if}\ (error\ <\ CONVERGENCE\_THRESHOLD)}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (error\ <\ \mbox{\hyperlink{graph_8h_ad23fe8fbadffc551314567f32e18af98}{CONVERGENCE\_THRESHOLD}})}
 \DoxyCodeLine{\ \ \ \textcolor{keywordflow}{break};}
 
 \end{DoxyCode}
@@ -117,9 +117,28 @@ Mostrar Page\+Rank.
 \end{DoxyParams}
 Muestra los valores de Page\+Rank de cada documento. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nValores\ de\ PageRank:\(\backslash\)n\(\backslash\)n"{}});}
-\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
-\DoxyCodeLine{\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Documento\ (\%s):\ PageRank\ =\ \%.6f\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name,\ pagerank[i]);}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nValores\ de\ PageRank\ ordenados\ por\ importancia:\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ num\_docs\ =\ graph-\/>total\_docs;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ indices[num\_docs];}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ indices[i]\ =\ i;}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs\ -\/\ 1;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ num\_docs;\ j++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pagerank[indices[i]]\ <\ pagerank[indices[j]])}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ temp\ =\ indices[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ indices[i]\ =\ indices[j];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ indices[j]\ =\ temp;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ doc\_id\ =\ indices[i];}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Documento\ (\%s):\ PageRank\ =\ \%.6f\(\backslash\)n"{}},\ graph-\/>mapping\_docs[doc\_id].name,\ pagerank[doc\_id]);}
+\DoxyCodeLine{\}}
 
 \end{DoxyCode}
 

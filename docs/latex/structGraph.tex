@@ -1,5 +1,14 @@
 \doxysection{Graph Struct Reference}
 \hypertarget{structGraph}{}\label{structGraph}\index{Graph@{Graph}}
+
+
+Estrucutra de un grafo.  
+
+
+
+
+{\ttfamily \#include $<$graph.\+h$>$}
+
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -14,9 +23,22 @@ int \mbox{\hyperlink{structGraph_a2b23355cf86957ffd894cf72e6336996}{total\+\_\+d
 
 
 \doxysubsection{Detailed Description}
+Estrucutra de un grafo. 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00038}{38}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGraph}{Graph}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *output\_adjacent\_list[MAX\_DOCS];}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *input\_adjacent\_list[MAX\_DOCS];}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{structDocumentMapping}{DocumentMapping}}\ mapping\_docs[MAX\_DOCS];}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{int}\ total\_docs;}
+\DoxyCodeLine{\}\ \mbox{\hyperlink{structGraph}{Graph}};}
+
+\end{DoxyCode}
+ 
+
+Definition at line \mbox{\hyperlink{graph_8h_source_l00105}{105}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 
 
@@ -29,7 +51,7 @@ Definition at line \mbox{\hyperlink{graph_8h_source_l00038}{38}} of file \mbox{\
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00041}{41}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00108}{108}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 \Hypertarget{structGraph_a3b847506033862754c5de559d4656932}\index{Graph@{Graph}!mapping\_docs@{mapping\_docs}}
 \index{mapping\_docs@{mapping\_docs}!Graph@{Graph}}
@@ -39,7 +61,7 @@ Definition at line \mbox{\hyperlink{graph_8h_source_l00041}{41}} of file \mbox{\
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00042}{42}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00109}{109}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 \Hypertarget{structGraph_abf9a1aaae26d2421b350c3c74482ce3e}\index{Graph@{Graph}!output\_adjacent\_list@{output\_adjacent\_list}}
 \index{output\_adjacent\_list@{output\_adjacent\_list}!Graph@{Graph}}
@@ -49,7 +71,7 @@ Definition at line \mbox{\hyperlink{graph_8h_source_l00042}{42}} of file \mbox{\
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00040}{40}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00107}{107}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 \Hypertarget{structGraph_a2b23355cf86957ffd894cf72e6336996}\index{Graph@{Graph}!total\_docs@{total\_docs}}
 \index{total\_docs@{total\_docs}!Graph@{Graph}}
@@ -59,10 +81,10 @@ int Graph\+::total\+\_\+docs}
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00043}{43}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00110}{110}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-incs/graph.\+h\end{DoxyCompactItemize}
+incs/\mbox{\hyperlink{graph_8h}{graph.\+h}}\end{DoxyCompactItemize}

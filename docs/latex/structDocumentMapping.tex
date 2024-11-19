@@ -1,5 +1,14 @@
 \doxysection{Document\+Mapping Struct Reference}
 \hypertarget{structDocumentMapping}{}\label{structDocumentMapping}\index{DocumentMapping@{DocumentMapping}}
+
+
+Estrucutra de un mapeo de documentos.  
+
+
+
+
+{\ttfamily \#include $<$graph.\+h$>$}
+
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -10,9 +19,20 @@ int \mbox{\hyperlink{structDocumentMapping_af4d2a6dbb44d1f07e14632a41be8787a}{do
 
 
 \doxysubsection{Detailed Description}
+Estrucutra de un mapeo de documentos. 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00032}{32}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDocumentMapping}{DocumentMapping}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{char}\ name[MAX\_NAME\_DOC];}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_id;}
+\DoxyCodeLine{\}\ \mbox{\hyperlink{structDocumentMapping}{DocumentMapping}};}
+
+\end{DoxyCode}
+ 
+
+Definition at line \mbox{\hyperlink{graph_8h_source_l00086}{86}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 
 
@@ -25,7 +45,7 @@ int Document\+Mapping\+::doc\+\_\+id}
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00035}{35}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00089}{89}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 \Hypertarget{structDocumentMapping_ac834f80c1f7a70cda9e9bbde5901f04f}\index{DocumentMapping@{DocumentMapping}!name@{name}}
 \index{name@{name}!DocumentMapping@{DocumentMapping}}
@@ -35,10 +55,10 @@ char Document\+Mapping\+::name\mbox{[}MAX\+\_\+\+NAME\+\_\+\+DOC\mbox{]}}
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00034}{34}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00088}{88}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-incs/graph.\+h\end{DoxyCompactItemize}
+incs/\mbox{\hyperlink{graph_8h}{graph.\+h}}\end{DoxyCompactItemize}

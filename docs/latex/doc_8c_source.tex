@@ -3,60 +3,66 @@
 \mbox{\hyperlink{doc_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00001}00001\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}graph.h"{}}\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_8h}{graph.h}}"{}}\ }
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{doc_8h}{doc.h}}"{}}\ \ \ }
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00012}00012\ }
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00018}\mbox{\hyperlink{doc_8c_a145464661c096419f55d33a30b8486ab}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{doc_8c_a145464661c096419f55d33a30b8486ab}{generate\_text\_files}}(\textcolor{keywordtype}{int}\ num\_docs,\ \textcolor{keywordtype}{int}\ num\_characters)}
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00019}00019\ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_docs\ <=\ 0\ ||\ num\_docs\ >=\ 100)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00050}00050\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ archivos\ web\ a\ generar\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 100.\(\backslash\)n\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00053}00053\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{int}\ *links\ =\ malloc(num\_docs\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ links[i]\ =\ (i\ +\ 1)\ \%\ num\_docs\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_docs\ <=\ 0\ ||\ num\_docs\ >=\ 100)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ archivos\ web\ a\ generar\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 100.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00058}00058\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_characters\ <=\ 0\ ||\ num\_characters\ >=\ 51)}
 \DoxyCodeLine{\Hypertarget{doc_8c_source_l00061}00061\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ doc\_name[MAX\_NAME\_DOC];}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ snprintf(doc\_name,\ \textcolor{keyword}{sizeof}(doc\_name),\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ i);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00064}00064\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ FILE\ *doc\ =\ fopen(doc\_name,\ \textcolor{stringliteral}{"{}w"{}});}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\ ==\ NULL)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ web.\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ free(links);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(doc,\ doc\_name,\ num\_docs,\ num\_characters,\ i,\ links);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ fclose(doc);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00074}00074\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00075}00075\ \}}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00076}00076\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00086}\mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{00086}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(FILE\ *doc,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *doc\_name,\ \textcolor{keywordtype}{int}\ num\_docs,\ \textcolor{keywordtype}{int}\ num\_characters,\ \textcolor{keywordtype}{int}\ current\_doc,\ \textcolor{keywordtype}{int}\ *links)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00087}00087\ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_characters;\ i++)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00101}00101\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ letter\ =\ \textcolor{charliteral}{'A'}\ +\ rand()\ \%\ 26;}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\%c"{}},\ letter);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ num\_characters\ -\/\ 1)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\ "{}});}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00106}00106\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00107}00107\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00121}00121\ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\(\backslash\)nlink:\ doc\%d"{}},\ links[current\_doc\ -\/\ 1]);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00122}00122\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00123}00123\ \ \ \ \ \textcolor{keywordtype}{int}\ extra\_links\ =\ rand()\ \%\ num\_docs;}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ extra\_links;\ i++)}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00125}00125\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ link\_doc\ =\ rand()\ \%\ num\_docs\ +\ 1;}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (link\_doc\ !=\ current\_doc\ \&\&\ link\_doc\ !=\ links[current\_doc\ -\/\ 1])}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\(\backslash\)nlink:\ doc\%d"{}},\ link\_doc);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00129}00129\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00130}00130\ }
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00131}00131\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}ARCHIVO\ '\%s'\ generado\ con\ ÉXITO\ con\ \%d\ letras\ y\ enlaces.\(\backslash\)n"{}},\ doc\_name,\ num\_characters);}
-\DoxyCodeLine{\Hypertarget{doc_8c_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ caracteres\ por\ archivo\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 50.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{int}\ *links\ =\ malloc(num\_docs\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ links[i]\ =\ (i\ +\ 1)\ \%\ num\_docs\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ doc\_name[MAX\_NAME\_DOC];}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ snprintf(doc\_name,\ \textcolor{keyword}{sizeof}(doc\_name),\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ i);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ FILE\ *doc\ =\ fopen(doc\_name,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ web.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ free(links);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(doc,\ doc\_name,\ num\_docs,\ num\_characters,\ i,\ links);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ fclose(doc);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00097}\mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{00097}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(FILE\ *doc,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *doc\_name,\ \textcolor{keywordtype}{int}\ num\_docs,\ \textcolor{keywordtype}{int}\ num\_characters,\ \textcolor{keywordtype}{int}\ current\_doc,\ \textcolor{keywordtype}{int}\ *links)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_characters;\ i++)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00112}00112\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ letter\ =\ \textcolor{charliteral}{'A'}\ +\ rand()\ \%\ 26;}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\%c"{}},\ letter);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ num\_characters\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00132}00132\ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\(\backslash\)nlink:\ doc\%d"{}},\ links[current\_doc\ -\/\ 1]);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00134}00134\ \ \ \ \ \textcolor{keywordtype}{int}\ extra\_links\ =\ rand()\ \%\ num\_docs;}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ extra\_links;\ i++)}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00136}00136\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ link\_doc\ =\ rand()\ \%\ num\_docs\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (link\_doc\ !=\ current\_doc\ \&\&\ link\_doc\ !=\ links[current\_doc\ -\/\ 1])}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(doc,\ \textcolor{stringliteral}{"{}\(\backslash\)nlink:\ doc\%d"{}},\ link\_doc);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00140}00140\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00142}00142\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}ARCHIVO\ '\%s'\ generado\ con\ ÉXITO\ con\ \%d\ letras\ y\ enlaces.\(\backslash\)n"{}},\ doc\_name,\ num\_characters);}
+\DoxyCodeLine{\Hypertarget{doc_8c_source_l00143}00143\ \}}
 
 \end{DoxyCode}

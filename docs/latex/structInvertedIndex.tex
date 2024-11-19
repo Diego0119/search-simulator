@@ -1,5 +1,14 @@
 \doxysection{Inverted\+Index Struct Reference}
 \hypertarget{structInvertedIndex}{}\label{structInvertedIndex}\index{InvertedIndex@{InvertedIndex}}
+
+
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo.  
+
+
+
+
+{\ttfamily \#include $<$inverted\+\_\+index.\+h$>$}
+
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,9 +21,21 @@ struct \mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$
 
 
 \doxysubsection{Detailed Description}
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. 
 
+Estructura de un nodo en el índice invertido. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{char}\ word[MAX\_WORD\_SIZE];}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *docs\_list;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *next;}
+\DoxyCodeLine{\}\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}};}
 
-Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00007}{7}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
+\end{DoxyCode}
+ 
+
+Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00026}{26}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
 
 
 
@@ -27,7 +48,7 @@ Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00007}{7}} of fil
 
 
 
-Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00010}{10}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
+Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00029}{29}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
 
 \Hypertarget{structInvertedIndex_a97a7cdfc2e4a1477c7015e174c354f41}\index{InvertedIndex@{InvertedIndex}!next@{next}}
 \index{next@{next}!InvertedIndex@{InvertedIndex}}
@@ -37,7 +58,7 @@ struct \mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}}\texorpdfstring{$\
 
 
 
-Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00011}{11}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
+Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00030}{30}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
 
 \Hypertarget{structInvertedIndex_ae448e8f49a2e742f82d5681db4f16c4f}\index{InvertedIndex@{InvertedIndex}!word@{word}}
 \index{word@{word}!InvertedIndex@{InvertedIndex}}
@@ -47,10 +68,10 @@ char Inverted\+Index\+::word\mbox{[}MAX\+\_\+\+WORD\+\_\+\+SIZE\mbox{]}}
 
 
 
-Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00009}{9}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
+Definition at line \mbox{\hyperlink{inverted__index_8h_source_l00028}{28}} of file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-incs/inverted\+\_\+index.\+h\end{DoxyCompactItemize}
+incs/\mbox{\hyperlink{inverted__index_8h}{inverted\+\_\+index.\+h}}\end{DoxyCompactItemize}

@@ -1,5 +1,13 @@
-#include "graph.h"
-#include "inverted_index.h"
+/**
+ * @file inverted_index.c
+ * @date 18-11-2024
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
+ * @brief Archivo que contiene las funciones del índice invertido.
+ *
+ * Contiene la implementación de las funciones que crean y manipulan el índice invertido.
+ */
+#include "graph.h"          ///< Incluye la definición de las estructuras y funciones del grafo.
+#include "inverted_index.h" ///< Incluye la definición de las estructuras y funciones del índice invertido.
 
 /**
  * @brief Crea un nuevo nodo en el índice invertido para una palabra específica.

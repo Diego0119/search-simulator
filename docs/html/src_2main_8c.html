@@ -96,8 +96,8 @@ $(function(){ initResizable(false); });
 
 <p>Función principal de menejo de funciones (grafos, pagerank e indice invertido).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;graph.h&quot;</code><br />
-<code>#include &quot;inverted_index.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="graph_8h_source.html">graph.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pagerank_8h_source.html">pagerank.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="doc_8h_source.html">doc.h</a>&quot;</code><br />
 </div>
@@ -112,7 +112,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Función principal de menejo de funciones (grafos, pagerank e indice invertido). </p>
 <dl class="section date"><dt>Date</dt><dd>18-11-2024 </dd></dl>
-<dl class="section author"><dt>Authors</dt><dd>Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo </dd></dl>
+<dl class="section author"><dt>Authors</dt><dd>Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo </dd></dl>
 <p>Contiene la función principal del programa que manipula los grafos y genera el PageRank y el Índice Invertido. </p>
 
 <p class="definition">Definition in file <a class="el" href="src_2main_8c_source.html">main.c</a>.</p>
@@ -161,22 +161,29 @@ Functions</h2></td></tr>
 <div class="line"><a class="code hl_struct" href="structInvertedIndex.html">InvertedIndex</a> *index[HASH_TABLE_SIZE];</div>
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; HASH_TABLE_SIZE; i++)</div>
 <div class="line">    index[i] = NULL;</div>
-<div class="line">initialize_graph(&amp;graph);</div>
-<div class="line">build_graph(&amp;graph);</div>
+<div class="line"><a class="code hl_function" href="graph_8c.html#af903c20886fcaa47f1786bcf5d860cb0">initialize_graph</a>(&amp;graph);</div>
+<div class="line"><a class="code hl_function" href="graph_8c.html#a53b7f6789a114e88519c98e6687aeabc">build_graph</a>(&amp;graph);</div>
 <div class="line"><a class="code hl_function" href="pagerank_8c.html#a69638ecc6b203a7ac9d58df0632173f6">calculate_pagerank</a>(&amp;graph, pagerank);</div>
 <div class="line"><a class="code hl_function" href="pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3">display_pagerank</a>(&amp;graph, pagerank);</div>
-<div class="line">show_graph(&amp;graph);</div>
-<div class="line">build_index(&amp;graph, index);</div>
-<div class="line">print_search_word(index, word_to_search);</div>
-<div class="line">release_inverted_index(index);</div>
-<div class="line">release_graph(&amp;graph);</div>
+<div class="line"><a class="code hl_function" href="graph_8c.html#a7093bc4eb900ace4fad6a81b9f8c71db">show_graph</a>(&amp;graph);</div>
+<div class="line"><a class="code hl_function" href="inverted__index_8c.html#a321feae1c468f2511ae1ac93b2709c52">build_index</a>(&amp;graph, index);</div>
+<div class="line"><a class="code hl_function" href="inverted__index_8c.html#ab994f81c8baf9e5796c8a9ce761ae1ef">print_search_word</a>(index, word_to_search);</div>
+<div class="line"><a class="code hl_function" href="inverted__index_8c.html#afd40fec44adaa6401c2609cced5b0479">release_inverted_index</a>(index);</div>
+<div class="line"><a class="code hl_function" href="graph_8c.html#a0f5bbb69da2458a772501baba26b3e36">release_graph</a>(&amp;graph);</div>
 <div class="line"><a class="code hl_function" href="graphic_8c.html#a98b514a5f0c65a1a63359a2db242b456">generate_eps</a>(&amp;graph, pagerank, <span class="stringliteral">&quot;graph.eps&quot;</span>);</div>
 <div class="line"><span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="ttc" id="agraph_8c_html_a0f5bbb69da2458a772501baba26b3e36"><div class="ttname"><a href="graph_8c.html#a0f5bbb69da2458a772501baba26b3e36">release_graph</a></div><div class="ttdeci">void release_graph(Graph *graph)</div><div class="ttdoc">Libera la memoria del grafo (nodos).</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00262">graph.c:262</a></div></div>
+<div class="ttc" id="agraph_8c_html_a53b7f6789a114e88519c98e6687aeabc"><div class="ttname"><a href="graph_8c.html#a53b7f6789a114e88519c98e6687aeabc">build_graph</a></div><div class="ttdeci">void build_graph(Graph *graph)</div><div class="ttdoc">Construir el Grafo a partir de documentos que contienen enlaces a otros documentos.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00097">graph.c:97</a></div></div>
+<div class="ttc" id="agraph_8c_html_a7093bc4eb900ace4fad6a81b9f8c71db"><div class="ttname"><a href="graph_8c.html#a7093bc4eb900ace4fad6a81b9f8c71db">show_graph</a></div><div class="ttdeci">void show_graph(Graph *graph)</div><div class="ttdoc">Muestra el grafo de enlaces, imprimiendo los documentos y sus enlaces salientes.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00497">graph.c:497</a></div></div>
+<div class="ttc" id="agraph_8c_html_af903c20886fcaa47f1786bcf5d860cb0"><div class="ttname"><a href="graph_8c.html#af903c20886fcaa47f1786bcf5d860cb0">initialize_graph</a></div><div class="ttdeci">void initialize_graph(Graph *graph)</div><div class="ttdoc">&lt; Incluye la definición de las estructuras y funciones del grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00015">graph.c:15</a></div></div>
 <div class="ttc" id="agraphic_8c_html_a98b514a5f0c65a1a63359a2db242b456"><div class="ttname"><a href="graphic_8c.html#a98b514a5f0c65a1a63359a2db242b456">generate_eps</a></div><div class="ttdeci">void generate_eps(const Graph *graph, const double *pagerank, const char *filename)</div><div class="ttdoc">&lt; Incluye la definición de las estructuras y funciones del grafo.</div><div class="ttdef"><b>Definition</b> <a href="graphic_8c_source.html#l00017">graphic.c:17</a></div></div>
+<div class="ttc" id="ainverted__index_8c_html_a321feae1c468f2511ae1ac93b2709c52"><div class="ttname"><a href="inverted__index_8c.html#a321feae1c468f2511ae1ac93b2709c52">build_index</a></div><div class="ttdeci">void build_index(Graph *graph, InvertedIndex **index)</div><div class="ttdoc">Lee los archivos asociados al grafo y crea el índice invertido.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8c_source.html#l00509">inverted_index.c:509</a></div></div>
+<div class="ttc" id="ainverted__index_8c_html_ab994f81c8baf9e5796c8a9ce761ae1ef"><div class="ttname"><a href="inverted__index_8c.html#ab994f81c8baf9e5796c8a9ce761ae1ef">print_search_word</a></div><div class="ttdeci">void print_search_word(InvertedIndex **index, char *word_to_search)</div><div class="ttdoc">Imprime los documentos y la frecuencia de aparición de una palabra en el índice.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8c_source.html#l00427">inverted_index.c:427</a></div></div>
+<div class="ttc" id="ainverted__index_8c_html_afd40fec44adaa6401c2609cced5b0479"><div class="ttname"><a href="inverted__index_8c.html#afd40fec44adaa6401c2609cced5b0479">release_inverted_index</a></div><div class="ttdeci">void release_inverted_index(InvertedIndex **hash_table)</div><div class="ttdoc">Libera la memoria del índice invertido y los nodos de documentos asociados.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8c_source.html#l00583">inverted_index.c:583</a></div></div>
 <div class="ttc" id="apagerank_8c_html_a69638ecc6b203a7ac9d58df0632173f6"><div class="ttname"><a href="pagerank_8c.html#a69638ecc6b203a7ac9d58df0632173f6">calculate_pagerank</a></div><div class="ttdeci">void calculate_pagerank(Graph *graph, double *pagerank)</div><div class="ttdoc">Calcular PageRank.</div><div class="ttdef"><b>Definition</b> <a href="pagerank_8c_source.html#l00034">pagerank.c:34</a></div></div>
 <div class="ttc" id="apagerank_8c_html_af774e2c127d30c57b1033c2874f056c3"><div class="ttname"><a href="pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3">display_pagerank</a></div><div class="ttdeci">void display_pagerank(Graph *graph, double *pagerank)</div><div class="ttdoc">Mostrar PageRank.</div><div class="ttdef"><b>Definition</b> <a href="pagerank_8c_source.html#l00126">pagerank.c:126</a></div></div>
-<div class="ttc" id="astructGraph_html"><div class="ttname"><a href="structGraph.html">Graph</a></div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00038">graph.h:39</a></div></div>
-<div class="ttc" id="astructInvertedIndex_html"><div class="ttname"><a href="structInvertedIndex.html">InvertedIndex</a></div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8h_source.html#l00007">inverted_index.h:8</a></div></div>
+<div class="ttc" id="astructGraph_html"><div class="ttname"><a href="structGraph.html">Graph</a></div><div class="ttdoc">Estrucutra de un grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00105">graph.h:106</a></div></div>
+<div class="ttc" id="astructInvertedIndex_html"><div class="ttname"><a href="structInvertedIndex.html">InvertedIndex</a></div><div class="ttdoc">&lt; Incluye la definición de las estructuras y funciones del grafo.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8h_source.html#l00026">inverted_index.h:27</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="src_2main_8c_source.html#l00020">20</a> of file <a class="el" href="src_2main_8c_source.html">main.c</a>.</p>
 

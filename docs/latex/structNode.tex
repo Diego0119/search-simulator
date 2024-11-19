@@ -1,5 +1,14 @@
 \doxysection{Node Struct Reference}
 \hypertarget{structNode}{}\label{structNode}\index{Node@{Node}}
+
+
+Estrucutra de un nodo.  
+
+
+
+
+{\ttfamily \#include $<$graph.\+h$>$}
+
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -10,9 +19,20 @@ struct \mbox{\hyperlink{structNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyp
 
 
 \doxysubsection{Detailed Description}
+Estrucutra de un nodo. 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00026}{26}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structNode}{Node}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_id;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structNode}{Node}}\ *next;}
+\DoxyCodeLine{\}\ \mbox{\hyperlink{structNode}{Node}};}
+
+\end{DoxyCode}
+ 
+
+Definition at line \mbox{\hyperlink{graph_8h_source_l00069}{69}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 
 
@@ -25,7 +45,7 @@ int Node\+::doc\+\_\+id}
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00028}{28}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00071}{71}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 \Hypertarget{structNode_af67b110ca1a258b793bf69d306929b22}\index{Node@{Node}!next@{next}}
 \index{next@{next}!Node@{Node}}
@@ -35,10 +55,10 @@ struct \mbox{\hyperlink{structNode}{Node}}\texorpdfstring{$\ast$}{*} Node\+::nex
 
 
 
-Definition at line \mbox{\hyperlink{graph_8h_source_l00029}{29}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
+Definition at line \mbox{\hyperlink{graph_8h_source_l00072}{72}} of file \mbox{\hyperlink{graph_8h_source}{graph.\+h}}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-incs/graph.\+h\end{DoxyCompactItemize}
+incs/\mbox{\hyperlink{graph_8h}{graph.\+h}}\end{DoxyCompactItemize}

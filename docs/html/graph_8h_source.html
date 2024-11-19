@@ -91,74 +91,89 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">graph.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef GRAPH_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define GRAPH_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">/* Librerías estándar */</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/* Macros generales */</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define CONVERGENCE_THRESHOLD 0.0001 </span><span class="comment">// Umbral de convergencia del PageRank.</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define MAX_CHARACTERS_DOC 50        </span><span class="comment">// Máximo de caracteres por página.</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define DAMPING_FACTOR 0.85          </span><span class="comment">// Factor de amortiguación del PageRank.</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define MAX_ITERATIONS 100           </span><span class="comment">// Máximo de iteraciones del algoritmo.</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define MAX_WORD_SIZE 50             </span><span class="comment">// Máximo de longitud de palabras.</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define MAX_NAME_DOC 20              </span><span class="comment">// Máximo de longitud de nombres de archivos.</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define MAX_DOCS 100                 </span><span class="comment">// Máximo de documentos soportados.</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define HASH_TABLE_SIZE 30           </span><span class="comment">// Tamaño de la tabla hash.</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/* Estructuras comunes */</span></div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structNode.html">   26</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structNode.html">Node</a></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> doc_id;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structNode.html">Node</a> *next;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <a class="code hl_struct" href="structNode.html">Node</a>;</div>
-</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structDocumentMapping.html">   32</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structDocumentMapping.html">DocumentMapping</a></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">char</span> name[MAX_NAME_DOC];</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">int</span> doc_id;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <a class="code hl_struct" href="structDocumentMapping.html">DocumentMapping</a>;</div>
-</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structGraph.html">   38</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structGraph.html">Graph</a></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_struct" href="structNode.html">Node</a> *output_adjacent_list[MAX_DOCS];</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="structNode.html">Node</a> *input_adjacent_list[MAX_DOCS];</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_struct" href="structDocumentMapping.html">DocumentMapping</a> mapping_docs[MAX_DOCS];</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">int</span> total_docs;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>} <a class="code hl_struct" href="structGraph.html">Graph</a>;</div>
-</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/* Funciones del grafo */</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">void</span> initialize_graph(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> add_edge(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> build_graph(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> release_graph(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">int</span> count_output_links(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">int</span> count_input_links(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">int</span> get_doc_id(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">char</span> *);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">bool</span> is_doc_name(<span class="keywordtype">char</span> *);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> show_graph(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> <a class="code hl_function" href="graphic_8c.html#a98b514a5f0c65a1a63359a2db242b456">generate_eps</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keyword">const</span> <span class="keywordtype">double</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *);</div>
+<a href="graph_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef GRAPH_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define GRAPH_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="graph_8h.html#ad23fe8fbadffc551314567f32e18af98">   49</a></span><span class="preprocessor">#define CONVERGENCE_THRESHOLD 0.0001</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define MAX_CHARACTERS_DOC 50</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#define DAMPING_FACTOR 0.85</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define MAX_ITERATIONS 100</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#define HASH_TABLE_SIZE 30</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#define MAX_WORD_SIZE 50</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#define MAX_NAME_DOC 20</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#define MAX_DOCS 100</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif </span><span class="comment">// GRAPH_H</span></div>
-<div class="ttc" id="agraphic_8c_html_a98b514a5f0c65a1a63359a2db242b456"><div class="ttname"><a href="graphic_8c.html#a98b514a5f0c65a1a63359a2db242b456">generate_eps</a></div><div class="ttdeci">void generate_eps(const Graph *graph, const double *pagerank, const char *filename)</div><div class="ttdoc">&lt; Incluye la definición de las estructuras y funciones del grafo.</div><div class="ttdef"><b>Definition</b> <a href="graphic_8c_source.html#l00017">graphic.c:17</a></div></div>
-<div class="ttc" id="astructDocumentMapping_html"><div class="ttname"><a href="structDocumentMapping.html">DocumentMapping</a></div><div class="ttdef"><b>Definition</b> <a href="#l00032">graph.h:33</a></div></div>
-<div class="ttc" id="astructGraph_html"><div class="ttname"><a href="structGraph.html">Graph</a></div><div class="ttdef"><b>Definition</b> <a href="#l00038">graph.h:39</a></div></div>
-<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdef"><b>Definition</b> <a href="#l00026">graph.h:27</a></div></div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structNode.html">   69</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structNode.html">Node</a></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">int</span> doc_id;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structNode.html">Node</a> *next;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <a class="code hl_struct" href="structNode.html">Node</a>;</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="};">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="structDocumentMapping.html">   86</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structDocumentMapping.html">DocumentMapping</a></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">char</span> name[MAX_NAME_DOC];</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">int</span> doc_id;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>} <a class="code hl_struct" href="structDocumentMapping.html">DocumentMapping</a>;</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="};">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structGraph.html">  105</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structGraph.html">Graph</a></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_struct" href="structNode.html">Node</a> *output_adjacent_list[MAX_DOCS];</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <a class="code hl_struct" href="structNode.html">Node</a> *input_adjacent_list[MAX_DOCS];</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_struct" href="structDocumentMapping.html">DocumentMapping</a> mapping_docs[MAX_DOCS];</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">int</span> total_docs;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <a class="code hl_struct" href="structGraph.html">Graph</a>;</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keywordtype">void</span> <a class="code hl_function" href="graph_8h.html#ab1d7a53f4e00b6cad4dce2d0050dc14e">initialize_graph</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keywordtype">void</span> <a class="code hl_function" href="graph_8h.html#a7d8cb87d3c09e16733cb47c1c791bb46">add_edge</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keywordtype">void</span> <a class="code hl_function" href="graph_8h.html#aa7e1771637a857559483085cf22dd478">build_graph</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> <a class="code hl_function" href="graph_8h.html#a12c53ca8f6c121c94a6e83c13e526408">release_graph</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keywordtype">int</span> <a class="code hl_function" href="graph_8h.html#a8b287cf136da2e10e91366286574beb6">count_output_links</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keywordtype">int</span> <a class="code hl_function" href="graph_8h.html#a93017fa935c1a1eac01d199f54dd1ccf">count_input_links</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keywordtype">int</span> <a class="code hl_function" href="graph_8h.html#a92d708eece13399bc475a68b14a49dc5">get_doc_id</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keywordtype">char</span> *);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keywordtype">bool</span> <a class="code hl_function" href="graph_8h.html#a41c4a3f28e8c890d03db9caaea0eb24e">is_doc_name</a>(<span class="keywordtype">char</span> *);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="keywordtype">void</span> <a class="code hl_function" href="graph_8h.html#a77643c6496358e55c3628adfd78798d6">show_graph</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keywordtype">void</span> <a class="code hl_function" href="graph_8h.html#a018cb10d442d783cce45b96c9d0883d1">generate_eps</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structGraph.html">Graph</a> *, <span class="keyword">const</span> <span class="keywordtype">double</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agraph_8h_html_a018cb10d442d783cce45b96c9d0883d1"><div class="ttname"><a href="graph_8h.html#a018cb10d442d783cce45b96c9d0883d1">generate_eps</a></div><div class="ttdeci">void generate_eps(const Graph *, const double *, const char *)</div><div class="ttdoc">Genera un archivo .eps con la representación gráfica del grafo.</div><div class="ttdef"><b>Definition</b> <a href="graphic_8c_source.html#l00017">graphic.c:17</a></div></div>
+<div class="ttc" id="agraph_8h_html_a12c53ca8f6c121c94a6e83c13e526408"><div class="ttname"><a href="graph_8h.html#a12c53ca8f6c121c94a6e83c13e526408">release_graph</a></div><div class="ttdeci">void release_graph(Graph *)</div><div class="ttdoc">Libera la memoria del grafo (nodos).</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00262">graph.c:262</a></div></div>
+<div class="ttc" id="agraph_8h_html_a41c4a3f28e8c890d03db9caaea0eb24e"><div class="ttname"><a href="graph_8h.html#a41c4a3f28e8c890d03db9caaea0eb24e">is_doc_name</a></div><div class="ttdeci">bool is_doc_name(char *)</div><div class="ttdoc">Verifica si el nombre del archivo sigue el patrón &quot;docN.txt&quot; con N &gt;= 1.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00450">graph.c:450</a></div></div>
+<div class="ttc" id="agraph_8h_html_a77643c6496358e55c3628adfd78798d6"><div class="ttname"><a href="graph_8h.html#a77643c6496358e55c3628adfd78798d6">show_graph</a></div><div class="ttdeci">void show_graph(Graph *)</div><div class="ttdoc">Muestra el grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00497">graph.c:497</a></div></div>
+<div class="ttc" id="agraph_8h_html_a7d8cb87d3c09e16733cb47c1c791bb46"><div class="ttname"><a href="graph_8h.html#a7d8cb87d3c09e16733cb47c1c791bb46">add_edge</a></div><div class="ttdeci">void add_edge(Graph *, int, int)</div><div class="ttdoc">Agrega un enlace dirigido entre dos documentos en el grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00042">graph.c:42</a></div></div>
+<div class="ttc" id="agraph_8h_html_a8b287cf136da2e10e91366286574beb6"><div class="ttname"><a href="graph_8h.html#a8b287cf136da2e10e91366286574beb6">count_output_links</a></div><div class="ttdeci">int count_output_links(Graph *, int)</div><div class="ttdoc">Cuenta el número de enlaces salientes de un documento.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00318">graph.c:318</a></div></div>
+<div class="ttc" id="agraph_8h_html_a92d708eece13399bc475a68b14a49dc5"><div class="ttname"><a href="graph_8h.html#a92d708eece13399bc475a68b14a49dc5">get_doc_id</a></div><div class="ttdeci">int get_doc_id(Graph *, char *)</div><div class="ttdoc">Obtiene el ID de un documento a partir de su nombre de archivo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00384">graph.c:384</a></div></div>
+<div class="ttc" id="agraph_8h_html_a93017fa935c1a1eac01d199f54dd1ccf"><div class="ttname"><a href="graph_8h.html#a93017fa935c1a1eac01d199f54dd1ccf">count_input_links</a></div><div class="ttdeci">int count_input_links(Graph *, int)</div><div class="ttdoc">Cuenta el número de enlaces entrantes a un documento.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00351">graph.c:351</a></div></div>
+<div class="ttc" id="agraph_8h_html_aa7e1771637a857559483085cf22dd478"><div class="ttname"><a href="graph_8h.html#aa7e1771637a857559483085cf22dd478">build_graph</a></div><div class="ttdeci">void build_graph(Graph *)</div><div class="ttdoc">Construye el grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00097">graph.c:97</a></div></div>
+<div class="ttc" id="agraph_8h_html_ab1d7a53f4e00b6cad4dce2d0050dc14e"><div class="ttname"><a href="graph_8h.html#ab1d7a53f4e00b6cad4dce2d0050dc14e">initialize_graph</a></div><div class="ttdeci">void initialize_graph(Graph *)</div><div class="ttdoc">Inicializa el grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00015">graph.c:15</a></div></div>
+<div class="ttc" id="astructDocumentMapping_html"><div class="ttname"><a href="structDocumentMapping.html">DocumentMapping</a></div><div class="ttdoc">Estrucutra de un mapeo de documentos.</div><div class="ttdef"><b>Definition</b> <a href="#l00086">graph.h:87</a></div></div>
+<div class="ttc" id="astructGraph_html"><div class="ttname"><a href="structGraph.html">Graph</a></div><div class="ttdoc">Estrucutra de un grafo.</div><div class="ttdef"><b>Definition</b> <a href="#l00105">graph.h:106</a></div></div>
+<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdoc">Estrucutra de un nodo.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">graph.h:70</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

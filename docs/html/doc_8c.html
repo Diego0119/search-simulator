@@ -96,7 +96,7 @@ $(function(){ initResizable(false); });
 
 <p>Archivo que contiene el manejo de archivos y rellenado de estos.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;graph.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="graph_8h_source.html">graph.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="doc_8h_source.html">doc.h</a>&quot;</code><br />
 </div>
 <p><a href="doc_8c_source.html">Go to the source code of this file.</a></p>
@@ -186,7 +186,7 @@ Functions</h2></td></tr>
 <div class="line">         fprintf(doc, <span class="stringliteral">&quot;\nlink: doc%d&quot;</span>, link_doc);</div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="doc_8c_source.html#l00086">86</a> of file <a class="el" href="doc_8c_source.html">doc.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doc_8c_source.html#l00097">97</a> of file <a class="el" href="doc_8c_source.html">doc.c</a>.</p>
 
 </div>
 </div>
@@ -221,27 +221,32 @@ Functions</h2></td></tr>
 </dl>
 <p>Verifica que el número de archivos a generar sea válido. Crea un array de enlaces para asegurar que cada documento tenga al menos un enlace. Llama a la función generate_random_text para generar el contenido de cada archivo. </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (num_docs &lt;= 0 || num_docs &gt;= 100)</div>
 <div class="line">{</div>
-<div class="line">   fprintf(stderr, <span class="stringliteral">&quot;El número de archivos web a generar debe ser MAYOR a 0 y MENOR a 100.\n\n&quot;</span>);</div>
-<div class="line">   exit(EXIT_FAILURE);</div>
+<div class="line">     fprintf(stderr, <span class="stringliteral">&quot;El número de archivos web a generar debe ser MAYOR a 0 y MENOR a 100.\n\n&quot;</span>);</div>
+<div class="line">     exit(EXIT_FAILURE);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordflow">if</span> (num_characters &lt;= 0 || num_characters &gt;= 50)</div>
+<div class="line">{</div>
+<div class="line">     fprintf(stderr, <span class="stringliteral">&quot;El número de caracteres por archivo debe ser MAYOR a 0 y MENOR a 50.\n\n&quot;</span>);</div>
+<div class="line">     exit(EXIT_FAILURE);</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span> *links = malloc(num_docs * <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
-<div class="line">   links[i] = (i + 1) % num_docs + 1;</div>
+<div class="line">     links[i] = (i + 1) % num_docs + 1;</div>
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= num_docs; i++)</div>
 <div class="line">{</div>
-<div class="line">   <span class="keywordtype">char</span> doc_name[MAX_NAME_DOC];</div>
-<div class="line">   snprintf(doc_name, <span class="keyword">sizeof</span>(doc_name), <span class="stringliteral">&quot;doc%d.txt&quot;</span>, i);</div>
-<div class="line">   FILE *doc = fopen(doc_name, <span class="stringliteral">&quot;w&quot;</span>);</div>
-<div class="line">   <span class="keywordflow">if</span> (doc == NULL)</div>
-<div class="line">   {</div>
-<div class="line">      fprintf(stderr, <span class="stringliteral">&quot;Error al abrir el archivo web.\n&quot;</span>);</div>
-<div class="line">      free(links);</div>
-<div class="line">      exit(EXIT_FAILURE);</div>
-<div class="line">   }</div>
-<div class="line">   <a class="code hl_function" href="#ac3ec88a42d8870792dddb2c8617c3c12">generate_random_text</a>(doc, doc_name, num_docs, num_characters, i, links);</div>
+<div class="line">     <span class="keywordtype">char</span> doc_name[MAX_NAME_DOC];</div>
+<div class="line">     snprintf(doc_name, <span class="keyword">sizeof</span>(doc_name), <span class="stringliteral">&quot;doc%d.txt&quot;</span>, i);</div>
+<div class="line">     FILE *doc = fopen(doc_name, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line">     <span class="keywordflow">if</span> (doc == NULL)</div>
+<div class="line">     {</div>
+<div class="line">         fprintf(stderr, <span class="stringliteral">&quot;Error al abrir el archivo web.\n&quot;</span>);</div>
+<div class="line">         free(links);</div>
+<div class="line">         exit(EXIT_FAILURE);</div>
+<div class="line">     }</div>
+<div class="line">     <a class="code hl_function" href="#ac3ec88a42d8870792dddb2c8617c3c12">generate_random_text</a>(doc, doc_name, num_docs, num_characters, i, links);</div>
 <div class="line">   fclose(doc);</div>
 <div class="line">}</div>
-<div class="ttc" id="adoc_8c_html_ac3ec88a42d8870792dddb2c8617c3c12"><div class="ttname"><a href="#ac3ec88a42d8870792dddb2c8617c3c12">generate_random_text</a></div><div class="ttdeci">void generate_random_text(FILE *doc, const char *doc_name, int num_docs, int num_characters, int current_doc, int *links)</div><div class="ttdoc">Generar texto aleatorio.</div><div class="ttdef"><b>Definition</b> <a href="doc_8c_source.html#l00086">doc.c:86</a></div></div>
+<div class="ttc" id="adoc_8c_html_ac3ec88a42d8870792dddb2c8617c3c12"><div class="ttname"><a href="#ac3ec88a42d8870792dddb2c8617c3c12">generate_random_text</a></div><div class="ttdeci">void generate_random_text(FILE *doc, const char *doc_name, int num_docs, int num_characters, int current_doc, int *links)</div><div class="ttdoc">Generar texto aleatorio.</div><div class="ttdef"><b>Definition</b> <a href="doc_8c_source.html#l00097">doc.c:97</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="doc_8c_source.html#l00018">18</a> of file <a class="el" href="doc_8c_source.html">doc.c</a>.</p>
 

@@ -119,6 +119,8 @@ Características</h1>
 Uso del Programa</h1>
 <p>Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las siguientes instrucciones en la línea de comandos: <br  />
 </p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Compilación del proyecto</h1>
 <ol type="1">
 <li><p class="startli"><b>Compilación del programa</b>: <br  />
  Ejecute el comando <code>make</code> en el directorio raíz del proyecto. Esto utilizará el <code>Makefile</code>.</p>
@@ -126,8 +128,29 @@ Uso del Programa</h1>
 </li>
 <li><b>Ejecución del programa</b> Ahora, una vez hecho el <code>make</code>, debe ejecutar <code>make run</code>, que tiene definido parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales nos permiten colocar la cantidad <code>-d</code> y una ayuda del programa <code>-h</code>.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md4"></a>
-3. Salida del programa</h1>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Generación de documentación con Doxygen</h1>
+<ol type="1">
+<li><p class="startli"><b>Generar la documentación</b></p>
+<p class="startli">Ejecute el comando <code>make dxygn</code> en el directorio raíz del proyecto para generar la documentación automática en formato HTML y LaTeX.</p>
+</li>
+<li><p class="startli"><b>Compilar en formato PDF</b></p>
+<p class="startli">Una vez generados los archivos con Doxygen, puede convertir la documentación en un archivo PDF utilizando LaTeX. Para hacerlo, ejecute <code>make ltx</code>.</p>
+</li>
+<li><p class="startli"><b>Ubicación del archivo PDF</b></p>
+<p class="startli">El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el <code>Makefile</code>.</p>
+</li>
+<li><p class="startli"><b>Visualización de la documentación HTML</b></p>
+<p class="startli">Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador.</p>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Opción de vista adicional</h1>
+<ol type="1">
+<li>Dentro del programa, hay una vista adicional que permite visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función <code>print_inverted_index(index);</code>. Idealmente, esta función puede añadirse antes o después de la función print_search_word.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Salida del programa</h1>
 <p>Al ejecutar <code>make run</code>, el programa generará una salida en consola que incluye:</p>
 <ul>
 <li>El <b>índice invertido</b> construido, mostrando en qué documentos se encuentra cada palabra.</li>

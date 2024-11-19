@@ -96,7 +96,7 @@ $(function(){ initResizable(false); });
 
 <p>Prototipos de funciones para la creación del PageRank.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;graph.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="graph_8h_source.html">graph.h</a>&quot;</code><br />
 </div>
 <p><a href="pagerank_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -115,7 +115,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Prototipos de funciones para la creación del PageRank. </p>
 <dl class="section date"><dt>Date</dt><dd>18-11-2024 </dd></dl>
-<dl class="section author"><dt>Authors</dt><dd>Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo </dd></dl>
+<dl class="section author"><dt>Authors</dt><dd>Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo </dd></dl>
 <p>Contiene los prototipos de las funciones dedicadas a la creación del PageRank. </p>
 
 <p class="definition">Definition in file <a class="el" href="pagerank_8h_source.html">pagerank.h</a>.</p>
@@ -157,7 +157,7 @@ Functions</h2></td></tr>
 <div class="line">         temp_rank[i] = (1 - DAMPING_FACTOR) / num_docs;</div>
 <div class="line">     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
 <div class="line">     {</div>
-<div class="line">         <span class="keywordtype">int</span> num_links = count_output_links(graph, i);</div>
+<div class="line">         <span class="keywordtype">int</span> num_links = <a class="code hl_function" href="graph_8c.html#a2b8fa4f52b842a9942d8916e73b4a073">count_output_links</a>(graph, i);</div>
 <div class="line">         <span class="keywordflow">if</span> (num_links == 0)</div>
 <div class="line">             <span class="keywordflow">continue</span>;</div>
 <div class="line">         <span class="keywordtype">double</span> rank_contribution = pagerank[i] * DAMPING_FACTOR / num_links;</div>
@@ -168,15 +168,17 @@ Functions</h2></td></tr>
 <div class="line">             current = current-&gt;next;</div>
 <div class="line">         }</div>
 <div class="line">     }</div>
-<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00026">graph.h:27</a></div></div>
+<div class="ttc" id="agraph_8c_html_a2b8fa4f52b842a9942d8916e73b4a073"><div class="ttname"><a href="graph_8c.html#a2b8fa4f52b842a9942d8916e73b4a073">count_output_links</a></div><div class="ttdeci">int count_output_links(Graph *graph, int doc_id)</div><div class="ttdoc">Contar el número de enlaces salientes de un documento.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00318">graph.c:318</a></div></div>
+<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdoc">Estrucutra de un nodo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00069">graph.h:70</a></div></div>
 </div><!-- fragment --><p>Calcula el error y actualiza los valores de PageRank. Si el error es menor al umbral de convergencia, se detiene el algoritmo. </p><div class="fragment"><div class="line"><span class="keywordtype">double</span> error = 0;</div>
 <div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
 <div class="line">{</div>
 <div class="line">     error += fabs(pagerank[i] - temp_rank[i]);</div>
 <div class="line">     pagerank[i] = temp_rank[i];</div>
 <div class="line">}</div>
-<div class="line"><span class="keywordflow">if</span> (error &lt; CONVERGENCE_THRESHOLD)</div>
+<div class="line"><span class="keywordflow">if</span> (error &lt; <a class="code hl_define" href="graph_8h.html#ad23fe8fbadffc551314567f32e18af98">CONVERGENCE_THRESHOLD</a>)</div>
 <div class="line">   <span class="keywordflow">break</span>;</div>
+<div class="ttc" id="agraph_8h_html_ad23fe8fbadffc551314567f32e18af98"><div class="ttname"><a href="graph_8h.html#ad23fe8fbadffc551314567f32e18af98">CONVERGENCE_THRESHOLD</a></div><div class="ttdeci">#define CONVERGENCE_THRESHOLD</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00049">graph.h:49</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="pagerank_8c_source.html#l00034">34</a> of file <a class="el" href="pagerank_8c_source.html">pagerank.c</a>.</p>
 
@@ -209,9 +211,28 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Muestra los valores de PageRank de cada documento. </p><div class="fragment"><div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nValores de PageRank:\n\n&quot;</span>);</div>
-<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; graph-&gt;total_docs; i++)</div>
-<div class="line">     fprintf(stdout, <span class="stringliteral">&quot;Documento (%s): PageRank = %.6f\n&quot;</span>, graph-&gt;mapping_docs[i].name, pagerank[i]);</div>
+<p>Muestra los valores de PageRank de cada documento. </p><div class="fragment"><div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nValores de PageRank ordenados por importancia:\n\n&quot;</span>);</div>
+<div class="line"><span class="keywordtype">int</span> num_docs = graph-&gt;total_docs;</div>
+<div class="line"><span class="keywordtype">int</span> indices[num_docs];</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
+<div class="line">    indices[i] = i;</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs - 1; i++)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = i + 1; j &lt; num_docs; j++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (pagerank[indices[i]] &lt; pagerank[indices[j]])</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordtype">int</span> temp = indices[i];</div>
+<div class="line">            indices[i] = indices[j];</div>
+<div class="line">            indices[j] = temp;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> doc_id = indices[i];</div>
+<div class="line">     fprintf(stdout, <span class="stringliteral">&quot;Documento (%s): PageRank = %.6f\n&quot;</span>, graph-&gt;mapping_docs[doc_id].name, pagerank[doc_id]);</div>
+<div class="line">}</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="pagerank_8c_source.html#l00126">126</a> of file <a class="el" href="pagerank_8c_source.html">pagerank.c</a>.</p>
 

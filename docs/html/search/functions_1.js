@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['display_5fpagerank_0',['display_pagerank',['../pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3',1,'display_pagerank(Graph *graph, double *pagerank):&#160;pagerank.c'],['../pagerank_8h.html#ac1a384ff1bb89d7d63bb5e38a39f9ed6',1,'display_pagerank(Graph *, double *):&#160;pagerank.c']]]
+  ['build_5fgraph_0',['build_graph',['../graph_8c.html#a53b7f6789a114e88519c98e6687aeabc',1,'build_graph(Graph *graph):&#160;graph.c'],['../graph_8h.html#aa7e1771637a857559483085cf22dd478',1,'build_graph(Graph *):&#160;graph.c']]],
+  ['build_5findex_1',['build_index',['../inverted__index_8c.html#a321feae1c468f2511ae1ac93b2709c52',1,'build_index(Graph *graph, InvertedIndex **index):&#160;inverted_index.c'],['../inverted__index_8h.html#ad333e42e5b9b681bfcec502e17f25129',1,'build_index(Graph *, InvertedIndex **):&#160;inverted_index.c']]]
 ];

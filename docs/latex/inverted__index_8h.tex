@@ -1,0 +1,744 @@
+\doxysection{incs/inverted\+\_\+index.h File Reference}
+\hypertarget{inverted__index_8h}{}\label{inverted__index_8h}\index{incs/inverted\_index.h@{incs/inverted\_index.h}}
+
+
+Prototipos de funciones para la creación y manejo del índice invertido.  
+
+
+{\ttfamily \#include "{}graph.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{inverted__index_8h_a85560ae1877d60fcb344891c9208c11d}\label{inverted__index_8h_a85560ae1877d60fcb344891c9208c11d} 
+typedef struct Inverted\+Index {\bfseries Inverted\+Index}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{inverted__index_8h_a0f707cef7cbf790e571ec9df13d309d5}{create\+\_\+new\+\_\+node}} (char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Crea un nuevo nodo en el índice invertido para una palabra específica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8h_a75a4e01a510719cc0e24c44d7c337f32}{add\+\_\+document}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, int, char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Agrega un documento al índice invertido, asociándolo con una palabra específica. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{inverted__index_8h_a8c718a8b8557e16f2e68a9c4a6dcfb23}{is\+\_\+stopword}} (char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Convierte todo el texto a minúsculas y reemplaza caracteres de puntuación por espacios. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8h_a3231bc20ff3c4ec1d42416d7b50d9617}{tokenize\+\_\+text}} (char \texorpdfstring{$\ast$}{*}, int, \mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Tokeniza el texto y agrega las palabras al índice invertido. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8h_a8b68e91fdb924af1316a3c01948d9ccf}{print\+\_\+inverted\+\_\+index}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Imprime el índice invertido mostrando cada palabra y los documentos asociados. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8h_a3e5c5ea1c346f40d0d7f524dc2c4a691}{print\+\_\+search\+\_\+word}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Imprime el índice invertido mostrando cada palabra asociada a los documentos. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{inverted__index_8h_ab48b945cb5964e6845dd97ac1829369a}{hash\+\_\+function}} (char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Función hash para obtener un índice basado en el valor ASCII de los caracteres de una palabra. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{inverted__index_8h_ad53ca64f832ecf79b349c8c27a86c34d}{search\+\_\+word}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Busca una palabra en el índice invertido. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8h_ad333e42e5b9b681bfcec502e17f25129}{build\+\_\+index}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Lee los archivos que se encuentran guardados en el grafo y crea el índice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8h_a0ae9d12f178ab612bf89a7efda2b4b30}{release\+\_\+inverted\+\_\+index}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Libera la memoria del índice invertido y los nodos de documentos asociados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipos de funciones para la creación y manejo del índice invertido. 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo 
+\end{DoxyAuthor}
+Contiene los prototipos de las funciones y estructura dedicadas a la creación y manejo del índice invertido. 
+
+Definition in file \mbox{\hyperlink{inverted__index_8h_source}{inverted\+\_\+index.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{inverted__index_8h_a75a4e01a510719cc0e24c44d7c337f32}\index{inverted\_index.h@{inverted\_index.h}!add\_document@{add\_document}}
+\index{add\_document@{add\_document}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{add\_document()}{add\_document()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a75a4e01a510719cc0e24c44d7c337f32} 
+void add\+\_\+document (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{hash\+\_\+table}{, }\item[{int}]{doc\+\_\+id}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{word}{}\end{DoxyParamCaption})}
+
+
+
+Agrega un documento al índice invertido, asociándolo con una palabra específica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash\+\_\+table} & Tabla hash. \\
+\hline
+{\em doc\+\_\+id} & ID del documento. \\
+\hline
+{\em word} & Palabra a agregar.\\
+\hline
+{\em hash\+\_\+table} & Tabla hash que contiene el índice invertido. \\
+\hline
+{\em doc\+\_\+id} & ID del documento donde aparece la palabra. \\
+\hline
+{\em word} & Palabra que se indexará. \\
+\hline
+\end{DoxyParams}
+Calcula el índice en la tabla hash para la palabra. Busca la palabra en la lista enlazada correspondiente al índice. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ \mbox{\hyperlink{inverted__index_8c_a897c98d07f8e56920aef2803e175cbd8}{hash\_function}}(word);}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[index];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(current-\/>word,\ word)\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ palabra\ ya\ está\ en\ el\ índice;\ agrega\ el\ documento.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *new\_doc\ =\ (\mbox{\hyperlink{structNode}{Node}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structNode}{Node}}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ new\_doc-\/>doc\_id\ =\ doc\_id;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ new\_doc-\/>next\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ current-\/>docs\_list\ =\ new\_doc;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Si la palabra no está en el índice, crea un nuevo nodo y la agrega al índice. También asigna memoria para un nodo que representa el documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *new\_node\ =\ \mbox{\hyperlink{inverted__index_8c_a054f8c4c40d35263099ce511744fef5a}{create\_new\_node}}(word);}
+\DoxyCodeLine{new\_node-\/>next\ =\ hash\_table[index];}
+\DoxyCodeLine{hash\_table[index]\ =\ new\_node;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *new\_doc\ =\ (\mbox{\hyperlink{structNode}{Node}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structNode}{Node}}));}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (new\_doc\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ nuevo\ documento\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{new\_doc-\/>doc\_id\ =\ doc\_id;}
+\DoxyCodeLine{new\_doc-\/>next\ =\ NULL;}
+\DoxyCodeLine{new\_node-\/>docs\_list\ =\ new\_doc;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00059}{59}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_ad333e42e5b9b681bfcec502e17f25129}\index{inverted\_index.h@{inverted\_index.h}!build\_index@{build\_index}}
+\index{build\_index@{build\_index}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{build\_index()}{build\_index()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_ad333e42e5b9b681bfcec502e17f25129} 
+void build\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Lee los archivos que se encuentran guardados en el grafo y crea el índice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+{\em index} & Índice invertido.\\
+\hline
+\end{DoxyParams}
+Lee los archivos que se encuentran guardados en el grafo y crea el índice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo que contiene los datos de los documentos. \\
+\hline
+{\em index} & Tabla hash que contiene el índice invertido. \\
+\hline
+\end{DoxyParams}
+Itera sobre los documentos identificados en el grafo. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ FILE\ *file\ =\ fopen(graph-\/>mapping\_docs[i].name,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ \%s\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Intenta abrir el archivo correspondiente al documento. Si el archivo no puede ser abierto, muestra un error y pasa al siguiente documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{FILE\ *file\ =\ fopen(graph-\/>mapping\_docs[i].name,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (file\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ \%s\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Define un buffer para leer cada línea del archivo. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ buffer[1024];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ file))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{inverted__index_8c_aa43037f50a965f75d13c1c79470a3c1f}{tokenize\_text}}(buffer,\ graph-\/>mapping\_docs[i].doc\_id,\ index);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Procesa cada línea del archivo y la pasa a la función tokenize\+\_\+text, que procesa el texto y lo agrega al índice invertido. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{inverted__index_8c_aa43037f50a965f75d13c1c79470a3c1f}{tokenize\_text}}(buffer,\ graph-\/>mapping\_docs[i].doc\_id,\ index);}
+
+\end{DoxyCode}
+
+
+Cierra el archivo una vez que ha terminado de procesarlo. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fclose(file);}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00509}{509}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_a0f707cef7cbf790e571ec9df13d309d5}\index{inverted\_index.h@{inverted\_index.h}!create\_new\_node@{create\_new\_node}}
+\index{create\_new\_node@{create\_new\_node}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{create\_new\_node()}{create\_new\_node()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a0f707cef7cbf790e571ec9df13d309d5} 
+\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*} create\+\_\+new\+\_\+node (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{word}{}\end{DoxyParamCaption})}
+
+
+
+Crea un nuevo nodo en el índice invertido para una palabra específica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & La palabra a agregar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new\+\_\+node
+\end{DoxyReturn}
+Crea un nuevo nodo en el índice invertido para una palabra específica.
+
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo.
+
+Crea un nuevo nodo en el índice invertido para una palabra específica. 
+\begin{DoxyParams}{Parameters}
+{\em word} & La palabra a agregar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un puntero al nuevo nodo creado. 
+\end{DoxyReturn}
+Asigna memoria para el nuevo nodo del índice invertido. Si la asignación falla, se imprime un mensaje de error y el programa termina. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *new\_node\ =\ (\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}));}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (new\_node\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Copia la palabra en el nodo y establece la lista de documentos y el puntero siguiente a NULL. Inicialmente, no hay documentos asociados con esta palabra, y el puntero al siguiente nodo también es NULL. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{strcpy(new\_node-\/>word,\ word);}
+\DoxyCodeLine{new\_node-\/>docs\_list\ =\ NULL;}
+\DoxyCodeLine{new\_node-\/>next\ =\ NULL;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00017}{17}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_ab48b945cb5964e6845dd97ac1829369a}\index{inverted\_index.h@{inverted\_index.h}!hash\_function@{hash\_function}}
+\index{hash\_function@{hash\_function}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{hash\_function()}{hash\_function()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_ab48b945cb5964e6845dd97ac1829369a} 
+unsigned int hash\+\_\+function (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{word}{}\end{DoxyParamCaption})}
+
+
+
+Función hash para obtener un índice basado en el valor ASCII de los caracteres de una palabra. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & Palabra a procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em word} & Palabra a procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor hash de la palabra. 
+\end{DoxyReturn}
+Inicializa el valor hash en cero. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hash\ =\ 0;}
+
+\end{DoxyCode}
+
+
+Recorre cada carácter en la palabra y actualiza el valor hash. El hash se calcula multiplicando el valor anterior por 31 y sumando el código ASCII de cada carácter. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ word[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'};\ i++)}
+\DoxyCodeLine{\ \ \ \ hash\ =\ (hash\ *\ 31)\ +\ word[i];}
+
+\end{DoxyCode}
+
+
+Limita el valor hash por el tamaño máximo de la tabla hash. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ hash\ \%\ HASH\_TABLE\_SIZE;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00330}{330}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_a8c718a8b8557e16f2e68a9c4a6dcfb23}\index{inverted\_index.h@{inverted\_index.h}!is\_stopword@{is\_stopword}}
+\index{is\_stopword@{is\_stopword}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{is\_stopword()}{is\_stopword()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a8c718a8b8557e16f2e68a9c4a6dcfb23} 
+bool is\+\_\+stopword (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{token}{}\end{DoxyParamCaption})}
+
+
+
+Convierte todo el texto a minúsculas y reemplaza caracteres de puntuación por espacios. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em token} & Token a procesar.\\
+\hline
+\end{DoxyParams}
+Convierte todo el texto a minúsculas y reemplaza caracteres de puntuación por espacios.
+
+
+\begin{DoxyParams}{Parameters}
+{\em token} & El token a analizar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} si el token es una stopword, {\ttfamily false} en caso contrario. 
+\end{DoxyReturn}
+Lista de palabras consideradas como stopwords. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *stopwords[]\ =\ \{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}e"{}},\ \textcolor{stringliteral}{"{}i"{}},\ \textcolor{stringliteral}{"{}o"{}},\ \textcolor{stringliteral}{"{}u"{}},\ \textcolor{stringliteral}{"{}link"{}}\};}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_stopwords\ =\ \textcolor{keyword}{sizeof}(stopwords)\ /\ \textcolor{keyword}{sizeof}(stopwords[0]);}
+
+\end{DoxyCode}
+
+
+Convierte el token a minúsculas para evitar problemas con mayúsculas/minúsculas. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ token[i];\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ token[i]\ =\ tolower((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})token[i]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Compara el token con las stopwords. Si el token es una stopword, devuelve {\ttfamily true}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_stopwords;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(token,\ stopwords[i])\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Verificación del patrón "{}doc\+N"{}, donde N es un número. Si el token comienza con "{}doc"{} seguido de un número, devuelve {\ttfamily true}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (strncmp(token,\ \textcolor{stringliteral}{"{}doc"{}},\ 3)\ ==\ 0\ \&\&\ isdigit(token[3]))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00137}{137}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_a8b68e91fdb924af1316a3c01948d9ccf}\index{inverted\_index.h@{inverted\_index.h}!print\_inverted\_index@{print\_inverted\_index}}
+\index{print\_inverted\_index@{print\_inverted\_index}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{print\_inverted\_index()}{print\_inverted\_index()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a8b68e91fdb924af1316a3c01948d9ccf} 
+void print\+\_\+inverted\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Imprime el índice invertido mostrando cada palabra y los documentos asociados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Índice invertido.\\
+\hline
+{\em index} & Tabla hash que contiene el índice invertido. \\
+\hline
+\end{DoxyParams}
+Recorre la tabla hash y muestra las palabras y sus documentos asociados. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (index[i]\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ index[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Palabra:\ \%s\ -\/\ Documentos:\ "{}},\ current-\/>word);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (doc\_node\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\%d\ "{}},\ doc\_node-\/>doc\_id);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doc\_node\ =\ doc\_node-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00275}{275}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_a3e5c5ea1c346f40d0d7f524dc2c4a691}\index{inverted\_index.h@{inverted\_index.h}!print\_search\_word@{print\_search\_word}}
+\index{print\_search\_word@{print\_search\_word}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{print\_search\_word()}{print\_search\_word()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a3e5c5ea1c346f40d0d7f524dc2c4a691} 
+void print\+\_\+search\+\_\+word (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{index}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{word\+\_\+to\+\_\+search}{}\end{DoxyParamCaption})}
+
+
+
+Imprime el índice invertido mostrando cada palabra asociada a los documentos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Índice invertido.\\
+\hline
+\end{DoxyParams}
+Imprime el índice invertido mostrando cada palabra asociada a los documentos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Tabla hash que contiene el índice invertido. \\
+\hline
+{\em word\+\_\+to\+\_\+search} & Palabra a buscar en el índice. \\
+\hline
+\end{DoxyParams}
+Llama a la función search\+\_\+word para obtener los documentos asociados a la palabra. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *results\ =\ \mbox{\hyperlink{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}{search\_word}}(index,\ word\_to\_search);}
+
+\end{DoxyCode}
+
+
+Si no se encuentran resultados, muestra un mensaje de error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!results)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Palabra\ '\%s'\ no\ encontrada.\(\backslash\)n"{}},\ word\_to\_search);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Muestra los documentos en los que se encuentra la palabra. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nLa\ palabra\ '\%s'\ se\ encuentra\ en\ los\ siguientes\ documentos:\(\backslash\)n\(\backslash\)n"{}},\ word\_to\_search);}
+
+\end{DoxyCode}
+
+
+Inicializa un contador para registrar cuántas veces aparece la palabra en cada documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ doc\_count[MAX\_DOCS]\ =\ \{0\};}
+
+\end{DoxyCode}
+
+
+Recorre la lista de documentos y cuenta cuántas veces aparece la palabra en cada documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ doc\_count[current-\/>doc\_id]++;}
+\DoxyCodeLine{\ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Muestra la cantidad de veces que aparece la palabra en cada documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_DOCS;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (doc\_count[i]\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Doc\%d:\ \%d\ veces\(\backslash\)n"{}},\ i,\ doc\_count[i]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00427}{427}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_a0ae9d12f178ab612bf89a7efda2b4b30}\index{inverted\_index.h@{inverted\_index.h}!release\_inverted\_index@{release\_inverted\_index}}
+\index{release\_inverted\_index@{release\_inverted\_index}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{release\_inverted\_index()}{release\_inverted\_index()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a0ae9d12f178ab612bf89a7efda2b4b30} 
+void release\+\_\+inverted\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{hash\+\_\+table}{}\end{DoxyParamCaption})}
+
+
+
+Libera la memoria del índice invertido y los nodos de documentos asociados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash\+\_\+table} & Tabla hash.\\
+\hline
+{\em hash\+\_\+table} & Tabla hash que contiene el índice invertido. \\
+\hline
+\end{DoxyParams}
+Verifica si la tabla hash es nula y retorna si es el caso. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (hash\_table\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return};}
+
+\end{DoxyCode}
+
+
+Recorre cada índice en la tabla hash. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[i];}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Procesa la lista de palabras asociada a cada índice en la tabla hash. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[i];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Libera la memoria de cada palabra y su lista de documentos. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (doc\_node\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *temp\_doc\_node\ =\ doc\_node;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ doc\_node\ =\ doc\_node-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ free(temp\_doc\_node);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *temp\ =\ current;}
+\DoxyCodeLine{\ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\ \ \ \ free(temp);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Libera cada nodo de documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *temp\_doc\_node\ =\ doc\_node;}
+\DoxyCodeLine{doc\_node\ =\ doc\_node-\/>next;}
+\DoxyCodeLine{free(temp\_doc\_node);}
+
+\end{DoxyCode}
+
+
+Libera el nodo de la palabra. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *temp\ =\ current;}
+\DoxyCodeLine{current\ =\ current-\/>next;}
+\DoxyCodeLine{free(temp);}
+
+\end{DoxyCode}
+
+
+Establece el índice en la tabla hash como NULL después de liberar su memoria. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{hash\_table[i]\ =\ NULL;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00583}{583}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_ad53ca64f832ecf79b349c8c27a86c34d}\index{inverted\_index.h@{inverted\_index.h}!search\_word@{search\_word}}
+\index{search\_word@{search\_word}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{search\_word()}{search\_word()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_ad53ca64f832ecf79b349c8c27a86c34d} 
+\mbox{\hyperlink{structNode}{Node}} \texorpdfstring{$\ast$}{*} search\+\_\+word (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{hash\+\_\+table}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{word}{}\end{DoxyParamCaption})}
+
+
+
+Busca una palabra en el índice invertido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Índice invertido. \\
+\hline
+{\em word\+\_\+to\+\_\+search} & Palabra a buscar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+results
+\end{DoxyReturn}
+Busca una palabra en el índice invertido.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash\+\_\+table} & Tabla hash que contiene el índice invertido. \\
+\hline
+{\em word} & Palabra que se busca en el índice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de nodos de documentos donde aparece la palabra, o {\ttfamily NULL} si no se encuentra. 
+\end{DoxyReturn}
+Convierte la palabra a minúsculas para una comparación uniforme. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ word[i];\ i++)}
+\DoxyCodeLine{\ \ \ \ word[i]\ =\ tolower(word[i]);}
+
+\end{DoxyCode}
+
+
+Obtiene el índice en la tabla hash utilizando la función hash. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ \mbox{\hyperlink{inverted__index_8c_a897c98d07f8e56920aef2803e175cbd8}{hash\_function}}(word);}
+
+\end{DoxyCode}
+
+
+Inicia la búsqueda en la lista de nodos de la tabla hash. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[index];}
+
+\end{DoxyCode}
+
+
+Recorre los nodos en busca de la palabra, comparando cada nodo con la palabra buscada. Si se encuentra, se retorna la lista de documentos asociados. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(current-\/>word,\ word)\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ current-\/>docs\_list;}
+\DoxyCodeLine{\ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Retorna NULL si la palabra no se encuentra en la tabla hash. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ NULL;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00366}{366}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+
+\Hypertarget{inverted__index_8h_a3231bc20ff3c4ec1d42416d7b50d9617}\index{inverted\_index.h@{inverted\_index.h}!tokenize\_text@{tokenize\_text}}
+\index{tokenize\_text@{tokenize\_text}!inverted\_index.h@{inverted\_index.h}}
+\doxysubsubsection{\texorpdfstring{tokenize\_text()}{tokenize\_text()}}
+{\footnotesize\ttfamily \label{inverted__index_8h_a3231bc20ff3c4ec1d42416d7b50d9617} 
+void tokenize\+\_\+text (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{int}]{doc\+\_\+id}{, }\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Tokeniza el texto y agrega las palabras al índice invertido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Texto a tokenizar. \\
+\hline
+{\em doc\+\_\+id} & ID del documento. \\
+\hline
+{\em index} & Índice invertido.\\
+\hline
+\end{DoxyParams}
+Tokeniza el texto y agrega las palabras al índice invertido.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Texto de entrada que será tokenizado. \\
+\hline
+{\em doc\+\_\+id} & ID del documento al que pertenece el texto. \\
+\hline
+{\em index} & Tabla hash que contiene el índice invertido. \\
+\hline
+\end{DoxyParams}
+Convierte todo el texto a minúsculas. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ text[i];\ i++)}
+\DoxyCodeLine{\ \ \ \ text[i]\ =\ tolower(text[i]);}
+
+\end{DoxyCode}
+
+
+Reemplaza caracteres de puntuación por espacios. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ text[i];\ i++)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (ispunct(text[i]))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ text[i]\ =\ \textcolor{charliteral}{'\ '};}
+
+\end{DoxyCode}
+
+
+Separa el texto en palabras utilizando el espacio como delimitador. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{token\ =\ strtok(text,\ \textcolor{stringliteral}{"{}\ "{}});}
+
+\end{DoxyCode}
+
+
+Procesa cada token. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (token\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strlen(token)\ >=\ MAX\_WORD\_SIZE)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}La\ palabra\ es\ muy\ larga\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{inverted__index_8c_a74a7253925df4ca184eeac9fbed8b6a3}{is\_stopword}}(token))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{inverted__index_8c_ac5eedac977ab2452507dbb9a7bb88df9}{add\_document}}(index,\ doc\_id,\ token);}
+\DoxyCodeLine{\ \ \ \ token\ =\ strtok(NULL,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00207}{207}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+

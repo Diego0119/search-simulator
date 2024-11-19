@@ -22,7 +22,7 @@ Prototipos de funciones para la creación de texto y archivos.
 18-\/11-\/2024 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Authors}
-Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo 
 \end{DoxyAuthor}
 Contiene los prototipos de las funciones dedicadas a la creación de texto (aleatorio) y archivos (webs). 
 
@@ -100,7 +100,7 @@ Asegura al menos un enlace único en cada archivo web.
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{doc_8c_source_l00086}{86}} of file \mbox{\hyperlink{doc_8c_source}{doc.\+c}}.
+Definition at line \mbox{\hyperlink{doc_8c_source_l00097}{97}} of file \mbox{\hyperlink{doc_8c_source}{doc.\+c}}.
 
 \Hypertarget{doc_8h_a1289e453a791633a62ae6ce12c679d75}\index{doc.h@{doc.h}!generate\_text\_files@{generate\_text\_files}}
 \index{generate\_text\_files@{generate\_text\_files}!doc.h@{doc.h}}
@@ -134,24 +134,29 @@ Verifica que el número de archivos a generar sea válido. Crea un array de enla
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordflow}{if}\ (num\_docs\ <=\ 0\ ||\ num\_docs\ >=\ 100)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ archivos\ web\ a\ generar\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 100.\(\backslash\)n\(\backslash\)n"{}});}
-\DoxyCodeLine{\ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ archivos\ web\ a\ generar\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 100.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (num\_characters\ <=\ 0\ ||\ num\_characters\ >=\ 50)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ número\ de\ caracteres\ por\ archivo\ debe\ ser\ MAYOR\ a\ 0\ y\ MENOR\ a\ 50.\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ *links\ =\ malloc(num\_docs\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
 \DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
-\DoxyCodeLine{\ \ \ links[i]\ =\ (i\ +\ 1)\ \%\ num\_docs\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ \ links[i]\ =\ (i\ +\ 1)\ \%\ num\_docs\ +\ 1;}
 \DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ num\_docs;\ i++)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{char}\ doc\_name[MAX\_NAME\_DOC];}
-\DoxyCodeLine{\ \ \ snprintf(doc\_name,\ \textcolor{keyword}{sizeof}(doc\_name),\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ i);}
-\DoxyCodeLine{\ \ \ FILE\ *doc\ =\ fopen(doc\_name,\ \textcolor{stringliteral}{"{}w"{}});}
-\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{if}\ (doc\ ==\ NULL)}
-\DoxyCodeLine{\ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ web.\(\backslash\)n"{}});}
-\DoxyCodeLine{\ \ \ \ \ \ free(links);}
-\DoxyCodeLine{\ \ \ \ \ \ exit(EXIT\_FAILURE);}
-\DoxyCodeLine{\ \ \ \}}
-\DoxyCodeLine{\ \ \ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(doc,\ doc\_name,\ num\_docs,\ num\_characters,\ i,\ links);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{char}\ doc\_name[MAX\_NAME\_DOC];}
+\DoxyCodeLine{\ \ \ \ \ snprintf(doc\_name,\ \textcolor{keyword}{sizeof}(doc\_name),\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ i);}
+\DoxyCodeLine{\ \ \ \ \ FILE\ *doc\ =\ fopen(doc\_name,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ web.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ free(links);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{doc_8c_ac3ec88a42d8870792dddb2c8617c3c12}{generate\_random\_text}}(doc,\ doc\_name,\ num\_docs,\ num\_characters,\ i,\ links);}
 \DoxyCodeLine{\ \ \ fclose(doc);}
 \DoxyCodeLine{\}}
 

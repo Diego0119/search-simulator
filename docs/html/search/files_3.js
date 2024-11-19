@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pagerank_2ec_0',['pagerank.c',['../pagerank_8c.html',1,'']]],
-  ['pagerank_2eh_1',['pagerank.h',['../pagerank_8h.html',1,'']]]
+  ['main_2ec_0',['main.c',['../src_2main_8c.html',1,'(Global Namespace)'],['../src2_2main_8c.html',1,'(Global Namespace)']]]
 ];

@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['de_20información_0',['Simulador de Sistema de Recuperación de Información',['../index.html',1,'']]],
-  ['de_20recuperación_20de_20información_1',['Simulador de Sistema de Recuperación de Información',['../index.html',1,'']]],
-  ['de_20sistema_20de_20recuperación_20de_20información_2',['Simulador de Sistema de Recuperación de Información',['../index.html',1,'']]],
-  ['del_20programa_3',['Uso del Programa',['../index.html#autotoc_md3',1,'']]],
-  ['del_20programa_4',['3. Salida del programa',['../index.html#autotoc_md4',1,'']]],
-  ['display_5fpagerank_5',['display_pagerank',['../pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3',1,'display_pagerank(Graph *graph, double *pagerank):&#160;pagerank.c'],['../pagerank_8h.html#ac1a384ff1bb89d7d63bb5e38a39f9ed6',1,'display_pagerank(Graph *, double *):&#160;pagerank.c']]],
-  ['doc_2ec_6',['doc.c',['../doc_8c.html',1,'']]],
-  ['doc_2eh_7',['doc.h',['../doc_8h.html',1,'']]],
-  ['documentmapping_8',['DocumentMapping',['../structDocumentMapping.html',1,'']]]
+  ['calculate_5fpagerank_0',['calculate_pagerank',['../pagerank_8c.html#a69638ecc6b203a7ac9d58df0632173f6',1,'calculate_pagerank(Graph *graph, double *pagerank):&#160;pagerank.c'],['../pagerank_8h.html#ad43347132b91f573d630c54a66230154',1,'calculate_pagerank(Graph *, double *):&#160;pagerank.c']]],
+  ['características_1',['Características',['../index.html#autotoc_md2',1,'']]],
+  ['compilación_20del_20proyecto_2',['Compilación del proyecto',['../index.html#autotoc_md4',1,'']]],
+  ['con_20doxygen_3',['Generación de documentación con Doxygen',['../index.html#autotoc_md5',1,'']]],
+  ['convergence_5fthreshold_4',['CONVERGENCE_THRESHOLD',['../graph_8h.html#ad23fe8fbadffc551314567f32e18af98',1,'graph.h']]],
+  ['count_5finput_5flinks_5',['count_input_links',['../graph_8c.html#a10fb6fbe97312be983ff7835cf64ac79',1,'count_input_links(Graph *graph, int doc_id):&#160;graph.c'],['../graph_8h.html#a93017fa935c1a1eac01d199f54dd1ccf',1,'count_input_links(Graph *, int):&#160;graph.c']]],
+  ['count_5foutput_5flinks_6',['count_output_links',['../graph_8c.html#a2b8fa4f52b842a9942d8916e73b4a073',1,'count_output_links(Graph *graph, int doc_id):&#160;graph.c'],['../graph_8h.html#a8b287cf136da2e10e91366286574beb6',1,'count_output_links(Graph *, int):&#160;graph.c']]],
+  ['create_5fnew_5fnode_7',['create_new_node',['../inverted__index_8c.html#a054f8c4c40d35263099ce511744fef5a',1,'create_new_node(char *word):&#160;inverted_index.c'],['../inverted__index_8h.html#a0f707cef7cbf790e571ec9df13d309d5',1,'create_new_node(char *):&#160;inverted_index.c']]]
 ];

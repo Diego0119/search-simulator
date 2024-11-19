@@ -92,7 +92,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <a href="pagerank_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;graph.h&quot;</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="graph_8h.html">graph.h</a>&quot;</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="pagerank_8c.html#a35ac521ad54b3a1c7ad419c660032e49">   16</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="pagerank_8c.html#a35ac521ad54b3a1c7ad419c660032e49">initialize_pagerank</a>(<span class="keywordtype">double</span> *pagerank, <span class="keywordtype">int</span> num_docs)</div>
@@ -116,7 +116,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">int</span> num_links = count_output_links(graph, i);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">int</span> num_links = <a class="code hl_function" href="graph_8c.html#a2b8fa4f52b842a9942d8916e73b4a073">count_output_links</a>(graph, i);</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">if</span> (num_links == 0)</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <span class="keywordflow">continue</span>;</div>
@@ -139,7 +139,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            pagerank[i] = temp_rank[i];</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (error &lt; CONVERGENCE_THRESHOLD)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (error &lt; <a class="code hl_define" href="graph_8h.html#ad23fe8fbadffc551314567f32e18af98">CONVERGENCE_THRESHOLD</a>)</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
@@ -148,16 +148,42 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3">  126</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3">display_pagerank</a>(<a class="code hl_struct" href="structGraph.html">Graph</a> *graph, <span class="keywordtype">double</span> *pagerank)</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    fprintf(stdout, <span class="stringliteral">&quot;\nValores de PageRank:\n\n&quot;</span>);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; graph-&gt;total_docs; i++)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        fprintf(stdout, <span class="stringliteral">&quot;Documento (%s): PageRank = %.6f\n&quot;</span>, graph-&gt;mapping_docs[i].name, pagerank[i]);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    fprintf(stdout, <span class="stringliteral">&quot;\nValores de PageRank ordenados por importancia:\n\n&quot;</span>);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">int</span> num_docs = graph-&gt;total_docs;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">int</span> indices[num_docs];</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        indices[i] = i;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs - 1; i++)</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = i + 1; j &lt; num_docs; j++)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordflow">if</span> (pagerank[indices[i]] &lt; pagerank[indices[j]])</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                <span class="keywordtype">int</span> temp = indices[i];</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                indices[i] = indices[j];</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                indices[j] = temp;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        }</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    }</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    {</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordtype">int</span> doc_id = indices[i];</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        fprintf(stdout, <span class="stringliteral">&quot;Documento (%s): PageRank = %.6f\n&quot;</span>, graph-&gt;mapping_docs[doc_id].name, pagerank[doc_id]);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    }</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>}</div>
 </div>
+<div class="ttc" id="agraph_8c_html_a2b8fa4f52b842a9942d8916e73b4a073"><div class="ttname"><a href="graph_8c.html#a2b8fa4f52b842a9942d8916e73b4a073">count_output_links</a></div><div class="ttdeci">int count_output_links(Graph *graph, int doc_id)</div><div class="ttdoc">Contar el número de enlaces salientes de un documento.</div><div class="ttdef"><b>Definition</b> <a href="graph_8c_source.html#l00318">graph.c:318</a></div></div>
+<div class="ttc" id="agraph_8h_html"><div class="ttname"><a href="graph_8h.html">graph.h</a></div><div class="ttdoc">Prototipos de funciones para la creación de los grafos.</div></div>
+<div class="ttc" id="agraph_8h_html_ad23fe8fbadffc551314567f32e18af98"><div class="ttname"><a href="graph_8h.html#ad23fe8fbadffc551314567f32e18af98">CONVERGENCE_THRESHOLD</a></div><div class="ttdeci">#define CONVERGENCE_THRESHOLD</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00049">graph.h:49</a></div></div>
 <div class="ttc" id="apagerank_8c_html_a35ac521ad54b3a1c7ad419c660032e49"><div class="ttname"><a href="pagerank_8c.html#a35ac521ad54b3a1c7ad419c660032e49">initialize_pagerank</a></div><div class="ttdeci">void initialize_pagerank(double *pagerank, int num_docs)</div><div class="ttdoc">&lt; Incluye la definición de las estructuras y funciones del grafo.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">pagerank.c:16</a></div></div>
 <div class="ttc" id="apagerank_8c_html_a69638ecc6b203a7ac9d58df0632173f6"><div class="ttname"><a href="pagerank_8c.html#a69638ecc6b203a7ac9d58df0632173f6">calculate_pagerank</a></div><div class="ttdeci">void calculate_pagerank(Graph *graph, double *pagerank)</div><div class="ttdoc">Calcular PageRank.</div><div class="ttdef"><b>Definition</b> <a href="#l00034">pagerank.c:34</a></div></div>
 <div class="ttc" id="apagerank_8c_html_af774e2c127d30c57b1033c2874f056c3"><div class="ttname"><a href="pagerank_8c.html#af774e2c127d30c57b1033c2874f056c3">display_pagerank</a></div><div class="ttdeci">void display_pagerank(Graph *graph, double *pagerank)</div><div class="ttdoc">Mostrar PageRank.</div><div class="ttdef"><b>Definition</b> <a href="#l00126">pagerank.c:126</a></div></div>
-<div class="ttc" id="astructGraph_html"><div class="ttname"><a href="structGraph.html">Graph</a></div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00038">graph.h:39</a></div></div>
-<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00026">graph.h:27</a></div></div>
+<div class="ttc" id="astructGraph_html"><div class="ttname"><a href="structGraph.html">Graph</a></div><div class="ttdoc">Estrucutra de un grafo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00105">graph.h:106</a></div></div>
+<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdoc">Estrucutra de un nodo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00069">graph.h:70</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

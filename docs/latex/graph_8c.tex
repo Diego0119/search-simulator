@@ -1,0 +1,506 @@
+\doxysection{src/graph.c File Reference}
+\hypertarget{graph_8c}{}\label{graph_8c}\index{src/graph.c@{src/graph.c}}
+
+
+Archivo que contiene las funciones de los Grafos.  
+
+
+{\ttfamily \#include "{}graph.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{graph_8c_af903c20886fcaa47f1786bcf5d860cb0}{initialize\+\_\+graph}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph)
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_8c_a930088e19878c57d3b580446c8a9d3f9}{add\+\_\+edge}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, int source, int destination)
+\begin{DoxyCompactList}\small\item\em Agregar un enlace dirigido entre dos documentos en el grafo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_8c_a53b7f6789a114e88519c98e6687aeabc}{build\+\_\+graph}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph)
+\begin{DoxyCompactList}\small\item\em Construir el Grafo a partir de documentos que contienen enlaces a otros documentos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_8c_a0f5bbb69da2458a772501baba26b3e36}{release\+\_\+graph}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph)
+\begin{DoxyCompactList}\small\item\em Libera la memoria del grafo (nodos). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graph_8c_a2b8fa4f52b842a9942d8916e73b4a073}{count\+\_\+output\+\_\+links}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, int doc\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Contar el número de enlaces salientes de un documento. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graph_8c_a10fb6fbe97312be983ff7835cf64ac79}{count\+\_\+input\+\_\+links}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, int doc\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Contar el número de enlaces entrantes a un documento. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graph_8c_a4984bf040138024a0dda616d8150f3e0}{get\+\_\+doc\+\_\+id}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, char \texorpdfstring{$\ast$}{*}file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Obtiene el ID de un documento a partir de su nombre de archivo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{graph_8c_a6ee8f373dc2770b62e11b7a2aff49e73}{is\+\_\+doc\+\_\+name}} (char \texorpdfstring{$\ast$}{*}file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Verifica si el nombre del archivo sigue el patrón "{}doc\+N.\+txt"{} con N \texorpdfstring{$>$}{>}= 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_8c_a7093bc4eb900ace4fad6a81b9f8c71db}{show\+\_\+graph}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph)
+\begin{DoxyCompactList}\small\item\em Muestra el grafo de enlaces, imprimiendo los documentos y sus enlaces salientes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Archivo que contiene las funciones de los Grafos. 
+
+\begin{DoxyDate}{Date}
+18-\/11-\/2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo 
+\end{DoxyAuthor}
+Contiene la implementación de las funciones que tiene que ver con los grafos. 
+
+Definition in file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graph_8c_a930088e19878c57d3b580446c8a9d3f9}\index{graph.c@{graph.c}!add\_edge@{add\_edge}}
+\index{add\_edge@{add\_edge}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{add\_edge()}{add\_edge()}}
+{\footnotesize\ttfamily \label{graph_8c_a930088e19878c57d3b580446c8a9d3f9} 
+void add\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{int}]{source}{, }\item[{int}]{destination}{}\end{DoxyParamCaption})}
+
+
+
+Agregar un enlace dirigido entre dos documentos en el grafo. 
+
+Agrega un enlace dirigido entre dos documentos en el grafo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+{\em source} & Documento de origen. \\
+\hline
+{\em destination} & Documento de destino. \\
+\hline
+\end{DoxyParams}
+Crea nodo en la lista de enlaces salientes del documento origen al destino. Si no se puede asignar memoria, se muestra un mensaje de error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *newOutputNode\ =\ (\mbox{\hyperlink{structNode}{Node}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structNode}{Node}}));}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (newOutputNode\ ==\ NULL)\ \textcolor{comment}{//\ Verifica\ la\ asignación\ de\ memoria.}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ enlace\ saliente\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{newOutputNode-\/>doc\_id\ =\ destination;}
+\DoxyCodeLine{newOutputNode-\/>next\ =\ graph-\/>output\_adjacent\_list[source];}
+\DoxyCodeLine{graph-\/>output\_adjacent\_list[source]\ =\ newOutputNode;}
+
+\end{DoxyCode}
+
+
+Crea nodo en la lista de enlaces entrantes del documento destino al origen. Si no se puede asignar memoria, se muestra un mensaje de error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *newInputNode\ =\ (\mbox{\hyperlink{structNode}{Node}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structNode}{Node}}));}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (newInputNode\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ enlace\ entrante\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{newInputNode-\/>doc\_id\ =\ source;}
+\DoxyCodeLine{newInputNode-\/>next\ =\ graph-\/>input\_adjacent\_list[destination];}
+\DoxyCodeLine{graph-\/>input\_adjacent\_list[destination]\ =\ newInputNode;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00042}{42}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a53b7f6789a114e88519c98e6687aeabc}\index{graph.c@{graph.c}!build\_graph@{build\_graph}}
+\index{build\_graph@{build\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{build\_graph()}{build\_graph()}}
+{\footnotesize\ttfamily \label{graph_8c_a53b7f6789a114e88519c98e6687aeabc} 
+void build\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{}\end{DoxyParamCaption})}
+
+
+
+Construir el Grafo a partir de documentos que contienen enlaces a otros documentos. 
+
+Construye el grafo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+\end{DoxyParams}
+Abre el directorio actual y verifica si se pudo abrir. Si no se pudo abrir, muestra un mensaje de error y termina el programa. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{DIR\ *dir;}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }dirent\ *ent;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ ((dir\ =\ opendir(\textcolor{stringliteral}{"{}."{}}))\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ directorio"{}});}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Itera sobre los archivos en el directorio. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ ((ent\ =\ readdir(dir))\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ *Contenido*}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{closedir(dir);}
+
+\end{DoxyCode}
+
+
+Obtiene el nombre del archivo. Verifica si el archivo es un documento válido. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ *file\_name\ =\ ent-\/>d\_name;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{graph_8c_a6ee8f373dc2770b62e11b7a2aff49e73}{is\_doc\_name}}(file\_name))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ *Contenido*}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Obtiene el ID del documento. Abre el archivo para leer enlaces. Si no se pudo abrir, muestra un mensaje de error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ doc\_id\ =\ \mbox{\hyperlink{graph_8c_a4984bf040138024a0dda616d8150f3e0}{get\_doc\_id}}(graph,\ file\_name);}
+\DoxyCodeLine{FILE\ *file\ =\ fopen(file\_name,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (file\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ \%s\(\backslash\)n"{}},\ file\_name);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ line[256];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (fgets(line,\ \textcolor{keyword}{sizeof}(line),\ file))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ *Contenido*}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{fclose(file);}
+
+\end{DoxyCode}
+
+
+Busca enlaces en la línea. Extrae el número del documento enlazado. Verifica si el número de documento es válido. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ *ptr\ =\ line;}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ ((ptr\ =\ strstr(ptr,\ \textcolor{stringliteral}{"{}link:\ doc"{}}))\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ ptr\ +=\ 9;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_number;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (sscanf(ptr,\ \textcolor{stringliteral}{"{}\%d"{}},\ \&doc\_number)\ !=\ 1)}
+\DoxyCodeLine{\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Formato\ de\ enlace\ inválido\ en\ \%s\(\backslash\)n"{}},\ file\_name);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\_number\ <=\ 0\ ||\ doc\_number\ >\ MAX\_DOCS)}
+\DoxyCodeLine{\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Número\ de\ documento\ inválido\ en\ enlace:\ \%d\(\backslash\)n"{}},\ doc\_number);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ptr++;}
+
+\end{DoxyCode}
+
+
+Construye el nombre del documento destino. Verifica si el destino existe. Obtiene el ID del documento destino. Agrega el enlace entre documentos. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ destination\_name[MAX\_NAME\_DOC];}
+\DoxyCodeLine{snprintf(destination\_name,\ \textcolor{keyword}{sizeof}(destination\_name),\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ doc\_number);}
+\DoxyCodeLine{FILE\ *destination\_file\ =\ fopen(destination\_name,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (destination\_file\ ==\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}El\ documento\ \%s\ enlazado\ desde\ \%s\ no\ existe\(\backslash\)n"{}},\ destination\_name,\ file\_name);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{fclose(destination\_file);}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ destination\_id\ =\ \mbox{\hyperlink{graph_8c_a4984bf040138024a0dda616d8150f3e0}{get\_doc\_id}}(graph,\ destination\_name);}
+\DoxyCodeLine{\mbox{\hyperlink{graph_8c_a930088e19878c57d3b580446c8a9d3f9}{add\_edge}}(graph,\ doc\_id,\ destination\_id);}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00097}{97}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a10fb6fbe97312be983ff7835cf64ac79}\index{graph.c@{graph.c}!count\_input\_links@{count\_input\_links}}
+\index{count\_input\_links@{count\_input\_links}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{count\_input\_links()}{count\_input\_links()}}
+{\footnotesize\ttfamily \label{graph_8c_a10fb6fbe97312be983ff7835cf64ac79} 
+int count\+\_\+input\+\_\+links (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{int}]{doc\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Contar el número de enlaces entrantes a un documento. 
+
+Cuenta el número de enlaces entrantes a un documento.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+{\em doc\+\_\+id} & ID del documento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Recorre la lista y cuenta los enlaces entrantes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *current\ =\ graph-\/>input\_adjacent\_list[doc\_id];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ count++;}
+\DoxyCodeLine{\ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ count;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00351}{351}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a2b8fa4f52b842a9942d8916e73b4a073}\index{graph.c@{graph.c}!count\_output\_links@{count\_output\_links}}
+\index{count\_output\_links@{count\_output\_links}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{count\_output\_links()}{count\_output\_links()}}
+{\footnotesize\ttfamily \label{graph_8c_a2b8fa4f52b842a9942d8916e73b4a073} 
+int count\+\_\+output\+\_\+links (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{int}]{doc\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Contar el número de enlaces salientes de un documento. 
+
+Cuenta el número de enlaces salientes de un documento.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+{\em doc\+\_\+id} & ID del documento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Recorre la lista y cuenta los enlaces salientes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *current\ =\ graph-\/>output\_adjacent\_list[doc\_id];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ count++;}
+\DoxyCodeLine{\ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ count;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00318}{318}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a4984bf040138024a0dda616d8150f3e0}\index{graph.c@{graph.c}!get\_doc\_id@{get\_doc\_id}}
+\index{get\_doc\_id@{get\_doc\_id}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{get\_doc\_id()}{get\_doc\_id()}}
+{\footnotesize\ttfamily \label{graph_8c_a4984bf040138024a0dda616d8150f3e0} 
+int get\+\_\+doc\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Obtiene el ID de un documento a partir de su nombre de archivo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+{\em file\+\_\+name} & Nombre del archivo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Busca el ID en el mapeo de documentos existentes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(graph-\/>mapping\_docs[i].name,\ file\_name)\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ graph-\/>mapping\_docs[i].doc\_id;}
+
+\end{DoxyCode}
+ Verifica si se ha alcanzado el límite de documentos permitidos. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (graph-\/>total\_docs\ >=\ MAX\_DOCS)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Se\ ha\ alcanzado\ el\ número\ máximo\ de\ documentos\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Extrae el número del documento del nombre del archivo. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ num\_doc;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (sscanf(file\_name,\ \textcolor{stringliteral}{"{}doc\%d.txt"{}},\ \&num\_doc)\ !=\ 1)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Nombre\ de\ archivo\ inválido:\ \%s\(\backslash\)n"{}},\ file\_name);}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ Guarda el mapeo del nuevo documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{strcpy(graph-\/>mapping\_docs[graph-\/>total\_docs].name,\ file\_name);}
+\DoxyCodeLine{graph-\/>mapping\_docs[graph-\/>total\_docs].doc\_id\ =\ num\_doc;}
+\DoxyCodeLine{graph-\/>total\_docs++;}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ num\_doc;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00384}{384}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_af903c20886fcaa47f1786bcf5d860cb0}\index{graph.c@{graph.c}!initialize\_graph@{initialize\_graph}}
+\index{initialize\_graph@{initialize\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_graph()}{initialize\_graph()}}
+{\footnotesize\ttfamily \label{graph_8c_af903c20886fcaa47f1786bcf5d860cb0} 
+void initialize\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{}\end{DoxyParamCaption})}
+
+
+
+\texorpdfstring{$<$}{<} Incluye la definición de las estructuras y funciones del grafo. 
+
+Inicializa el grafo.
+
+Inicializar el Grafo. 
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+\end{DoxyParams}
+Inicializa las listas de enlaces de cada documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_DOCS;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ graph-\/>output\_adjacent\_list[i]\ =\ NULL;}
+\DoxyCodeLine{\ \ \ \ \ graph-\/>input\_adjacent\_list[i]\ =\ NULL;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{graph-\/>total\_docs\ =\ 0;\ \textcolor{comment}{//\ Inicializa\ el\ contador\ de\ documentos.}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00015}{15}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a6ee8f373dc2770b62e11b7a2aff49e73}\index{graph.c@{graph.c}!is\_doc\_name@{is\_doc\_name}}
+\index{is\_doc\_name@{is\_doc\_name}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{is\_doc\_name()}{is\_doc\_name()}}
+{\footnotesize\ttfamily \label{graph_8c_a6ee8f373dc2770b62e11b7a2aff49e73} 
+bool is\+\_\+doc\+\_\+name (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{file\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Verifica si el nombre del archivo sigue el patrón "{}doc\+N.\+txt"{} con N \texorpdfstring{$>$}{>}= 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Nombre del archivo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+Verifica si el nombre del archivo sigue el patrón "{}doc\+N.\+txt"{} con N \texorpdfstring{$>$}{>}= 1. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ len\ =\ strlen(file\_name);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (len\ <\ 8)}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (strncmp(file\_name,\ \textcolor{stringliteral}{"{}doc"{}},\ 3)\ !=\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (strcmp(file\_name\ +\ len\ -\/\ 4,\ \textcolor{stringliteral}{"{}.txt"{}})\ !=\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 3;\ i\ <\ len\ -\/\ 4;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (!isdigit(file\_name[i]))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (file\_name[i]\ ==\ \textcolor{charliteral}{'0'}\ \&\&\ i\ ==\ 3)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00450}{450}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a0f5bbb69da2458a772501baba26b3e36}\index{graph.c@{graph.c}!release\_graph@{release\_graph}}
+\index{release\_graph@{release\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{release\_graph()}{release\_graph()}}
+{\footnotesize\ttfamily \label{graph_8c_a0f5bbb69da2458a772501baba26b3e36} 
+void release\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{}\end{DoxyParamCaption})}
+
+
+
+Libera la memoria del grafo (nodos). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+\end{DoxyParams}
+Libera nodos en la lista de enlaces salientes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *current\_output\ =\ graph-\/>output\_adjacent\_list[i];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\_output\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *temp\ =\ current\_output;}
+\DoxyCodeLine{\ \ \ \ \ current\_output\ =\ current\_output-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ free(temp);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{graph-\/>output\_adjacent\_list[i]\ =\ NULL;}
+
+\end{DoxyCode}
+
+
+Libera nodos en la lista de enlaces entrantes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *current\_input\ =\ graph-\/>input\_adjacent\_list[i];}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\_input\ !=\ NULL)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *temp\ =\ current\_input;}
+\DoxyCodeLine{\ \ \ \ \ current\_input\ =\ current\_input-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ free(temp);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{graph-\/>input\_adjacent\_list[i]\ =\ NULL;}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00262}{262}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+
+\Hypertarget{graph_8c_a7093bc4eb900ace4fad6a81b9f8c71db}\index{graph.c@{graph.c}!show\_graph@{show\_graph}}
+\index{show\_graph@{show\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{show\_graph()}{show\_graph()}}
+{\footnotesize\ttfamily \label{graph_8c_a7093bc4eb900ace4fad6a81b9f8c71db} 
+void show\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{}\end{DoxyParamCaption})}
+
+
+
+Muestra el grafo de enlaces, imprimiendo los documentos y sus enlaces salientes. 
+
+Muestra el grafo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Grafo. \\
+\hline
+\end{DoxyParams}
+Muestra los enlaces de cada documento. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nGrafo\ de\ enlaces:\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_DOCS;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (graph-\/>output\_adjacent\_list[i]\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Documento\ \%d\ enlaza\ a:\ "{}},\ i);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *current\ =\ graph-\/>output\_adjacent\_list[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\%d\ "{}},\ current-\/>doc\_id);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{graph_8c_source_l00497}{497}} of file \mbox{\hyperlink{graph_8c_source}{graph.\+c}}.
+

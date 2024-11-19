@@ -90,6 +90,11 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">InvertedIndex Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>&lt; Incluye la definición de las estructuras y funciones del grafo.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -101,8 +106,17 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a97a7cdfc2e4a1477c7015e174c354f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00007">7</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
+<div class="textblock"><p>&lt; Incluye la definición de las estructuras y funciones del grafo. </p>
+<p>Estructura de un nodo en el índice invertido. </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structInvertedIndex.html">InvertedIndex</a></div>
+<div class="line">{</div>
+<div class="line">     <span class="keywordtype">char</span> word[MAX_WORD_SIZE];</div>
+<div class="line">     <a class="code hl_struct" href="structNode.html">Node</a> *docs_list;</div>
+<div class="line">     <span class="keyword">struct </span><a class="code hl_struct" href="structInvertedIndex.html">InvertedIndex</a> *next;</div>
+<div class="line">} <a class="code hl_struct" href="structInvertedIndex.html">InvertedIndex</a>;</div>
+<div class="ttc" id="astructInvertedIndex_html"><div class="ttname"><a href="structInvertedIndex.html">InvertedIndex</a></div><div class="ttdoc">&lt; Incluye la definición de las estructuras y funciones del grafo.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8h_source.html#l00026">inverted_index.h:27</a></div></div>
+<div class="ttc" id="astructNode_html"><div class="ttname"><a href="structNode.html">Node</a></div><div class="ttdoc">Estrucutra de un nodo.</div><div class="ttdef"><b>Definition</b> <a href="graph_8h_source.html#l00069">graph.h:70</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00026">26</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ac5877e8bb03c0f196bbd4abba688507c" name="ac5877e8bb03c0f196bbd4abba688507c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5877e8bb03c0f196bbd4abba688507c">&#9670;&#160;</a></span>docs_list</h2>
@@ -116,7 +130,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00010">10</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00029">29</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
 
 </div>
 </div>
@@ -132,7 +146,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00011">11</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00030">30</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
 
 </div>
 </div>
@@ -148,7 +162,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00009">9</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverted__index_8h_source.html#l00028">28</a> of file <a class="el" href="inverted__index_8h_source.html">inverted_index.h</a>.</p>
 
 </div>
 </div>
