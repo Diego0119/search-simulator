@@ -67,22 +67,6 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
 1. Dentro del programa, hay una vista adicional que permite   visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función `print_inverted_index(index);`. Idealmente, esta función puede añadirse antes o después de la función print_search_word.
 
-1. **Generar la documentación**
-
-    Ejecute el comando `make dxygn` en el directorio raíz del proyecto para generar la documentación automática en formato HTML y LaTeX.
-
-2. **Compilar en formato PDF**
-
-    Una vez generados los archivos con Doxygen, puede convertir la documentación en un archivo PDF utilizando LaTeX. Para hacerlo, ejecute  `make ltx`.
-
-3.  **Ubicación del archivo PDF**
-
-    El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el `Makefile`.
-
-4. **Visualización de la documentación HTML**
-
-    Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador.
-
 ## Salida del programa 📤
 
 Al ejecutar `make run`, el programa generará una salida en consola que incluye:
