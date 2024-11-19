@@ -65,6 +65,8 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
 ## Opción de vista adicional 👁️
 
+1. Dentro del programa, hay una vista adicional que permite   visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función `print_inverted_index(index);`. Idealmente, esta función puede añadirse antes o después de la función print_search_word.
+
 1. **Generar la documentación**
 
     Ejecute el comando `make dxygn` en el directorio raíz del proyecto para generar la documentación automática en formato HTML y LaTeX.
