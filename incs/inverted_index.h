@@ -66,10 +66,13 @@ void tokenize_text(char *, int, InvertedIndex **);
 void print_inverted_index(InvertedIndex **);
 
 /**
- * @brief Imprime el índice invertido mostrando cada palabra asociada a los documentos.
- * @param index Índice invertido.
+ * @brief Imprime los documentos y la frecuencia de aparición de una palabra junto con el PageRank.
+ * @param index Tabla hash que contiene el índice invertido.
+ * @param word_to_search Palabra a buscar en el índice.
+ * @param graph Grafo que contiene los documentos.
+ * @param pagerank Arreglo de valores de PageRank.
  */
-void print_search_word(InvertedIndex **, char *);
+void print_search_word_with_pagerank(InvertedIndex **, char *, Graph *, double *);
 
 /**
  * @brief Función hash para obtener un índice basado en el valor ASCII de los caracteres de una palabra.

@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
     display_pagerank(&graph, pagerank);
     show_graph(&graph);
     build_index(&graph, index);
-    print_search_word(index, word_to_search);
+    print_search_word_with_pagerank(index, word_to_search, &graph, pagerank);
 
     free(word_to_search);
     release_inverted_index(index);

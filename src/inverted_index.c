@@ -420,23 +420,36 @@ Node *search_word(InvertedIndex **hash_table, char *word)
 }
 
 /**
- * @brief Imprime los documentos y la frecuencia de aparición de una palabra en el índice.
+ * @brief Imprime los documentos y la frecuencia de aparición de una palabra junto con el PageRank.
  * @param index Tabla hash que contiene el índice invertido.
  * @param word_to_search Palabra a buscar en el índice.
+ * @param graph Grafo que contiene los documentos.
+ * @param pagerank Arreglo de valores de PageRank.
  */
-void print_search_word(InvertedIndex **index, char *word_to_search)
+void print_search_word_with_pagerank(InvertedIndex **index, char *word_to_search, Graph *graph, double *pagerank)
 {
     /**
-     * Llama a la función search_word para obtener los documentos asociados a la palabra.
+     * Verifica que los parámetros no sean nulos.
+     * Si alguno lo es, imprime un mensaje de error y retorna.
      * @code
-     * Node *results = search_word(index, word_to_search);
+     * if (!index || !word_to_search || !graph || !pagerank)
+     * {
+     *     fprintf(stderr, "Error: Parámetros nulos pasados a la función.\n");
+     *     return;
+     * }
      * @endcode
      */
-    Node *results = search_word(index, word_to_search);
+    if (!index || !word_to_search || !graph || !pagerank)
+    {
+        fprintf(stderr, "Error: Parámetros nulos pasados a la función.\n");
+        return;
+    }
 
     /**
-     * Si no se encuentran resultados, muestra un mensaje de error.
+     * Busca la palabra en el índice invertido.
+     * Si no se encuentra, muestra un mensaje y retorna.
      * @code
+     * Node *results = search_word(index, word_to_search);
      * if (!results)
      * {
      *     fprintf(stderr, "Palabra '%s' no encontrada.\n", word_to_search);
@@ -444,6 +457,7 @@ void print_search_word(InvertedIndex **index, char *word_to_search)
      * }
      * @endcode
      */
+    Node *results = search_word(index, word_to_search);
     if (!results)
     {
         fprintf(stderr, "Palabra '%s' no encontrada.\n", word_to_search);
@@ -451,56 +465,123 @@ void print_search_word(InvertedIndex **index, char *word_to_search)
     }
 
     /**
-     * Muestra los documentos en los que se encuentra la palabra.
+     * Imprime un mensaje indicando que la palabra se ha encontrado en documentos e inicializa un arreglo para contar la frecuencia de la palabra en cada documento.
      * @code
      * fprintf(stdout, "\nLa palabra '%s' se encuentra en los siguientes documentos:\n\n", word_to_search);
+     * int num_docs = graph->total_docs;
+     * int doc_count[num_docs + 1];
+     * for (int i = 0; i <= num_docs; i++)
+     *     doc_count[i] = 0;
      * @endcode
      */
     fprintf(stdout, "\nLa palabra '%s' se encuentra en los siguientes documentos:\n\n", word_to_search);
 
-    /**
-     * Inicializa un contador para registrar cuántas veces aparece la palabra en cada documento.
-     * @code
-     * int doc_count[MAX_DOCS] = {0};
-     * @endcode
-     */
-    int doc_count[MAX_DOCS] = {0};
-    Node *current = results;
+    int num_docs = graph->total_docs;
+    int doc_count[num_docs + 1];
+    for (int i = 0; i <= num_docs; i++)
+        doc_count[i] = 0;
 
     /**
-     * Recorre la lista de documentos y cuenta cuántas veces aparece la palabra en cada documento.
+     * Recorre la lista de resultados para contar la frecuencia de la palabra en cada documento.
+     * Considera solo documentos con identificadores válidos.
      * @code
+     * Node *current = results;
      * while (current != NULL)
      * {
-     *     doc_count[current->doc_id]++;
+     *     if (current->doc_id > 0 && current->doc_id <= num_docs)
+     *     {
+     *         doc_count[current->doc_id]++;
+     *     }
      *     current = current->next;
      * }
      * @endcode
      */
+    Node *current = results;
     while (current != NULL)
     {
-        doc_count[current->doc_id]++;
+        if (current->doc_id > 0 && current->doc_id <= num_docs)
+        {
+            doc_count[current->doc_id]++;
+        }
         current = current->next;
     }
 
     /**
-     * Muestra la cantidad de veces que aparece la palabra en cada documento.
+     * Crea un arreglo que contiene todos los documentos.
      * @code
-     * for (int i = 0; i < MAX_DOCS; i++)
+     * int all_docs[num_docs];
+     * for (int i = 1; i <= num_docs; i++)
      * {
-     *     if (doc_count[i] > 0)
-     *         fprintf(stdout, "Doc%d: %d veces\n", i, doc_count[i]);
+     *     all_docs[i - 1] = i; 
      * }
      * @endcode
      */
-    for (int i = 0; i < MAX_DOCS; i++)
+    int all_docs[num_docs];
+    for (int i = 1; i <= num_docs; i++)
     {
-        if (doc_count[i] > 0)
+        all_docs[i - 1] = i; 
+    }
+
+    /**
+     * Ordena todos los documentos por PageRank en orden descendente.
+     * Utiliza un algoritmo de ordenamiento burbuja (bubble sort).
+     * @code
+     * for (int i = 0; i < num_docs - 1; i++)
+     * {
+     *     for (int j = i + 1; j < num_docs; j++)
+     *     {
+     *         int doc_i = all_docs[i];
+     *         int doc_j = all_docs[j];
+     *         if (pagerank[doc_i - 1] < pagerank[doc_j - 1])
+     *         {
+     *             int temp = all_docs[i];
+     *             all_docs[i] = all_docs[j];
+     *             all_docs[j] = temp;
+     *         }
+     *     }
+     * }
+     * @endcode
+     */
+    for (int i = 0; i < num_docs - 1; i++)
+    {
+        for (int j = i + 1; j < num_docs; j++)
         {
-            fprintf(stdout, "Doc%d: %d veces\n", i, doc_count[i]);
+            int doc_i = all_docs[i];
+            int doc_j = all_docs[j];
+            if (pagerank[doc_i - 1] < pagerank[doc_j - 1])
+            {
+                int temp = all_docs[i];
+                all_docs[i] = all_docs[j];
+                all_docs[j] = temp;
+            }
+        }
+    }
+    
+    /**
+     * Imprime solo los documentos donde la palabra fue encontrada (doc_count > 0),
+     * junto con la frecuencia y el PageRank.
+     * @code
+     * for (int i = 0; i < num_docs; i++)
+     * {
+     *     int doc_id = all_docs[i];
+     *     if (doc_count[doc_id] > 0)
+     *     {
+     *         fprintf(stdout, "Doc%d: %d veces   -   PageRank = %.6f\n", doc_id, doc_count[doc_id], pagerank[doc_id - 1]);
+     *     }
+     * }
+     * @endcode
+     */
+    for (int i = 0; i < num_docs; i++)
+    {
+        int doc_id = all_docs[i];
+        if (doc_count[doc_id] > 0)
+        {
+            fprintf(stdout, "Doc%d: %d veces   -   PageRank = %.6f\n", doc_id, doc_count[doc_id], pagerank[doc_id - 1]);
         }
     }
 }
+
+
 /**
  * @brief Lee los archivos asociados al grafo y crea el índice invertido.
  * @param graph Grafo que contiene los datos de los documentos.
