@@ -34,8 +34,7 @@ int main(int argc, char *argv[])
      * @endcode
      */
     int opt;
-    char *word_to_search1 = NULL;
-    char *word_to_search2 = NULL;
+    char *word_to_search = NULL;
 
     while ((opt = getopt(argc, argv, "hs:")) != -1)
     {
@@ -45,21 +44,7 @@ int main(int argc, char *argv[])
             fprintf(stdout, "\nPara ingresar la palabra a buscar, por favor coloque el parámetro <-s> <numero_de_archivos>\n\n");
             break;
         case 's':
-            // Verifica si hay al menos un argumento disponible después de la opción `-s`
-            if (optarg)
-            {
-                word_to_search1 = strdup(optarg); // Copia el argumento proporcionado con `-s`
-            }
-
-            // Verifica si hay un segundo argumento disponible después de `-s`
-            if (optind < argc)
-            {
-                word_to_search2 = strdup(argv[optind]); // Copia la siguiente palabra en `argv`
-            }
-            else
-            {
-                word_to_search2 = NULL; // Si no hay segunda palabra, ponlo como NULL
-            }
+                word_to_search = strdup(optarg); 
             break;
         case '?':
             fprintf(stderr, "Opción no reconocida: -%c\n", optopt);
@@ -104,10 +89,9 @@ int main(int argc, char *argv[])
     display_pagerank(&graph, pagerank);
     show_graph(&graph);
     build_index(&graph, index);
-    print_search_word(index, word_to_search1);
+    print_search_word(index, word_to_search);
 
-    free(word_to_search1);
-    free(word_to_search2);
+    free(word_to_search);
     release_inverted_index(index);
     release_graph(&graph);
     generate_eps(&graph, pagerank, "graph.eps");
