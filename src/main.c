@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Función principal de menejo de funciones (grafos, pagerank e indice invertido).
  *
  * Contiene la función principal del programa que manipula los grafos y genera el PageRank y el Índice Invertido.
@@ -46,14 +46,18 @@ int main(int argc, char *argv[])
             break;
         case 's':
             // Verifica si hay al menos un argumento disponible después de la opción `-s`
-            if (optarg) {
+            if (optarg)
+            {
                 word_to_search1 = strdup(optarg); // Copia el argumento proporcionado con `-s`
             }
 
             // Verifica si hay un segundo argumento disponible después de `-s`
-            if (optind < argc) {
+            if (optind < argc)
+            {
                 word_to_search2 = strdup(argv[optind]); // Copia la siguiente palabra en `argv`
-            } else {
+            }
+            else
+            {
                 word_to_search2 = NULL; // Si no hay segunda palabra, ponlo como NULL
             }
             break;
@@ -93,7 +97,6 @@ int main(int argc, char *argv[])
     double pagerank[MAX_DOCS]; // Array para almacenar los valores de PageRank.
     Graph graph;
     InvertedIndex *index[HASH_TABLE_SIZE];
-
 
     initialize_graph(&graph);
     build_graph(&graph);

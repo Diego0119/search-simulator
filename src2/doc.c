@@ -24,24 +24,29 @@ void generate_text_files(int num_docs, int num_characters)
      * @code
      * if (num_docs <= 0 || num_docs >= 100)
      * {
-     *    fprintf(stderr, "El número de archivos web a generar debe ser MAYOR a 0 y MENOR a 100.\n\n");
-     *    exit(EXIT_FAILURE);
+     *      fprintf(stderr, "El número de archivos web a generar debe ser MAYOR a 0 y MENOR a 100.\n\n");
+     *      exit(EXIT_FAILURE);
+     * }
+     * if (num_characters <= 0 || num_characters >= 50)
+     * {
+     *      fprintf(stderr, "El número de caracteres por archivo debe ser MAYOR a 0 y MENOR a 50.\n\n");
+     *      exit(EXIT_FAILURE);
      * }
      * int *links = malloc(num_docs * sizeof(int));
      * for (int i = 0; i < num_docs; i++)
-     *    links[i] = (i + 1) % num_docs + 1;
+     *      links[i] = (i + 1) % num_docs + 1;
      * for (int i = 1; i <= num_docs; i++)
      * {
-     *    char doc_name[MAX_NAME_DOC];
-     *    snprintf(doc_name, sizeof(doc_name), "doc%d.txt", i);
-     *    FILE *doc = fopen(doc_name, "w");
-     *    if (doc == NULL)
-     *    {
-     *       fprintf(stderr, "Error al abrir el archivo web.\n");
-     *       free(links);
-     *       exit(EXIT_FAILURE);
-     *    }
-     *    generate_random_text(doc, doc_name, num_docs, num_characters, i, links);
+     *      char doc_name[MAX_NAME_DOC];
+     *      snprintf(doc_name, sizeof(doc_name), "doc%d.txt", i);
+     *      FILE *doc = fopen(doc_name, "w");
+     *      if (doc == NULL)
+     *      {
+     *          fprintf(stderr, "Error al abrir el archivo web.\n");
+     *          free(links);
+     *          exit(EXIT_FAILURE);
+     *      }
+     *      generate_random_text(doc, doc_name, num_docs, num_characters, i, links);
      *    fclose(doc);
      * }
      * @endcode
@@ -49,6 +54,12 @@ void generate_text_files(int num_docs, int num_characters)
     if (num_docs <= 0 || num_docs >= 100)
     {
         fprintf(stderr, "El número de archivos web a generar debe ser MAYOR a 0 y MENOR a 100.\n\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (num_characters <= 0 || num_characters >= 51)
+    {
+        fprintf(stderr, "El número de caracteres por archivo debe ser MAYOR a 0 y MENOR a 50.\n\n");
         exit(EXIT_FAILURE);
     }
 
