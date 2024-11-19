@@ -42,7 +42,7 @@ send:
 	tar czf $(GRUPO)-$(NTAR).tgz --transform 's,^,$(GRUPO)-$(NTAR)/,' Makefile src src2 incs docs
 
 run: build/$(EXEC)
-	./build/$(EXEC) -s f
+	./build/$(EXEC) -s f m
 
 docs: build/$(EXEC2)
 	./build/$(EXEC2) -d 5 -c 50

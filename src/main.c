@@ -34,7 +34,8 @@ int main(int argc, char *argv[])
      * @endcode
      */
     int opt;
-    char *word_to_search = NULL;
+    char *word_to_search1 = NULL;
+    char *word_to_search2 = NULL;
 
     while ((opt = getopt(argc, argv, "hs:")) != -1)
     {
@@ -44,7 +45,17 @@ int main(int argc, char *argv[])
             fprintf(stdout, "\nPara ingresar la palabra a buscar, por favor coloque el parámetro <-s> <numero_de_archivos>\n\n");
             break;
         case 's':
-            word_to_search = optarg;
+            // Verifica si hay al menos un argumento disponible después de la opción `-s`
+            if (optarg) {
+                word_to_search1 = strdup(optarg); // Copia el argumento proporcionado con `-s`
+            }
+
+            // Verifica si hay un segundo argumento disponible después de `-s`
+            if (optind < argc) {
+                word_to_search2 = strdup(argv[optind]); // Copia la siguiente palabra en `argv`
+            } else {
+                word_to_search2 = NULL; // Si no hay segunda palabra, ponlo como NULL
+            }
             break;
         case '?':
             fprintf(stderr, "Opción no reconocida: -%c\n", optopt);
@@ -83,8 +94,6 @@ int main(int argc, char *argv[])
     Graph graph;
     InvertedIndex *index[HASH_TABLE_SIZE];
 
-    for (int i = 0; i < HASH_TABLE_SIZE; i++) // esto lo hice para probar si arreglaba el segmentation fault, nose si es necesario
-        index[i] = NULL;
 
     initialize_graph(&graph);
     build_graph(&graph);
@@ -92,7 +101,10 @@ int main(int argc, char *argv[])
     display_pagerank(&graph, pagerank);
     show_graph(&graph);
     build_index(&graph, index);
-    print_search_word(index, word_to_search);
+    print_search_word(index, word_to_search1);
+
+    free(word_to_search1);
+    free(word_to_search2);
     release_inverted_index(index);
     release_graph(&graph);
     generate_eps(&graph, pagerank, "graph.eps");
