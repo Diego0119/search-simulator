@@ -58,7 +58,11 @@ Los archivos HTML generados se encontrarán en el directorio docs/html/. Para vi
 
 \begin{DoxyEnumerate}
 \item Dentro del programa, hay una vista adicional que permite visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función {\ttfamily print\+\_\+inverted\+\_\+index(index);}. Idealmente, esta función puede añadirse antes o después de la función print\+\_\+search\+\_\+word.
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Salida del programa}{Salida del programa}}\label{index_autotoc_md7}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Stopwords}{Stopwords}}\label{index_autotoc_md7}
+
+\begin{DoxyEnumerate}
+\item En el programa se utilizan palabras comunes que no aportan significado relevante para la búsqueda y el cálculo de Page\+Rank. Estas palabras son conocidas como stopwords y son excluidas en el proceso. Las stopwords son las siguientes\+: "{}a"{}, "{}e"{}, "{}i"{}, "{}o"{}, "{}u"{}, "{}link"{}.
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md8}{}\doxysection{\texorpdfstring{Salida del programa}{Salida del programa}}\label{index_autotoc_md8}
 Al ejecutar {\ttfamily make run}, el programa generará una salida en consola que incluye\+:
 
 

@@ -6,139 +6,140 @@
 \contentsline {section}{\numberline {1.4}Compilación del proyecto}{2}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Generación de documentación con Doxygen}{2}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Opción de vista adicional}{2}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Salida del programa}{2}{section.1.7}%
-\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Class Documentation}{7}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Document\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mapping Struct Reference}{7}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Member Data Documentation}{7}{subsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.2.1}doc\_id}{7}{subsubsection.4.1.2.1}%
-\contentsline {subsubsection}{\numberline {4.1.2.2}name}{8}{subsubsection.4.1.2.2}%
-\contentsline {section}{\numberline {4.2}Graph Struct Reference}{8}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{8}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Member Data Documentation}{8}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}input\_adjacent\_list}{8}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}mapping\_docs}{8}{subsubsection.4.2.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}output\_adjacent\_list}{9}{subsubsection.4.2.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.2.4}total\_docs}{9}{subsubsection.4.2.2.4}%
-\contentsline {section}{\numberline {4.3}Inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Index Struct Reference}{9}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{9}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Member Data Documentation}{9}{subsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.2.1}docs\_list}{9}{subsubsection.4.3.2.1}%
-\contentsline {subsubsection}{\numberline {4.3.2.2}next}{10}{subsubsection.4.3.2.2}%
-\contentsline {subsubsection}{\numberline {4.3.2.3}word}{10}{subsubsection.4.3.2.3}%
-\contentsline {section}{\numberline {4.4}Node Struct Reference}{10}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Detailed Description}{10}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Member Data Documentation}{10}{subsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.2.1}doc\_id}{10}{subsubsection.4.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.4.2.2}next}{10}{subsubsection.4.4.2.2}%
-\contentsline {chapter}{\numberline {5}File Documentation}{11}{chapter.5}%
-\contentsline {section}{\numberline {5.1}incs/doc.h File Reference}{11}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{11}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Function Documentation}{11}{subsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.2.1}generate\_random\_text()}{11}{subsubsection.5.1.2.1}%
-\contentsline {subsubsection}{\numberline {5.1.2.2}generate\_text\_files()}{12}{subsubsection.5.1.2.2}%
-\contentsline {section}{\numberline {5.2}doc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{13}{section.5.2}%
-\contentsline {section}{\numberline {5.3}incs/graph.h File Reference}{13}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{15}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Macro Definition Documentation}{15}{subsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.2.1}CONVERGENCE\_THRESHOLD}{15}{subsubsection.5.3.2.1}%
-\contentsline {subsubsection}{\numberline {5.3.2.2}DAMPING\_FACTOR}{15}{subsubsection.5.3.2.2}%
-\contentsline {subsubsection}{\numberline {5.3.2.3}HASH\_TABLE\_SIZE}{15}{subsubsection.5.3.2.3}%
-\contentsline {subsubsection}{\numberline {5.3.2.4}MAX\_CHARACTERS\_DOC}{16}{subsubsection.5.3.2.4}%
-\contentsline {subsubsection}{\numberline {5.3.2.5}MAX\_DOCS}{16}{subsubsection.5.3.2.5}%
-\contentsline {subsubsection}{\numberline {5.3.2.6}MAX\_ITERATIONS}{16}{subsubsection.5.3.2.6}%
-\contentsline {subsubsection}{\numberline {5.3.2.7}MAX\_NAME\_DOC}{16}{subsubsection.5.3.2.7}%
-\contentsline {subsubsection}{\numberline {5.3.2.8}MAX\_WORD\_SIZE}{16}{subsubsection.5.3.2.8}%
-\contentsline {subsection}{\numberline {5.3.3}Function Documentation}{16}{subsection.5.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.3.1}add\_edge()}{16}{subsubsection.5.3.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.3.2}build\_graph()}{17}{subsubsection.5.3.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3.3}count\_input\_links()}{18}{subsubsection.5.3.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.3.4}count\_output\_links()}{19}{subsubsection.5.3.3.4}%
-\contentsline {subsubsection}{\numberline {5.3.3.5}generate\_eps()}{20}{subsubsection.5.3.3.5}%
-\contentsline {subsubsection}{\numberline {5.3.3.6}get\_doc\_id()}{20}{subsubsection.5.3.3.6}%
-\contentsline {subsubsection}{\numberline {5.3.3.7}initialize\_graph()}{21}{subsubsection.5.3.3.7}%
-\contentsline {subsubsection}{\numberline {5.3.3.8}is\_doc\_name()}{22}{subsubsection.5.3.3.8}%
-\contentsline {subsubsection}{\numberline {5.3.3.9}release\_graph()}{22}{subsubsection.5.3.3.9}%
-\contentsline {subsubsection}{\numberline {5.3.3.10}show\_graph()}{23}{subsubsection.5.3.3.10}%
-\contentsline {section}{\numberline {5.4}graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{24}{section.5.4}%
-\contentsline {section}{\numberline {5.5}incs/inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.h File Reference}{24}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{25}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Function Documentation}{25}{subsection.5.5.2}%
-\contentsline {subsubsection}{\numberline {5.5.2.1}add\_document()}{25}{subsubsection.5.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.5.2.2}build\_index()}{26}{subsubsection.5.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.5.2.3}create\_new\_node()}{27}{subsubsection.5.5.2.3}%
-\contentsline {subsubsection}{\numberline {5.5.2.4}hash\_function()}{28}{subsubsection.5.5.2.4}%
-\contentsline {subsubsection}{\numberline {5.5.2.5}is\_stopword()}{29}{subsubsection.5.5.2.5}%
-\contentsline {subsubsection}{\numberline {5.5.2.6}print\_inverted\_index()}{30}{subsubsection.5.5.2.6}%
-\contentsline {subsubsection}{\numberline {5.5.2.7}print\_search\_word()}{31}{subsubsection.5.5.2.7}%
-\contentsline {subsubsection}{\numberline {5.5.2.8}release\_inverted\_index()}{32}{subsubsection.5.5.2.8}%
-\contentsline {subsubsection}{\numberline {5.5.2.9}search\_word()}{33}{subsubsection.5.5.2.9}%
-\contentsline {subsubsection}{\numberline {5.5.2.10}tokenize\_text()}{33}{subsubsection.5.5.2.10}%
-\contentsline {section}{\numberline {5.6}inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{34}{section.5.6}%
-\contentsline {section}{\numberline {5.7}incs/pagerank.h File Reference}{35}{section.5.7}%
-\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{35}{subsection.5.7.1}%
-\contentsline {subsection}{\numberline {5.7.2}Function Documentation}{35}{subsection.5.7.2}%
-\contentsline {subsubsection}{\numberline {5.7.2.1}calculate\_pagerank()}{35}{subsubsection.5.7.2.1}%
-\contentsline {subsubsection}{\numberline {5.7.2.2}display\_pagerank()}{36}{subsubsection.5.7.2.2}%
-\contentsline {subsubsection}{\numberline {5.7.2.3}initialize\_pagerank()}{37}{subsubsection.5.7.2.3}%
-\contentsline {section}{\numberline {5.8}pagerank.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{37}{section.5.8}%
-\contentsline {section}{\numberline {5.9}src/graph.c File Reference}{37}{section.5.9}%
-\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{38}{subsection.5.9.1}%
-\contentsline {subsection}{\numberline {5.9.2}Function Documentation}{38}{subsection.5.9.2}%
-\contentsline {subsubsection}{\numberline {5.9.2.1}add\_edge()}{38}{subsubsection.5.9.2.1}%
-\contentsline {subsubsection}{\numberline {5.9.2.2}build\_graph()}{39}{subsubsection.5.9.2.2}%
-\contentsline {subsubsection}{\numberline {5.9.2.3}count\_input\_links()}{40}{subsubsection.5.9.2.3}%
-\contentsline {subsubsection}{\numberline {5.9.2.4}count\_output\_links()}{41}{subsubsection.5.9.2.4}%
-\contentsline {subsubsection}{\numberline {5.9.2.5}get\_doc\_id()}{41}{subsubsection.5.9.2.5}%
-\contentsline {subsubsection}{\numberline {5.9.2.6}initialize\_graph()}{42}{subsubsection.5.9.2.6}%
-\contentsline {subsubsection}{\numberline {5.9.2.7}is\_doc\_name()}{42}{subsubsection.5.9.2.7}%
-\contentsline {subsubsection}{\numberline {5.9.2.8}release\_graph()}{43}{subsubsection.5.9.2.8}%
-\contentsline {subsubsection}{\numberline {5.9.2.9}show\_graph()}{43}{subsubsection.5.9.2.9}%
-\contentsline {section}{\numberline {5.10}graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{44}{section.5.10}%
-\contentsline {section}{\numberline {5.11}src/graphic.c File Reference}{47}{section.5.11}%
-\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{47}{subsection.5.11.1}%
-\contentsline {subsection}{\numberline {5.11.2}Function Documentation}{47}{subsection.5.11.2}%
-\contentsline {subsubsection}{\numberline {5.11.2.1}generate\_eps()}{47}{subsubsection.5.11.2.1}%
-\contentsline {section}{\numberline {5.12}graphic.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{48}{section.5.12}%
-\contentsline {section}{\numberline {5.13}src/inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.c File Reference}{49}{section.5.13}%
-\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{49}{subsection.5.13.1}%
-\contentsline {subsection}{\numberline {5.13.2}Function Documentation}{50}{subsection.5.13.2}%
-\contentsline {subsubsection}{\numberline {5.13.2.1}add\_document()}{50}{subsubsection.5.13.2.1}%
-\contentsline {subsubsection}{\numberline {5.13.2.2}build\_index()}{50}{subsubsection.5.13.2.2}%
-\contentsline {subsubsection}{\numberline {5.13.2.3}create\_new\_node()}{51}{subsubsection.5.13.2.3}%
-\contentsline {subsubsection}{\numberline {5.13.2.4}hash\_function()}{52}{subsubsection.5.13.2.4}%
-\contentsline {subsubsection}{\numberline {5.13.2.5}is\_stopword()}{52}{subsubsection.5.13.2.5}%
-\contentsline {subsubsection}{\numberline {5.13.2.6}print\_inverted\_index()}{53}{subsubsection.5.13.2.6}%
-\contentsline {subsubsection}{\numberline {5.13.2.7}print\_search\_word()}{54}{subsubsection.5.13.2.7}%
-\contentsline {subsubsection}{\numberline {5.13.2.8}release\_inverted\_index()}{54}{subsubsection.5.13.2.8}%
-\contentsline {subsubsection}{\numberline {5.13.2.9}search\_word()}{55}{subsubsection.5.13.2.9}%
-\contentsline {subsubsection}{\numberline {5.13.2.10}tokenize\_text()}{56}{subsubsection.5.13.2.10}%
-\contentsline {section}{\numberline {5.14}inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{57}{section.5.14}%
-\contentsline {section}{\numberline {5.15}src/main.c File Reference}{59}{section.5.15}%
-\contentsline {subsection}{\numberline {5.15.1}Detailed Description}{60}{subsection.5.15.1}%
-\contentsline {subsection}{\numberline {5.15.2}Function Documentation}{60}{subsection.5.15.2}%
-\contentsline {subsubsection}{\numberline {5.15.2.1}main()}{60}{subsubsection.5.15.2.1}%
-\contentsline {section}{\numberline {5.16}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{61}{section.5.16}%
-\contentsline {section}{\numberline {5.17}src2/main.c File Reference}{62}{section.5.17}%
-\contentsline {subsection}{\numberline {5.17.1}Detailed Description}{62}{subsection.5.17.1}%
-\contentsline {subsection}{\numberline {5.17.2}Function Documentation}{62}{subsection.5.17.2}%
-\contentsline {subsubsection}{\numberline {5.17.2.1}main()}{62}{subsubsection.5.17.2.1}%
-\contentsline {section}{\numberline {5.18}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{63}{section.5.18}%
-\contentsline {section}{\numberline {5.19}src/pagerank.c File Reference}{64}{section.5.19}%
-\contentsline {subsection}{\numberline {5.19.1}Detailed Description}{64}{subsection.5.19.1}%
-\contentsline {subsection}{\numberline {5.19.2}Function Documentation}{64}{subsection.5.19.2}%
-\contentsline {subsubsection}{\numberline {5.19.2.1}calculate\_pagerank()}{64}{subsubsection.5.19.2.1}%
-\contentsline {subsubsection}{\numberline {5.19.2.2}display\_pagerank()}{65}{subsubsection.5.19.2.2}%
-\contentsline {subsubsection}{\numberline {5.19.2.3}initialize\_pagerank()}{66}{subsubsection.5.19.2.3}%
-\contentsline {section}{\numberline {5.20}pagerank.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{66}{section.5.20}%
-\contentsline {section}{\numberline {5.21}src2/doc.c File Reference}{67}{section.5.21}%
-\contentsline {subsection}{\numberline {5.21.1}Detailed Description}{68}{subsection.5.21.1}%
-\contentsline {subsection}{\numberline {5.21.2}Function Documentation}{68}{subsection.5.21.2}%
-\contentsline {subsubsection}{\numberline {5.21.2.1}generate\_random\_text()}{68}{subsubsection.5.21.2.1}%
-\contentsline {subsubsection}{\numberline {5.21.2.2}generate\_text\_files()}{69}{subsubsection.5.21.2.2}%
-\contentsline {section}{\numberline {5.22}doc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{69}{section.5.22}%
-\contentsline {chapter}{Index}{71}{section*.21}%
+\contentsline {section}{\numberline {1.7}Stopwords}{2}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Salida del programa}{3}{section.1.8}%
+\contentsline {chapter}{\numberline {2}Class Index}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{5}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{7}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Document\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mapping Struct Reference}{9}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{9}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Member Data Documentation}{9}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}doc\_id}{9}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}name}{10}{subsubsection.4.1.2.2}%
+\contentsline {section}{\numberline {4.2}Graph Struct Reference}{10}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{10}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Member Data Documentation}{10}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}input\_adjacent\_list}{10}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}mapping\_docs}{10}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}output\_adjacent\_list}{11}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}total\_docs}{11}{subsubsection.4.2.2.4}%
+\contentsline {section}{\numberline {4.3}Inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Index Struct Reference}{11}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{11}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Member Data Documentation}{11}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}docs\_list}{11}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}next}{12}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}word}{12}{subsubsection.4.3.2.3}%
+\contentsline {section}{\numberline {4.4}Node Struct Reference}{12}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Detailed Description}{12}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Member Data Documentation}{12}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}doc\_id}{12}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}next}{12}{subsubsection.4.4.2.2}%
+\contentsline {chapter}{\numberline {5}File Documentation}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}incs/doc.h File Reference}{13}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{13}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Function Documentation}{13}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}generate\_random\_text()}{13}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}generate\_text\_files()}{14}{subsubsection.5.1.2.2}%
+\contentsline {section}{\numberline {5.2}doc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{15}{section.5.2}%
+\contentsline {section}{\numberline {5.3}incs/graph.h File Reference}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{17}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Macro Definition Documentation}{17}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}CONVERGENCE\_THRESHOLD}{17}{subsubsection.5.3.2.1}%
+\contentsline {subsubsection}{\numberline {5.3.2.2}DAMPING\_FACTOR}{17}{subsubsection.5.3.2.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.3}HASH\_TABLE\_SIZE}{17}{subsubsection.5.3.2.3}%
+\contentsline {subsubsection}{\numberline {5.3.2.4}MAX\_CHARACTERS\_DOC}{18}{subsubsection.5.3.2.4}%
+\contentsline {subsubsection}{\numberline {5.3.2.5}MAX\_DOCS}{18}{subsubsection.5.3.2.5}%
+\contentsline {subsubsection}{\numberline {5.3.2.6}MAX\_ITERATIONS}{18}{subsubsection.5.3.2.6}%
+\contentsline {subsubsection}{\numberline {5.3.2.7}MAX\_NAME\_DOC}{18}{subsubsection.5.3.2.7}%
+\contentsline {subsubsection}{\numberline {5.3.2.8}MAX\_WORD\_SIZE}{18}{subsubsection.5.3.2.8}%
+\contentsline {subsection}{\numberline {5.3.3}Function Documentation}{18}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}add\_edge()}{18}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}build\_graph()}{19}{subsubsection.5.3.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3.3}count\_input\_links()}{20}{subsubsection.5.3.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.4}count\_output\_links()}{21}{subsubsection.5.3.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.3.5}generate\_eps()}{22}{subsubsection.5.3.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.3.6}get\_doc\_id()}{22}{subsubsection.5.3.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.3.7}initialize\_graph()}{23}{subsubsection.5.3.3.7}%
+\contentsline {subsubsection}{\numberline {5.3.3.8}is\_doc\_name()}{24}{subsubsection.5.3.3.8}%
+\contentsline {subsubsection}{\numberline {5.3.3.9}release\_graph()}{24}{subsubsection.5.3.3.9}%
+\contentsline {subsubsection}{\numberline {5.3.3.10}show\_graph()}{25}{subsubsection.5.3.3.10}%
+\contentsline {section}{\numberline {5.4}graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{26}{section.5.4}%
+\contentsline {section}{\numberline {5.5}incs/inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.h File Reference}{26}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{27}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Function Documentation}{27}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}add\_document()}{27}{subsubsection.5.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.5.2.2}build\_index()}{28}{subsubsection.5.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.3}create\_new\_node()}{29}{subsubsection.5.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.5.2.4}hash\_function()}{30}{subsubsection.5.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.5.2.5}is\_stopword()}{31}{subsubsection.5.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.5.2.6}print\_inverted\_index()}{32}{subsubsection.5.5.2.6}%
+\contentsline {subsubsection}{\numberline {5.5.2.7}print\_search\_word()}{33}{subsubsection.5.5.2.7}%
+\contentsline {subsubsection}{\numberline {5.5.2.8}release\_inverted\_index()}{34}{subsubsection.5.5.2.8}%
+\contentsline {subsubsection}{\numberline {5.5.2.9}search\_word()}{35}{subsubsection.5.5.2.9}%
+\contentsline {subsubsection}{\numberline {5.5.2.10}tokenize\_text()}{35}{subsubsection.5.5.2.10}%
+\contentsline {section}{\numberline {5.6}inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{36}{section.5.6}%
+\contentsline {section}{\numberline {5.7}incs/pagerank.h File Reference}{37}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{37}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Function Documentation}{37}{subsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.1}calculate\_pagerank()}{37}{subsubsection.5.7.2.1}%
+\contentsline {subsubsection}{\numberline {5.7.2.2}display\_pagerank()}{38}{subsubsection.5.7.2.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.3}initialize\_pagerank()}{39}{subsubsection.5.7.2.3}%
+\contentsline {section}{\numberline {5.8}pagerank.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{39}{section.5.8}%
+\contentsline {section}{\numberline {5.9}src/graph.c File Reference}{39}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{40}{subsection.5.9.1}%
+\contentsline {subsection}{\numberline {5.9.2}Function Documentation}{40}{subsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.1}add\_edge()}{40}{subsubsection.5.9.2.1}%
+\contentsline {subsubsection}{\numberline {5.9.2.2}build\_graph()}{41}{subsubsection.5.9.2.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.3}count\_input\_links()}{42}{subsubsection.5.9.2.3}%
+\contentsline {subsubsection}{\numberline {5.9.2.4}count\_output\_links()}{43}{subsubsection.5.9.2.4}%
+\contentsline {subsubsection}{\numberline {5.9.2.5}get\_doc\_id()}{43}{subsubsection.5.9.2.5}%
+\contentsline {subsubsection}{\numberline {5.9.2.6}initialize\_graph()}{44}{subsubsection.5.9.2.6}%
+\contentsline {subsubsection}{\numberline {5.9.2.7}is\_doc\_name()}{44}{subsubsection.5.9.2.7}%
+\contentsline {subsubsection}{\numberline {5.9.2.8}release\_graph()}{45}{subsubsection.5.9.2.8}%
+\contentsline {subsubsection}{\numberline {5.9.2.9}show\_graph()}{45}{subsubsection.5.9.2.9}%
+\contentsline {section}{\numberline {5.10}graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{46}{section.5.10}%
+\contentsline {section}{\numberline {5.11}src/graphic.c File Reference}{49}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{49}{subsection.5.11.1}%
+\contentsline {subsection}{\numberline {5.11.2}Function Documentation}{49}{subsection.5.11.2}%
+\contentsline {subsubsection}{\numberline {5.11.2.1}generate\_eps()}{49}{subsubsection.5.11.2.1}%
+\contentsline {section}{\numberline {5.12}graphic.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{50}{section.5.12}%
+\contentsline {section}{\numberline {5.13}src/inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.c File Reference}{51}{section.5.13}%
+\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{51}{subsection.5.13.1}%
+\contentsline {subsection}{\numberline {5.13.2}Function Documentation}{52}{subsection.5.13.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.1}add\_document()}{52}{subsubsection.5.13.2.1}%
+\contentsline {subsubsection}{\numberline {5.13.2.2}build\_index()}{52}{subsubsection.5.13.2.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.3}create\_new\_node()}{53}{subsubsection.5.13.2.3}%
+\contentsline {subsubsection}{\numberline {5.13.2.4}hash\_function()}{54}{subsubsection.5.13.2.4}%
+\contentsline {subsubsection}{\numberline {5.13.2.5}is\_stopword()}{54}{subsubsection.5.13.2.5}%
+\contentsline {subsubsection}{\numberline {5.13.2.6}print\_inverted\_index()}{55}{subsubsection.5.13.2.6}%
+\contentsline {subsubsection}{\numberline {5.13.2.7}print\_search\_word()}{56}{subsubsection.5.13.2.7}%
+\contentsline {subsubsection}{\numberline {5.13.2.8}release\_inverted\_index()}{56}{subsubsection.5.13.2.8}%
+\contentsline {subsubsection}{\numberline {5.13.2.9}search\_word()}{57}{subsubsection.5.13.2.9}%
+\contentsline {subsubsection}{\numberline {5.13.2.10}tokenize\_text()}{58}{subsubsection.5.13.2.10}%
+\contentsline {section}{\numberline {5.14}inverted\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}index.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{59}{section.5.14}%
+\contentsline {section}{\numberline {5.15}src/main.c File Reference}{61}{section.5.15}%
+\contentsline {subsection}{\numberline {5.15.1}Detailed Description}{62}{subsection.5.15.1}%
+\contentsline {subsection}{\numberline {5.15.2}Function Documentation}{62}{subsection.5.15.2}%
+\contentsline {subsubsection}{\numberline {5.15.2.1}main()}{62}{subsubsection.5.15.2.1}%
+\contentsline {section}{\numberline {5.16}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{63}{section.5.16}%
+\contentsline {section}{\numberline {5.17}src2/main.c File Reference}{64}{section.5.17}%
+\contentsline {subsection}{\numberline {5.17.1}Detailed Description}{64}{subsection.5.17.1}%
+\contentsline {subsection}{\numberline {5.17.2}Function Documentation}{64}{subsection.5.17.2}%
+\contentsline {subsubsection}{\numberline {5.17.2.1}main()}{64}{subsubsection.5.17.2.1}%
+\contentsline {section}{\numberline {5.18}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{65}{section.5.18}%
+\contentsline {section}{\numberline {5.19}src/pagerank.c File Reference}{66}{section.5.19}%
+\contentsline {subsection}{\numberline {5.19.1}Detailed Description}{66}{subsection.5.19.1}%
+\contentsline {subsection}{\numberline {5.19.2}Function Documentation}{66}{subsection.5.19.2}%
+\contentsline {subsubsection}{\numberline {5.19.2.1}calculate\_pagerank()}{66}{subsubsection.5.19.2.1}%
+\contentsline {subsubsection}{\numberline {5.19.2.2}display\_pagerank()}{67}{subsubsection.5.19.2.2}%
+\contentsline {subsubsection}{\numberline {5.19.2.3}initialize\_pagerank()}{68}{subsubsection.5.19.2.3}%
+\contentsline {section}{\numberline {5.20}pagerank.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{68}{section.5.20}%
+\contentsline {section}{\numberline {5.21}src2/doc.c File Reference}{69}{section.5.21}%
+\contentsline {subsection}{\numberline {5.21.1}Detailed Description}{70}{subsection.5.21.1}%
+\contentsline {subsection}{\numberline {5.21.2}Function Documentation}{70}{subsection.5.21.2}%
+\contentsline {subsubsection}{\numberline {5.21.2.1}generate\_random\_text()}{70}{subsubsection.5.21.2.1}%
+\contentsline {subsubsection}{\numberline {5.21.2.2}generate\_text\_files()}{71}{subsubsection.5.21.2.2}%
+\contentsline {section}{\numberline {5.22}doc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{71}{section.5.22}%
+\contentsline {chapter}{Index}{73}{section*.21}%
