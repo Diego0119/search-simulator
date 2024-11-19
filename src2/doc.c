@@ -47,7 +47,7 @@ void generate_text_files(int num_docs, int num_characters)
      *          exit(EXIT_FAILURE);
      *      }
      *      generate_random_text(doc, doc_name, num_docs, num_characters, i, links);
-     *      fclose(doc);
+     *    fclose(doc);
      * }
      * @endcode
      */
@@ -57,7 +57,7 @@ void generate_text_files(int num_docs, int num_characters)
         exit(EXIT_FAILURE);
     }
 
-    if (num_characters <= 0 || num_characters >= 50)
+    if (num_characters <= 0 || num_characters >= 51)
     {
         fprintf(stderr, "El número de caracteres por archivo debe ser MAYOR a 0 y MENOR a 50.\n\n");
         exit(EXIT_FAILURE);

@@ -128,12 +128,54 @@ void display_pagerank(Graph *graph, double *pagerank)
     /**
      * Muestra los valores de PageRank de cada documento.
      * @code
-     * fprintf(stdout, "\nValores de PageRank:\n\n");
-     * for (int i = 0; i < graph->total_docs; i++)
-     *      fprintf(stdout, "Documento (%s): PageRank = %.6f\n", graph->mapping_docs[i].name, pagerank[i]);
+     *  fprintf(stdout, "\nValores de PageRank ordenados por importancia:\n\n");
+     *  int num_docs = graph->total_docs;
+     *  int indices[num_docs];
+     *  for (int i = 0; i < num_docs; i++)
+     *      indices[i] = i;
+     *  for (int i = 0; i < num_docs - 1; i++)
+     *  {
+     *      for (int j = i + 1; j < num_docs; j++)
+     *      {
+     *          if (pagerank[indices[i]] < pagerank[indices[j]])
+     *          {
+     *              int temp = indices[i];
+     *              indices[i] = indices[j];
+     *              indices[j] = temp;
+     *          }
+     *      }
+     *  }
+     *  for (int i = 0; i < num_docs; i++)
+     *  {
+     *      int doc_id = indices[i];
+     *       fprintf(stdout, "Documento (%s): PageRank = %.6f\n", graph->mapping_docs[doc_id].name, pagerank[doc_id]);
+     *  }
      * @endcode
      */
-    fprintf(stdout, "\nValores de PageRank:\n\n");
-    for (int i = 0; i < graph->total_docs; i++)
-        fprintf(stdout, "Documento (%s): PageRank = %.6f\n", graph->mapping_docs[i].name, pagerank[i]);
+    fprintf(stdout, "\nValores de PageRank ordenados por importancia:\n\n");
+
+    int num_docs = graph->total_docs;
+    int indices[num_docs];
+
+    for (int i = 0; i < num_docs; i++)
+        indices[i] = i;
+
+    for (int i = 0; i < num_docs - 1; i++)
+    {
+        for (int j = i + 1; j < num_docs; j++)
+        {
+            if (pagerank[indices[i]] < pagerank[indices[j]])
+            {
+                int temp = indices[i];
+                indices[i] = indices[j];
+                indices[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < num_docs; i++)
+    {
+        int doc_id = indices[i];
+        fprintf(stdout, "Documento (%s): PageRank = %.6f\n", graph->mapping_docs[doc_id].name, pagerank[doc_id]);
+    }
 }
