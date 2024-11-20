@@ -67,10 +67,9 @@ int main(int argc, char *argv[])
      * initialize_graph(&graph);
      * build_graph(&graph);
      * calculate_pagerank(&graph, pagerank);
-     * display_pagerank(&graph, pagerank);
      * show_graph(&graph);
      * build_index(&graph, index);
-     * print_search_word(index, word_to_search);
+     * print_search_word_with_pagerank(index, word_to_search, &graph, pagerank);
      * release_inverted_index(index);
      * release_graph(&graph);
      * generate_eps(&graph, pagerank, "graph.eps");
@@ -83,10 +82,12 @@ int main(int argc, char *argv[])
     Graph graph;
     InvertedIndex *index[HASH_TABLE_SIZE];
 
+    for (int i = 0; i < HASH_TABLE_SIZE; i++)
+        index[i] = NULL;
+
     initialize_graph(&graph);
     build_graph(&graph);
     calculate_pagerank(&graph, pagerank);
-    display_pagerank(&graph, pagerank);
     show_graph(&graph);
     build_index(&graph, index);
     print_search_word_with_pagerank(index, word_to_search, &graph, pagerank);
