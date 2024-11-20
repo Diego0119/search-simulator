@@ -1,3 +1,6 @@
+#ifndef PAGERANK_H
+#define PAGERANK_H
+
 /**
  * @file pagerank.h
  * @date 18-11-2024
@@ -6,9 +9,6 @@
  *
  * Contiene los prototipos de las funciones dedicadas a la creación del PageRank.
  */
-#ifndef PAGERANK_H
-#define PAGERANK_H
-
 #include "graph.h" ///< Incluye la definición de las estructuras y funciones del grafo.
 
 /**

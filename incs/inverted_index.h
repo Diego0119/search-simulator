@@ -1,3 +1,6 @@
+#ifndef INVERTED_INDEX_H
+#define INVERTED_INDEX_H
+
 /**
  * @file inverted_index.h
  * @date 18-11-2024
@@ -6,9 +9,6 @@
  *
  * Contiene los prototipos de las funciones y estructura dedicadas a la creación y manejo del índice invertido.
  */
-#ifndef INVERTED_INDEX_H
-#define INVERTED_INDEX_H
-
 #include "graph.h" ///< Incluye la definición de las estructuras y funciones del grafo.
 
 /**

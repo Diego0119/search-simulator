@@ -1,7 +1,7 @@
 /**
  * @file doc.c
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Archivo que contiene el manejo de archivos y rellenado de estos.
  *
  * Contiene la implementación de las funciones que generan archivos de texto simulando documentos web con contenido aleatorio.

@@ -1,3 +1,6 @@
+#ifndef GENERATOR_H
+#define GENERATOR_H
+
 /**
  * @file doc.h
  * @date 18-11-2024
@@ -6,9 +9,6 @@
  *
  * Contiene los prototipos de las funciones dedicadas a la creación de texto (aleatorio) y archivos (webs).
  */
-#ifndef GENERATOR_H
-#define GENERATOR_H
-
 #include <stdio.h>
 
 /**
