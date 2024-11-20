@@ -65,7 +65,7 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
 ## Opción de vista adicional
 
-1. Dentro del programa, hay una vista adicional que permite   visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función `print_inverted_index(index);`. Idealmente, esta función puede añadirse antes o después de la función print_search_word.
+1. Dentro del programa, hay una vista adicional que permite visualizar las palabras almacenadas en el índice invertid junto con la cantidad de veces que se repiten y el pagerank ordenado por relevancia. Esto se puede lograr mediante la función `print_inverted_index(index);` y `display_pagerank(&graph, pagerank);`. Idealmente, esta función puede añadirse antes o después de la función print_search_word.
 
 ## Stopwords
 
