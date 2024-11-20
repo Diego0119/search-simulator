@@ -1,3 +1,5 @@
+#ifndef GRAPH_H
+#define GRAPH_H
 /**
  * @file graph.h
  * @date 18-11-2024
@@ -6,8 +8,6 @@
  *
  * Contiene los prototipos de las funciones dedicadas a la creación de grafos, las estructuras generales y macros.
  */
-#ifndef GRAPH_H
-#define GRAPH_H
 
 /**
  * Librerías utilizadas en el proyecto.

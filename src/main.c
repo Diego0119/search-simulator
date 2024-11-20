@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
             fprintf(stdout, "\nPara ingresar la palabra a buscar, por favor coloque el parámetro <-s> <numero_de_archivos>\n\n");
             break;
         case 's':
-                word_to_search = strdup(optarg); 
+            word_to_search = strdup(optarg);
             break;
         case '?':
             fprintf(stderr, "Opción no reconocida: -%c\n", optopt);
@@ -91,7 +91,6 @@ int main(int argc, char *argv[])
     show_graph(&graph);
     build_index(&graph, index);
     print_search_word_with_pagerank(index, word_to_search, &graph, pagerank);
-
     free(word_to_search);
     release_inverted_index(index);
     release_graph(&graph);

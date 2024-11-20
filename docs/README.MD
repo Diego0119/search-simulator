@@ -10,7 +10,7 @@ El simulador permite:
 - Calcular la relevancia de los documentos mediante el algoritmo de PageRank.
 - Realizar búsquedas de términos con resultados ordenados por relevancia.
 
-Este trabajo fue programado en **C**.
+Este trabajo fue programado en **Lenguaje C**.
 
 ## Características
 
@@ -35,15 +35,28 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
 ## Compilación del proyecto
 
-1. **Compilación del programa**:  
+1. **Recomendación Inicial**
+   Se recomienda iniciar el programa utilizando primero el comando `make clean` en el directorio
+   raíz del proyecto. Esto utilizará el `Makefile`.
+
+   `make clean`
+
+2. **Compilación del programa**:  
    Ejecute el comando `make` en el directorio raíz del proyecto. Esto utilizará el `Makefile`.
 
    `make`
 
-2. **Ejecución del programa**
-    Ahora, una vez hecho el `make`, debe ejecutar `make run`, que tiene definido
-    parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales
-    nos permiten colocar la cantidad `-d` y una ayuda del programa `-h`.
+3. **Creación de archivos**
+   Ahora, una vez hecho el `make`, debe ejecutar `make docs`, que tiene definido
+   parámetros adicionales (esto se encuentra en el Makefile), estos parametros adicionales
+   nos permiten colocar la cantidad de documentos a generar (con un máximo de 100) `-d`, la 
+   cantidad de caracteres dentro de dichos textos (con un máximo de 50) `-c` y una ayuda del 
+   programa `-h`.
+
+4. **Ejecución**
+   Como último paso en la ejecución, se debe colocar el comando `make run` (no olvidar hacer 
+   este paso después del `make docs`) para que se calcule el PageRank, Índice Invertido y 
+   creación de los grafos.
 
 ## Generación de documentación con Doxygen
 
@@ -53,15 +66,17 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 
 2. **Compilar en formato PDF**
 
-    Una vez generados los archivos con Doxygen, puede convertir la documentación en un archivo PDF utilizando LaTeX. Para hacerlo, ejecute  `make ltx`.
+    Una vez generados los archivos con Doxygen con el comando `make dxygn`, puede convertir la documentación en un archivo PDF utilizando LaTeX. Para hacerlo, ejecute  `make ltx`.
 
 3.  **Ubicación del archivo PDF**
 
-    El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el `Makefile`.
+    El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el `Makefile`. 
+    El archivo se llama `refman.pdf`.
 
 4. **Visualización de la documentación HTML**
 
-    Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador.
+    Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.html con su navegador. 
+    El archivo se llama `index.html`.
 
 ## Opción de vista adicional
 

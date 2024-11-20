@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @date 18-11-2024
- * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo
+ * @authors Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo
  * @brief Función principal de creación de archivos.
  *
  * Contiene la función principal del programa que crea los archivos de texto.
@@ -73,7 +73,9 @@ int main(int argc, char *argv[])
      *      exit(EXIT_FAILURE);
      * }
      * srand(time(NULL));
+     * fprintf(stdout, "\nCREANDO %d archivos de texto con %d caracteres cada uno...\n\n", num_docs, num_characters);
      * generate_text_files(num_docs, num_characters);
+     * fprintf(stdout, "\nArchivos de texto creados con ÉXITO.\n\n");
      * return EXIT_SUCCESS;
      * @endcode
      */
