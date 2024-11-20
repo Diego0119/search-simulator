@@ -14,7 +14,7 @@ El simulador permite\+: ~\newline
 \item Realizar búsquedas de términos con resultados ordenados por relevancia.
 \end{DoxyItemize}
 
-Este trabajo fue programado en {\bfseries{C}}.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Características}{Características}}\label{index_autotoc_md2}
+Este trabajo fue programado en {\bfseries{Lenguaje C}}.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Características}{Características}}\label{index_autotoc_md2}
 
 \begin{DoxyItemize}
 \item {\bfseries{Generación automática de documentos simulados.}} ~\newline
@@ -34,11 +34,15 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 \hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Compilación del proyecto}{Compilación del proyecto}}\label{index_autotoc_md4}
 
 \begin{DoxyEnumerate}
+\item {\bfseries{Recomendación Inicial}} Se recomienda iniciar el programa utilizando primero el comando {\ttfamily make clean} en el directorio raíz del proyecto. Esto utilizará el {\ttfamily Makefile}.
+
+{\ttfamily make clean}
 \item {\bfseries{Compilación del programa}}\+: ~\newline
  Ejecute el comando {\ttfamily make} en el directorio raíz del proyecto. Esto utilizará el {\ttfamily Makefile}.
 
 {\ttfamily make}
-\item {\bfseries{Ejecución del programa}} Ahora, una vez hecho el {\ttfamily make}, debe ejecutar {\ttfamily make run}, que tiene definido parametros adicionales (esto se encuentra en el Makefile), estos parametros adicionales nos permiten colocar la cantidad {\ttfamily -\/d} y una ayuda del programa {\ttfamily -\/h}.
+\item {\bfseries{Creación de archivos}} Ahora, una vez hecho el {\ttfamily make}, debe ejecutar {\ttfamily make docs}, que tiene definido parámetros adicionales (esto se encuentra en el Makefile), estos parametros adicionales nos permiten colocar la cantidad de documentos a generar (con un máximo de 100) {\ttfamily -\/d}, la cantidad de caracteres dentro de dichos textos (con un máximo de 50) {\ttfamily -\/c} y una ayuda del programa {\ttfamily -\/h}.
+\item {\bfseries{Ejecución}} Como último paso en la ejecución, se debe colocar el comando {\ttfamily make run} (no olvidar hacer este paso después del {\ttfamily make docs}) para que se calcule el Page\+Rank, Índice Invertido y creación de los grafos.
 \end{DoxyEnumerate}\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{Generación de documentación con Doxygen}{Generación de documentación con Doxygen}}\label{index_autotoc_md5}
 
 \begin{DoxyEnumerate}
@@ -47,17 +51,17 @@ Antes de ejecutar el programa, es necesario compilarlo y prepararlo mediante las
 Ejecute el comando {\ttfamily make dxygn} en el directorio raíz del proyecto para generar la documentación automática en formato HTML y La\+TeX.
 \item {\bfseries{Compilar en formato PDF}}
 
-Una vez generados los archivos con Doxygen, puede convertir la documentación en un archivo PDF utilizando La\+TeX. Para hacerlo, ejecute {\ttfamily make ltx}.
+Una vez generados los archivos con Doxygen con el comando {\ttfamily make dxygn}, puede convertir la documentación en un archivo PDF utilizando La\+TeX. Para hacerlo, ejecute {\ttfamily make ltx}.
 \item {\bfseries{Ubicación del archivo PDF}}
 
-El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el {\ttfamily Makefile}.
+El archivo PDF generado estará disponible en el directorio docs/latex/ o en la ubicación configurada en el {\ttfamily Makefile}. El archivo se llama {\ttfamily refman.\+pdf}.
 \item {\bfseries{Visualización de la documentación HTML}}
 
-Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.\+html con su navegador.
+Los archivos HTML generados se encontrarán en el directorio docs/html/. Para visualizar la documentación, abra el archivo index.\+html con su navegador. El archivo se llama {\ttfamily index.\+html}.
 \end{DoxyEnumerate}\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Opción de vista adicional}{Opción de vista adicional}}\label{index_autotoc_md6}
 
 \begin{DoxyEnumerate}
-\item Dentro del programa, hay una vista adicional que permite visualizar las palabras almacenadas en el índice invertido, junto con la cantidad de veces que se repiten. Esto se puede lograr mediante la función {\ttfamily print\+\_\+inverted\+\_\+index(index);}. Idealmente, esta función puede añadirse antes o después de la función print\+\_\+search\+\_\+word.
+\item Dentro del programa, hay una vista adicional que permite visualizar las palabras almacenadas en el índice invertid junto con la cantidad de veces que se repiten y el pagerank ordenado por relevancia. Esto se puede lograr mediante la función {\ttfamily print\+\_\+inverted\+\_\+index(index);} y {\ttfamily display\+\_\+pagerank(\&graph, pagerank);}. Idealmente, esta función puede añadirse antes o después de la función print\+\_\+search\+\_\+word.
 \end{DoxyEnumerate}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Stopwords}{Stopwords}}\label{index_autotoc_md7}
 
 \begin{DoxyEnumerate}

@@ -1,10 +1,10 @@
 \begin{theindex}
 
   \item {add\_document}
-    \subitem {inverted\_index.c}, \hyperpage{52}
-    \subitem {inverted\_index.h}, \hyperpage{27}
+    \subitem {inverted\_index.c}, \hyperpage{53}
+    \subitem {inverted\_index.h}, \hyperpage{28}
   \item {add\_edge}
-    \subitem {graph.c}, \hyperpage{40}
+    \subitem {graph.c}, \hyperpage{41}
     \subitem {graph.h}, \hyperpage{18}
 
   \indexspace
@@ -13,36 +13,36 @@
     \subitem {graph.c}, \hyperpage{41}
     \subitem {graph.h}, \hyperpage{19}
   \item {build\_index}
-    \subitem {inverted\_index.c}, \hyperpage{52}
-    \subitem {inverted\_index.h}, \hyperpage{28}
+    \subitem {inverted\_index.c}, \hyperpage{54}
+    \subitem {inverted\_index.h}, \hyperpage{29}
 
   \indexspace
 
   \item {calculate\_pagerank}
-    \subitem {pagerank.c}, \hyperpage{66}
-    \subitem {pagerank.h}, \hyperpage{37}
+    \subitem {pagerank.c}, \hyperpage{70}
+    \subitem {pagerank.h}, \hyperpage{38}
   \item {CONVERGENCE\_THRESHOLD}
     \subitem {graph.h}, \hyperpage{17}
   \item {count\_input\_links}
-    \subitem {graph.c}, \hyperpage{42}
+    \subitem {graph.c}, \hyperpage{43}
     \subitem {graph.h}, \hyperpage{20}
   \item {count\_output\_links}
-    \subitem {graph.c}, \hyperpage{43}
+    \subitem {graph.c}, \hyperpage{44}
     \subitem {graph.h}, \hyperpage{21}
   \item {create\_new\_node}
-    \subitem {inverted\_index.c}, \hyperpage{53}
-    \subitem {inverted\_index.h}, \hyperpage{29}
+    \subitem {inverted\_index.c}, \hyperpage{55}
+    \subitem {inverted\_index.h}, \hyperpage{30}
 
   \indexspace
 
   \item {DAMPING\_FACTOR}
     \subitem {graph.h}, \hyperpage{17}
   \item {display\_pagerank}
-    \subitem {pagerank.c}, \hyperpage{67}
-    \subitem {pagerank.h}, \hyperpage{38}
+    \subitem {pagerank.c}, \hyperpage{70}
+    \subitem {pagerank.h}, \hyperpage{39}
   \item {doc.c}
-    \subitem {generate\_random\_text}, \hyperpage{70}
-    \subitem {generate\_text\_files}, \hyperpage{70}
+    \subitem {generate\_random\_text}, \hyperpage{73}
+    \subitem {generate\_text\_files}, \hyperpage{74}
   \item {doc.h}
     \subitem {generate\_random\_text}, \hyperpage{13}
     \subitem {generate\_text\_files}, \hyperpage{14}
@@ -59,31 +59,31 @@
 
   \item {generate\_eps}
     \subitem {graph.h}, \hyperpage{22}
-    \subitem {graphic.c}, \hyperpage{49}
+    \subitem {graphic.c}, \hyperpage{50}
   \item {generate\_random\_text}
-    \subitem {doc.c}, \hyperpage{70}
+    \subitem {doc.c}, \hyperpage{73}
     \subitem {doc.h}, \hyperpage{13}
   \item {generate\_text\_files}
-    \subitem {doc.c}, \hyperpage{70}
+    \subitem {doc.c}, \hyperpage{74}
     \subitem {doc.h}, \hyperpage{14}
   \item {get\_doc\_id}
-    \subitem {graph.c}, \hyperpage{43}
-    \subitem {graph.h}, \hyperpage{22}
+    \subitem {graph.c}, \hyperpage{44}
+    \subitem {graph.h}, \hyperpage{23}
   \item {Graph}, \hyperpage{10}
     \subitem {input\_adjacent\_list}, \hyperpage{10}
     \subitem {mapping\_docs}, \hyperpage{10}
     \subitem {output\_adjacent\_list}, \hyperpage{10}
     \subitem {total\_docs}, \hyperpage{11}
   \item {graph.c}
-    \subitem {add\_edge}, \hyperpage{40}
+    \subitem {add\_edge}, \hyperpage{41}
     \subitem {build\_graph}, \hyperpage{41}
-    \subitem {count\_input\_links}, \hyperpage{42}
-    \subitem {count\_output\_links}, \hyperpage{43}
-    \subitem {get\_doc\_id}, \hyperpage{43}
-    \subitem {initialize\_graph}, \hyperpage{44}
-    \subitem {is\_doc\_name}, \hyperpage{44}
-    \subitem {release\_graph}, \hyperpage{45}
-    \subitem {show\_graph}, \hyperpage{45}
+    \subitem {count\_input\_links}, \hyperpage{43}
+    \subitem {count\_output\_links}, \hyperpage{44}
+    \subitem {get\_doc\_id}, \hyperpage{44}
+    \subitem {initialize\_graph}, \hyperpage{45}
+    \subitem {is\_doc\_name}, \hyperpage{45}
+    \subitem {release\_graph}, \hyperpage{46}
+    \subitem {show\_graph}, \hyperpage{46}
   \item {graph.h}
     \subitem {add\_edge}, \hyperpage{18}
     \subitem {build\_graph}, \hyperpage{19}
@@ -92,25 +92,25 @@
     \subitem {count\_output\_links}, \hyperpage{21}
     \subitem {DAMPING\_FACTOR}, \hyperpage{17}
     \subitem {generate\_eps}, \hyperpage{22}
-    \subitem {get\_doc\_id}, \hyperpage{22}
+    \subitem {get\_doc\_id}, \hyperpage{23}
     \subitem {HASH\_TABLE\_SIZE}, \hyperpage{17}
-    \subitem {initialize\_graph}, \hyperpage{23}
-    \subitem {is\_doc\_name}, \hyperpage{23}
+    \subitem {initialize\_graph}, \hyperpage{24}
+    \subitem {is\_doc\_name}, \hyperpage{24}
     \subitem {MAX\_CHARACTERS\_DOC}, \hyperpage{17}
     \subitem {MAX\_DOCS}, \hyperpage{18}
     \subitem {MAX\_ITERATIONS}, \hyperpage{18}
     \subitem {MAX\_NAME\_DOC}, \hyperpage{18}
     \subitem {MAX\_WORD\_SIZE}, \hyperpage{18}
-    \subitem {release\_graph}, \hyperpage{24}
+    \subitem {release\_graph}, \hyperpage{25}
     \subitem {show\_graph}, \hyperpage{25}
   \item {graphic.c}
-    \subitem {generate\_eps}, \hyperpage{49}
+    \subitem {generate\_eps}, \hyperpage{50}
 
   \indexspace
 
   \item {hash\_function}
-    \subitem {inverted\_index.c}, \hyperpage{54}
-    \subitem {inverted\_index.h}, \hyperpage{30}
+    \subitem {inverted\_index.c}, \hyperpage{55}
+    \subitem {inverted\_index.h}, \hyperpage{31}
   \item {HASH\_TABLE\_SIZE}
     \subitem {graph.h}, \hyperpage{17}
 
@@ -118,55 +118,55 @@
 
   \item {incs/doc.h}, \hyperpage{13}, \hyperpage{15}
   \item {incs/graph.h}, \hyperpage{15}, \hyperpage{26}
-  \item {incs/inverted\_index.h}, \hyperpage{26}, \hyperpage{36}
-  \item {incs/pagerank.h}, \hyperpage{37}, \hyperpage{39}
+  \item {incs/inverted\_index.h}, \hyperpage{27}, \hyperpage{37}
+  \item {incs/pagerank.h}, \hyperpage{37}, \hyperpage{40}
   \item {initialize\_graph}
-    \subitem {graph.c}, \hyperpage{44}
-    \subitem {graph.h}, \hyperpage{23}
+    \subitem {graph.c}, \hyperpage{45}
+    \subitem {graph.h}, \hyperpage{24}
   \item {initialize\_pagerank}
-    \subitem {pagerank.c}, \hyperpage{68}
+    \subitem {pagerank.c}, \hyperpage{71}
     \subitem {pagerank.h}, \hyperpage{39}
   \item {input\_adjacent\_list}
     \subitem {Graph}, \hyperpage{10}
   \item {inverted\_index.c}
-    \subitem {add\_document}, \hyperpage{52}
-    \subitem {build\_index}, \hyperpage{52}
-    \subitem {create\_new\_node}, \hyperpage{53}
-    \subitem {hash\_function}, \hyperpage{54}
-    \subitem {is\_stopword}, \hyperpage{54}
-    \subitem {print\_inverted\_index}, \hyperpage{55}
-    \subitem {print\_search\_word}, \hyperpage{55}
-    \subitem {release\_inverted\_index}, \hyperpage{56}
-    \subitem {search\_word}, \hyperpage{57}
-    \subitem {tokenize\_text}, \hyperpage{58}
+    \subitem {add\_document}, \hyperpage{53}
+    \subitem {build\_index}, \hyperpage{54}
+    \subitem {create\_new\_node}, \hyperpage{55}
+    \subitem {hash\_function}, \hyperpage{55}
+    \subitem {is\_stopword}, \hyperpage{56}
+    \subitem {print\_inverted\_index}, \hyperpage{56}
+    \subitem {print\_search\_word\_with\_pagerank}, \hyperpage{58}
+    \subitem {release\_inverted\_index}, \hyperpage{59}
+    \subitem {search\_word}, \hyperpage{60}
+    \subitem {tokenize\_text}, \hyperpage{61}
   \item {inverted\_index.h}
-    \subitem {add\_document}, \hyperpage{27}
-    \subitem {build\_index}, \hyperpage{28}
-    \subitem {create\_new\_node}, \hyperpage{29}
-    \subitem {hash\_function}, \hyperpage{30}
-    \subitem {is\_stopword}, \hyperpage{30}
+    \subitem {add\_document}, \hyperpage{28}
+    \subitem {build\_index}, \hyperpage{29}
+    \subitem {create\_new\_node}, \hyperpage{30}
+    \subitem {hash\_function}, \hyperpage{31}
+    \subitem {is\_stopword}, \hyperpage{31}
     \subitem {print\_inverted\_index}, \hyperpage{32}
-    \subitem {print\_search\_word}, \hyperpage{33}
+    \subitem {print\_search\_word\_with\_pagerank}, \hyperpage{33}
     \subitem {release\_inverted\_index}, \hyperpage{34}
-    \subitem {search\_word}, \hyperpage{34}
-    \subitem {tokenize\_text}, \hyperpage{35}
+    \subitem {search\_word}, \hyperpage{35}
+    \subitem {tokenize\_text}, \hyperpage{36}
   \item {InvertedIndex}, \hyperpage{11}
     \subitem {docs\_list}, \hyperpage{11}
     \subitem {next}, \hyperpage{11}
     \subitem {word}, \hyperpage{12}
   \item {is\_doc\_name}
-    \subitem {graph.c}, \hyperpage{44}
-    \subitem {graph.h}, \hyperpage{23}
+    \subitem {graph.c}, \hyperpage{45}
+    \subitem {graph.h}, \hyperpage{24}
   \item {is\_stopword}
-    \subitem {inverted\_index.c}, \hyperpage{54}
-    \subitem {inverted\_index.h}, \hyperpage{30}
+    \subitem {inverted\_index.c}, \hyperpage{56}
+    \subitem {inverted\_index.h}, \hyperpage{31}
 
   \indexspace
 
   \item {main}
-    \subitem {main.c}, \hyperpage{62}, \hyperpage{64}
+    \subitem {main.c}, \hyperpage{65}, \hyperpage{68}
   \item {main.c}
-    \subitem {main}, \hyperpage{62}, \hyperpage{64}
+    \subitem {main}, \hyperpage{65}, \hyperpage{68}
   \item {mapping\_docs}
     \subitem {Graph}, \hyperpage{10}
   \item {MAX\_CHARACTERS\_DOC}
@@ -199,52 +199,52 @@
   \indexspace
 
   \item {pagerank.c}
-    \subitem {calculate\_pagerank}, \hyperpage{66}
-    \subitem {display\_pagerank}, \hyperpage{67}
-    \subitem {initialize\_pagerank}, \hyperpage{68}
+    \subitem {calculate\_pagerank}, \hyperpage{70}
+    \subitem {display\_pagerank}, \hyperpage{70}
+    \subitem {initialize\_pagerank}, \hyperpage{71}
   \item {pagerank.h}
-    \subitem {calculate\_pagerank}, \hyperpage{37}
-    \subitem {display\_pagerank}, \hyperpage{38}
+    \subitem {calculate\_pagerank}, \hyperpage{38}
+    \subitem {display\_pagerank}, \hyperpage{39}
     \subitem {initialize\_pagerank}, \hyperpage{39}
   \item {print\_inverted\_index}
-    \subitem {inverted\_index.c}, \hyperpage{55}
+    \subitem {inverted\_index.c}, \hyperpage{56}
     \subitem {inverted\_index.h}, \hyperpage{32}
-  \item {print\_search\_word}
-    \subitem {inverted\_index.c}, \hyperpage{55}
+  \item {print\_search\_word\_with\_pagerank}
+    \subitem {inverted\_index.c}, \hyperpage{58}
     \subitem {inverted\_index.h}, \hyperpage{33}
 
   \indexspace
 
   \item {release\_graph}
-    \subitem {graph.c}, \hyperpage{45}
-    \subitem {graph.h}, \hyperpage{24}
+    \subitem {graph.c}, \hyperpage{46}
+    \subitem {graph.h}, \hyperpage{25}
   \item {release\_inverted\_index}
-    \subitem {inverted\_index.c}, \hyperpage{56}
+    \subitem {inverted\_index.c}, \hyperpage{59}
     \subitem {inverted\_index.h}, \hyperpage{34}
 
   \indexspace
 
   \item {search\_word}
-    \subitem {inverted\_index.c}, \hyperpage{57}
-    \subitem {inverted\_index.h}, \hyperpage{34}
+    \subitem {inverted\_index.c}, \hyperpage{60}
+    \subitem {inverted\_index.h}, \hyperpage{35}
   \item {show\_graph}
-    \subitem {graph.c}, \hyperpage{45}
+    \subitem {graph.c}, \hyperpage{46}
     \subitem {graph.h}, \hyperpage{25}
   \item {Simulador de Sistema de Recuperación de Información}, 
 		\hyperpage{1}
-  \item {src/graph.c}, \hyperpage{39}, \hyperpage{46}
-  \item {src/graphic.c}, \hyperpage{49, 50}
-  \item {src/inverted\_index.c}, \hyperpage{51}, \hyperpage{59}
-  \item {src/main.c}, \hyperpage{61}, \hyperpage{63}
-  \item {src/pagerank.c}, \hyperpage{66}, \hyperpage{68}
-  \item {src2/doc.c}, \hyperpage{69}, \hyperpage{71}
-  \item {src2/main.c}, \hyperpage{64, 65}
+  \item {src/graph.c}, \hyperpage{40}, \hyperpage{47}
+  \item {src/graphic.c}, \hyperpage{50, 51}
+  \item {src/inverted\_index.c}, \hyperpage{52}, \hyperpage{62}
+  \item {src/main.c}, \hyperpage{65, 66}
+  \item {src/pagerank.c}, \hyperpage{69}, \hyperpage{72}
+  \item {src2/doc.c}, \hyperpage{73}, \hyperpage{75}
+  \item {src2/main.c}, \hyperpage{67}, \hyperpage{69}
 
   \indexspace
 
   \item {tokenize\_text}
-    \subitem {inverted\_index.c}, \hyperpage{58}
-    \subitem {inverted\_index.h}, \hyperpage{35}
+    \subitem {inverted\_index.c}, \hyperpage{61}
+    \subitem {inverted\_index.h}, \hyperpage{36}
   \item {total\_docs}
     \subitem {Graph}, \hyperpage{11}
 

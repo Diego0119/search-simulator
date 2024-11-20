@@ -21,7 +21,7 @@ Función principal de creación de archivos.
 18-\/11-\/2024 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Authors}
-Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo 
+Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo 
 \end{DoxyAuthor}
 Contiene la función principal del programa que crea los archivos de texto. 
 
@@ -78,7 +78,9 @@ Se VALIDAN los ARGUMENTOS de la TERMINAL. Se verifica que se hayan proporcionado
 \DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{srand(time(NULL));}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nCREANDO\ \%d\ archivos\ de\ texto\ con\ \%d\ caracteres\ cada\ uno...\(\backslash\)n\(\backslash\)n"{}},\ num\_docs,\ num\_characters);}
 \DoxyCodeLine{\mbox{\hyperlink{doc_8c_a145464661c096419f55d33a30b8486ab}{generate\_text\_files}}(num\_docs,\ num\_characters);}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nArchivos\ de\ texto\ creados\ con\ ÉXITO.\(\backslash\)n\(\backslash\)n"{}});}
 \DoxyCodeLine{\textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
 
 \end{DoxyCode}

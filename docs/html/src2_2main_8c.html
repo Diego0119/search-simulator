@@ -110,7 +110,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Función principal de creación de archivos. </p>
 <dl class="section date"><dt>Date</dt><dd>18-11-2024 </dd></dl>
-<dl class="section author"><dt>Authors</dt><dd>Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Carcamo </dd></dl>
+<dl class="section author"><dt>Authors</dt><dd>Miguel Loaiza, Diego Sanhueza, Miguel Maripillan y Felipe Cárcamo </dd></dl>
 <p>Contiene la función principal del programa que crea los archivos de texto. </p>
 
 <p class="definition">Definition in file <a class="el" href="src2_2main_8c_source.html">main.c</a>.</p>
@@ -162,7 +162,9 @@ Functions</h2></td></tr>
 <div class="line">     exit(EXIT_FAILURE);</div>
 <div class="line">}</div>
 <div class="line">srand(time(NULL));</div>
+<div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nCREANDO %d archivos de texto con %d caracteres cada uno...\n\n&quot;</span>, num_docs, num_characters);</div>
 <div class="line"><a class="code hl_function" href="doc_8c.html#a145464661c096419f55d33a30b8486ab">generate_text_files</a>(num_docs, num_characters);</div>
+<div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nArchivos de texto creados con ÉXITO.\n\n&quot;</span>);</div>
 <div class="line"><span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="ttc" id="adoc_8c_html_a145464661c096419f55d33a30b8486ab"><div class="ttname"><a href="doc_8c.html#a145464661c096419f55d33a30b8486ab">generate_text_files</a></div><div class="ttdeci">void generate_text_files(int num_docs, int num_characters)</div><div class="ttdoc">&lt; Incluye la definición de las funciones de generación de archivos.</div><div class="ttdef"><b>Definition</b> <a href="doc_8c_source.html#l00018">doc.c:18</a></div></div>
 </div><!-- fragment -->

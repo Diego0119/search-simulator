@@ -41,7 +41,7 @@ void generate\+\_\+eps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{st
 
 Genera un archivo .eps con la representación gráfica del grafo.
 
-Generar archivo EPS con el grafo. 
+Función que genera un archivo EPS con la representación gráfica del grafo (No se incluyen los enlaces, solo los nodos). 
 \begin{DoxyParams}{Parameters}
 {\em graph} & Grafo \\
 \hline
@@ -50,6 +50,65 @@ Generar archivo EPS con el grafo.
 {\em filename} & Nombre del archivo EPS \\
 \hline
 \end{DoxyParams}
+Se verifica que el archivo se abra correctamente y se crear las variables base para crear la generación de la imagen EPS. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{FILE\ *file\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});\(\backslash\)}
+\DoxyCodeLine{if\ (!file)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ crear\ el\ archivo\ EPS\ para\ el\ grafo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width\ =\ 800;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height\ =\ 800;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ radius\ =\ 30;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ margin\ =\ 100;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ centerX\ =\ width\ /\ 2;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ centerY\ =\ height\ /\ 2;}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scale\ =\ 2\ *\ M\_PI\ /\ graph-\/>total\_docs;}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}\%\%!PS-\/Adobe-\/3.0\ EPSF-\/3.0\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}\%\%\%\%BoundingBox:\ 0\ 0\ \%d\ \%d\(\backslash\)n"{}},\ width,\ height);}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}/Courier\ findfont\ 10\ scalefont\ setfont\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}1\ setlinecap\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}0.5\ setlinewidth\(\backslash\)n"{}});}
+\DoxyCodeLine{fprintf(file,\ \textcolor{stringliteral}{"{}newpath\(\backslash\)n"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ positions[MAX\_DOCS][2];}
+
+\end{DoxyCode}
+
+
+Se recorre el grafo, se asigna una posición a cada nodo y se dibuja. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{double}\ angle\ =\ i\ *\ scale;}
+\DoxyCodeLine{\ \ \ \ \ positions[i][0]\ =\ centerX\ +\ (centerX\ -\/\ margin)\ *\ cos(angle);}
+\DoxyCodeLine{\ \ \ \ \ positions[i][1]\ =\ centerY\ +\ (centerY\ -\/\ margin)\ *\ sin(angle);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{double}\ red\ =\ (rand()\ \%\ 256)\ /\ 255.0;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{double}\ green\ =\ (rand()\ \%\ 256)\ /\ 255.0;}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{double}\ blue\ =\ (rand()\ \%\ 256)\ /\ 255.0;}
+\DoxyCodeLine{\ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\%f\ \%f\ \%f\ setrgbcolor\(\backslash\)n"{}},\ red,\ green,\ blue);}
+\DoxyCodeLine{\ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}newpath\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\%.2f\ \%.2f\ \%d\ 0\ 360\ arc\ fill\(\backslash\)n"{}},\ positions[i][0],\ positions[i][1],\ radius);}
+\DoxyCodeLine{\ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}0\ setgray\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\%.2f\ \%.2f\ moveto\ (\%d:\ \%.3f)\ show\(\backslash\)n"{}},\ positions[i][0]\ -\/\ radius,\ positions[i][1]\ -\/\ 2\ *\ radius,\ i,\ pagerank[i]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Se convierte el archivo EPS a PNG con GHOSTSCRIPT. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ comando[256];}
+\DoxyCodeLine{snprintf(comando,\ \textcolor{keyword}{sizeof}(comando),\ \textcolor{stringliteral}{"{}gs\ -\/dSAFER\ -\/dBATCH\ -\/dNOPAUSE\ -\/dEPSCrop\ -\/sDEVICE=png16m\ -\/r300\ -\/sOutputFile=\%s.png\ \%s"{}},\ filename,\ filename);}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ resultado\ =\ system(comando);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (resultado\ !=\ 0)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}ERROR\ al\ convertir\ el\ archivo\ EPS\ a\ PNG,\ saliendo...\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nArchivo\ EPS\ convertido\ a\ PNG\ en\ el\ archivo\ \%s.png\(\backslash\)n\(\backslash\)n"{}},\ filename);}
+
+\end{DoxyCode}
 
 
 Definition at line \mbox{\hyperlink{graphic_8c_source_l00017}{17}} of file \mbox{\hyperlink{graphic_8c_source}{graphic.\+c}}.

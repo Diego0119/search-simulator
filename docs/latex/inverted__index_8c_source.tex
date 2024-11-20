@@ -161,80 +161,115 @@
 \DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00419}00419\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
 \DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00420}00420\ \}}
 \DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00421}00421\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00427}\mbox{\hyperlink{inverted__index_8c_ab994f81c8baf9e5796c8a9ce761ae1ef}{00427}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inverted__index_8c_ab994f81c8baf9e5796c8a9ce761ae1ef}{print\_search\_word}}(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index,\ \textcolor{keywordtype}{char}\ *word\_to\_search)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00428}00428\ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00435}00435\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *results\ =\ \mbox{\hyperlink{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}{search\_word}}(index,\ word\_to\_search);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00436}00436\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00447}00447\ \ \ \ \ \textcolor{keywordflow}{if}\ (!results)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00448}00448\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00449}00449\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Palabra\ '\%s'\ no\ encontrada.\(\backslash\)n"{}},\ word\_to\_search);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00451}00451\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00452}00452\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00459}00459\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nLa\ palabra\ '\%s'\ se\ encuentra\ en\ los\ siguientes\ documentos:\(\backslash\)n\(\backslash\)n"{}},\ word\_to\_search);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00460}00460\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00467}00467\ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_count[MAX\_DOCS]\ =\ \{0\};}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00468}00468\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *current\ =\ results;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00469}00469\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00480}00480\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00481}00481\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00482}00482\ \ \ \ \ \ \ \ \ doc\_count[current-\/>doc\_id]++;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00483}00483\ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00484}00484\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00485}00485\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00496}00496\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_DOCS;\ i++)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00497}00497\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\_count[i]\ >\ 0)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00499}00499\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Doc\%d:\ \%d\ veces\(\backslash\)n"{}},\ i,\ doc\_count[i]);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00501}00501\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00502}00502\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00503}00503\ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00509}\mbox{\hyperlink{inverted__index_8c_a321feae1c468f2511ae1ac93b2709c52}{00509}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inverted__index_8c_a321feae1c468f2511ae1ac93b2709c52}{build\_index}}(\mbox{\hyperlink{structGraph}{Graph}}\ *graph,\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00510}00510\ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00525}00525\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00526}00526\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00539}00539\ \ \ \ \ \ \ \ \ FILE\ *file\ =\ fopen(graph-\/>mapping\_docs[i].name,\ \textcolor{stringliteral}{"{}r"{}});}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00540}00540\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ NULL)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00541}00541\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ \%s\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00544}00544\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00545}00545\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ file))}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00558}00558\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{inverted__index_8c_aa43037f50a965f75d13c1c79470a3c1f}{tokenize\_text}}(buffer,\ graph-\/>mapping\_docs[i].doc\_id,\ index);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00567}00567\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00568}00568\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00575}00575\ \ \ \ \ \ \ \ \ fclose(file);}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00576}00576\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00577}00577\ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00578}00578\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00583}\mbox{\hyperlink{inverted__index_8c_afd40fec44adaa6401c2609cced5b0479}{00583}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inverted__index_8c_afd40fec44adaa6401c2609cced5b0479}{release\_inverted\_index}}(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **hash\_table)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00584}00584\ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00592}00592\ \ \ \ \ \textcolor{keywordflow}{if}\ (hash\_table\ ==\ NULL)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00593}00593\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Verifica\ si\ la\ tabla\ hash\ es\ nula.}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00594}00594\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00605}00605\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00606}00606\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00618}00618\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[i];}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00619}00619\ }
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00638}00638\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00429}\mbox{\hyperlink{inverted__index_8c_aed64c2ea34cfe6b9b40f4e164b81e8fb}{00429}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inverted__index_8c_aed64c2ea34cfe6b9b40f4e164b81e8fb}{print\_search\_word\_with\_pagerank}}(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index,\ \textcolor{keywordtype}{char}\ *word\_to\_search,\ \mbox{\hyperlink{structGraph}{Graph}}\ *graph,\ \textcolor{keywordtype}{double}\ *pagerank)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00430}00430\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00442}00442\ \ \ \ \ \textcolor{keywordflow}{if}\ (!index\ ||\ !word\_to\_search\ ||\ !graph\ ||\ !pagerank)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00443}00443\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00444}00444\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error:\ Parámetros\ nulos\ pasados\ a\ la\ función.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00445}00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00446}00446\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00460}00460\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *results\ =\ \mbox{\hyperlink{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}{search\_word}}(index,\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00461}00461\ \ \ \ \ \textcolor{keywordflow}{if}\ (!results)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00462}00462\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00463}00463\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Palabra\ '\%s'\ no\ encontrada.\(\backslash\)n"{}},\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00465}00465\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00477}00477\ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nLa\ palabra\ '\%s'\ se\ encuentra\ en\ los\ siguientes\ documentos:\(\backslash\)n\(\backslash\)n"{}},\ word\_to\_search);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00479}00479\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_docs\ =\ graph-\/>total\_docs;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00480}00480\ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_count[num\_docs\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00481}00481\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <=\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00482}00482\ \ \ \ \ \ \ \ \ doc\_count[i]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00499}00499\ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *current\ =\ results;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00500}00500\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00501}00501\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00502}00502\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>doc\_id\ >\ 0\ \&\&\ current-\/>doc\_id\ <=\ num\_docs)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00503}00503\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ doc\_count[current-\/>doc\_id]++;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00505}00505\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00506}00506\ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00507}00507\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00519}00519\ \ \ \ \ \textcolor{keywordtype}{int}\ all\_docs[num\_docs];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00520}00520\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00521}00521\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00522}00522\ \ \ \ \ \ \ \ \ all\_docs[i\ -\/\ 1]\ =\ i;\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00523}00523\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00545}00545\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs\ -\/\ 1;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00546}00546\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00547}00547\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ num\_docs;\ j++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00548}00548\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_i\ =\ all\_docs[i];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_j\ =\ all\_docs[j];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pagerank[doc\_i\ -\/\ 1]\ <\ pagerank[doc\_j\ -\/\ 1])}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ temp\ =\ all\_docs[i];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ all\_docs[i]\ =\ all\_docs[j];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ all\_docs[j]\ =\ temp;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00557}00557\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00558}00558\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00559}00559\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00574}00574\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00575}00575\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00576}00576\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_id\ =\ all\_docs[i];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\_count[doc\_id]\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00578}00578\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Doc\%d:\ \%d\ veces\ \ \ -\/\ \ \ PageRank\ =\ \%.6f\(\backslash\)n"{}},\ doc\_id,\ doc\_count[doc\_id],\ pagerank[doc\_id\ -\/\ 1]);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00580}00580\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00581}00581\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00582}00582\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00584}00584\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00590}\mbox{\hyperlink{inverted__index_8c_a321feae1c468f2511ae1ac93b2709c52}{00590}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inverted__index_8c_a321feae1c468f2511ae1ac93b2709c52}{build\_index}}(\mbox{\hyperlink{structGraph}{Graph}}\ *graph,\ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **index)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00591}00591\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00606}00606\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ graph-\/>total\_docs;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00607}00607\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00620}00620\ \ \ \ \ \ \ \ \ FILE\ *file\ =\ fopen(graph-\/>mapping\_docs[i].name,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00621}00621\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00622}00622\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ \%s\(\backslash\)n"{}},\ graph-\/>mapping\_docs[i].name);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00625}00625\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00626}00626\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00637}00637\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00638}00638\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ file))}
 \DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00639}00639\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (doc\_node\ !=\ NULL)}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *temp\_doc\_node\ =\ doc\_node;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doc\_node\ =\ doc\_node-\/>next;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(temp\_doc\_node);\ \textcolor{comment}{//\ Libera\ cada\ nodo\ de\ documento.}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *temp\ =\ current;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ free(temp);\ \textcolor{comment}{//\ Libera\ el\ nodo\ de\ la\ palabra.}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00666}00666\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00673}00673\ \ \ \ \ \ \ \ \ hash\_table[i]\ =\ NULL;}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00674}00674\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00675}00675\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{inverted__index_8c_aa43037f50a965f75d13c1c79470a3c1f}{tokenize\_text}}(buffer,\ graph-\/>mapping\_docs[i].doc\_id,\ index);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00648}00648\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00649}00649\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00656}00656\ \ \ \ \ \ \ \ \ fclose(file);}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00657}00657\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00658}00658\ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00659}00659\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00664}\mbox{\hyperlink{inverted__index_8c_afd40fec44adaa6401c2609cced5b0479}{00664}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{inverted__index_8c_afd40fec44adaa6401c2609cced5b0479}{release\_inverted\_index}}(\mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ **hash\_table)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00665}00665\ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00673}00673\ \ \ \ \ \textcolor{keywordflow}{if}\ (hash\_table\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00674}00674\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Verifica\ si\ la\ tabla\ hash\ es\ nula.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00675}00675\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00686}00686\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ HASH\_TABLE\_SIZE;\ i++)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00687}00687\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00699}00699\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *current\ =\ hash\_table[i];}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00700}00700\ }
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00719}00719\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00720}00720\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *doc\_node\ =\ current-\/>docs\_list;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (doc\_node\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node}}\ *temp\_doc\_node\ =\ doc\_node;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doc\_node\ =\ doc\_node-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(temp\_doc\_node);\ \textcolor{comment}{//\ Libera\ cada\ nodo\ de\ documento.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInvertedIndex}{InvertedIndex}}\ *temp\ =\ current;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ free(temp);\ \textcolor{comment}{//\ Libera\ el\ nodo\ de\ la\ palabra.}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00747}00747\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00754}00754\ \ \ \ \ \ \ \ \ hash\_table[i]\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00755}00755\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{inverted__index_8c_source_l00756}00756\ \}}
 
 \end{DoxyCode}

@@ -24,8 +24,8 @@ unsigned int \mbox{\hyperlink{inverted__index_8c_a897c98d07f8e56920aef2803e175cb
 \begin{DoxyCompactList}\small\item\em Función hash para obtener un índice basado en el valor ASCII de los caracteres de una palabra. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}{search\+\_\+word}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}hash\+\_\+table, char \texorpdfstring{$\ast$}{*}word)
 \begin{DoxyCompactList}\small\item\em Busca una palabra en el índice invertido y retorna la lista de documentos asociados. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{inverted__index_8c_ab994f81c8baf9e5796c8a9ce761ae1ef}{print\+\_\+search\+\_\+word}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}index, char \texorpdfstring{$\ast$}{*}word\+\_\+to\+\_\+search)
-\begin{DoxyCompactList}\small\item\em Imprime los documentos y la frecuencia de aparición de una palabra en el índice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inverted__index_8c_aed64c2ea34cfe6b9b40f4e164b81e8fb}{print\+\_\+search\+\_\+word\+\_\+with\+\_\+pagerank}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}index, char \texorpdfstring{$\ast$}{*}word\+\_\+to\+\_\+search, \mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, double \texorpdfstring{$\ast$}{*}pagerank)
+\begin{DoxyCompactList}\small\item\em Imprime los documentos y la frecuencia de aparición de una palabra junto con el Page\+Rank. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{inverted__index_8c_a321feae1c468f2511ae1ac93b2709c52}{build\+\_\+index}} (\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, \mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}index)
 \begin{DoxyCompactList}\small\item\em Lee los archivos asociados al grafo y crea el índice invertido. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{inverted__index_8c_afd40fec44adaa6401c2609cced5b0479}{release\+\_\+inverted\+\_\+index}} (\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}hash\+\_\+table)
@@ -180,7 +180,7 @@ Cierra el archivo una vez que ha terminado de procesarlo.
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00509}{509}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00590}{590}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
 
 \Hypertarget{inverted__index_8c_a054f8c4c40d35263099ce511744fef5a}\index{inverted\_index.c@{inverted\_index.c}!create\_new\_node@{create\_new\_node}}
 \index{create\_new\_node@{create\_new\_node}!inverted\_index.c@{inverted\_index.c}}
@@ -374,17 +374,15 @@ Recorre la tabla hash y muestra las palabras y sus documentos asociados.
 
 Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00275}{275}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
 
-\Hypertarget{inverted__index_8c_ab994f81c8baf9e5796c8a9ce761ae1ef}\index{inverted\_index.c@{inverted\_index.c}!print\_search\_word@{print\_search\_word}}
-\index{print\_search\_word@{print\_search\_word}!inverted\_index.c@{inverted\_index.c}}
-\doxysubsubsection{\texorpdfstring{print\_search\_word()}{print\_search\_word()}}
-{\footnotesize\ttfamily \label{inverted__index_8c_ab994f81c8baf9e5796c8a9ce761ae1ef} 
-void print\+\_\+search\+\_\+word (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{index}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{word\+\_\+to\+\_\+search}{}\end{DoxyParamCaption})}
+\Hypertarget{inverted__index_8c_aed64c2ea34cfe6b9b40f4e164b81e8fb}\index{inverted\_index.c@{inverted\_index.c}!print\_search\_word\_with\_pagerank@{print\_search\_word\_with\_pagerank}}
+\index{print\_search\_word\_with\_pagerank@{print\_search\_word\_with\_pagerank}!inverted\_index.c@{inverted\_index.c}}
+\doxysubsubsection{\texorpdfstring{print\_search\_word\_with\_pagerank()}{print\_search\_word\_with\_pagerank()}}
+{\footnotesize\ttfamily \label{inverted__index_8c_aed64c2ea34cfe6b9b40f4e164b81e8fb} 
+void print\+\_\+search\+\_\+word\+\_\+with\+\_\+pagerank (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInvertedIndex}{Inverted\+Index}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{index}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{word\+\_\+to\+\_\+search}{, }\item[{\mbox{\hyperlink{structGraph}{Graph}} \texorpdfstring{$\ast$}{*}}]{graph}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{pagerank}{}\end{DoxyParamCaption})}
 
 
 
-Imprime los documentos y la frecuencia de aparición de una palabra en el índice. 
-
-Imprime el índice invertido mostrando cada palabra asociada a los documentos.
+Imprime los documentos y la frecuencia de aparición de una palabra junto con el Page\+Rank. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -392,16 +390,25 @@ Imprime el índice invertido mostrando cada palabra asociada a los documentos.
 \hline
 {\em word\+\_\+to\+\_\+search} & Palabra a buscar en el índice. \\
 \hline
+{\em graph} & Grafo que contiene los documentos. \\
+\hline
+{\em pagerank} & Arreglo de valores de Page\+Rank. \\
+\hline
 \end{DoxyParams}
-Llama a la función search\+\_\+word para obtener los documentos asociados a la palabra. 
+Verifica que los parámetros no sean nulos. Si alguno lo es, imprime un mensaje de error y retorna. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *results\ =\ \mbox{\hyperlink{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}{search\_word}}(index,\ word\_to\_search);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!index\ ||\ !word\_to\_search\ ||\ !graph\ ||\ !pagerank)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error:\ Parámetros\ nulos\ pasados\ a\ la\ función.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\}}
 
 \end{DoxyCode}
 
 
-Si no se encuentran resultados, muestra un mensaje de error. 
+Busca la palabra en el índice invertido. Si no se encuentra, muestra un mensaje y retorna. 
 \begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *results\ =\ \mbox{\hyperlink{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}{search\_word}}(index,\ word\_to\_search);}
 \DoxyCodeLine{\textcolor{keywordflow}{if}\ (!results)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Palabra\ '\%s'\ no\ encontrada.\(\backslash\)n"{}},\ word\_to\_search);}
@@ -411,43 +418,78 @@ Si no se encuentran resultados, muestra un mensaje de error.
 \end{DoxyCode}
 
 
-Muestra los documentos en los que se encuentra la palabra. 
+Imprime un mensaje indicando que la palabra se ha encontrado en documentos e inicializa un arreglo para contar la frecuencia de la palabra en cada documento. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)nLa\ palabra\ '\%s'\ se\ encuentra\ en\ los\ siguientes\ documentos:\(\backslash\)n\(\backslash\)n"{}},\ word\_to\_search);}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ num\_docs\ =\ graph-\/>total\_docs;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ doc\_count[num\_docs\ +\ 1];}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <=\ num\_docs;\ i++)}
+\DoxyCodeLine{\ \ \ \ doc\_count[i]\ =\ 0;}
 
 \end{DoxyCode}
 
 
-Inicializa un contador para registrar cuántas veces aparece la palabra en cada documento. 
+Recorre la lista de resultados para contar la frecuencia de la palabra en cada documento. Considera solo documentos con identificadores válidos. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ doc\_count[MAX\_DOCS]\ =\ \{0\};}
-
-\end{DoxyCode}
-
-
-Recorre la lista de documentos y cuenta cuántas veces aparece la palabra en cada documento. 
-\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structNode}{Node}}\ *current\ =\ results;}
 \DoxyCodeLine{\textcolor{keywordflow}{while}\ (current\ !=\ NULL)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \ \ doc\_count[current-\/>doc\_id]++;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>doc\_id\ >\ 0\ \&\&\ current-\/>doc\_id\ <=\ num\_docs)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ doc\_count[current-\/>doc\_id]++;}
+\DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{\ \ \ \ current\ =\ current-\/>next;}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
 
 
-Muestra la cantidad de veces que aparece la palabra en cada documento. 
+Crea un arreglo que contiene todos los documentos. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_DOCS;\ i++)}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ all\_docs[num\_docs];}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ num\_docs;\ i++)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (doc\_count[i]\ >\ 0)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Doc\%d:\ \%d\ veces\(\backslash\)n"{}},\ i,\ doc\_count[i]);}
+\DoxyCodeLine{\ \ \ \ all\_docs[i\ -\/\ 1]\ =\ i;\ }
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00427}{427}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+Ordena todos los documentos por Page\+Rank en orden descendente. Utiliza un algoritmo de ordenamiento burbuja (bubble sort). 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs\ -\/\ 1;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ num\_docs;\ j++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_i\ =\ all\_docs[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ doc\_j\ =\ all\_docs[j];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pagerank[doc\_i\ -\/\ 1]\ <\ pagerank[doc\_j\ -\/\ 1])}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ temp\ =\ all\_docs[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ all\_docs[i]\ =\ all\_docs[j];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ all\_docs[j]\ =\ temp;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Imprime solo los documentos donde la palabra fue encontrada (doc\+\_\+count \texorpdfstring{$>$}{>} 0), junto con la frecuencia y el Page\+Rank. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_docs;\ i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ doc\_id\ =\ all\_docs[i];}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (doc\_count[doc\_id]\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}Doc\%d:\ \%d\ veces\ \ \ -\/\ \ \ PageRank\ =\ \%.6f\(\backslash\)n"{}},\ doc\_id,\ doc\_count[doc\_id],\ pagerank[doc\_id\ -\/\ 1]);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00429}{429}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
 
 \Hypertarget{inverted__index_8c_afd40fec44adaa6401c2609cced5b0479}\index{inverted\_index.c@{inverted\_index.c}!release\_inverted\_index@{release\_inverted\_index}}
 \index{release\_inverted\_index@{release\_inverted\_index}!inverted\_index.c@{inverted\_index.c}}
@@ -539,7 +581,7 @@ Establece el índice en la tabla hash como NULL después de liberar su memoria.
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00583}{583}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
+Definition at line \mbox{\hyperlink{inverted__index_8c_source_l00664}{664}} of file \mbox{\hyperlink{inverted__index_8c_source}{inverted\+\_\+index.\+c}}.
 
 \Hypertarget{inverted__index_8c_a4f66d55e651735ee8262e7a6de2d5b05}\index{inverted\_index.c@{inverted\_index.c}!search\_word@{search\_word}}
 \index{search\_word@{search\_word}!inverted\_index.c@{inverted\_index.c}}

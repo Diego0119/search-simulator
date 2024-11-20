@@ -128,21 +128,21 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> (num_docs &lt;= 0 || num_characters &lt;= 0)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        fprintf(stderr, <span class="stringliteral">&quot;Error: Debes especificar valores positivos para -d y -c.\n&quot;</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        fprintf(stderr, <span class="stringliteral">&quot;Uso: %s [-h] [-d numero_de_archivos] [-c numero_de_caracteres]\n&quot;</span>, argv[0]);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        exit(EXIT_FAILURE);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    srand(time(NULL));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (num_docs &lt;= 0 || num_characters &lt;= 0)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        fprintf(stderr, <span class="stringliteral">&quot;Error: Debes especificar valores positivos para -d y -c.\n&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        fprintf(stderr, <span class="stringliteral">&quot;Uso: %s [-h] [-d numero_de_archivos] [-c numero_de_caracteres]\n&quot;</span>, argv[0]);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        exit(EXIT_FAILURE);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    fprintf(stdout, <span class="stringliteral">&quot;\nCREANDO %d archivos de texto con %d caracteres cada uno...\n\n&quot;</span>, num_docs, num_characters);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_function" href="doc_8c.html#a145464661c096419f55d33a30b8486ab">generate_text_files</a>(num_docs, num_characters);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    fprintf(stdout, <span class="stringliteral">&quot;\nArchivos de texto creados con ÉXITO.\n\n&quot;</span>);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    srand(time(NULL));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    fprintf(stdout, <span class="stringliteral">&quot;\nCREANDO %d archivos de texto con %d caracteres cada uno...\n\n&quot;</span>, num_docs, num_characters);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_function" href="doc_8c.html#a145464661c096419f55d33a30b8486ab">generate_text_files</a>(num_docs, num_characters);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    fprintf(stdout, <span class="stringliteral">&quot;\nArchivos de texto creados con ÉXITO.\n\n&quot;</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
 </div>
 <div class="ttc" id="adoc_8c_html_a145464661c096419f55d33a30b8486ab"><div class="ttname"><a href="doc_8c.html#a145464661c096419f55d33a30b8486ab">generate_text_files</a></div><div class="ttdeci">void generate_text_files(int num_docs, int num_characters)</div><div class="ttdoc">&lt; Incluye la definición de las funciones de generación de archivos.</div><div class="ttdef"><b>Definition</b> <a href="doc_8c_source.html#l00018">doc.c:18</a></div></div>
 <div class="ttc" id="adoc_8h_html"><div class="ttname"><a href="doc_8h.html">doc.h</a></div><div class="ttdoc">Prototipos de funciones para la creación de texto y archivos.</div></div>

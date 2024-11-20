@@ -131,9 +131,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8b68e91fdb924af1316a3c01948d9ccf" id="r_a8b68e91fdb924af1316a3c01948d9ccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b68e91fdb924af1316a3c01948d9ccf">print_inverted_index</a> (<a class="el" href="structInvertedIndex.html">InvertedIndex</a> **)</td></tr>
 <tr class="memdesc:a8b68e91fdb924af1316a3c01948d9ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime el índice invertido mostrando cada palabra y los documentos asociados.  <br /></td></tr>
 <tr class="separator:a8b68e91fdb924af1316a3c01948d9ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e5c5ea1c346f40d0d7f524dc2c4a691" id="r_a3e5c5ea1c346f40d0d7f524dc2c4a691"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e5c5ea1c346f40d0d7f524dc2c4a691">print_search_word</a> (<a class="el" href="structInvertedIndex.html">InvertedIndex</a> **, char *)</td></tr>
-<tr class="memdesc:a3e5c5ea1c346f40d0d7f524dc2c4a691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime el índice invertido mostrando cada palabra asociada a los documentos.  <br /></td></tr>
-<tr class="separator:a3e5c5ea1c346f40d0d7f524dc2c4a691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3364e51ef43ec033dec5d6c8854a0889" id="r_a3364e51ef43ec033dec5d6c8854a0889"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3364e51ef43ec033dec5d6c8854a0889">print_search_word_with_pagerank</a> (<a class="el" href="structInvertedIndex.html">InvertedIndex</a> **, char *, <a class="el" href="structGraph.html">Graph</a> *, double *)</td></tr>
+<tr class="memdesc:a3364e51ef43ec033dec5d6c8854a0889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime los documentos y la frecuencia de aparición de una palabra junto con el PageRank.  <br /></td></tr>
+<tr class="separator:a3364e51ef43ec033dec5d6c8854a0889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab48b945cb5964e6845dd97ac1829369a" id="r_ab48b945cb5964e6845dd97ac1829369a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab48b945cb5964e6845dd97ac1829369a">hash_function</a> (char *)</td></tr>
 <tr class="memdesc:ab48b945cb5964e6845dd97ac1829369a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función hash para obtener un índice basado en el valor ASCII de los caracteres de una palabra.  <br /></td></tr>
 <tr class="separator:ab48b945cb5964e6845dd97ac1829369a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,7 +287,7 @@ Functions</h2></td></tr>
 </div><!-- fragment --><p>Procesa cada línea del archivo y la pasa a la función tokenize_text, que procesa el texto y lo agrega al índice invertido. </p><div class="fragment"><div class="line"><a class="code hl_function" href="inverted__index_8c.html#aa43037f50a965f75d13c1c79470a3c1f">tokenize_text</a>(buffer, graph-&gt;mapping_docs[i].doc_id, index);</div>
 </div><!-- fragment --><p>Cierra el archivo una vez que ha terminado de procesarlo. </p><div class="fragment"><div class="line">fclose(file);</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="inverted__index_8c_source.html#l00509">509</a> of file <a class="el" href="inverted__index_8c_source.html">inverted_index.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverted__index_8c_source.html#l00590">590</a> of file <a class="el" href="inverted__index_8c_source.html">inverted_index.c</a>.</p>
 
 </div>
 </div>
@@ -475,61 +475,100 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3e5c5ea1c346f40d0d7f524dc2c4a691" name="a3e5c5ea1c346f40d0d7f524dc2c4a691"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e5c5ea1c346f40d0d7f524dc2c4a691">&#9670;&#160;</a></span>print_search_word()</h2>
+<a id="a3364e51ef43ec033dec5d6c8854a0889" name="a3364e51ef43ec033dec5d6c8854a0889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3364e51ef43ec033dec5d6c8854a0889">&#9670;&#160;</a></span>print_search_word_with_pagerank()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void print_search_word </td>
+          <td class="memname">void print_search_word_with_pagerank </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structInvertedIndex.html">InvertedIndex</a> **</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>word_to_search</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>word_to_search</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structGraph.html">Graph</a> *</td>          <td class="paramname"><span class="paramname"><em>graph</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *</td>          <td class="paramname"><span class="paramname"><em>pagerank</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Imprime el índice invertido mostrando cada palabra asociada a los documentos. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>Índice invertido.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Imprime el índice invertido mostrando cada palabra asociada a los documentos.</p>
+<p>Imprime los documentos y la frecuencia de aparición de una palabra junto con el PageRank. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td>Tabla hash que contiene el índice invertido. </td></tr>
     <tr><td class="paramname">word_to_search</td><td>Palabra a buscar en el índice. </td></tr>
+    <tr><td class="paramname">graph</td><td>Grafo que contiene los documentos. </td></tr>
+    <tr><td class="paramname">pagerank</td><td>Arreglo de valores de PageRank. </td></tr>
   </table>
   </dd>
 </dl>
-<p>Llama a la función search_word para obtener los documentos asociados a la palabra. </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structNode.html">Node</a> *results = <a class="code hl_function" href="inverted__index_8c.html#a4f66d55e651735ee8262e7a6de2d5b05">search_word</a>(index, word_to_search);</div>
-<div class="ttc" id="ainverted__index_8c_html_a4f66d55e651735ee8262e7a6de2d5b05"><div class="ttname"><a href="inverted__index_8c.html#a4f66d55e651735ee8262e7a6de2d5b05">search_word</a></div><div class="ttdeci">Node * search_word(InvertedIndex **hash_table, char *word)</div><div class="ttdoc">Busca una palabra en el índice invertido y retorna la lista de documentos asociados.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8c_source.html#l00366">inverted_index.c:366</a></div></div>
-</div><!-- fragment --><p>Si no se encuentran resultados, muestra un mensaje de error. </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!results)</div>
+<p>Verifica que los parámetros no sean nulos. Si alguno lo es, imprime un mensaje de error y retorna. </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!index || !word_to_search || !graph || !pagerank)</div>
+<div class="line">{</div>
+<div class="line">    fprintf(stderr, <span class="stringliteral">&quot;Error: Parámetros nulos pasados a la función.\n&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Busca la palabra en el índice invertido. Si no se encuentra, muestra un mensaje y retorna. </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structNode.html">Node</a> *results = <a class="code hl_function" href="inverted__index_8c.html#a4f66d55e651735ee8262e7a6de2d5b05">search_word</a>(index, word_to_search);</div>
+<div class="line"><span class="keywordflow">if</span> (!results)</div>
 <div class="line">{</div>
 <div class="line">    fprintf(stderr, <span class="stringliteral">&quot;Palabra &#39;%s&#39; no encontrada.\n&quot;</span>, word_to_search);</div>
 <div class="line">    <span class="keywordflow">return</span>;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Muestra los documentos en los que se encuentra la palabra. </p><div class="fragment"><div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nLa palabra &#39;%s&#39; se encuentra en los siguientes documentos:\n\n&quot;</span>, word_to_search);</div>
-</div><!-- fragment --><p>Inicializa un contador para registrar cuántas veces aparece la palabra en cada documento. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> doc_count[MAX_DOCS] = {0};</div>
-</div><!-- fragment --><p>Recorre la lista de documentos y cuenta cuántas veces aparece la palabra en cada documento. </p><div class="fragment"><div class="line"><span class="keywordflow">while</span> (current != NULL)</div>
+<div class="ttc" id="ainverted__index_8c_html_a4f66d55e651735ee8262e7a6de2d5b05"><div class="ttname"><a href="inverted__index_8c.html#a4f66d55e651735ee8262e7a6de2d5b05">search_word</a></div><div class="ttdeci">Node * search_word(InvertedIndex **hash_table, char *word)</div><div class="ttdoc">Busca una palabra en el índice invertido y retorna la lista de documentos asociados.</div><div class="ttdef"><b>Definition</b> <a href="inverted__index_8c_source.html#l00366">inverted_index.c:366</a></div></div>
+</div><!-- fragment --><p>Imprime un mensaje indicando que la palabra se ha encontrado en documentos e inicializa un arreglo para contar la frecuencia de la palabra en cada documento. </p><div class="fragment"><div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nLa palabra &#39;%s&#39; se encuentra en los siguientes documentos:\n\n&quot;</span>, word_to_search);</div>
+<div class="line"><span class="keywordtype">int</span> num_docs = graph-&gt;total_docs;</div>
+<div class="line"><span class="keywordtype">int</span> doc_count[num_docs + 1];</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= num_docs; i++)</div>
+<div class="line">    doc_count[i] = 0;</div>
+</div><!-- fragment --><p>Recorre la lista de resultados para contar la frecuencia de la palabra en cada documento. Considera solo documentos con identificadores válidos. </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structNode.html">Node</a> *current = results;</div>
+<div class="line"><span class="keywordflow">while</span> (current != NULL)</div>
 <div class="line">{</div>
-<div class="line">    doc_count[current-&gt;doc_id]++;</div>
+<div class="line">    <span class="keywordflow">if</span> (current-&gt;doc_id &gt; 0 &amp;&amp; current-&gt;doc_id &lt;= num_docs)</div>
+<div class="line">    {</div>
+<div class="line">        doc_count[current-&gt;doc_id]++;</div>
+<div class="line">    }</div>
 <div class="line">    current = current-&gt;next;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Muestra la cantidad de veces que aparece la palabra en cada documento. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MAX_DOCS; i++)</div>
+</div><!-- fragment --><p>Crea un arreglo que contiene todos los documentos. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> all_docs[num_docs];</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= num_docs; i++)</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (doc_count[i] &gt; 0)</div>
-<div class="line">        fprintf(stdout, <span class="stringliteral">&quot;Doc%d: %d veces\n&quot;</span>, i, doc_count[i]);</div>
+<div class="line">    all_docs[i - 1] = i; </div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Ordena todos los documentos por PageRank en orden descendente. Utiliza un algoritmo de ordenamiento burbuja (bubble sort). </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs - 1; i++)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = i + 1; j &lt; num_docs; j++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordtype">int</span> doc_i = all_docs[i];</div>
+<div class="line">        <span class="keywordtype">int</span> doc_j = all_docs[j];</div>
+<div class="line">        <span class="keywordflow">if</span> (pagerank[doc_i - 1] &lt; pagerank[doc_j - 1])</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordtype">int</span> temp = all_docs[i];</div>
+<div class="line">            all_docs[i] = all_docs[j];</div>
+<div class="line">            all_docs[j] = temp;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Imprime solo los documentos donde la palabra fue encontrada (doc_count &gt; 0), junto con la frecuencia y el PageRank. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_docs; i++)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> doc_id = all_docs[i];</div>
+<div class="line">    <span class="keywordflow">if</span> (doc_count[doc_id] &gt; 0)</div>
+<div class="line">    {</div>
+<div class="line">        fprintf(stdout, <span class="stringliteral">&quot;Doc%d: %d veces   -   PageRank = %.6f\n&quot;</span>, doc_id, doc_count[doc_id], pagerank[doc_id - 1]);</div>
+<div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="inverted__index_8c_source.html#l00427">427</a> of file <a class="el" href="inverted__index_8c_source.html">inverted_index.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverted__index_8c_source.html#l00429">429</a> of file <a class="el" href="inverted__index_8c_source.html">inverted_index.c</a>.</p>
 
 </div>
 </div>
@@ -590,7 +629,7 @@ Functions</h2></td></tr>
 <div class="line">free(temp);</div>
 </div><!-- fragment --><p>Establece el índice en la tabla hash como NULL después de liberar su memoria. </p><div class="fragment"><div class="line">hash_table[i] = NULL;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="inverted__index_8c_source.html#l00583">583</a> of file <a class="el" href="inverted__index_8c_source.html">inverted_index.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverted__index_8c_source.html#l00664">664</a> of file <a class="el" href="inverted__index_8c_source.html">inverted_index.c</a>.</p>
 
 </div>
 </div>

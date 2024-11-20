@@ -140,7 +140,7 @@ Functions</h2></td></tr>
 
 <p>&lt; Incluye la definición de las estructuras y funciones del grafo. </p>
 <p>Genera un archivo .eps con la representación gráfica del grafo.</p>
-<p>Generar archivo EPS con el grafo. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Función que genera un archivo EPS con la representación gráfica del grafo (No se incluyen los enlaces, solo los nodos). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">graph</td><td>Grafo </td></tr>
     <tr><td class="paramname">pagerank</td><td>Arreglo de PageRank </td></tr>
@@ -148,7 +148,50 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<p>Se verifica que el archivo se abra correctamente y se crear las variables base para crear la generación de la imagen EPS. </p><div class="fragment"><div class="line">FILE *file = fopen(filename, <span class="stringliteral">&quot;w&quot;</span>);\</div>
+<div class="line">if (!file)</div>
+<div class="line">{</div>
+<div class="line">     fprintf(stderr, <span class="stringliteral">&quot;No se pudo crear el archivo EPS para el grafo.\n&quot;</span>);</div>
+<div class="line">     exit(EXIT_FAILURE);</div>
+<div class="line">}</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> width = 800;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> height = 800;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> radius = 30;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> margin = 100;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> centerX = width / 2;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> centerY = height / 2;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> scale = 2 * M_PI / graph-&gt;total_docs;</div>
+<div class="line">fprintf(file, <span class="stringliteral">&quot;%%!PS-Adobe-3.0 EPSF-3.0\n&quot;</span>);</div>
+<div class="line">fprintf(file, <span class="stringliteral">&quot;%%%%BoundingBox: 0 0 %d %d\n&quot;</span>, width, height);</div>
+<div class="line">fprintf(file, <span class="stringliteral">&quot;/Courier findfont 10 scalefont setfont\n&quot;</span>);</div>
+<div class="line">fprintf(file, <span class="stringliteral">&quot;1 setlinecap\n&quot;</span>);</div>
+<div class="line">fprintf(file, <span class="stringliteral">&quot;0.5 setlinewidth\n&quot;</span>);</div>
+<div class="line">fprintf(file, <span class="stringliteral">&quot;newpath\n&quot;</span>);</div>
+<div class="line"><span class="keywordtype">double</span> positions[MAX_DOCS][2];</div>
+</div><!-- fragment --><p>Se recorre el grafo, se asigna una posición a cada nodo y se dibuja. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; graph-&gt;total_docs; i++)</div>
+<div class="line">{</div>
+<div class="line">     <span class="keywordtype">double</span> angle = i * scale;</div>
+<div class="line">     positions[i][0] = centerX + (centerX - margin) * cos(angle);</div>
+<div class="line">     positions[i][1] = centerY + (centerY - margin) * sin(angle);</div>
+<div class="line">     <span class="keywordtype">double</span> red = (rand() % 256) / 255.0;</div>
+<div class="line">     <span class="keywordtype">double</span> green = (rand() % 256) / 255.0;</div>
+<div class="line">     <span class="keywordtype">double</span> blue = (rand() % 256) / 255.0;</div>
+<div class="line">     fprintf(file, <span class="stringliteral">&quot;%f %f %f setrgbcolor\n&quot;</span>, red, green, blue);</div>
+<div class="line">     fprintf(file, <span class="stringliteral">&quot;newpath\n&quot;</span>);</div>
+<div class="line">     fprintf(file, <span class="stringliteral">&quot;%.2f %.2f %d 0 360 arc fill\n&quot;</span>, positions[i][0], positions[i][1], radius);</div>
+<div class="line">     fprintf(file, <span class="stringliteral">&quot;0 setgray\n&quot;</span>);</div>
+<div class="line">     fprintf(file, <span class="stringliteral">&quot;%.2f %.2f moveto (%d: %.3f) show\n&quot;</span>, positions[i][0] - radius, positions[i][1] - 2 * radius, i, pagerank[i]);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Se convierte el archivo EPS a PNG con GHOSTSCRIPT. </p><div class="fragment"><div class="line"><span class="keywordtype">char</span> comando[256];</div>
+<div class="line">snprintf(comando, <span class="keyword">sizeof</span>(comando), <span class="stringliteral">&quot;gs -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -sDEVICE=png16m -r300 -sOutputFile=%s.png %s&quot;</span>, filename, filename);</div>
+<div class="line"><span class="keywordtype">int</span> resultado = system(comando);</div>
+<div class="line"><span class="keywordflow">if</span> (resultado != 0)</div>
+<div class="line">{</div>
+<div class="line">     fprintf(stderr, <span class="stringliteral">&quot;ERROR al convertir el archivo EPS a PNG, saliendo...\n&quot;</span>);</div>
+<div class="line">     exit(EXIT_FAILURE);</div>
+<div class="line">}</div>
+<div class="line">fprintf(stdout, <span class="stringliteral">&quot;\nArchivo EPS convertido a PNG en el archivo %s.png\n\n&quot;</span>, filename);</div>
+</div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="graphic_8c_source.html#l00017">17</a> of file <a class="el" href="graphic_8c_source.html">graphic.c</a>.</p>
 
 </div>
